@@ -3,8 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
-  <!-- Google Fonts + Font Awesome -->
+  <title>HALU Engineering | Black & White | Red Letter Excellence</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -16,26 +15,26 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0b0e14;
-      color: #eef2ff;
+      /* BACKGROUND: pure black and white monochromatic */
+      background: #000000;      /* solid black base */
+      color: #ffffff;           /* default white text */
       scroll-behavior: smooth;
     }
 
+    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
     }
 
-    /* ---------- ATTRACTIVE PREMIUM COLOR SCHEME: Dark Navy + Vibrant Red + Gold Accents ---------- */
+    /* ---------- MONOCHROME BLACK/WHITE BACKGROUNDS — ONLY WORDS IN RED ---------- */
     header {
-      background: rgba(10, 14, 23, 0.98);
-      backdrop-filter: blur(10px);
+      background: #000000;
+      border-bottom: 1px solid #2a2a2a;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 1px solid rgba(239, 68, 68, 0.3);
-      box-shadow: 0 8px 25px -10px rgba(0,0,0,0.5);
     }
 
     .header-flex {
@@ -47,6 +46,7 @@
       gap: 1rem;
     }
 
+    /* Logo area: black/white image + text with red lettering */
     .logo-wrapper {
       display: flex;
       align-items: center;
@@ -54,37 +54,33 @@
     }
 
     .logo-img {
-      height: 52px;
+      height: 54px;
       width: auto;
-      filter: brightness(1.05) drop-shadow(0 2px 6px rgba(239,68,68,0.3));
-      transition: transform 0.25s ease;
-      background: white;
+      filter: grayscale(100%) contrast(1.1); /* black/white effect */
+      transition: transform 0.2s ease;
+      background: #ffffff;
       border-radius: 14px;
       padding: 4px;
       object-fit: contain;
     }
 
     .logo-img:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
 
     .logo-text {
       font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #ffffff;   /* white part */
     }
 
     .logo-text span {
-      background: linear-gradient(135deg, #ef4444, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #e63946;   /* only red letters in logo */
+      font-weight: 800;
     }
 
+    /* Navigation: white text, red on hover/active */
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -95,13 +91,13 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      color: #e2e8f0;
-      transition: 0.25s;
+      color: #ffffff;
+      transition: 0.2s;
       position: relative;
     }
 
     .nav-links a:hover, .nav-links a.active {
-      color: #ef4444;
+      color: #e63946;   /* red only on letters */
     }
 
     .nav-links a.active:after {
@@ -110,84 +106,75 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
-      background: #ef4444;
-      border-radius: 4px;
-      box-shadow: 0 0 6px #ef4444;
+      height: 2px;
+      background: #e63946;
     }
 
-    /* Hero Section - Breathtaking */
+    /* Hero section — pure black/white background, only red text elements */
     .hero {
-      background: radial-gradient(ellipse at 80% 30%, #0f172a, #020617);
-      padding: 5.5rem 0 7rem;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid #ef444430;
-    }
-
-    .hero::before {
-      content: "❄️ 🔥 ⚙️";
-      font-size: 200px;
-      opacity: 0.03;
-      position: absolute;
-      bottom: -40px;
-      right: -30px;
-      pointer-events: none;
+      background: #0a0a0a;
+      padding: 5rem 0 6rem;
+      border-bottom: 1px solid #262626;
     }
 
     .hero h1 {
-      font-size: 4rem;
+      font-size: 3.7rem;
       font-weight: 800;
-      line-height: 1.2;
+      color: #ffffff;
       margin-bottom: 1.2rem;
-      background: linear-gradient(to right, #ffffff, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
     }
 
     .hero h1 span {
-      background: linear-gradient(135deg, #ef4444, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #e63946;   /* only the emphasized word in red */
+      border-bottom: 3px solid #e63946;
+      display: inline-block;
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: #cbd5e1;
-      max-width: 580px;
+      color: #dddddd;
+      max-width: 600px;
       margin-bottom: 2rem;
+      font-weight: 400;
     }
 
     .btn {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-      background: linear-gradient(95deg, #ef4444, #dc2626);
-      color: white;
-      padding: 14px 38px;
-      border-radius: 60px;
+      gap: 10px;
+      background: #1a1a1a;
+      color: #ffffff;
+      padding: 14px 36px;
+      border-radius: 50px;
       font-weight: 700;
       text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 10px 20px -6px #ef444480;
-      border: none;
+      transition: 0.25s ease;
+      border: 1px solid #3a3a3a;
     }
 
     .btn:hover {
-      transform: translateY(-4px);
-      background: linear-gradient(95deg, #f05252, #b91c1c);
-      box-shadow: 0 20px 30px -10px #ef4444;
+      background: #2a2a2a;
+      color: #e63946;   /* red text on hover */
+      border-color: #e63946;
+      transform: translateY(-3px);
     }
 
-    /* sections */
+    /* sections with black/grey backgrounds */
     section {
       padding: 5rem 0;
+      background: #000000;
+    }
+
+    .light-bg {
+      background: #0c0c0c;
+      border-top: 1px solid #202020;
+      border-bottom: 1px solid #202020;
     }
 
     .section-title {
-      font-size: 2.5rem;
+      font-size: 2.4rem;
       font-weight: 800;
       margin-bottom: 2rem;
       position: relative;
@@ -199,140 +186,126 @@
       position: absolute;
       bottom: -12px;
       left: 0;
-      width: 80px;
-      height: 4px;
-      background: #ef4444;
-      border-radius: 4px;
-      box-shadow: 0 0 8px #ef4444;
+      width: 70px;
+      height: 3px;
+      background: #e63946;   /* red underline */
+      border-radius: 2px;
     }
 
     .grid {
       display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
       gap: 2rem;
-      margin-top: 2.5rem;
+      margin-top: 2rem;
     }
 
-    /* Glassmorphic cards */
+    /* Cards: dark grey, white text + red icons and red hover */
     .card {
-      background: rgba(18, 24, 36, 0.7);
-      backdrop-filter: blur(4px);
+      background: #111111;
       border-radius: 32px;
       padding: 2rem 1.8rem;
-      transition: 0.35s;
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.8);
+      transition: 0.3s;
       text-align: center;
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.4);
+      border: 1px solid #2a2a2a;
     }
 
     .card:hover {
-      transform: translateY(-10px);
-      border-color: #ef4444;
-      box-shadow: 0 25px 40px -12px rgba(239, 68, 68, 0.25);
-      background: rgba(20, 28, 44, 0.85);
+      transform: translateY(-8px);
+      border-color: #e63946;
     }
 
     .card i {
       font-size: 3rem;
-      background: linear-gradient(135deg, #ef4444, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #e63946;   /* red icons only */
       margin-bottom: 1rem;
     }
 
     .card h3 {
-      font-size: 1.6rem;
+      font-size: 1.55rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
       color: #ffffff;
     }
 
     .card p {
-      color: #a0afc3;
+      color: #c0c0c0;
       line-height: 1.5;
     }
 
-    /* stats premium design */
+    /* stats section with grey background, red numbers */
     .stats {
-      background: rgba(12, 18, 28, 0.8);
-      backdrop-filter: blur(8px);
-      border-radius: 56px;
-      padding: 2.8rem 2rem;
+      background: #0f0f0f;
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 2rem;
       margin-top: 2rem;
       text-align: center;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+      border: 1px solid #2a2a2a;
     }
 
     .stat-number {
       font-size: 2.8rem;
       font-weight: 800;
-      background: linear-gradient(135deg, #ef4444, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #e63946;   /* ONLY RED NUMBERS */
       line-height: 1.2;
     }
 
     .stat-label {
       font-weight: 600;
-      color: #9ca3af;
+      color: #dddddd;
       text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
+      letter-spacing: 0.5px;
+      font-size: 0.85rem;
     }
 
-    /* trust row - premium */
+    /* trust / awards row - all white/grey, only icons red */
     .trust-row {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: space-between;
       align-items: center;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      border-radius: 48px;
+      background: #080808;
+      border-radius: 40px;
       padding: 2rem 2rem;
-      border: 1px solid #ef444430;
+      border: 1px solid #262626;
     }
 
     .trust-item {
       text-align: center;
       flex: 1;
-      min-width: 140px;
+      min-width: 150px;
     }
 
     .trust-item i {
-      font-size: 2.8rem;
-      background: linear-gradient(135deg, #facc15, #ef4444);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.8rem;
+      font-size: 2.6rem;
+      color: #e63946;     /* red icons only */
+      margin-bottom: 0.7rem;
     }
 
     .trust-item h3 {
       color: #ffffff;
       font-weight: 700;
+      margin-bottom: 0.2rem;
       font-size: 1.1rem;
     }
 
     .trust-item p {
-      color: #8b9bb5;
+      color: #aaaaaa;
       font-size: 0.85rem;
     }
 
-    /* footer */
+    /* footer black + white with red heart */
     footer {
-      background: #030712;
-      color: #94a3b8;
+      background: #030303;
+      color: #cccccc;
       text-align: center;
       padding: 2rem;
-      border-top: 2px solid #ef4444;
+      border-top: 2px solid #e63946;
     }
 
     footer p {
@@ -340,19 +313,20 @@
     }
 
     footer i {
-      color: #ef4444;
+      color: #e63946;
       margin: 0 4px;
     }
 
+    /* Responsive */
     @media (max-width: 850px) {
       .hero h1 {
-        font-size: 2.7rem;
+        font-size: 2.5rem;
       }
       .header-flex {
         flex-direction: column;
       }
       .nav-links {
-        gap: 1.4rem;
+        gap: 1.5rem;
       }
       .container {
         padding: 0 24px;
@@ -374,7 +348,8 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <img src="52.jpg" alt="HALU Engineering" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/52x52/ffffff/ef4444?text=H'">
+      <!-- Logo image 52.jpg (black/white filtered) -->
+      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/ffffff/333333?text=H'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div class="nav-links">
@@ -389,65 +364,66 @@
 
 <div class="hero">
   <div class="container">
-    <h1>HVAC & <span>Engineering</span> <br>Redefining <span>Climate Control</span></h1>
-    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Full-scale HVAC solutions for tomorrow's infrastructure.</p>
+    <h1>HVAC & <span>Engineering</span> <br>Black. White. <span style="color:#e63946;">Red Letter</span>.</h1>
+    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Complete HVAC solutions — power in monochrome, passion in red.</p>
     <a href="services.html" class="btn">Explore Services <i class="fas fa-arrow-right"></i></a>
   </div>
 </div>
 
 <section>
   <div class="container">
-    <h2 class="section-title">Core Expertise</h2>
+    <h2 class="section-title">Our Core Expertise</h2>
     <div class="grid">
-      <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, and centralized AC for commercial & industrial zones.</p></div>
-      <div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers, pharmaceutical storage, and walk-in cold rooms (-35°C to +10°C).</p></div>
-      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-performance air-to-water & geothermal heating/cooling solutions.</p></div>
-      <div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, and fire-rated commercial kitchen systems.</p></div>
-      <div class="card"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>High-static odor control, humidity management, and energy recovery.</p></div>
-      <div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized, SMACNA standards.</p></div>
+      <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>Split, VRF, central AC, rooftop units – efficient cooling for every environment.</p></div>
+      <div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Walk-in freezers, blast chillers & pharmaceutical cold storage solutions.</p></div>
+      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>Air-to-water & geothermal — sustainable & cost-effective systems.</p></div>
+      <div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Exhaust hoods, grease filters, make-up air & fire suppression ready.</p></div>
+      <div class="card"><i class="fas fa-toilet"></i><h3>Toilet Ventilation</h3><p>Odor extraction, humidity control & fresh air for top hygiene.</p></div>
+      <div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Works & HVAC</h3><p>Custom duct fabrication, spiral ducts, seamless mechanical integration.</p></div>
     </div>
   </div>
 </section>
 
-<section style="background: #0a0f1a;">
+<section class="light-bg">
   <div class="container">
-    <h2 class="section-title">Why HALU stands out</h2>
+    <h2 class="section-title">Why Choose HALU?</h2>
     <div class="stats">
-      <div><div class="stat-number">12+</div><div class="stat-label">Years Excellence</div></div>
-      <div><div class="stat-number">480+</div><div class="stat-label">Projects Delivered</div></div>
-      <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Response</div></div>
-      <div><div class="stat-number">100%</div><div class="stat-label">Client Trust</div></div>
+      <div><div class="stat-number">10+</div><div class="stat-label">Years Experience</div></div>
+      <div><div class="stat-number">350+</div><div class="stat-label">Projects Done</div></div>
+      <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
+      <div><div class="stat-number">100%</div><div class="stat-label">Client Focus</div></div>
     </div>
   </div>
 </section>
 
-<!-- premium trust badges -->
+<!-- Red-accented only on text & icons, background monochrome -->
 <section>
   <div class="container">
     <div class="trust-row">
-      <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2025</h3><p>Certified Quality</p></div>
-      <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Design</h3><p>Innovation Award</p></div>
-      <div class="trust-item"><i class="fas fa-headset"></i><h3>24/7 VIP Support</h3><p>Always responsive</p></div>
-      <div class="trust-item"><i class="fas fa-leaf"></i><h3>Green Energy</h3><p>Net-zero ready</p></div>
+      <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2024</h3><p>Certified quality</p></div>
+      <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Engineering</h3><p>Innovation in HVAC</p></div>
+      <div class="trust-item"><i class="fas fa-headset"></i><h3>24/7 Priority Care</h3><p>Always responsive</p></div>
+      <div class="trust-item"><i class="fas fa-fire"></i><h3>Red Letter Promise</h3><p>Passion delivered</p></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
+  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-heart"></i> Where words speak in red</p>
 </footer>
 
 <script>
-  // active nav state
+  // Active nav link highlight
   document.querySelectorAll('.nav-links a').forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === 'index.html' || (link.innerText === 'Home' && (window.location.pathname === '/' || window.location.pathname.includes('index')))) {
+    if(link.getAttribute('href') === 'index.html' || (link.innerText.trim() === 'Home' && (window.location.pathname === '/' || window.location.pathname.includes('index')))) {
       link.classList.add('active');
     }
   });
-  // logo fallback
-  const img = document.querySelector('.logo-img');
-  if(img) img.addEventListener('error', () => console.log("52.jpg — add your logo image"));
+  // logo fallback handling
+  const logoImg = document.querySelector('.logo-img');
+  if(logoImg) {
+    logoImg.addEventListener('error', () => console.log("Logo '52.jpg' — place your image in root folder."));
+  }
 </script>
 </body>
 </html>

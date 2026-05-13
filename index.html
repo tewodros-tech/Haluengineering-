@@ -50,7 +50,7 @@
       gap: 1rem;
     }
 
-    /* Logo area - ORIGINAL LOGO PRESERVED, no changes */
+    /* Logo area - ORIGINAL LOGO PRESERVED */
     .logo-wrapper {
       display: flex;
       align-items: center;
@@ -117,7 +117,7 @@
       box-shadow: 0 0 6px #ef4444;
     }
 
-    /* Hero Section - striking */
+    /* Hero Section */
     .hero {
       background: radial-gradient(ellipse at 70% 20%, #0f182c, #05090f);
       padding: 5rem 0 6rem;
@@ -173,6 +173,7 @@
       text-decoration: none;
       transition: all 0.3s;
       box-shadow: 0 10px 20px -6px #ef444480;
+      cursor: pointer;
     }
 
     .btn:hover {
@@ -181,7 +182,6 @@
       box-shadow: 0 20px 30px -10px #ef4444;
     }
 
-    /* sections */
     section {
       padding: 5rem 0;
     }
@@ -245,7 +245,7 @@
       color: #eef2ff;
     }
 
-    /* MOVABLE IMAGE SLIDER (Swiper) - Attractive & touch-friendly */
+    /* MOVABLE IMAGE SLIDER */
     .slider-section {
       background: linear-gradient(115deg, #0b1120, #0d1426);
       border-radius: 48px;
@@ -294,7 +294,7 @@
       color: #ef4444;
     }
 
-    /* Cards for expertise */
+    /* Cards */
     .grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
@@ -339,7 +339,7 @@
       color: #a0afc3;
     }
 
-    /* stats */
+    /* Stats */
     .stats {
       background: rgba(12, 18, 28, 0.7);
       backdrop-filter: blur(8px);
@@ -371,42 +371,121 @@
       font-size: 0.8rem;
     }
 
-    .trust-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      justify-content: space-between;
-      align-items: center;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(4px);
-      border-radius: 48px;
+    /* UPDATED TRUST & PROJECTS SECTION - More attractive with client logos */
+    .trust-projects-section {
+      background: linear-gradient(125deg, #0a0f1a, #0d1428);
+      border-radius: 56px;
+      margin-top: 1rem;
       padding: 2rem;
-      border: 1px solid #ef444430;
     }
 
-    .trust-item {
+    .client-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .client-card {
+      background: rgba(20, 28, 44, 0.8);
+      backdrop-filter: blur(4px);
+      border-radius: 28px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      border: 1px solid rgba(239, 68, 68, 0.3);
+      cursor: pointer;
       text-align: center;
-      flex: 1;
-      min-width: 140px;
     }
 
-    .trust-item i {
-      font-size: 2.6rem;
+    .client-card:hover {
+      transform: translateY(-6px);
+      border-color: #ef4444;
+      box-shadow: 0 20px 30px -12px rgba(239, 68, 68, 0.3);
+      background: rgba(30, 40, 60, 0.9);
+    }
+
+    .client-icon {
+      font-size: 2.5rem;
       background: linear-gradient(135deg, #facc15, #ef4444);
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      margin-bottom: 1rem;
     }
 
-    .trust-item h3 {
-      color: white;
+    .client-card h4 {
+      font-size: 1.3rem;
       font-weight: 700;
-      font-size: 1.1rem;
+      color: white;
+      margin-bottom: 0.5rem;
     }
 
-    .trust-item p {
-      color: #8b9bb5;
+    .client-card p {
+      color: #a0afc3;
       font-size: 0.85rem;
+    }
+
+    .project-badge {
+      display: inline-block;
+      background: rgba(239, 68, 68, 0.2);
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      margin-top: 0.8rem;
+      color: #facc15;
+    }
+
+    .row-two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+
+    .col {
+      flex: 1;
+      min-width: 250px;
+    }
+
+    .project-list {
+      background: rgba(12, 18, 28, 0.6);
+      border-radius: 32px;
+      padding: 1.5rem;
+      border: 1px solid #ef444430;
+    }
+
+    .project-list h3 {
+      font-size: 1.3rem;
+      margin-bottom: 1rem;
+      color: #facc15;
+    }
+
+    .project-list ul {
+      list-style: none;
+    }
+
+    .project-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .project-list li i {
+      color: #ef4444;
+      width: 24px;
+    }
+
+    .click-hint {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #facc15;
+    }
+
+    .click-hint i {
+      margin-right: 6px;
     }
 
     footer {
@@ -430,7 +509,6 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <!-- ORIGINAL LOGO IMAGE PRESERVED - 52.jpg unchanged -->
       <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/58x58/ef4444/ffffff?text=H'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
@@ -452,7 +530,7 @@
   </div>
 </div>
 
-<!-- ENGINEERING ICONS SECTION - attractive & modern -->
+<!-- ENGINEERING ICONS -->
 <section>
   <div class="container">
     <h2 class="section-title">Engineering Excellence</h2>
@@ -467,14 +545,12 @@
   </div>
 </section>
 
-<!-- MOVABLE IMAGES SLIDER (Swiper) - Attractive, draggable, touch-friendly -->
+<!-- MOVABLE IMAGE SLIDER -->
 <section class="slider-section">
   <div class="container">
     <h2 class="section-title">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2>
     <div class="swiper mySwiper">
-      <div class="swiper-wrapper" id="swiperWrapper">
-        <!-- Images: 1,2,28,13,17,33,34,35,37.jpg (7.jpg removed) -->
-      </div>
+      <div class="swiper-wrapper" id="swiperWrapper"></div>
       <div class="swiper-pagination"></div>
       <div class="swiper-button-next"></div>
       <div class="swiper-button-prev"></div>
@@ -497,21 +573,54 @@
   </div>
 </section>
 
-<!-- Stats & Trust -->
+<!-- UPDATED TRUST & PROJECTS SECTION - with all requested clients + clickable to services -->
 <section style="background: #0a0f1a;">
   <div class="container">
     <h2 class="section-title">Why Industry Leaders Trust HALU</h2>
     <div class="stats">
-      <div><div class="stat-number">14+</div><div class="stat-label">Years Excellence</div></div>
+      <div><div class="stat-number">15+</div><div class="stat-label">Years Excellence</div></div>
       <div><div class="stat-number">520+</div><div class="stat-label">Projects Delivered</div></div>
       <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
       <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
     </div>
-    <div class="trust-row" style="margin-top: 2.5rem;">
-      <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2025</h3><p>Certified Quality</p></div>
-      <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Design</h3><p>Innovation Award</p></div>
-      <div class="trust-item"><i class="fas fa-headset"></i><h3>VIP Priority</h3><p>24/7 Concierge</p></div>
-      <div class="trust-item"><i class="fas fa-globe"></i><h3>Global Reach</h3><p>50+ Countries</p></div>
+
+    <div class="trust-projects-section">
+      <!-- Major Clients Row (clickable to services) -->
+      <h3 style="color: #facc15; margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3>
+      <div class="client-grid" id="clientsGrid">
+        <!-- DHL, BOEING, INSA, CIVIL SERVICE, PRIME MINISTER OFFICES, TAPU, MINAYE CONSTRUCTION -->
+      </div>
+
+      <!-- Wide Projects - MESOB PROJECTS & more -->
+      <div class="row-two-columns">
+        <div class="col">
+          <div class="project-list">
+            <h3><i class="fas fa-building"></i> MESOB Projects</h3>
+            <ul>
+              <li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li>
+              <li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li>
+              <li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li>
+              <li><i class="fas fa-map-marker-alt"></i> Afar Region</li>
+            </ul>
+          </div>
+        </div>
+        <div class="col">
+          <div class="project-list">
+            <h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3>
+            <ul>
+              <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
+              <li><i class="fas fa-city"></i> Civil Service</li>
+              <li><i class="fas fa-landmark"></i> Prime Minister Offices</li>
+              <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
+              <li><i class="fas fa-charging-station"></i> TAPU</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="click-hint">
+        <i class="fas fa-mouse-pointer"></i> <strong>Click on any client logo above to explore our HVAC services →</strong>
+      </div>
     </div>
   </div>
 </section>
@@ -528,13 +637,11 @@
     }
   });
 
-  // Logo fallback - original image preserved
+  // Logo fallback
   const logoImg = document.querySelector('.logo-img');
-  if(logoImg) {
-    logoImg.addEventListener('error', () => console.log("Ensure 52.jpg is in the same folder"));
-  }
+  if(logoImg) logoImg.addEventListener('error', () => console.log("Ensure 52.jpg exists"));
 
-  // Swiper Initialization - Movable images (touch + drag)
+  // Swiper Initialization - Movable images
   const swiper = new Swiper('.mySwiper', {
     slidesPerView: 1,
     spaceBetween: 24,
@@ -542,15 +649,11 @@
     autoplay: { delay: 4000, disableOnInteraction: false },
     pagination: { el: '.swiper-pagination', clickable: true },
     navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: {
-      640: { slidesPerView: 2 },
-      1024: { slidesPerView: 3 }
-    },
-    effect: 'slide',
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
     speed: 800
   });
 
-  // Image list (7.jpg REMOVED) 
+  // Image list (7.jpg removed)
   const imageList = [
     { src: "1.jpg", name: "VRF System Install" },
     { src: "2.jpg", name: "Chiller Plant" },
@@ -574,9 +677,48 @@
       `;
       swiperWrapper.appendChild(slide);
     });
-    // update swiper after adding slides
     swiper.update();
   }
+
+  // Clients data array with icons
+  const clients = [
+    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
+    { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
+    { name: "INSA", icon: "fas fa-shield-haltered", projects: "Data Center Cooling" },
+    { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
+    { name: "Prime Minister Offices", icon: "fas fa-landmark", projects: "Premium HVAC" },
+    { name: "TAPU", icon: "fas fa-chart-line", projects: "Energy Solutions" },
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial Projects" }
+  ];
+
+  const clientsGrid = document.getElementById('clientsGrid');
+  if (clientsGrid) {
+    clients.forEach(client => {
+      const card = document.createElement('div');
+      card.className = 'client-card';
+      card.setAttribute('data-href', 'services.html');
+      card.style.cursor = 'pointer';
+      card.innerHTML = `
+        <div class="client-icon"><i class="${client.icon}"></i></div>
+        <h4>${client.name}</h4>
+        <p>${client.projects}</p>
+        <div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>
+      `;
+      card.addEventListener('click', () => {
+        window.location.href = 'services.html';
+      });
+      clientsGrid.appendChild(card);
+    });
+  }
+
+  // Also make the MESOB project cards clickable to services
+  const projectLists = document.querySelectorAll('.project-list');
+  projectLists.forEach(list => {
+    list.style.cursor = 'pointer';
+    list.addEventListener('click', () => {
+      window.location.href = 'services.html';
+    });
+  });
 </script>
 </body>
 </html>

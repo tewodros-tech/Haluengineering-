@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
+  <title>HALU Engineering | Premium HVAC & Mechanical Systems</title>
   <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -16,7 +16,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;   /* clean white background */
+      background: #ffffff;
       color: #1e293b;
       scroll-behavior: smooth;
     }
@@ -25,16 +25,59 @@
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* ---------- PREMIUM DESIGN: WHITE BACKGROUND WITH RED & DARK ACCENTS ---------- */
+    /* Background watermark "HVAC SYSTEMS" repeated subtly */
+    body::before {
+      content: "HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS HVAC SYSTEMS";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      font-size: 5vw;
+      font-weight: 900;
+      color: rgba(0, 0, 0, 0.025);
+      white-space: pre-wrap;
+      word-break: break-word;
+      line-height: 1.3;
+      letter-spacing: 2px;
+      pointer-events: none;
+      z-index: 0;
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Additional subtle pattern for depth */
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: radial-gradient(#e2e8f0 0.8px, transparent 0.8px);
+      background-size: 28px 28px;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* Header - clean white with elevated shadow */
     header {
-      background: #ffffff;
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(0px);
       position: sticky;
       top: 0;
-      z-index: 1000;
+      z-index: 100;
       border-bottom: 1px solid #eef2f6;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02);
+      box-shadow: 0 8px 25px -10px rgba(0, 0, 0, 0.05);
     }
 
     .header-flex {
@@ -46,34 +89,42 @@
       gap: 1rem;
     }
 
-    /* Logo area - original image preserved, no filter changes */
+    /* Logo area - VISIBLE & ENHANCED with subtle glow & larger presence */
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
+      gap: 16px;
     }
 
     .logo-img {
-      height: 54px;
+      height: 62px;
       width: auto;
-      transition: transform 0.2s ease;
+      transition: all 0.25s ease;
       object-fit: contain;
+      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08));
+      background: transparent;
     }
 
     .logo-img:hover {
-      transform: scale(1.02);
+      transform: scale(1.03);
+      filter: drop-shadow(0 6px 12px rgba(220, 38, 38, 0.2));
     }
 
     .logo-text {
-      font-size: 1.9rem;
+      font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: #0f172a;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .logo-text span {
-      color: #dc2626;
-      font-weight: 800;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .nav-links {
@@ -85,7 +136,7 @@
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
-      font-size: 0.95rem;
+      font-size: 1rem;
       color: #334155;
       transition: 0.2s;
       position: relative;
@@ -106,15 +157,16 @@
       border-radius: 4px;
     }
 
-    /* Hero Section - clean white with subtle red accents */
+    /* Hero Section - clean */
     .hero {
-      background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%);
-      padding: 5rem 0 6rem;
-      border-bottom: 1px solid #f1f5f9;
+      background: linear-gradient(115deg, #ffffff 0%, #fef9f9 100%);
+      padding: 5.5rem 0 6rem;
+      position: relative;
+      z-index: 2;
     }
 
     .hero h1 {
-      font-size: 3.8rem;
+      font-size: 4rem;
       font-weight: 800;
       color: #0f172a;
       margin-bottom: 1.2rem;
@@ -141,25 +193,27 @@
       gap: 10px;
       background: #dc2626;
       color: white;
-      padding: 14px 36px;
+      padding: 14px 38px;
       border-radius: 50px;
       font-weight: 700;
       text-decoration: none;
       transition: 0.25s ease;
-      box-shadow: 0 8px 18px -6px rgba(220, 38, 38, 0.25);
+      box-shadow: 0 10px 20px -8px rgba(220, 38, 38, 0.35);
       border: none;
     }
 
     .btn:hover {
       background: #b91c1c;
       transform: translateY(-3px);
-      box-shadow: 0 15px 25px -8px rgba(185, 28, 28, 0.35);
+      box-shadow: 0 18px 28px -10px rgba(185, 28, 28, 0.45);
     }
 
     /* sections */
     section {
       padding: 5rem 0;
       background: #ffffff;
+      position: relative;
+      z-index: 2;
     }
 
     .alt-bg {
@@ -169,7 +223,7 @@
     }
 
     .section-title {
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 2rem;
       position: relative;
@@ -181,7 +235,7 @@
       position: absolute;
       bottom: -12px;
       left: 0;
-      width: 70px;
+      width: 75px;
       height: 4px;
       background: #dc2626;
       border-radius: 4px;
@@ -194,7 +248,7 @@
       margin-top: 2rem;
     }
 
-    /* Cards - elegant white with shadow & red accents on hover */
+    /* Cards */
     .card {
       background: #ffffff;
       border-radius: 32px;
@@ -218,7 +272,7 @@
     }
 
     .card h3 {
-      font-size: 1.55rem;
+      font-size: 1.6rem;
       font-weight: 700;
       margin-bottom: 0.75rem;
       color: #0f172a;
@@ -229,7 +283,7 @@
       line-height: 1.5;
     }
 
-    /* stats section - soft grey background */
+    /* stats */
     .stats {
       background: #f8fafc;
       border-radius: 48px;
@@ -258,7 +312,7 @@
       font-size: 0.8rem;
     }
 
-    /* trust / awards row */
+    /* trust row */
     .trust-row {
       display: flex;
       flex-wrap: wrap;
@@ -275,7 +329,7 @@
     .trust-item {
       text-align: center;
       flex: 1;
-      min-width: 150px;
+      min-width: 140px;
     }
 
     .trust-item i {
@@ -296,13 +350,14 @@
       font-size: 0.85rem;
     }
 
-    /* footer */
     footer {
       background: #0f172a;
       color: #cbd5e1;
       text-align: center;
       padding: 2rem;
       border-top: 3px solid #dc2626;
+      position: relative;
+      z-index: 2;
     }
 
     footer p {
@@ -316,7 +371,7 @@
 
     @media (max-width: 850px) {
       .hero h1 {
-        font-size: 2.5rem;
+        font-size: 2.6rem;
       }
       .header-flex {
         flex-direction: column;
@@ -327,14 +382,20 @@
       .container {
         padding: 0 24px;
       }
+      .logo-img {
+        height: 52px;
+      }
+      .logo-text {
+        font-size: 1.6rem;
+      }
     }
 
     @media (max-width: 550px) {
       .logo-img {
-        height: 46px;
+        height: 48px;
       }
       .logo-text {
-        font-size: 1.5rem;
+        font-size: 1.4rem;
       }
     }
   </style>
@@ -344,8 +405,8 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <!-- Original logo image 52.jpg - completely preserved, no modifications -->
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/dc2626/ffffff?text=H'">
+      <!-- Original logo 52.jpg - fully visible, enhanced presence -->
+      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/62x62/dc2626/ffffff?text=HE'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div class="nav-links">
@@ -392,7 +453,6 @@
   </div>
 </section>
 
-<!-- Trust & awards section -->
 <section>
   <div class="container">
     <div class="trust-row">
@@ -405,7 +465,7 @@
 </section>
 
 <footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-fire"></i> Engineered for excellence</p>
+  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-snowflake"></i> Engineered for excellence</p>
 </footer>
 
 <script>
@@ -415,11 +475,29 @@
       link.classList.add('active');
     }
   });
-  // Logo fallback handling - original image preserved, no changes to source
+  
+  // Logo visibility and fallback - ensures original image is displayed
   const logoImg = document.querySelector('.logo-img');
   if(logoImg) {
-    logoImg.addEventListener('error', () => {
-      console.log("Please ensure '52.jpg' exists in the same directory as this HTML file.");
+    logoImg.addEventListener('error', function() {
+      console.log("Note: Please ensure '52.jpg' is in the same folder as this HTML file. Using fallback text.");
+      this.style.display = 'none';
+      const wrapper = document.querySelector('.logo-wrapper');
+      if(wrapper) {
+        const fallbackSpan = document.createElement('div');
+        fallbackSpan.style.backgroundColor = '#dc2626';
+        fallbackSpan.style.color = 'white';
+        fallbackSpan.style.width = '54px';
+        fallbackSpan.style.height = '54px';
+        fallbackSpan.style.borderRadius = '14px';
+        fallbackSpan.style.display = 'flex';
+        fallbackSpan.style.alignItems = 'center';
+        fallbackSpan.style.justifyContent = 'center';
+        fallbackSpan.style.fontWeight = '800';
+        fallbackSpan.style.fontSize = '1.6rem';
+        fallbackSpan.innerText = 'H';
+        wrapper.insertBefore(fallbackSpan, wrapper.firstChild);
+      }
     });
   }
 </script>

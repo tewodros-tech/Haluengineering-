@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Redefining HVAC Excellence</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>HALU Engineering | Black & White Precision | HVAC Excellence</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
     * {
@@ -15,32 +15,33 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #b91c1c;  /* deep powerful red background */
-      color: #ffffff;       /* all base text white */
+      background: #0a0a0a;   /* deep black base */
+      color: #f5f5f5;        /* white base text */
       scroll-behavior: smooth;
     }
 
+    /* monochromatic black/white canvas with red accents */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
     }
 
-    /* ---------- RED & WHITE DOMINANT THEME ---------- */
+    /* ---------- BLACK & WHITE THEME | RED ACCENTS (text & details) ---------- */
     header {
-      background: #991b1b;  /* slightly darker red for header depth */
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+      background: #000000;
+      border-bottom: 1px solid #2a2a2a;
       position: sticky;
       top: 0;
       z-index: 1000;
-      border-bottom: 2px solid #fca5a5;
+      box-shadow: 0 10px 25px -12px rgba(0,0,0,0.6);
     }
 
     .header-flex {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 0.9rem 0;
+      padding: 1rem 0;
       flex-wrap: wrap;
       gap: 1rem;
     }
@@ -49,16 +50,16 @@
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
     }
 
     .logo-img {
-      height: 52px;
+      height: 54px;
       width: auto;
-      filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.2));
+      filter: drop-shadow(0 2px 6px rgba(255,255,255,0.1));
       transition: transform 0.2s ease;
-      background: white;
-      border-radius: 12px;
+      background: #ffffff;
+      border-radius: 14px;
       padding: 4px;
       object-fit: contain;
     }
@@ -68,19 +69,23 @@
     }
 
     .logo-text {
-      font-size: 1.8rem;
+      font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      color: #ffffff;
-      text-shadow: 0 2px 5px rgba(0,0,0,0.2);
+      background: linear-gradient(135deg, #ffffff, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
 
     .logo-text span {
-      color: #ffd966;
+      color: #dc2626;  /* bold red accent */
+      background: none;
+      -webkit-background-clip: unset;
       font-weight: 800;
     }
 
-    /* Navigation white/red */
+    /* Navigation - white/red */
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -89,16 +94,16 @@
 
     .nav-links a {
       text-decoration: none;
-      font-weight: 700;
+      font-weight: 600;
       font-size: 0.95rem;
-      color: #ffffff;
+      color: #f0f0f0;
       transition: 0.2s;
       position: relative;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.2px;
     }
 
     .nav-links a:hover, .nav-links a.active {
-      color: #ffd966;
+      color: #ef4444;
     }
 
     .nav-links a.active:after {
@@ -108,20 +113,20 @@
       left: 0;
       width: 100%;
       height: 2.5px;
-      background: #ffd966;
+      background: #ef4444;
       border-radius: 4px;
     }
 
-    /* Hero section – red background, white text */
+    /* Hero section — black/white dramatic */
     .hero {
-      background: linear-gradient(115deg, #b91c1c 0%, #dc2626 100%);
+      background: radial-gradient(circle at 10% 20%, #111111, #020202);
       padding: 5rem 0 6rem;
+      border-bottom: 1px solid #2c2c2c;
       position: relative;
-      border-bottom: 1px solid #fca5a5;
     }
 
     .hero h1 {
-      font-size: 3.6rem;
+      font-size: 3.7rem;
       font-weight: 800;
       color: #ffffff;
       margin-bottom: 1.2rem;
@@ -130,17 +135,17 @@
     }
 
     .hero h1 span {
-      color: #ffd966;
-      border-bottom: 3px solid #ffd966;
+      color: #ef4444;
+      border-bottom: 3px solid #ef4444;
       display: inline-block;
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: #fee2e2;
+      color: #cccccc;
       max-width: 600px;
       margin-bottom: 2rem;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     .btn {
@@ -148,37 +153,38 @@
       align-items: center;
       gap: 10px;
       background: #ffffff;
-      color: #b91c1c;
+      color: #000000;
       padding: 14px 36px;
       border-radius: 50px;
       font-weight: 800;
       text-decoration: none;
       transition: 0.25s ease;
-      box-shadow: 0 10px 18px -8px rgba(0, 0, 0, 0.3);
-      border: none;
-      font-size: 1rem;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
+      border: 1px solid #333;
     }
 
     .btn:hover {
-      background: #ffd966;
-      color: #991b1b;
+      background: #ef4444;
+      color: #ffffff;
       transform: translateY(-3px);
-      box-shadow: 0 20px 25px -12px rgba(0, 0, 0, 0.4);
+      box-shadow: 0 15px 25px -10px rgba(239, 68, 68, 0.4);
+      border-color: #ef4444;
     }
 
-    /* section styling */
+    /* sections */
     section {
       padding: 5rem 0;
-      background: #b91c1c;
+      background: #0a0a0a;
     }
 
-    /* alternate subtle section background variation for depth */
-    .alt-bg {
-      background: #a51717;
+    .light-bg {
+      background: #111111;
+      border-top: 1px solid #262626;
+      border-bottom: 1px solid #262626;
     }
 
     .section-title {
-      font-size: 2.3rem;
+      font-size: 2.4rem;
       font-weight: 800;
       margin-bottom: 2rem;
       position: relative;
@@ -192,7 +198,7 @@
       left: 0;
       width: 70px;
       height: 4px;
-      background: #ffd966;
+      background: #ef4444;
       border-radius: 4px;
     }
 
@@ -203,46 +209,44 @@
       margin-top: 2rem;
     }
 
-    /* Cards with red gradient on white bg -> but we invert: white card with red text? No, keep red bg consistency but card elevated: semi-transparent? Better: elegant white card with red border & red text for contrast */
+    /* Cards — dark elegant with white/red details */
     .card {
-      background: rgba(255, 255, 255, 0.97);
+      background: #141414;
       border-radius: 32px;
       padding: 2rem 1.8rem;
-      box-shadow: 0 25px 35px -12px rgba(0, 0, 0, 0.25);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
       transition: 0.3s;
       text-align: center;
-      border: 1px solid #ffd966;
+      border: 1px solid #2c2c2c;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: #ffffff;
-      box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.35);
+      border-color: #ef4444;
+      box-shadow: 0 30px 40px -15px rgba(239, 68, 68, 0.2);
     }
 
     .card i {
       font-size: 3rem;
-      color: #b91c1c;
+      color: #ef4444;
       margin-bottom: 1rem;
     }
 
     .card h3 {
       font-size: 1.55rem;
-      font-weight: 800;
+      font-weight: 700;
       margin-bottom: 0.75rem;
-      color: #991b1b;
+      color: #ffffff;
     }
 
     .card p {
-      color: #2d3a3f;
+      color: #b0b0b0;
       line-height: 1.5;
-      font-weight: 500;
     }
 
-    /* stats section with transparent/white borders */
+    /* stats with transparent border + red numbers */
     .stats {
-      background: rgba(255, 255, 255, 0.1);
-      backdrop-filter: blur(2px);
+      background: #0f0f0f;
       border-radius: 48px;
       padding: 2.5rem 2rem;
       display: flex;
@@ -251,21 +255,22 @@
       gap: 2rem;
       margin-top: 2rem;
       text-align: center;
-      border: 1px solid #ffd966;
+      border: 1px solid #2e2e2e;
     }
 
     .stat-number {
-      font-size: 2.6rem;
+      font-size: 2.8rem;
       font-weight: 800;
-      color: #ffd966;
+      color: #ef4444;
       line-height: 1.2;
     }
 
     .stat-label {
       font-weight: 600;
-      color: #fee2e2;
+      color: #d4d4d4;
       text-transform: uppercase;
       letter-spacing: 0.5px;
+      font-size: 0.85rem;
     }
 
     /* trust badges / awards */
@@ -275,10 +280,10 @@
       gap: 2rem;
       justify-content: space-between;
       align-items: center;
-      background: rgba(255, 255, 255, 0.08);
+      background: #111111;
       border-radius: 40px;
       padding: 2rem 2rem;
-      border: 1px solid #fca5a5;
+      border: 1px solid #2c2c2c;
     }
 
     .trust-item {
@@ -288,29 +293,30 @@
     }
 
     .trust-item i {
-      font-size: 2.8rem;
-      color: #ffd966;
-      margin-bottom: 0.5rem;
+      font-size: 2.6rem;
+      color: #ef4444;
+      margin-bottom: 0.7rem;
     }
 
     .trust-item h3 {
       color: #ffffff;
       font-weight: 700;
       margin-bottom: 0.2rem;
+      font-size: 1.1rem;
     }
 
     .trust-item p {
-      color: #ffddcc;
-      font-size: 0.9rem;
+      color: #aaaaaa;
+      font-size: 0.85rem;
     }
 
-    /* footer */
+    /* footer black & white */
     footer {
-      background: #7f1a1a;
-      color: #ffefef;
+      background: #030303;
+      color: #dddddd;
       text-align: center;
       padding: 2rem;
-      border-top: 3px solid #ffd966;
+      border-top: 2px solid #ef4444;
     }
 
     footer p {
@@ -319,7 +325,7 @@
     }
 
     footer i {
-      color: #ffd966;
+      color: #ef4444;
       margin: 0 4px;
     }
 
@@ -341,10 +347,10 @@
 
     @media (max-width: 550px) {
       .logo-img {
-        height: 42px;
+        height: 44px;
       }
       .logo-text {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
       }
     }
   </style>
@@ -354,8 +360,8 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <!-- logo image: 52.jpg with red/white combo, fallback if missing -->
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/52x52/ffffff/b91c1c?text=H'">
+      <!-- logo image: 52.jpg (ensuring red/white monochrome vibe) -->
+      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/ffffff/ef4444?text=H'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div class="nav-links">
@@ -370,8 +376,8 @@
 
 <div class="hero">
   <div class="container">
-    <h1>HVAC & <span>Engineering</span> <br>Bold. Reliable. Red.</h1>
-    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Full HVAC ecosystems — precision that performs.</p>
+    <h1>HVAC & <span>Engineering</span> <br>In Black, White & Red</h1>
+    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Full HVAC solutions — precision meets power.</p>
     <a href="services.html" class="btn">Explore Services <i class="fas fa-arrow-right"></i></a>
   </div>
 </div>
@@ -382,7 +388,7 @@
     <div class="grid">
       <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>Split, VRF, central AC, rooftop units – high-efficiency cooling for any environment.</p></div>
       <div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Walk-in freezers, blast chillers & pharmaceutical cold storage solutions.</p></div>
-      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>Air-to-water & geothermal systems — green energy, maximum savings.</p></div>
+      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>Air-to-water & geothermal systems — sustainable & cost-effective.</p></div>
       <div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Exhaust hoods, grease filters, make-up air & fire suppression ready.</p></div>
       <div class="card"><i class="fas fa-toilet"></i><h3>Toilet Ventilation</h3><p>Odor extraction, humidity control & fresh air for top hygiene.</p></div>
       <div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Works & HVAC</h3><p>Custom duct fabrication, spiral ducts, seamless mechanical integration.</p></div>
@@ -390,7 +396,7 @@
   </div>
 </section>
 
-<section class="alt-bg">
+<section class="light-bg">
   <div class="container">
     <h2 class="section-title">Why Choose HALU?</h2>
     <div class="stats">
@@ -402,33 +408,33 @@
   </div>
 </section>
 
-<!-- red & white awards / trust section -->
+<!-- red & black awards / trust section -->
 <section>
   <div class="container">
     <div class="trust-row">
-      <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2024</h3><p>Certified quality excellence</p></div>
-      <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Engineering</h3><p>Innovation in climate control</p></div>
-      <div class="trust-item"><i class="fas fa-headset"></i><h3>24/7 Priority Care</h3><p>Always here for you</p></div>
-      <div class="trust-item"><i class="fas fa-fire"></i><h3>Passion for Red</h3><p>Driven by excellence</p></div>
+      <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2024</h3><p>Certified quality</p></div>
+      <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Engineering</h3><p>Innovation in HVAC</p></div>
+      <div class="trust-item"><i class="fas fa-headset"></i><h3>24/7 Priority Care</h3><p>Always responsive</p></div>
+      <div class="trust-item"><i class="fas fa-fire"></i><h3>Red Accent</h3><p>Bold reliability</p></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-snowflake"></i> Redefining comfort with bold red & white energy</p>
+  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-snowflake"></i> Black, white & red: engineered for impact</p>
 </footer>
 
 <script>
-  // set active nav link based on current page
+  // Active nav link highlight
   document.querySelectorAll('.nav-links a').forEach(link => {
     if(link.getAttribute('href') === 'index.html' || (link.innerText.trim() === 'Home' && (window.location.pathname === '/' || window.location.pathname.includes('index')))) {
       link.classList.add('active');
     }
   });
-  // logo fallback console info
+  // logo fallback handling
   const logoImg = document.querySelector('.logo-img');
   if(logoImg) {
-    logoImg.addEventListener('error', () => console.log("Logo '52.jpg' not found, using placeholder — ensure image exists in root folder."));
+    logoImg.addEventListener('error', () => console.log("Logo '52.jpg' — ensure file exists in root directory."));
   }
 </script>
 </body>

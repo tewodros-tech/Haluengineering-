@@ -1,35 +1,578 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Services - HALU Engineering</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HALU Engineering | Premium HVAC Services – Smart Climate Solutions</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f5f7fc;
+      color: #1a2c3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* Modern container */
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Sticky header with glassmorphism */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      transition: all 0.2s;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #0b4f6c, #1f8a6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      background: none;
+      color: #1c6e5c;
+      -webkit-background-clip: unset;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #2c3e50;
+      transition: 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #1c7e68;
+    }
+
+    .nav-links a.active:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: #1c7e68;
+      border-radius: 4px;
+    }
+
+    /* Hero section - breathtaking */
+    .services-hero {
+      background: linear-gradient(125deg, #0a2f3a 0%, #155e55 100%);
+      margin-top: 0;
+      padding: 5rem 0 6rem;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      border-radius: 0 0 48px 48px;
+    }
+
+    .services-hero::before {
+      content: "❄️ 🔥 💨";
+      font-size: 180px;
+      opacity: 0.05;
+      position: absolute;
+      bottom: -20px;
+      right: -30px;
+      pointer-events: none;
+      white-space: pre;
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.18);
+      display: inline-block;
+      padding: 0.35rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      backdrop-filter: blur(4px);
+      margin-bottom: 1.5rem;
+    }
+
+    .services-hero h1 {
+      font-size: 3.8rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      max-width: 700px;
+      margin-bottom: 1rem;
+    }
+
+    .hero-sub {
+      font-size: 1.2rem;
+      max-width: 550px;
+      opacity: 0.9;
+    }
+
+    /* service cards premium grid */
+    .services-section {
+      margin: 5rem 0 4rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #0e2f3a;
+    }
+
+    .section-desc {
+      text-align: center;
+      max-width: 650px;
+      margin: 0 auto 3rem;
+      color: #4a6272;
+      font-size: 1.1rem;
+    }
+
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
+      gap: 2.2rem;
+    }
+
+    .service-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 1.8rem;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eef2f8;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 30px 45px -15px rgba(27, 86, 77, 0.2);
+      border-color: #cfe6e0;
+    }
+
+    .card-icon {
+      font-size: 3.2rem;
+      color: #1f8a6e;
+      margin-bottom: 1.2rem;
+      display: inline-block;
+    }
+
+    .service-card h3 {
+      font-size: 1.7rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+      letter-spacing: -0.3px;
+    }
+
+    .service-card p {
+      color: #4b5f6c;
+      margin: 0.8rem 0 1.2rem;
+      line-height: 1.5;
+    }
+
+    .feature-list {
+      list-style: none;
+      margin: 1rem 0 0.5rem;
+    }
+
+    .feature-list li {
+      font-size: 0.85rem;
+      padding: 0.3rem 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: #2e4e5c;
+    }
+
+    .feature-list li i {
+      color: #1f8a6e;
+      font-size: 0.8rem;
+      width: 20px;
+    }
+
+    .card-tag {
+      margin-top: 1.2rem;
+      display: inline-block;
+      background: #eef7f3;
+      padding: 0.2rem 1rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      color: #1f6e5c;
+    }
+
+    /* special ribbon for best seller */
+    .service-card.popular {
+      border-bottom: 4px solid #f4b942;
+    }
+
+    /* CTA / stats banner */
+    .stats-banner {
+      background: linear-gradient(110deg, #eef7f3 0%, #e0f0ea 100%);
+      border-radius: 48px;
+      padding: 3rem 2rem;
+      margin: 4rem 0;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+    }
+
+    .stat-block {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-number {
+      font-size: 2.6rem;
+      font-weight: 800;
+      color: #0f5b4b;
+    }
+
+    .stat-label {
+      font-weight: 500;
+      color: #3f6a61;
+    }
+
+    .cta-mini {
+      background: #0b4a40;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: 0.2s;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .cta-mini:hover {
+      background: #0d3f37;
+      transform: scale(1.02);
+    }
+
+    /* process section */
+    .process {
+      margin: 4rem 0;
+    }
+
+    .process-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .process-step {
+      text-align: center;
+    }
+
+    .step-num {
+      width: 50px;
+      height: 50px;
+      background: #1a8a6e;
+      color: white;
+      border-radius: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+      font-weight: 800;
+      margin: 0 auto 1rem;
+      box-shadow: 0 8px 18px rgba(27, 110, 80, 0.2);
+    }
+
+    /* footer */
+    footer {
+      background: #0b2c2a;
+      color: #c2dfda;
+      padding: 2.2rem 0;
+      border-radius: 32px 32px 0 0;
+      margin-top: 5rem;
+    }
+
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .social-links a {
+      color: #c2dfda;
+      margin-left: 1.3rem;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+
+    .social-links a:hover {
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      .services-hero h1 {
+        font-size: 2.5rem;
+      }
+      .header-inner {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .nav-links {
+        gap: 1.4rem;
+      }
+      .stats-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      .container {
+        padding: 0 24px;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">HALU Engineering</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">HALU<span> Engineering</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html" class="active">Services</a>
+      <a href="projects.html">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section>
-  <h1>Our Services</h1>
-  <div class="grid">
-    <div class="card">Air Conditioning Installation</div>
-    <div class="card">Cold Room Design</div>
-    <div class="card">Heat Pump Systems</div>
-    <div class="card">Kitchen Ventilation</div>
-    <div class="card">Toilet Exhaust Systems</div>
-    <div class="card">Duct Fabrication</div>
+<!-- HERO with vibrant animation feel -->
+<section class="services-hero">
+  <div class="container">
+    <div class="hero-badge">
+      <i class="fas fa-microchip"></i> PRECISION CLIMATE CONTROL
+    </div>
+    <h1>Engineering <br>that breathes life</h1>
+    <p class="hero-sub">Tailored HVAC solutions for modern industries — from ultra-efficient cold rooms to smart ducting.</p>
   </div>
 </section>
 
-<footer>© 2026 HALU Engineering</footer>
+<div class="container">
+  <!-- Services core section - updated eye catchy with detailed cards -->
+  <div class="services-section">
+    <h2 class="section-title">What we deliver</h2>
+    <p class="section-desc">Full-cycle engineering, sustainable design, and 24/7 support — every service is backed by decades of field experience.</p>
+    
+    <div class="services-grid">
+      <!-- Air Conditioning -->
+      <div class="service-card">
+        <i class="fas fa-wind card-icon"></i>
+        <h3>Air Conditioning</h3>
+        <p>High-performance VRF, chillers, ductless splits, and centralized AC for offices, retail, and data centers.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-check-circle"></i> Energy-efficient inverter tech</li>
+          <li><i class="fas fa-chart-line"></i> Smart zoning & BMS integration</li>
+        </ul>
+        <span class="card-tag"><i class="far fa-clock"></i> 24h emergency service</span>
+      </div>
+
+      <!-- Cold Room Design -->
+      <div class="service-card popular">
+        <i class="fas fa-thermometer-half card-icon"></i>
+        <h3>Cold Room Design</h3>
+        <p>Modular cold storage, blast freezers, and pharmaceutical-grade refrigeration from -30°C to +10°C.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-chart-simple"></i> Real-time temperature logging</li>
+          <li><i class="fas fa-shield-alt"></i> Redundant refrigeration systems</li>
+        </ul>
+        <span class="card-tag"><i class="fas fa-star"></i> Industry leader</span>
+      </div>
+
+      <!-- Heat Pump Systems -->
+      <div class="service-card">
+        <i class="fas fa-water card-icon"></i>
+        <h3>Heat Pump Systems</h3>
+        <p>Air-to-water, geothermal, and high-temperature heat pumps for decarbonized heating & cooling.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-leaf"></i> Up to 400% efficiency (COP 4+)</li>
+          <li><i class="fas fa-solar-panel"></i> Hybrid solar-ready designs</li>
+        </ul>
+        <span class="card-tag">Net-zero ready</span>
+      </div>
+
+      <!-- Kitchen Ventilation -->
+      <div class="service-card">
+        <i class="fas fa-utensils card-icon"></i>
+        <h3>Kitchen Ventilation</h3>
+        <p>Heavy-duty exhaust, grease filters, make-up air, and code-compliant commercial kitchen systems.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-fire-extinguisher"></i> Fire suppression integration</li>
+          <li><i class="fas fa-microphone"></i> Ultra-quiet EC fan technology</li>
+        </ul>
+        <span class="card-tag">NFPA 96 certified</span>
+      </div>
+
+      <!-- Toilet Exhaust Systems -->
+      <div class="service-card">
+        <i class="fas fa-restroom card-icon"></i>
+        <h3>Toilet Exhaust Systems</h3>
+        <p>High-static pressure exhaust, humidity control, and odor elimination for high-traffic facilities.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-wind"></i> Energy recovery ventilators (ERV)</li>
+          <li><i class="fas fa-chart-line"></i> Demand-controlled ventilation</li>
+        </ul>
+        <span class="card-tag">IAQ optimized</span>
+      </div>
+
+      <!-- Duct Fabrication -->
+      <div class="service-card">
+        <i class="fas fa-drafting-compass card-icon"></i>
+        <h3>Duct Fabrication</h3>
+        <p>Custom spiral & rectangular ducts, PIR sandwich panels, and aerodynamic CFD-optimized layouts.</p>
+        <ul class="feature-list">
+          <li><i class="fas fa-ruler-combined"></i> On-site laser measurement</li>
+          <li><i class="fas fa-fire"></i> Fire-rated & insulated ducts</li>
+        </ul>
+        <span class="card-tag">SMACNA standards</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Value Stats + CTA banner (very attractive) -->
+  <div class="stats-banner">
+    <div class="stat-block">
+      <div class="stat-number"><i class="fas fa-building"></i> 1,250+</div>
+      <div class="stat-label">Commercial projects</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number"><i class="fas fa-tools"></i> 24/7</div>
+      <div class="stat-label">Technical response</div>
+    </div>
+    <div class="stat-block">
+      <div class="stat-number"><i class="fas fa-certificate"></i> 15+</div>
+      <div class="stat-label">Industry awards</div>
+    </div>
+    <div>
+      <a href="contact.html" class="cta-mini">Request consultation <i class="fas fa-arrow-right"></i></a>
+    </div>
+  </div>
+
+  <!-- Our process: why HALU is different -->
+  <div class="process">
+    <h2 class="section-title" style="font-size: 2rem;">How we engineer excellence</h2>
+    <div class="process-grid">
+      <div class="process-step">
+        <div class="step-num">1</div>
+        <h4>Site audit</h4>
+        <p style="color:#476b74;">Thermal load analysis & energy modeling</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">2</div>
+        <h4>Tailored design</h4>
+        <p style="color:#476b74;">CAD/Revit 3D, equipment selection</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">3</div>
+        <h4>Precision install</h4>
+        <p style="color:#476b74;">Certified technicians, minimal downtime</p>
+      </div>
+      <div class="process-step">
+        <div class="step-num">4</div>
+        <h4>Smart handover</h4>
+        <p style="color:#476b74;">IoT dashboard & maintenance plan</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- additional carousel-free value proposition -->
+  <div style="background: #ffffff; border-radius: 38px; padding: 2rem; margin: 2rem 0 2rem; box-shadow: 0 12px 28px -12px rgba(0,0,0,0.05); border: 1px solid #eaf0f5;">
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; justify-content: space-between;">
+      <div>
+        <i class="fas fa-globe-americas" style="font-size: 2.5rem; color: #1f8a6e;"></i>
+        <h3 style="margin: 0.5rem 0 0.2rem;">Sustainable by design</h3>
+        <p>Every system reduces energy waste by up to 42% — lowering carbon footprint without sacrificing comfort.</p>
+      </div>
+      <div>
+        <i class="fas fa-headset" style="font-size: 2.5rem; color: #1f8a6e;"></i>
+        <h3 style="margin: 0.5rem 0 0.2rem;">Priority support</h3>
+        <p>Dedicated account managers + remote diagnostics for mission-critical facilities.</p>
+      </div>
+      <div>
+        <i class="fas fa-hand-holding-usd" style="font-size: 2.5rem; color: #1f8a6e;"></i>
+        <h3 style="margin: 0.5rem 0 0.2rem;">Flexible financing</h3>
+        <p>Lease, OPEX models & energy-saving performance contracts available.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- final subtle cta text  -->
+  <div style="text-align: center; margin: 2rem 0 2rem;">
+    <p style="font-size: 1rem; color:#2b6f63;"><i class="fas fa-circle-check"></i> Certified, insured, and fully compliant with international HVAC standards</p>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-flex">
+    <p>© 2026 HALU Engineering — Industrial & commercial climate systems</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+      <a href="#"><i class="fab fa-youtube"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // update active class on nav if needed, slight interactive
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if(link.getAttribute('href') === 'services.html' || (link.innerText.trim() === 'Services' && window.location.pathname.includes('services'))) {
+      link.classList.add('active');
+    } else if (link.href.includes('services.html')) {
+      link.classList.add('active');
+    }
+  });
+  // add mini hovering effect animation console fun
+  console.log("🔥 HALU Engineering — world-class HVAC services loaded.");
+</script>
 
 </body>
 </html>

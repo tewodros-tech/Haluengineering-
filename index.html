@@ -16,7 +16,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #ffffff;   /* clean white background */
+      background: #ffffff;
       color: #1e293b;
       scroll-behavior: smooth;
     }
@@ -27,7 +27,7 @@
       padding: 0 32px;
     }
 
-    /* ---------- PREMIUM DESIGN: WHITE BACKGROUND WITH RED & DARK ACCENTS ---------- */
+    /* Header */
     header {
       background: #ffffff;
       position: sticky;
@@ -46,7 +46,7 @@
       gap: 1rem;
     }
 
-    /* Logo area - original image preserved, no filter changes */
+    /* Logo area */
     .logo-wrapper {
       display: flex;
       align-items: center;
@@ -76,6 +76,7 @@
       font-weight: 800;
     }
 
+    /* NO UNDERLINE on any word - removed entirely */
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -106,7 +107,7 @@
       border-radius: 4px;
     }
 
-    /* Hero Section - clean white with subtle red accents */
+    /* Hero Section */
     .hero {
       background: linear-gradient(135deg, #fef9f9 0%, #ffffff 100%);
       padding: 5rem 0 6rem;
@@ -194,7 +195,7 @@
       margin-top: 2rem;
     }
 
-    /* Cards - elegant white with shadow & red accents on hover */
+    /* Cards */
     .card {
       background: #ffffff;
       border-radius: 32px;
@@ -229,7 +230,63 @@
       line-height: 1.5;
     }
 
-    /* stats section - soft grey background */
+    /* Image Gallery Section - Attractive Masonry Style */
+    .gallery-section {
+      background: #fefefe;
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      border-radius: 24px;
+      aspect-ratio: 4 / 3;
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.1);
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      cursor: pointer;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .gallery-item:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 25px 40px -15px rgba(220, 38, 38, 0.25);
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .gallery-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.7), transparent);
+      padding: 1rem;
+      opacity: 0;
+      transition: opacity 0.3s;
+      color: white;
+      font-weight: 600;
+      font-size: 0.85rem;
+    }
+
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+
+    /* stats section */
     .stats {
       background: #f8fafc;
       border-radius: 48px;
@@ -258,7 +315,7 @@
       font-size: 0.8rem;
     }
 
-    /* trust / awards row */
+    /* trust row */
     .trust-row {
       display: flex;
       flex-wrap: wrap;
@@ -296,7 +353,6 @@
       font-size: 0.85rem;
     }
 
-    /* footer */
     footer {
       background: #0f172a;
       color: #cbd5e1;
@@ -327,6 +383,9 @@
       .container {
         padding: 0 24px;
       }
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      }
     }
 
     @media (max-width: 550px) {
@@ -344,7 +403,7 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <!-- Original logo image 52.jpg - completely preserved, no modifications -->
+      <!-- Original logo image 52.jpg - completely preserved -->
       <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/dc2626/ffffff?text=H'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
@@ -366,6 +425,7 @@
   </div>
 </div>
 
+<!-- Core Expertise Section -->
 <section>
   <div class="container">
     <h2 class="section-title">Our Core Expertise</h2>
@@ -380,6 +440,17 @@
   </div>
 </section>
 
+<!-- ATTRACTIVE IMAGE GALLERY SECTION - All requested images -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="section-title">Our Project Showcase</h2>
+    <div class="gallery-grid" id="galleryGrid">
+      <!-- Images: 7,1,2,28,7,13,17,33,34,35,37.jpg -->
+    </div>
+  </div>
+</section>
+
+<!-- Stats Section -->
 <section class="alt-bg">
   <div class="container">
     <h2 class="section-title">Why Choose HALU?</h2>
@@ -415,11 +486,41 @@
       link.classList.add('active');
     }
   });
-  // Logo fallback handling - original image preserved, no changes to source
+  
+  // Logo fallback handling
   const logoImg = document.querySelector('.logo-img');
   if(logoImg) {
     logoImg.addEventListener('error', () => {
       console.log("Please ensure '52.jpg' exists in the same directory as this HTML file.");
+    });
+  }
+
+  // Image Gallery - All requested images with attractive display
+  const imageFiles = [
+    { src: "7.jpg", name: "HVAC Installation" },
+    { src: "1.jpg", name: "Commercial Cooling" },
+    { src: "2.jpg", name: "Ventilation System" },
+    { src: "28.jpg", name: "Cold Storage" },
+    { src: "7.jpg", name: "Duct Fabrication" },
+    { src: "13.jpg", name: "Heat Pump Setup" },
+    { src: "17.jpg", name: "Air Handling Unit" },
+    { src: "33.jpg", name: "Industrial HVAC" },
+    { src: "34.jpg", name: "Precision Cooling" },
+    { src: "35.jpg", name: "Ventilation Duct" },
+    { src: "37.jpg", name: "System Commissioning" }
+  ];
+
+  const galleryGrid = document.getElementById('galleryGrid');
+  
+  if (galleryGrid) {
+    imageFiles.forEach(img => {
+      const galleryItem = document.createElement('div');
+      galleryItem.className = 'gallery-item';
+      galleryItem.innerHTML = `
+        <img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/400x300/dc2626/ffffff?text=${img.name.replace(/ /g, '+')}'">
+        <div class="gallery-overlay">${img.name}</div>
+      `;
+      galleryGrid.appendChild(galleryItem);
     });
   }
 </script>

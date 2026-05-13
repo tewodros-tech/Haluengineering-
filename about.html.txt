@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>About - HALU Engineering</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">HALU Engineering</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section>
+  <h1>About Us</h1>
+  <p>
+    HALU Engineering provides professional HVAC solutions including
+    air conditioning, cold rooms, heat pumps, duct fabrication,
+    and full ventilation systems for commercial and industrial buildings.
+  </p>
+</section>
+
+<footer>© 2026 HALU Engineering</footer>
+
+</body>
+</html>

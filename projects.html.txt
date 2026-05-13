@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Projects - HALU Engineering</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">HALU Engineering</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<section>
+  <h1>Our Projects</h1>
+  <div class="grid">
+    <div class="card">Shopping Mall HVAC System</div>
+    <div class="card">Cold Storage Warehouse</div>
+    <div class="card">Restaurant Ventilation System</div>
+    <div class="card">Office Building HVAC Design</div>
+  </div>
+</section>
+
+<footer>© 2026 HALU Engineering</footer>
+
+</body>
+</html>

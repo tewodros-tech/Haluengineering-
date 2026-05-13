@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>HALU Engineering</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+<header>
+  <div class="logo">HALU Engineering</div>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="about.html">About</a>
+    <a href="services.html">Services</a>
+    <a href="projects.html">Projects</a>
+    <a href="contact.html">Contact</a>
+  </nav>
+</header>
+
+<div class="hero">
+  <div class="hero-content">
+    <h1>HVAC & Engineering Solutions</h1>
+    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works</p>
+    <a class="btn" href="services.html">Explore Services</a>
+  </div>
+</div>
+
+<section>
+  <h2>Our Expertise</h2>
+  <div class="grid">
+    <div class="card">Air Conditioning Systems</div>
+    <div class="card">Cold Rooms</div>
+    <div class="card">Heat Pumps</div>
+    <div class="card">Kitchen Ventilation</div>
+    <div class="card">Toilet Ventilation</div>
+    <div class="card">HVAC Systems</div>
+  </div>
+</section>
+
+<footer>© 2026 HALU Engineering</footer>
+
+</body>
+</html>

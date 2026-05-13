@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Black & White Precision | HVAC Excellence</title>
+  <title>HALU Engineering | Black & White | Red Letter Excellence</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <style>
@@ -15,26 +15,26 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: #0a0a0a;   /* deep black base */
-      color: #f5f5f5;        /* white base text */
+      /* BACKGROUND: pure black and white monochromatic */
+      background: #000000;      /* solid black base */
+      color: #ffffff;           /* default white text */
       scroll-behavior: smooth;
     }
 
-    /* monochromatic black/white canvas with red accents */
+    /* container */
     .container {
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
     }
 
-    /* ---------- BLACK & WHITE THEME | RED ACCENTS (text & details) ---------- */
+    /* ---------- MONOCHROME BLACK/WHITE BACKGROUNDS — ONLY WORDS IN RED ---------- */
     header {
       background: #000000;
       border-bottom: 1px solid #2a2a2a;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 10px 25px -12px rgba(0,0,0,0.6);
     }
 
     .header-flex {
@@ -46,7 +46,7 @@
       gap: 1rem;
     }
 
-    /* Logo area with image + brand */
+    /* Logo area: black/white image + text with red lettering */
     .logo-wrapper {
       display: flex;
       align-items: center;
@@ -56,7 +56,7 @@
     .logo-img {
       height: 54px;
       width: auto;
-      filter: drop-shadow(0 2px 6px rgba(255,255,255,0.1));
+      filter: grayscale(100%) contrast(1.1); /* black/white effect */
       transition: transform 0.2s ease;
       background: #ffffff;
       border-radius: 14px;
@@ -72,20 +72,15 @@
       font-size: 1.9rem;
       font-weight: 800;
       letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, #e0e0e0);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+      color: #ffffff;   /* white part */
     }
 
     .logo-text span {
-      color: #dc2626;  /* bold red accent */
-      background: none;
-      -webkit-background-clip: unset;
+      color: #e63946;   /* only red letters in logo */
       font-weight: 800;
     }
 
-    /* Navigation - white/red */
+    /* Navigation: white text, red on hover/active */
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -96,14 +91,13 @@
       text-decoration: none;
       font-weight: 600;
       font-size: 0.95rem;
-      color: #f0f0f0;
+      color: #ffffff;
       transition: 0.2s;
       position: relative;
-      letter-spacing: 0.2px;
     }
 
     .nav-links a:hover, .nav-links a.active {
-      color: #ef4444;
+      color: #e63946;   /* red only on letters */
     }
 
     .nav-links a.active:after {
@@ -112,17 +106,15 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
-      background: #ef4444;
-      border-radius: 4px;
+      height: 2px;
+      background: #e63946;
     }
 
-    /* Hero section — black/white dramatic */
+    /* Hero section — pure black/white background, only red text elements */
     .hero {
-      background: radial-gradient(circle at 10% 20%, #111111, #020202);
+      background: #0a0a0a;
       padding: 5rem 0 6rem;
-      border-bottom: 1px solid #2c2c2c;
-      position: relative;
+      border-bottom: 1px solid #262626;
     }
 
     .hero h1 {
@@ -135,14 +127,14 @@
     }
 
     .hero h1 span {
-      color: #ef4444;
-      border-bottom: 3px solid #ef4444;
+      color: #e63946;   /* only the emphasized word in red */
+      border-bottom: 3px solid #e63946;
       display: inline-block;
     }
 
     .hero p {
       font-size: 1.2rem;
-      color: #cccccc;
+      color: #dddddd;
       max-width: 600px;
       margin-bottom: 2rem;
       font-weight: 400;
@@ -152,35 +144,33 @@
       display: inline-flex;
       align-items: center;
       gap: 10px;
-      background: #ffffff;
-      color: #000000;
+      background: #1a1a1a;
+      color: #ffffff;
       padding: 14px 36px;
       border-radius: 50px;
-      font-weight: 800;
+      font-weight: 700;
       text-decoration: none;
       transition: 0.25s ease;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.3);
-      border: 1px solid #333;
+      border: 1px solid #3a3a3a;
     }
 
     .btn:hover {
-      background: #ef4444;
-      color: #ffffff;
+      background: #2a2a2a;
+      color: #e63946;   /* red text on hover */
+      border-color: #e63946;
       transform: translateY(-3px);
-      box-shadow: 0 15px 25px -10px rgba(239, 68, 68, 0.4);
-      border-color: #ef4444;
     }
 
-    /* sections */
+    /* sections with black/grey backgrounds */
     section {
       padding: 5rem 0;
-      background: #0a0a0a;
+      background: #000000;
     }
 
     .light-bg {
-      background: #111111;
-      border-top: 1px solid #262626;
-      border-bottom: 1px solid #262626;
+      background: #0c0c0c;
+      border-top: 1px solid #202020;
+      border-bottom: 1px solid #202020;
     }
 
     .section-title {
@@ -197,9 +187,9 @@
       bottom: -12px;
       left: 0;
       width: 70px;
-      height: 4px;
-      background: #ef4444;
-      border-radius: 4px;
+      height: 3px;
+      background: #e63946;   /* red underline */
+      border-radius: 2px;
     }
 
     .grid {
@@ -209,26 +199,25 @@
       margin-top: 2rem;
     }
 
-    /* Cards — dark elegant with white/red details */
+    /* Cards: dark grey, white text + red icons and red hover */
     .card {
-      background: #141414;
+      background: #111111;
       border-radius: 32px;
       padding: 2rem 1.8rem;
-      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.6);
+      box-shadow: 0 20px 30px -12px rgba(0, 0, 0, 0.8);
       transition: 0.3s;
       text-align: center;
-      border: 1px solid #2c2c2c;
+      border: 1px solid #2a2a2a;
     }
 
     .card:hover {
       transform: translateY(-8px);
-      border-color: #ef4444;
-      box-shadow: 0 30px 40px -15px rgba(239, 68, 68, 0.2);
+      border-color: #e63946;
     }
 
     .card i {
       font-size: 3rem;
-      color: #ef4444;
+      color: #e63946;   /* red icons only */
       margin-bottom: 1rem;
     }
 
@@ -240,11 +229,11 @@
     }
 
     .card p {
-      color: #b0b0b0;
+      color: #c0c0c0;
       line-height: 1.5;
     }
 
-    /* stats with transparent border + red numbers */
+    /* stats section with grey background, red numbers */
     .stats {
       background: #0f0f0f;
       border-radius: 48px;
@@ -255,35 +244,35 @@
       gap: 2rem;
       margin-top: 2rem;
       text-align: center;
-      border: 1px solid #2e2e2e;
+      border: 1px solid #2a2a2a;
     }
 
     .stat-number {
       font-size: 2.8rem;
       font-weight: 800;
-      color: #ef4444;
+      color: #e63946;   /* ONLY RED NUMBERS */
       line-height: 1.2;
     }
 
     .stat-label {
       font-weight: 600;
-      color: #d4d4d4;
+      color: #dddddd;
       text-transform: uppercase;
       letter-spacing: 0.5px;
       font-size: 0.85rem;
     }
 
-    /* trust badges / awards */
+    /* trust / awards row - all white/grey, only icons red */
     .trust-row {
       display: flex;
       flex-wrap: wrap;
       gap: 2rem;
       justify-content: space-between;
       align-items: center;
-      background: #111111;
+      background: #080808;
       border-radius: 40px;
       padding: 2rem 2rem;
-      border: 1px solid #2c2c2c;
+      border: 1px solid #262626;
     }
 
     .trust-item {
@@ -294,7 +283,7 @@
 
     .trust-item i {
       font-size: 2.6rem;
-      color: #ef4444;
+      color: #e63946;     /* red icons only */
       margin-bottom: 0.7rem;
     }
 
@@ -310,22 +299,21 @@
       font-size: 0.85rem;
     }
 
-    /* footer black & white */
+    /* footer black + white with red heart */
     footer {
       background: #030303;
-      color: #dddddd;
+      color: #cccccc;
       text-align: center;
       padding: 2rem;
-      border-top: 2px solid #ef4444;
+      border-top: 2px solid #e63946;
     }
 
     footer p {
       font-weight: 500;
-      letter-spacing: 0.3px;
     }
 
     footer i {
-      color: #ef4444;
+      color: #e63946;
       margin: 0 4px;
     }
 
@@ -360,8 +348,8 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <!-- logo image: 52.jpg (ensuring red/white monochrome vibe) -->
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/ffffff/ef4444?text=H'">
+      <!-- Logo image 52.jpg (black/white filtered) -->
+      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/54x54/ffffff/333333?text=H'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div class="nav-links">
@@ -376,8 +364,8 @@
 
 <div class="hero">
   <div class="container">
-    <h1>HVAC & <span>Engineering</span> <br>In Black, White & Red</h1>
-    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Full HVAC solutions — precision meets power.</p>
+    <h1>HVAC & <span>Engineering</span> <br>Black. White. <span style="color:#e63946;">Red Letter</span>.</h1>
+    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Complete HVAC solutions — power in monochrome, passion in red.</p>
     <a href="services.html" class="btn">Explore Services <i class="fas fa-arrow-right"></i></a>
   </div>
 </div>
@@ -386,9 +374,9 @@
   <div class="container">
     <h2 class="section-title">Our Core Expertise</h2>
     <div class="grid">
-      <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>Split, VRF, central AC, rooftop units – high-efficiency cooling for any environment.</p></div>
+      <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>Split, VRF, central AC, rooftop units – efficient cooling for every environment.</p></div>
       <div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Walk-in freezers, blast chillers & pharmaceutical cold storage solutions.</p></div>
-      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>Air-to-water & geothermal systems — sustainable & cost-effective.</p></div>
+      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>Air-to-water & geothermal — sustainable & cost-effective systems.</p></div>
       <div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Exhaust hoods, grease filters, make-up air & fire suppression ready.</p></div>
       <div class="card"><i class="fas fa-toilet"></i><h3>Toilet Ventilation</h3><p>Odor extraction, humidity control & fresh air for top hygiene.</p></div>
       <div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Works & HVAC</h3><p>Custom duct fabrication, spiral ducts, seamless mechanical integration.</p></div>
@@ -408,20 +396,20 @@
   </div>
 </section>
 
-<!-- red & black awards / trust section -->
+<!-- Red-accented only on text & icons, background monochrome -->
 <section>
   <div class="container">
     <div class="trust-row">
       <div class="trust-item"><i class="fas fa-trophy"></i><h3>ISO 9001:2024</h3><p>Certified quality</p></div>
       <div class="trust-item"><i class="fas fa-award"></i><h3>Red Dot Engineering</h3><p>Innovation in HVAC</p></div>
       <div class="trust-item"><i class="fas fa-headset"></i><h3>24/7 Priority Care</h3><p>Always responsive</p></div>
-      <div class="trust-item"><i class="fas fa-fire"></i><h3>Red Accent</h3><p>Bold reliability</p></div>
+      <div class="trust-item"><i class="fas fa-fire"></i><h3>Red Letter Promise</h3><p>Passion delivered</p></div>
     </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-snowflake"></i> Black, white & red: engineered for impact</p>
+  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-heart"></i> Where words speak in red</p>
 </footer>
 
 <script>
@@ -434,7 +422,7 @@
   // logo fallback handling
   const logoImg = document.querySelector('.logo-img');
   if(logoImg) {
-    logoImg.addEventListener('error', () => console.log("Logo '52.jpg' — ensure file exists in root directory."));
+    logoImg.addEventListener('error', () => console.log("Logo '52.jpg' — place your image in root folder."));
   }
 </script>
 </body>

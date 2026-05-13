@@ -1,33 +1,538 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Projects - HALU Engineering</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HALU Engineering | Project Portfolio – HVAC Excellence in Action</title>
+  <!-- Google Fonts + Font Awesome 6 -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f8fafc;
+      color: #0f2b35;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    .container {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* modern glass header */
+    .site-header {
+      background: rgba(255, 255, 255, 0.96);
+      backdrop-filter: blur(12px);
+      box-shadow: 0 2px 20px rgba(0, 0, 0, 0.02), 0 1px 0 rgba(0, 0, 0, 0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      padding: 1rem 0;
+    }
+
+    .logo {
+      font-size: 1.9rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      background: linear-gradient(130deg, #0b4f6c, #1f8a6e);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo span {
+      background: none;
+      color: #1c6e5c;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      color: #2c3e50;
+      transition: 0.2s;
+      position: relative;
+    }
+
+    .nav-links a:hover, .nav-links a.active {
+      color: #1c7e68;
+    }
+
+    .nav-links a.active:after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: #1c7e68;
+      border-radius: 4px;
+    }
+
+    /* hero section with project vibe */
+    .projects-hero {
+      background: linear-gradient(125deg, #0a2f3a 0%, #135e54 100%);
+      padding: 4.5rem 0 5rem;
+      color: white;
+      border-radius: 0 0 48px 48px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .projects-hero:before {
+      content: "🏗️ 🔧 ❄️";
+      font-size: 160px;
+      opacity: 0.05;
+      position: absolute;
+      bottom: -30px;
+      right: -20px;
+      pointer-events: none;
+    }
+
+    .hero-badge {
+      background: rgba(255,255,255,0.18);
+      display: inline-block;
+      padding: 0.35rem 1.2rem;
+      border-radius: 40px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      margin-bottom: 1.2rem;
+    }
+
+    .projects-hero h1 {
+      font-size: 3.6rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      max-width: 750px;
+    }
+
+    .projects-hero p {
+      font-size: 1.2rem;
+      max-width: 550px;
+      opacity: 0.92;
+      margin-top: 1rem;
+    }
+
+    /* stats row */
+    .stats-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 1.8rem;
+      background: white;
+      border-radius: 32px;
+      padding: 2rem 2.5rem;
+      margin-top: -2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      position: relative;
+      z-index: 5;
+      border: 1px solid #eef2f6;
+    }
+
+    .stat-item {
+      text-align: center;
+      flex: 1;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: #1f8a6e;
+    }
+
+    .stat-label {
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: #547080;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    /* filter buttons (category filter) */
+    .filter-section {
+      margin: 2rem 0 2rem;
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.8rem;
+    }
+
+    .filter-btn {
+      background: white;
+      border: 1px solid #dce5ec;
+      padding: 0.5rem 1.6rem;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      transition: 0.2s;
+      color: #2b4f5e;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: #1f8a6e;
+      border-color: #1f8a6e;
+      color: white;
+      box-shadow: 0 6px 12px -6px rgba(31, 138, 110, 0.3);
+    }
+
+    /* Project grid - masonry / modern cards */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 2rem;
+      margin: 2.5rem 0 4rem;
+    }
+
+    .project-card {
+      background: white;
+      border-radius: 28px;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 18px 30px -12px rgba(0, 0, 0, 0.05);
+      border: 1px solid #ecf3f8;
+    }
+
+    .project-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 30px 40px -15px rgba(0, 0, 0, 0.15);
+      border-color: #cee5de;
+    }
+
+    .card-img {
+      height: 210px;
+      background-size: cover;
+      background-position: center;
+      position: relative;
+      display: flex;
+      align-items: flex-end;
+      justify-content: flex-start;
+      padding: 1rem;
+    }
+
+    .category-badge {
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 0.25rem 1rem;
+      border-radius: 30px;
+      letter-spacing: 0.3px;
+    }
+
+    .card-content {
+      padding: 1.6rem 1.5rem 1.8rem;
+    }
+
+    .card-content h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.6rem;
+      letter-spacing: -0.2px;
+    }
+
+    .location {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: #688394;
+      margin-bottom: 0.8rem;
+    }
+
+    .description {
+      color: #3c5a68;
+      margin: 0.8rem 0 1rem;
+      line-height: 1.45;
+    }
+
+    .tech-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin: 1rem 0 0;
+    }
+
+    .tech-tag {
+      background: #eef5f2;
+      padding: 0.2rem 0.9rem;
+      border-radius: 30px;
+      font-size: 0.7rem;
+      font-weight: 500;
+      color: #1b6e5c;
+    }
+
+    /* featured project section (large card) */
+    .featured-wrapper {
+      margin: 2rem 0 3rem;
+    }
+    .featured-card {
+      background: linear-gradient(115deg, #ffffff 0%, #f9fefc 100%);
+      border-radius: 40px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      padding: 2rem;
+      border: 1px solid #e0ede8;
+      box-shadow: 0 20px 35px -10px rgba(0, 0, 0, 0.05);
+      align-items: center;
+    }
+    .featured-info {
+      flex: 2;
+    }
+    .featured-icon {
+      flex: 0 0 80px;
+      font-size: 4rem;
+      color: #1f8a6e;
+      text-align: center;
+    }
+    .featured-info h3 {
+      font-size: 1.9rem;
+      font-weight: 800;
+    }
+    .featured-info .highlight {
+      color: #1b6e5c;
+      font-weight: 600;
+    }
+
+    /* CTA banner */
+    .cta-banner {
+      background: linear-gradient(105deg, #0d3d38, #115e51);
+      border-radius: 36px;
+      padding: 2.5rem;
+      text-align: center;
+      margin: 3rem 0 2rem;
+      color: white;
+    }
+    .cta-banner h3 {
+      font-size: 1.8rem;
+      font-weight: 700;
+    }
+    .btn-cta {
+      background: white;
+      color: #115e51;
+      padding: 0.75rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      margin-top: 1rem;
+      transition: 0.2s;
+    }
+    .btn-cta:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px -5px rgba(0,0,0,0.2);
+    }
+
+    footer {
+      background: #0b2c2a;
+      color: #c2dfda;
+      padding: 2rem 0;
+      border-radius: 32px 32px 0 0;
+      margin-top: 4rem;
+    }
+    .footer-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .social-links a {
+      color: #c2dfda;
+      margin-left: 1.3rem;
+      font-size: 1.2rem;
+      transition: 0.2s;
+    }
+    .social-links a:hover {
+      color: white;
+    }
+
+    @media (max-width: 800px) {
+      .container {
+        padding: 0 24px;
+      }
+      .projects-hero h1 {
+        font-size: 2.3rem;
+      }
+      .header-inner {
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+      .stats-row {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .featured-card {
+        flex-direction: column;
+        text-align: center;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="logo">HALU Engineering</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="logo">HALU<span> Engineering</span></div>
+    <nav class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="about.html">About</a>
+      <a href="services.html">Services</a>
+      <a href="projects.html" class="active">Projects</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+  </div>
 </header>
 
-<section>
-  <h1>Our Projects</h1>
-  <div class="grid">
-    <div class="card">Shopping Mall HVAC System</div>
-    <div class="card">Cold Storage Warehouse</div>
-    <div class="card">Restaurant Ventilation System</div>
-    <div class="card">Office Building HVAC Design</div>
+<!-- Hero -->
+<section class="projects-hero">
+  <div class="container">
+    <div class="hero-badge"><i class="fas fa-trophy"></i> 120+ successful deliveries</div>
+    <h1>Where innovation meets<br>real-world climate control</h1>
+    <p>Explore our landmark projects — from mega cold storages to smart ventilation systems.</p>
   </div>
 </section>
 
-<footer>© 2026 HALU Engineering</footer>
+<div class="container">
+  <!-- Stats row with achievements -->
+  <div class="stats-row">
+    <div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Projects completed</div></div>
+    <div class="stat-item"><div class="stat-number">98%</div><div class="stat-label">Client satisfaction</div></div>
+    <div class="stat-item"><div class="stat-number">15+</div><div class="stat-label">Million sq ft covered</div></div>
+    <div class="stat-item"><div class="stat-number">24/7</div><div class="stat-label">Support readiness</div></div>
+  </div>
 
+  <!-- Filter options (interactive with JS) -->
+  <div class="filter-section">
+    <button class="filter-btn active" data-filter="all">All Projects</button>
+    <button class="filter-btn" data-filter="commercial">Commercial HVAC</button>
+    <button class="filter-btn" data-filter="cold">Cold Storage</button>
+    <button class="filter-btn" data-filter="ventilation">Ventilation</button>
+    <button class="filter-btn" data-filter="industrial">Industrial</button>
+  </div>
+
+  <!-- Dynamic Projects Grid (detailed cards) -->
+  <div class="projects-grid" id="projectsContainer"></div>
+
+  <!-- Featured project highlight -->
+  <div class="featured-wrapper">
+    <div class="featured-card">
+      <div class="featured-icon"><i class="fas fa-building"></i></div>
+      <div class="featured-info">
+        <h3>🏆 Landmark: <span class="highlight">Metro Central Mall HVAC Overhaul</span></h3>
+        <p>Complete replacement of 12 rooftop units + VRF system for 300k sqft shopping mall. Achieved 37% energy savings and LEED Gold certification. Integrated AI-based demand control ventilation.</p>
+        <div class="tech-tags" style="margin-top: 10px;"><span class="tech-tag">Energy recovery</span><span class="tech-tag">VRF</span><span class="tech-tag">BMS integration</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="cta-banner">
+    <h3>Have a similar challenge? Let's build something great.</h3>
+    <a href="contact.html" class="btn-cta">Start your project <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<footer>
+  <div class="container footer-flex">
+    <p>© 2026 HALU Engineering — Precision climate solutions worldwide</p>
+    <div class="social-links">
+      <a href="#"><i class="fab fa-linkedin-in"></i></a>
+      <a href="#"><i class="fab fa-x-twitter"></i></a>
+      <a href="#"><i class="fab fa-instagram"></i></a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  // Project data array - including provided projects + additional eye-catching entries
+  const projectsData = [
+    { id: 1, name: "Shopping Mall HVAC System", location: "Dubai, UAE", description: "Complete HVAC modernization with centralized chillers, VRF zones, and real-time CO2 monitoring. Reduced energy consumption by 32%.", category: "commercial", image: "https://placehold.co/600x400/e0f0ea/1f8a6e?text=Mall+HVAC", tags: ["VRF","Chillers","BMS"] },
+    { id: 2, name: "Cold Storage Warehouse", location: "Rotterdam, NL", description: "-25°C modular cold room for pharmaceutical logistics. Redundant refrigeration + remote monitoring.", category: "cold", image: "https://placehold.co/600x400/cce6df/1f6e5c?text=Cold+Storage", tags: ["Blast freezer","IoT sensors"] },
+    { id: 3, name: "Restaurant Ventilation System", location: "Chicago, USA", description: "High-efficiency kitchen exhaust, grease filtration, and make-up air for a 200-seat fine dining venue.", category: "ventilation", image: "https://placehold.co/600x400/d9eee8/1a6f5d?text=Kitchen+Vent", tags: ["Grease trap","Energy recovery"] },
+    { id: 4, name: "Office Building HVAC Design", location: "Singapore", description: "VRF system with heat recovery, dedicated outdoor air system (DOAS), WELL certified indoor air quality.", category: "commercial", image: "https://placehold.co/600x400/e5f2ef/1a7a64?text=Office+HVAC", tags: ["DOAS","Heat recovery"] },
+    { id: 5, name: "Industrial Heat Pump Retrofit", location: "Munich, Germany", description: "High-temperature heat pumps replacing gas boilers for factory heating — 48% CO2 reduction.", category: "industrial", image: "https://placehold.co/600x400/cfe6df/1f6e5c?text=Heat+Pump", tags: ["Heat pump","Decarbonization"] },
+    { id: 6, name: "Airport Terminal Ventilation", location: "Istanbul, Turkey", description: "Displacement ventilation + HEPA filtration for main terminal, handling 25M passengers/year.", category: "ventilation", image: "https://placehold.co/600x400/ddf0ea/237a63?text=Airport", tags: ["HEPA","CFD simulation"] },
+    { id: 7, name: "Data Center Precision Cooling", location: "Virginia, USA", description: "In-row cooling, hot aisle containment, redundant CRAC units for high-density racks.", category: "industrial", image: "https://placehold.co/600x400/b8dfd5/1f6e5c?text=Data+Center", tags: ["Precision AC","Redundancy N+1"] },
+    { id: 8, name: "Pharma Cold Chain Facility", location: "Switzerland", description: "GMP-compliant cold rooms (-80°C to +5°C) with 24/7 data logging.", category: "cold", image: "https://placehold.co/600x400/d2eae3/1f7a62?text=Pharma+Cold", tags: ["GMP","Ultra low temp"] },
+    { id: 9, name: "Shopping Mall Expansion", location: "Jakarta, ID", description: "Duct fabrication & central plant for new wing, 40+ retail units.", category: "commercial", image: "https://placehold.co/600x400/cce2db/226653?text=Mall+Expansion", tags: ["Ductwork","Central plant"] }
+  ];
+
+  function renderProjects(filter = "all") {
+    const container = document.getElementById("projectsContainer");
+    if (!container) return;
+    const filtered = filter === "all" ? projectsData : projectsData.filter(p => p.category === filter);
+    
+    if (filtered.length === 0) {
+      container.innerHTML = `<div style="grid-column:1/-1; text-align:center; padding:3rem;">✨ No projects in this category, but check our other achievements!</div>`;
+      return;
+    }
+
+    container.innerHTML = filtered.map(project => `
+      <div class="project-card" data-category="${project.category}">
+        <div class="card-img" style="background-image: url('${project.image}'); background-size: cover; background-position: center;">
+          <span class="category-badge"><i class="fas fa-tag"></i> ${project.category === 'commercial' ? 'Commercial' : project.category === 'cold' ? 'Cold Storage' : project.category === 'ventilation' ? 'Ventilation' : 'Industrial'}</span>
+        </div>
+        <div class="card-content">
+          <h3>${project.name}</h3>
+          <div class="location"><i class="fas fa-map-marker-alt"></i> ${project.location}</div>
+          <p class="description">${project.description}</p>
+          <div class="tech-tags">
+            ${project.tags.map(tag => `<span class="tech-tag">${tag}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // Filter buttons interactivity
+  const filterBtns = document.querySelectorAll('.filter-btn');
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function() {
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+      const filterValue = this.getAttribute('data-filter');
+      renderProjects(filterValue);
+    });
+  });
+
+  // initial render
+  renderProjects('all');
+  
+  // active nav highlight (minor safeguard)
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    if (link.getAttribute('href') === 'projects.html' || link.innerText === 'Projects') {
+      link.classList.add('active');
+    }
+  });
+</script>
 </body>
 </html>

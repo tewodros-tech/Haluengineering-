@@ -1,43 +1,369 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>HALU Engineering</title>
-  <link rel="stylesheet" href="assets/css/style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>HALU Engineering | HVAC & Mechanical Solutions</title>
+  <!-- Google Fonts & smooth scroll -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800&display=swap" rel="stylesheet">
+  <!-- Font Awesome 6 (free icons) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #ffffff;
+      color: #1e2a3e;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
+
+    /* reusable container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* header & nav */
+    header {
+      background: #0b2b3b;
+      backdrop-filter: blur(0px);
+      position: sticky;
+      top: 0;
+      width: 100%;
+      z-index: 1000;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .logo {
+      font-size: 1.8rem;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      background: linear-gradient(135deg, #FFFFFF 0%, #b9e6f3 100%);
+      background-clip: text;
+      -webkit-background-clip: text;
+      color: transparent;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .logo span {
+      color: #ffb347;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #f0f9ff;
+      transition: 0.25s ease;
+      font-size: 1rem;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #ffb347;
+      border-bottom: 2px solid #ffb347;
+      padding-bottom: 4px;
+    }
+
+    /* hero section dynamic */
+    .hero {
+      background: linear-gradient(135deg, #07222e 0%, #0f3b4a 100%);
+      color: white;
+      padding: 5rem 0 6rem 0;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: "❄️ 🔧";
+      font-size: 220px;
+      opacity: 0.05;
+      position: absolute;
+      bottom: -40px;
+      right: -30px;
+      pointer-events: none;
+      font-family: monospace;
+    }
+    .hero .container {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      max-width: 800px;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      letter-spacing: -1px;
+    }
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 0.5rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffb347;
+      color: #0b2b3b;
+      padding: 12px 32px;
+      border-radius: 40px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: 0.2s;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      width: fit-content;
+    }
+    .btn i {
+      font-size: 1rem;
+    }
+    .btn:hover {
+      background: #ff9f1a;
+      transform: translateY(-3px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.15);
+    }
+
+    /* section styling */
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      position: relative;
+      display: inline-block;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 0;
+      width: 70px;
+      height: 4px;
+      background: #ffb347;
+      border-radius: 4px;
+    }
+    .grid-3, .services-grid, .project-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 1.5rem;
+      box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08);
+      transition: 0.3s ease;
+      border: 1px solid #eef2f6;
+      text-align: center;
+    }
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2);
+      border-color: #ffb34750;
+    }
+    .card-icon {
+      font-size: 3rem;
+      color: #ffb347;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      font-weight: 700;
+    }
+    .card p {
+      color: #4a5568;
+    }
+
+    /* stats / about extra */
+    .about-highlight {
+      background: #f6fafd;
+      border-radius: 40px;
+      padding: 2.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .stat {
+      flex: 1;
+      min-width: 140px;
+      text-align: center;
+    }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #0b2b3b;
+    }
+    /* contact form */
+    .contact-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 3rem;
+      margin-top: 2rem;
+    }
+    .contact-info, .contact-form {
+      flex: 1;
+      background: #f8fafc;
+      padding: 2rem;
+      border-radius: 32px;
+    }
+    .contact-info i {
+      width: 40px;
+      color: #ffb347;
+      font-size: 1.4rem;
+    }
+    .contact-info p {
+      margin: 1rem 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    input, textarea {
+      width: 100%;
+      padding: 12px 18px;
+      margin: 12px 0;
+      border: 1px solid #e2e8f0;
+      border-radius: 28px;
+      font-family: inherit;
+      transition: 0.2s;
+    }
+    input:focus, textarea:focus {
+      outline: none;
+      border-color: #ffb347;
+      box-shadow: 0 0 0 3px rgba(255,180,71,0.2);
+    }
+    button[type="submit"] {
+      background: #0b2b3b;
+      color: white;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    button[type="submit"]:hover {
+      background: #ffb347;
+      color: #0b2b3b;
+    }
+    footer {
+      background: #0a1c24;
+      color: #bdd3e0;
+      text-align: center;
+      padding: 2rem;
+      font-size: 0.9rem;
+    }
+
+    /* responsive */
+    @media (max-width: 800px) {
+      .header-flex {
+        flex-direction: column;
+        gap: 1rem;
+      }
+      .hero h1 {
+        font-size: 2.4rem;
+      }
+      .container {
+        padding: 0 24px;
+      }
+    }
+    /* inner page active link handling via js or static class - we'll handle by simple body id or page identifier */
+  </style>
 </head>
-<body>
+<body id="home-page">
+  <header>
+    <div class="container header-flex">
+      <div class="logo">HALU <span>Engineering</span></div>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link" data-page="home">Home</a>
+        <a href="about.html" class="nav-link" data-page="about">About</a>
+        <a href="services.html" class="nav-link" data-page="services">Services</a>
+        <a href="projects.html" class="nav-link" data-page="projects">Projects</a>
+        <a href="contact.html" class="nav-link" data-page="contact">Contact</a>
+      </div>
+    </div>
+  </header>
 
-<header>
-  <div class="logo">HALU Engineering</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="about.html">About</a>
-    <a href="services.html">Services</a>
-    <a href="projects.html">Projects</a>
-    <a href="contact.html">Contact</a>
-  </nav>
-</header>
+  <!-- ========================= HOME PAGE ========================= -->
+  <main>
+    <div id="page-content">
+      <!-- homepage content loaded by default -->
+      <div class="hero">
+        <div class="container">
+          <h1>HVAC & Engineering Excellence</h1>
+          <p>Precision air conditioning, cold rooms, heat pumps, ventilation & ductwork — tailored for modern industry.</p>
+          <a class="btn" href="services.html">Explore Services <i class="fas fa-arrow-right"></i></a>
+        </div>
+      </div>
 
-<div class="hero">
-  <div class="hero-content">
-    <h1>HVAC & Engineering Solutions</h1>
-    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works</p>
-    <a class="btn" href="services.html">Explore Services</a>
-  </div>
-</div>
+      <section>
+        <div class="container">
+          <h2 class="section-title">Core Expertise</h2>
+          <div class="grid-3">
+            <div class="card"><div class="card-icon"><i class="fas fa-wind"></i></div><h3>Air Conditioning</h3><p>Split, VRF, central AC, rooftop units — commercial & residential solutions.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-thermometer-half"></i></div><h3>Cold Rooms</h3><p>Walk-in freezers, chillers for food, pharma, and storage.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-temperature-low"></i></div><h3>Heat Pumps</h3><p>Energy efficient heating/cooling, air-to-water & geothermal.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-utensils"></i></div><h3>Kitchen Ventilation</h3><p>Exhaust hoods, grease filters, make-up air for commercial kitchens.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-toilet"></i></div><h3>Toilet Ventilation</h3><p>Odor extraction, fresh air supply, humidity control systems.</p></div>
+            <div class="card"><div class="card-icon"><i class="fas fa-drafting-compass"></i></div><h3>Duct Works & HVAC</h3><p>Custom duct fabrication, insulation, and full HVAC integration.</p></div>
+          </div>
+        </div>
+      </section>
 
-<section>
-  <h2>Our Expertise</h2>
-  <div class="grid">
-    <div class="card">Air Conditioning Systems</div>
-    <div class="card">Cold Rooms</div>
-    <div class="card">Heat Pumps</div>
-    <div class="card">Kitchen Ventilation</div>
-    <div class="card">Toilet Ventilation</div>
-    <div class="card">HVAC Systems</div>
-  </div>
-</section>
+      <section style="background: #f4f9fe;">
+        <div class="container">
+          <h2 class="section-title">Why HALU Engineering?</h2>
+          <div class="about-highlight">
+            <div class="stat"><div class="stat-number">10+</div><p>Years of expertise</p></div>
+            <div class="stat"><div class="stat-number">350+</div><p>Projects completed</p></div>
+            <div class="stat"><div class="stat-number">24/7</div><p>Support readiness</p></div>
+            <div class="stat"><div class="stat-number">100%</div><p>Client satisfaction</p></div>
+          </div>
+          <p style="margin-top: 2rem; font-size: 1.1rem;">We engineer comfort, efficiency, and reliability — from small retail to industrial complexes. Certified technicians, premium materials, and cutting-edge designs.</p>
+        </div>
+      </section>
+    </div>
+  </main>
 
-<footer>© 2026 HALU Engineering</footer>
+  <footer>
+    <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Solutions | <i class="fas fa-snowflake"></i> Comfort meets innovation</p>
+  </footer>
 
+  <script>
+    // pseudo router for static pages without actual server — simulate pages (single page application style but full code for each page)
+    // However we need to create "full code for each page" meaning separate about.html, services.html, projects.html, contact.html.
+    // We generate same style but different content.
+    // This current file is index.html (home). We will produce full separate pages on the fly? Actually in this answer we can provide 
+    // entire code for all required html files. To satisfy "full code for each pages" we will create each html content in final answer as blocks.
+    // Since we are in chat, we show each page code separately. For demonstration we implement a client-side workaround? But better to provide all.
+    // For clean final output, I will include a full multi-page structure inside the final answer, each page as distinct html block.
+    // But the user requested "i need a full code for my git hub...its a website i need to create..." so I will deliver all 5 pages fully styled.
+    // For completeness, I'll now write JavaScript to simulate only if missing, but the final answer will have dedicated pages.
+    // Since this is main response, I will mark separate pages.
+  </script>
 </body>
 </html>

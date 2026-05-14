@@ -94,27 +94,45 @@
       border-radius: 60px;
       border: 1px solid #fee2e2;
       box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+    .logo-wrapper:hover {
+      box-shadow: 0 4px 15px rgba(220,38,38,0.15);
+      border-color: #dc2626;
     }
 
     .logo-img {
-      height: 72px;
+      height: 70px;
       width: auto;
       object-fit: contain;
-      transition: transform 0.3s;
+      transition: transform 0.3s, filter 0.3s;
       border-radius: 16px;
       background: white;
       padding: 4px;
-      box-shadow: 0 4px 12px rgba(220,38,38,0.15);
+      box-shadow: 0 4px 12px rgba(220,38,38,0.2);
     }
-    .logo-img:hover { transform: scale(1.05); }
+    .logo-img:hover { 
+      transform: scale(1.05);
+      filter: brightness(1.02);
+    }
 
     .logo-text {
       font-size: 2rem;
       font-weight: 800;
       letter-spacing: -0.02em;
       color: #111;
+      background: linear-gradient(135deg, #111, #333);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: #111;
     }
-    .logo-text span { color: #dc2626; }
+    .logo-text span { 
+      color: #dc2626;
+      background: linear-gradient(135deg, #dc2626, #ef4444);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: #dc2626;
+    }
 
     .nav-links {
       display: flex;
@@ -391,6 +409,7 @@
     body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
     body.dark .logo-text { color: white; }
     body.dark .logo-wrapper { background: #1f2937; border-color: #374151; }
+    body.dark .logo-img { background: #1f2937; }
 
     footer {
       background: #f8fafc;
@@ -406,8 +425,8 @@
       .hero h1 { font-size: 2.5rem; }
       .header-flex { flex-direction: column; }
       .container { padding: 0 24px; }
-      .logo-img { height: 55px; }
-      .logo-text { font-size: 1.6rem; }
+      .logo-img { height: 52px; }
+      .logo-text { font-size: 1.5rem; }
       .logo-wrapper { padding: 4px 12px 4px 8px; }
     }
   </style>
@@ -420,7 +439,7 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <img src="53.jpg" alt="HALU Engineering - Premium HVAC Solutions" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/72x72/dc2626/ffffff?text=HALU'">
+      <img src="80.jpeg" alt="HALU Engineering - Premium HVAC Solutions" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=HALU'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -640,22 +659,23 @@
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
 
-  // Enhanced logo visibility: force check and retry if 53.jpg fails
+  // Enhanced logo visibility for 80.jpeg
   const logoElement = document.querySelector('.logo-img');
   if(logoElement) {
     const originalSrc = logoElement.src;
     logoElement.addEventListener('error', function() {
       if(this.src !== originalSrc) return;
-      this.src = 'https://placehold.co/72x72/dc2626/ffffff?text=HALU';
+      this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=HALU';
       this.style.border = '2px solid #dc2626';
       this.style.backgroundColor = '#ffffff';
+      this.style.padding = '8px';
     });
-    // Add a small delay to ensure image loads properly
+    // Force reload check
     setTimeout(() => {
       if(logoElement.complete && logoElement.naturalHeight === 0) {
-        logoElement.src = 'https://placehold.co/72x72/dc2626/ffffff?text=HALU';
+        logoElement.src = 'https://placehold.co/70x70/dc2626/ffffff?text=HALU';
       }
-    }, 500);
+    }, 800);
   }
 </script>
 </body>

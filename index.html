@@ -92,10 +92,11 @@
     }
 
     .logo-img {
-      height: 58px;
+      height: 68px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s;
+      border-radius: 12px;
     }
     .logo-img:hover { transform: scale(1.03); }
 
@@ -357,7 +358,7 @@
     }
     .whatsapp-float:hover { transform: scale(1.1); background: #20b859; }
 
-    /* Dark mode toggle (optional but implemented) */
+    /* Dark mode toggle */
     .theme-toggle {
       background: #f3f4f6;
       border: none;
@@ -396,6 +397,7 @@
       .hero h1 { font-size: 2.5rem; }
       .header-flex { flex-direction: column; }
       .container { padding: 0 24px; }
+      .logo-img { height: 50px; }
     }
   </style>
 </head>
@@ -407,7 +409,7 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.src='https://placehold.co/58x58/dc2626/ffffff?text=H'">
+      <img src="53.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/68x68/dc2626/ffffff?text=HALU'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -481,13 +483,13 @@
     </div>
   </section>
 
-  <!-- Trust & Projects with updated stats (8+ years, 180+ projects) -->
+  <!-- Trust & Projects with updated stats: 5+ Years, 15+ Projects -->
   <section style="background: #ffffff;">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
       <div class="stats" data-aos="fade-up">
-        <div><div class="stat-number" id="yearsCount">8+</div><div class="stat-label">Years Excellence</div></div>
-        <div><div class="stat-number" id="projectsCount">180+</div><div class="stat-label">Projects Delivered</div></div>
+        <div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
+        <div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div>
         <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
         <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
       </div>
@@ -514,9 +516,8 @@
               <ul>
                 <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
                 <li><i class="fas fa-city"></i> Civil Service</li>
-                <li><i class="fas fa-landmark"></i> Prime Minister Offices</li>
                 <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
-                <li><i class="fas fa-apple-alt"></i> Foods Product (Cold Storage)</li>
+                <li><i class="fas fa-charging-station"></i> TAPU Foods</li>
               </ul>
             </div>
           </div>
@@ -583,7 +584,7 @@
     speed: 800
   });
 
-  // Dynamic gallery images (excluding 7.jpg)
+  // Dynamic gallery images (HVAC showcase)
   const imageList = [
     { src: "1.jpg", name: "VRF System Install" }, { src: "2.jpg", name: "Chiller Plant" },
     { src: "28.jpg", name: "Cold Storage" }, { src: "13.jpg", name: "Heat Pump Array" },
@@ -602,15 +603,14 @@
     swiper.update();
   }
 
-  // Clients data: Foods Product & Minaye Construction updated
+  // Clients data: TAPU Foods included
   const clients = [
     { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
     { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
     { name: "INSA", icon: "fas fa-shield-alt", projects: "Data Center Cooling" },
     { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
-    { name: "Prime Minister Offices", icon: "fas fa-landmark", projects: "Premium HVAC" },
-    { name: "Foods Product", icon: "fas fa-apple-alt", projects: "Cold Storage Solutions" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" }
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" },
+    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Cold Storage Solutions" }
   ];
   const clientsGrid = document.getElementById('clientsGrid');
   if(clientsGrid){
@@ -623,26 +623,19 @@
     });
   }
 
-  // Make project lists clickable
+  // Make project lists clickable (redirect to services)
   document.querySelectorAll('.project-list').forEach(el => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
 
-  // Animated counters (optional smooth)
-  const yearsSpan = document.getElementById('yearsCount');
-  const projectsSpan = document.getElementById('projectsCount');
-  if(yearsSpan && projectsSpan){
-    let counted = false;
-    const observer = new IntersectionObserver((entries) => {
-      if(entries[0].isIntersecting && !counted){
-        counted = true;
-        // keep 8 and 180 as static (already set)
-        yearsSpan.style.opacity = '1';
-        projectsSpan.style.opacity = '1';
-      }
-    }, { threshold: 0.5 });
-    observer.observe(yearsSpan.parentElement.parentElement);
+  // Logo error handling - ensure visibility
+  const logoImgElement = document.querySelector('.logo-img');
+  if(logoImgElement) {
+    logoImgElement.addEventListener('error', function() {
+      this.src = 'https://placehold.co/68x68/dc2626/ffffff?text=HALU';
+      this.style.objectFit = 'cover';
+    });
   }
 </script>
 </body>

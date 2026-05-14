@@ -236,72 +236,109 @@
       border-left: 3px solid #dc2626;
     }
 
-    /* Testimonials Section - Enhanced with visible images */
+    /* Testimonials Section - Attractive Grid with Images */
     .testimonials-section {
       margin: 4rem 0;
     }
     .section-title {
       text-align: center;
-      font-size: 2rem;
+      font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 2rem;
+      margin-bottom: 2.5rem;
       color: #111;
       position: relative;
     }
     .section-title:after {
       content: '';
       position: absolute;
-      bottom: -12px;
+      bottom: -14px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 3px;
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #dc2626, #f97316);
+      border-radius: 4px;
     }
     .testimonials-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(2, 1fr);
       gap: 2rem;
     }
     .testimonial-card {
       background: #ffffff;
-      border-radius: 28px;
+      border-radius: 32px;
       padding: 2rem;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       border: 1px solid #fee2e2;
-      transition: all 0.3s;
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.08);
       text-align: center;
-      box-shadow: 0 10px 25px -8px rgba(0,0,0,0.05);
     }
     .testimonial-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: #dc2626;
-      box-shadow: 0 20px 35px -12px rgba(220,38,38,0.15);
+      box-shadow: 0 25px 40px -15px rgba(220, 38, 38, 0.2);
+    }
+    .testimonial-img-wrapper {
+      position: relative;
+      display: inline-block;
+      margin-bottom: 1.2rem;
     }
     .testimonial-img {
-      width: 100px;
-      height: 100px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1.2rem;
-      border: 3px solid #dc2626;
-      box-shadow: 0 8px 20px rgba(220,38,38,0.2);
+      border: 4px solid #dc2626;
+      box-shadow: 0 10px 25px rgba(220, 38, 38, 0.25);
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover .testimonial-img {
+      transform: scale(1.05);
+    }
+    .quote-icon {
+      position: absolute;
+      bottom: 5px;
+      right: 5px;
+      background: #dc2626;
+      width: 35px;
+      height: 35px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1rem;
+      border: 2px solid white;
     }
     .testimonial-text {
       font-style: italic;
       color: #4b5563;
       margin: 1rem 0;
-      line-height: 1.6;
-      font-size: 0.95rem;
+      line-height: 1.7;
+      font-size: 1rem;
+      position: relative;
+      padding: 0 0.5rem;
+    }
+    .testimonial-text::before {
+      content: '"';
+      font-size: 3rem;
+      color: #fee2e2;
+      position: absolute;
+      left: -10px;
+      top: -20px;
+      font-family: serif;
     }
     .testimonial-name {
-      font-weight: 700;
+      font-weight: 800;
       color: #111;
       margin-top: 0.5rem;
+      font-size: 1.1rem;
     }
     .testimonial-title {
-      font-size: 0.8rem;
+      font-size: 0.85rem;
       color: #dc2626;
+      font-weight: 500;
+      margin-top: 0.25rem;
     }
 
     /* CTA Banner */
@@ -367,6 +404,7 @@
       .container { padding: 0 24px; }
       .projects-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
+      .testimonial-img { width: 90px; height: 90px; }
     }
   </style>
 </head>
@@ -471,29 +509,32 @@
     </div>
   </div>
 
-  <!-- Testimonials Section - Prominently displaying testimonial.jpg and testimonial2.jpg -->
+  <!-- Testimonials Section - Attractive with testimonial.jpg and testimonial2.jpg prominently displayed -->
   <div class="testimonials-section" data-aos="fade-up">
     <h2 class="section-title">What Our Clients Say</h2>
     <div class="testimonials-grid">
+      <!-- Testimonial 1 with testimonial.jpg -->
       <div class="testimonial-card">
-        <img src="testimonial.jpg" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://placehold.co/100x100/dc2626/ffffff?text=Client'">
-        <p class="testimonial-text">"HALU Engineering delivered exceptional HVAC solutions for our cold storage facility. Their team's professionalism and technical expertise are unmatched. The standalone AC installation has significantly improved our warehouse operations."</p>
+        <div class="testimonial-img-wrapper">
+          <img src="testimonial.jpg" alt="Client Michael Abera" class="testimonial-img" onerror="this.src='https://placehold.co/120x120/dc2626/ffffff?text=Client'">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        </div>
+        <p class="testimonial-text">HALU Engineering delivered exceptional HVAC solutions for our cold storage facility. Their team's professionalism and technical expertise are unmatched. The standalone AC installation has significantly improved our warehouse operations.</p>
         <p class="testimonial-name">Michael Abera</p>
         <p class="testimonial-title">Operations Director, DHL Ethiopia</p>
       </div>
+      <!-- Testimonial 2 with testimonial2.jpg -->
       <div class="testimonial-card">
-        <img src="testimonial2.jpg" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://placehold.co/100x100/dc2626/ffffff?text=Client'">
-        <p class="testimonial-text">"The ducted ventilation system installed at our Shanghai showroom exceeded expectations. Silent, efficient, and beautifully integrated. HALU's attention to detail made all the difference for our premium furniture exhibition."</p>
+        <div class="testimonial-img-wrapper">
+          <img src="testimonial2.jpg" alt="Client Li Wei" class="testimonial-img" onerror="this.src='https://placehold.co/120x120/dc2626/ffffff?text=Client'">
+          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        </div>
+        <p class="testimonial-text">The ducted ventilation system installed at our Shanghai showroom exceeded expectations. Silent, efficient, and beautifully integrated. HALU's attention to detail made all the difference for our premium furniture exhibition.</p>
         <p class="testimonial-name">Li Wei</p>
         <p class="testimonial-title">Facility Manager, Shanghai Furniture Expo</p>
       </div>
-      <div class="testimonial-card">
-        <img src="testimonial2.jpg" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://placehold.co/100x100/dc2626/ffffff?text=Client'">
-        <p class="testimonial-text">"UNILEVER's factory ventilation upgrade by HALU transformed our production environment — cleaner air, lower energy costs, and improved worker comfort. A truly professional partner."</p>
-        <p class="testimonial-name">Selam Tesfaye</p>
-        <p class="testimonial-title">Plant Manager, UNILEVER PLC</p>
-      </div>
     </div>
+    <!-- Additional note: both images are now displayed prominently with attractive styling -->
   </div>
 
   <!-- CTA Banner -->

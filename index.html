@@ -116,6 +116,25 @@
       filter: brightness(1.02);
     }
 
+    /* Fallback logo style - attractive H emblem */
+    .logo-fallback {
+      width: 70px;
+      height: 70px;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 2.2rem;
+      font-weight: 800;
+      box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+      transition: transform 0.3s;
+    }
+    .logo-fallback:hover {
+      transform: scale(1.05);
+    }
+
     .logo-text {
       font-size: 2rem;
       font-weight: 800;
@@ -409,7 +428,6 @@
     body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
     body.dark .logo-text { color: white; }
     body.dark .logo-wrapper { background: #1f2937; border-color: #374151; }
-    body.dark .logo-img { background: #1f2937; }
 
     footer {
       background: #f8fafc;
@@ -425,7 +443,7 @@
       .hero h1 { font-size: 2.5rem; }
       .header-flex { flex-direction: column; }
       .container { padding: 0 24px; }
-      .logo-img { height: 52px; }
+      .logo-img, .logo-fallback { height: 52px; width: 52px; }
       .logo-text { font-size: 1.5rem; }
       .logo-wrapper { padding: 4px 12px 4px 8px; }
     }
@@ -438,8 +456,9 @@
 
 <header>
   <div class="container header-flex">
-    <div class="logo-wrapper">
-      <img src="80.jpeg" alt="HALU Engineering - Premium HVAC Solutions" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=HALU'">
+    <div class="logo-wrapper" id="logoWrapper">
+      <!-- Logo image will be injected dynamically with fallback -->
+      <div id="logoContainer"></div>
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -513,7 +532,7 @@
     </div>
   </section>
 
-  <!-- Trust & Projects with updated stats: 5+ Years, 15+ Projects -->
+  <!-- Trust & Projects with updated stats -->
   <section style="background: #ffffff;">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
@@ -614,7 +633,7 @@
     speed: 800
   });
 
-  // Dynamic gallery images (HVAC showcase)
+  // Dynamic gallery images
   const imageList = [
     { src: "1.jpg", name: "VRF System Install" }, { src: "2.jpg", name: "Chiller Plant" },
     { src: "28.jpg", name: "Cold Storage" }, { src: "13.jpg", name: "Heat Pump Array" },
@@ -633,7 +652,7 @@
     swiper.update();
   }
 
-  // Clients data: TAPU Foods included
+  // Clients data
   const clients = [
     { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
     { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
@@ -653,30 +672,51 @@
     });
   }
 
-  // Make project lists clickable (redirect to services)
+  // Make project lists clickable
   document.querySelectorAll('.project-list').forEach(el => {
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
 
-  // Enhanced logo visibility for 80.jpeg
-  const logoElement = document.querySelector('.logo-img');
-  if(logoElement) {
-    const originalSrc = logoElement.src;
-    logoElement.addEventListener('error', function() {
-      if(this.src !== originalSrc) return;
-      this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=HALU';
-      this.style.border = '2px solid #dc2626';
-      this.style.backgroundColor = '#ffffff';
-      this.style.padding = '8px';
-    });
-    // Force reload check
-    setTimeout(() => {
-      if(logoElement.complete && logoElement.naturalHeight === 0) {
-        logoElement.src = 'https://placehold.co/70x70/dc2626/ffffff?text=HALU';
-      }
-    }, 800);
+  // Logo handling - try 80.jpeg, 80.jpg, 80.JPG with robust fallback
+  const logoContainer = document.getElementById('logoContainer');
+  const logoWrapper = document.getElementById('logoWrapper');
+  
+  function createFallbackLogo() {
+    const fallbackDiv = document.createElement('div');
+    fallbackDiv.className = 'logo-fallback';
+    fallbackDiv.innerHTML = '<i class="fas fa-snowflake" style="font-size: 2rem;"></i>';
+    fallbackDiv.title = 'HALU Engineering';
+    logoContainer.innerHTML = '';
+    logoContainer.appendChild(fallbackDiv);
   }
+  
+  function tryLoadLogo(url) {
+    const img = new Image();
+    img.onload = function() {
+      const logoImg = document.createElement('img');
+      logoImg.src = url;
+      logoImg.alt = 'HALU Engineering Logo';
+      logoImg.className = 'logo-img';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(logoImg);
+    };
+    img.onerror = function() {
+      console.log('Failed to load:', url);
+      // Try next format
+      if (url === '80.jpeg') {
+        tryLoadLogo('80.jpg');
+      } else if (url === '80.jpg') {
+        tryLoadLogo('80.JPG');
+      } else {
+        createFallbackLogo();
+      }
+    };
+    img.src = url;
+  }
+  
+  // Start trying to load the logo
+  tryLoadLogo('80.jpeg');
 </script>
 </body>
 </html>

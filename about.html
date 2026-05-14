@@ -62,7 +62,7 @@
       padding: 0 32px;
     }
 
-    /* Header - matching homepage red/white theme */
+    /* Header - matching homepage red/white theme EXACTLY */
     header {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(8px);
@@ -86,9 +86,16 @@
       display: flex;
       align-items: center;
       gap: 14px;
-      background: transparent;
-      padding: 0;
-      border: none;
+      background: linear-gradient(135deg, #fff5f5, #ffffff);
+      padding: 6px 18px 6px 12px;
+      border-radius: 60px;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+    .logo-wrapper:hover {
+      box-shadow: 0 4px 15px rgba(220,38,38,0.15);
+      border-color: #dc2626;
     }
 
     .logo-img {
@@ -96,9 +103,10 @@
       width: auto;
       object-fit: contain;
       transition: transform 0.3s;
-      border-radius: 12px;
-      background: transparent;
-      display: block;
+      border-radius: 16px;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 4px 12px rgba(220,38,38,0.2);
     }
     .logo-img:hover { transform: scale(1.03); }
 
@@ -137,7 +145,7 @@
       border-radius: 4px;
     }
 
-    /* Hero Section - matching homepage style with red/white gradient */
+    /* Hero Section with 52.jpg image - matching homepage style */
     .hero-about {
       background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
       padding: 4rem 0 5rem;
@@ -152,6 +160,12 @@
       bottom: 20px;
       right: 20px;
       pointer-events: none;
+    }
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1fr 0.9fr;
+      gap: 3rem;
+      align-items: center;
     }
     .hero-badge {
       display: inline-block;
@@ -174,8 +188,24 @@
     .hero-content p {
       font-size: 1.2rem;
       color: #4b5563;
-      max-width: 680px;
+      max-width: 580px;
       line-height: 1.6;
+    }
+    .hero-image {
+      position: relative;
+      border-radius: 32px;
+      overflow: hidden;
+      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
+      border: 1px solid #fee2e2;
+    }
+    .hero-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.5s ease;
+    }
+    .hero-image:hover img {
+      transform: scale(1.02);
     }
 
     /* Main layout */
@@ -453,6 +483,9 @@
     }
     .social-icons a:hover { color: #dc2626; }
 
+    @media (max-width: 960px) {
+      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
+    }
     @media (max-width: 860px) {
       .container { padding: 0 24px; }
       .about-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -491,14 +524,19 @@
   </div>
 </header>
 
-<!-- Hero Section with logo image integration -->
+<!-- Hero Section with 52.jpg image prominently displayed -->
 <section class="hero-about">
-  <div class="container hero-content" data-aos="fade-up">
-    <div class="hero-badge">
-      <i class="fas fa-hard-hat"></i> SINCE 2018 • ENGINEERING EXCELLENCE
+  <div class="container hero-grid">
+    <div class="hero-content" data-aos="fade-right">
+      <div class="hero-badge">
+        <i class="fas fa-hard-hat"></i> SINCE 2018 • ENGINEERING EXCELLENCE
+      </div>
+      <h1>Redefining <span>Indoor Climate</span><br>Solutions</h1>
+      <p>HALU Engineering stands for precision, reliability, and sustainable innovation in HVAC&R. We engineer environments where people and businesses thrive — with a perfect blend of technical mastery and red-hot dedication.</p>
     </div>
-    <h1>Redefining <span>Indoor Climate</span><br>Solutions</h1>
-    <p>HALU Engineering stands for precision, reliability, and sustainable innovation in HVAC&R. We engineer environments where people and businesses thrive — with a perfect blend of technical mastery and red-hot dedication.</p>
+    <div class="hero-image" data-aos="fade-left">
+      <img src="52.jpg" alt="HALU Engineering - Premium HVAC Solutions" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=HALU+Engineering'">
+    </div>
   </div>
 </section>
 
@@ -634,13 +672,17 @@
     }
   });
 
-  // Logo error handling
-  const logoImg = document.querySelector('.logo-img');
-  if(logoImg) {
-    logoImg.addEventListener('error', function() {
-      this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=H';
+  // Logo error handling for both header and hero images
+  const logoImages = document.querySelectorAll('.logo-img, .hero-image img');
+  logoImages.forEach(img => {
+    img.addEventListener('error', function() {
+      if (this.classList.contains('logo-img')) {
+        this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=H';
+      } else {
+        this.src = 'https://placehold.co/600x400/dc2626/ffffff?text=HALU+Engineering';
+      }
     });
-  }
+  });
 </script>
 </body>
 </html>

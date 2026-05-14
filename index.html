@@ -85,72 +85,47 @@
       gap: 1rem;
     }
 
+    /* Logo wrapper - standalone with no text */
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: linear-gradient(135deg, #fff5f5, #ffffff);
-      padding: 6px 18px 6px 12px;
-      border-radius: 60px;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
-      transition: all 0.3s ease;
-    }
-    .logo-wrapper:hover {
-      box-shadow: 0 4px 15px rgba(220,38,38,0.15);
-      border-color: #dc2626;
+      background: transparent;
+      padding: 0;
+      border: none;
+      box-shadow: none;
     }
 
     .logo-img {
-      height: 70px;
+      height: 75px;
       width: auto;
+      max-width: 220px;
       object-fit: contain;
       transition: transform 0.3s, filter 0.3s;
-      border-radius: 16px;
-      background: white;
-      padding: 4px;
-      box-shadow: 0 4px 12px rgba(220,38,38,0.2);
+      border-radius: 12px;
+      background: transparent;
+      display: block;
     }
     .logo-img:hover { 
-      transform: scale(1.05);
-      filter: brightness(1.02);
+      transform: scale(1.03);
     }
 
     /* Fallback logo style - attractive H emblem */
     .logo-fallback {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      width: 75px;
+      height: 75px;
+      background: linear-gradient(145deg, #dc2626, #b91c1c);
       border-radius: 20px;
       display: flex;
       align-items: center;
       justify-content: center;
       color: white;
-      font-size: 2.2rem;
+      font-size: 2.4rem;
       font-weight: 800;
-      box-shadow: 0 4px 12px rgba(220,38,38,0.3);
+      box-shadow: 0 6px 18px rgba(220,38,38,0.35);
       transition: transform 0.3s;
     }
     .logo-fallback:hover {
-      transform: scale(1.05);
-    }
-
-    .logo-text {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111;
-      background: linear-gradient(135deg, #111, #333);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: #111;
-    }
-    .logo-text span { 
-      color: #dc2626;
-      background: linear-gradient(135deg, #dc2626, #ef4444);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: #dc2626;
+      transform: scale(1.03);
     }
 
     .nav-links {
@@ -426,8 +401,7 @@
     body.dark .card p, body.dark .client-card p, body.dark .project-list li { color: #cbd5e1; }
     body.dark .hero { background: #111827; }
     body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
-    body.dark .logo-text { color: white; }
-    body.dark .logo-wrapper { background: #1f2937; border-color: #374151; }
+    body.dark .logo-fallback { background: linear-gradient(145deg, #ef4444, #dc2626); }
 
     footer {
       background: #f8fafc;
@@ -443,9 +417,8 @@
       .hero h1 { font-size: 2.5rem; }
       .header-flex { flex-direction: column; }
       .container { padding: 0 24px; }
-      .logo-img, .logo-fallback { height: 52px; width: 52px; }
-      .logo-text { font-size: 1.5rem; }
-      .logo-wrapper { padding: 4px 12px 4px 8px; }
+      .logo-img, .logo-fallback { height: 55px; width: auto; min-width: 55px; }
+      .logo-fallback { width: 55px; height: 55px; font-size: 1.8rem; }
     }
   </style>
 </head>
@@ -457,9 +430,7 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper" id="logoWrapper">
-      <!-- Logo image will be injected dynamically with fallback -->
       <div id="logoContainer"></div>
-      <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div style="display: flex; align-items: center; gap: 16px;">
       <div class="nav-links">
@@ -532,7 +503,7 @@
     </div>
   </section>
 
-  <!-- Trust & Projects with updated stats -->
+  <!-- Trust & Projects -->
   <section style="background: #ffffff;">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
@@ -678,14 +649,13 @@
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
 
-  // Logo handling - try 80.jpeg, 80.jpg, 80.JPG with robust fallback
+  // Enhanced Logo Loading - try multiple variations with better visibility
   const logoContainer = document.getElementById('logoContainer');
-  const logoWrapper = document.getElementById('logoWrapper');
   
   function createFallbackLogo() {
     const fallbackDiv = document.createElement('div');
     fallbackDiv.className = 'logo-fallback';
-    fallbackDiv.innerHTML = '<i class="fas fa-snowflake" style="font-size: 2rem;"></i>';
+    fallbackDiv.innerHTML = '<i class="fas fa-wind" style="font-size: 2.2rem;"></i>';
     fallbackDiv.title = 'HALU Engineering';
     logoContainer.innerHTML = '';
     logoContainer.appendChild(fallbackDiv);
@@ -696,18 +666,21 @@
     img.onload = function() {
       const logoImg = document.createElement('img');
       logoImg.src = url;
-      logoImg.alt = 'HALU Engineering Logo';
+      logoImg.alt = 'HALU Engineering';
       logoImg.className = 'logo-img';
+      logoImg.style.display = 'block';
+      logoImg.style.maxHeight = '75px';
+      logoImg.style.width = 'auto';
       logoContainer.innerHTML = '';
       logoContainer.appendChild(logoImg);
     };
     img.onerror = function() {
-      console.log('Failed to load:', url);
-      // Try next format
       if (url === '80.jpeg') {
         tryLoadLogo('80.jpg');
       } else if (url === '80.jpg') {
         tryLoadLogo('80.JPG');
+      } else if (url === '80.JPG') {
+        tryLoadLogo('80.png');
       } else {
         createFallbackLogo();
       }
@@ -715,7 +688,7 @@
     img.src = url;
   }
   
-  // Start trying to load the logo
+  // Start loading with the primary filename
   tryLoadLogo('80.jpeg');
 </script>
 </body>

@@ -1,754 +1,902 @@
+# HALU Engineering — Premium `index.html` Redesign
+
+```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Premium HVAC & Future-Ready Solutions</title>
-  <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Swiper JS for movable/sliding images -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: linear-gradient(145deg, #0a0f1c 0%, #0c1222 100%);
-      color: #eef2ff;
-      scroll-behavior: smooth;
+    :root{
+      --primary:#d62828;
+      --secondary:#fcbf49;
+      --dark:#050816;
+      --dark2:#0c1326;
+      --light:#f8fafc;
+      --gray:#a5b4cc;
+      --card:#10192d;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
+    body{
+      font-family:'Inter',sans-serif;
+      background:
+      radial-gradient(circle at top left, rgba(214,40,40,0.20), transparent 30%),
+      radial-gradient(circle at bottom right, rgba(252,191,73,0.08), transparent 30%),
+      linear-gradient(145deg,#040814,#09111f,#0b1325);
+      color:white;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
     }
 
-    /* ATTRACTIVE PREMIUM HEADER - dark luxurious */
-    header {
-      background: rgba(8, 12, 20, 0.95);
-      backdrop-filter: blur(12px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 1px solid rgba(220, 38, 38, 0.4);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+    .container{
+      width:min(1280px,92%);
+      margin:auto;
     }
-
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.9rem 0;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    /* Logo area - ORIGINAL LOGO PRESERVED */
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-      gap: 14px;
+
+    header{
+      position:sticky;
+      top:0;
+      z-index:1000;
+      backdrop-filter:blur(14px);
+      background:rgba(5,8,20,0.88);
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+
+    .header-content{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 0;
+      gap:20px;
+      flex-wrap:wrap;
+    }
+
+    .logo{
+      display:flex;
+      align-items:center;
+      gap:14px;
+    }
+
+    .logo img{
+      width:64px;
+      height:64px;
+      object-fit:contain;
+      border-radius:18px;
+      background:#fff;
+      padding:5px;
+      box-shadow:0 10px 30px rgba(214,40,40,0.30);
+    }
+
+    .logo h2{
+      font-size:2rem;
+      font-weight:900;
+      letter-spacing:-1px;
+    }
+
+    .logo span{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    nav{
+      display:flex;
+      gap:28px;
+      align-items:center;
+    }
+
+    nav a{
+      color:#e2e8f0;
+      text-decoration:none;
+      font-weight:600;
+      transition:0.3s;
+      position:relative;
+    }
+
+    nav a:hover,
+    nav a.active{
+      color:var(--secondary);
+    }
+
+    .hero{
+      padding:100px 0 90px;
+      position:relative;
+      overflow:hidden;
+    }
+
+    .hero::before{
+      content:"";
+      position:absolute;
+      width:600px;
+      height:600px;
+      background:radial-gradient(circle, rgba(214,40,40,0.25), transparent 65%);
+      top:-250px;
+      right:-200px;
+      border-radius:50%;
+    }
+
+    .hero-grid{
+      display:grid;
+      grid-template-columns:1.1fr 0.9fr;
+      gap:60px;
+      align-items:center;
+    }
+
+    .hero-text h1{
+      font-size:4.6rem;
+      line-height:1.1;
+      margin-bottom:24px;
+      font-weight:900;
+    }
+
+    .hero-text h1 span{
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+    }
+
+    .hero-text p{
+      color:var(--gray);
+      font-size:1.12rem;
+      line-height:1.9;
+      margin-bottom:32px;
+      max-width:700px;
     }
-
-    .logo-img {
-      height: 58px;
-      width: auto;
-      transition: transform 0.3s ease;
-      object-fit: contain;
-      filter: drop-shadow(0 4px 10px rgba(220, 38, 38, 0.3));
+
+    .hero-buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      padding:16px 34px;
+      border-radius:60px;
+      text-decoration:none;
+      font-weight:700;
+      transition:0.3s;
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+    }
+
+    .btn-primary{
+      background:linear-gradient(135deg,var(--primary),#ef233c);
+      color:white;
+      box-shadow:0 18px 40px rgba(214,40,40,0.35);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-6px);
+    }
+
+    .btn-secondary{
+      border:1px solid rgba(255,255,255,0.15);
+      color:white;
+      background:rgba(255,255,255,0.05);
+    }
+
+    .hero-image{
+      position:relative;
+    }
+
+    .hero-image img{
+      width:100%;
+      border-radius:40px;
+      border:1px solid rgba(255,255,255,0.08);
+      box-shadow:0 30px 80px rgba(0,0,0,0.45);
+    }
+
+    .floating-card{
+      position:absolute;
+      bottom:20px;
+      left:-30px;
+      background:rgba(10,18,35,0.95);
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:26px;
+      padding:20px;
+      width:240px;
+      backdrop-filter:blur(10px);
+      box-shadow:0 20px 50px rgba(0,0,0,0.4);
+    }
+
+    .floating-card h3{
+      font-size:2.5rem;
+      color:var(--secondary);
     }
-
-    .logo-img:hover {
-      transform: scale(1.03);
-    }
-
-    .logo-text {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      background: linear-gradient(135deg, #ffffff, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .logo-text span {
-      background: linear-gradient(135deg, #ef4444, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #e2e8f0;
-      transition: 0.25s;
-      position: relative;
-    }
-
-    .nav-links a:hover, .nav-links a.active {
-      color: #ef4444;
-    }
-
-    .nav-links a.active:after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 2.5px;
-      background: #ef4444;
-      border-radius: 4px;
-      box-shadow: 0 0 6px #ef4444;
-    }
-
-    /* Hero Section */
-    .hero {
-      background: radial-gradient(ellipse at 70% 20%, #0f182c, #05090f);
-      padding: 5rem 0 6rem;
-      position: relative;
-      overflow: hidden;
-      border-bottom: 1px solid #ef444430;
-    }
-
-    .hero::before {
-      content: "❄️ 🔥 ⚙️ 💨";
-      font-size: 180px;
-      opacity: 0.03;
-      position: absolute;
-      bottom: -30px;
-      right: -20px;
-      pointer-events: none;
-    }
-
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      background: linear-gradient(to right, #ffffff, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero h1 span {
-      background: linear-gradient(135deg, #ef4444, #f97316);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-    }
-
-    .hero p {
-      font-size: 1.2rem;
-      color: #b9c3da;
-      max-width: 580px;
-      margin-bottom: 2rem;
-    }
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: linear-gradient(95deg, #ef4444, #dc2626);
-      color: white;
-      padding: 14px 38px;
-      border-radius: 60px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 10px 20px -6px #ef444480;
-      cursor: pointer;
-    }
-
-    .btn:hover {
-      transform: translateY(-4px);
-      background: linear-gradient(95deg, #f05252, #b91c1c);
-      box-shadow: 0 20px 30px -10px #ef4444;
-    }
-
-    section {
-      padding: 5rem 0;
-    }
-
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      position: relative;
-      color: #ffffff;
+
+    .floating-card p{
+      color:var(--gray);
+      margin-top:6px;
+      line-height:1.6;
+    }
+
+    section{
+      padding:90px 0;
     }
 
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 0;
-      width: 80px;
-      height: 4px;
-      background: #ef4444;
-      border-radius: 4px;
-      box-shadow: 0 0 8px #ef4444;
+    .section-title{
+      text-align:center;
+      margin-bottom:60px;
     }
 
-    /* Engineering Icons Grid */
-    .icons-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-      gap: 1.8rem;
-      margin: 2rem 0 3rem;
-      text-align: center;
+    .section-title h2{
+      font-size:3rem;
+      margin-bottom:16px;
+      font-weight:900;
     }
 
-    .icon-card {
-      background: rgba(20, 28, 44, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 28px;
-      padding: 1.5rem 0.8rem;
-      transition: all 0.3s;
-      border: 1px solid rgba(239, 68, 68, 0.2);
+    .section-title p{
+      color:var(--gray);
+      max-width:760px;
+      margin:auto;
+      line-height:1.9;
     }
 
-    .icon-card:hover {
-      transform: translateY(-8px);
-      border-color: #ef4444;
-      background: rgba(30, 40, 60, 0.9);
+    .services-grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:28px;
     }
 
-    .icon-card i {
-      font-size: 2.8rem;
-      background: linear-gradient(135deg, #ef4444, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 0.8rem;
+    .service-card{
+      background:linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:32px;
+      padding:34px;
+      transition:0.35s;
+      position:relative;
+      overflow:hidden;
     }
 
-    .icon-card h4 {
-      font-size: 1rem;
-      font-weight: 600;
-      color: #eef2ff;
+    .service-card::before{
+      content:"";
+      position:absolute;
+      top:0;
+      left:0;
+      width:100%;
+      height:4px;
+      background:linear-gradient(90deg,var(--primary),var(--secondary));
     }
 
-    /* MOVABLE IMAGE SLIDER */
-    .slider-section {
-      background: linear-gradient(115deg, #0b1120, #0d1426);
-      border-radius: 48px;
-      margin: 2rem 0;
-      padding: 2rem 0;
+    .service-card:hover{
+      transform:translateY(-10px);
+      border-color:rgba(252,191,73,0.45);
+      box-shadow:0 25px 60px rgba(0,0,0,0.35);
     }
-
-    .swiper {
-      width: 100%;
-      padding: 20px 0 40px;
+
+    .service-card i{
+      font-size:3rem;
+      margin-bottom:20px;
+      background:linear-gradient(135deg,var(--primary),var(--secondary));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
     }
 
-    .swiper-slide {
-      background: rgba(15, 23, 42, 0.6);
-      border-radius: 32px;
-      overflow: hidden;
-      transition: transform 0.3s;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+    .service-card h3{
+      font-size:1.5rem;
+      margin-bottom:14px;
     }
 
-    .swiper-slide:hover {
-      transform: scale(1.02);
-      border-color: #ef4444;
-    }
+    .service-card p{
+      color:var(--gray);
+      line-height:1.8;
+    }
 
-    .swiper-slide img {
-      width: 100%;
-      height: 280px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .slide-caption {
-      padding: 1rem;
-      text-align: center;
-      background: rgba(0, 0, 0, 0.6);
-      color: white;
-      font-weight: 600;
-    }
+    .stats{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+      gap:26px;
+      margin-top:30px;
+    }
 
-    .swiper-pagination-bullet {
-      background: #ef4444;
+    .stat-box{
+      background:rgba(255,255,255,0.04);
+      border-radius:28px;
+      padding:40px 20px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.08);
     }
 
-    .swiper-button-next, .swiper-button-prev {
-      color: #ef4444;
-    }
-
-    /* Cards */
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .card {
-      background: rgba(18, 24, 36, 0.75);
-      backdrop-filter: blur(6px);
-      border-radius: 32px;
-      padding: 2rem 1.8rem;
-      transition: 0.35s;
-      text-align: center;
-      border: 1px solid rgba(239, 68, 68, 0.2);
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.4);
-    }
-
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: #ef4444;
-      box-shadow: 0 25px 40px -12px rgba(239, 68, 68, 0.25);
-    }
-
-    .card i {
-      font-size: 3rem;
-      background: linear-gradient(135deg, #ef4444, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
+    .stat-box h3{
+      font-size:3rem;
+      color:var(--secondary);
+      margin-bottom:10px;
     }
 
-    .card h3 {
-      font-size: 1.6rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: #ffffff;
-    }
+    .stat-box p{
+      color:var(--gray);
+      font-weight:600;
+      letter-spacing:1px;
+    }
 
-    .card p {
-      color: #a0afc3;
+    .projects-section{
+      background:linear-gradient(135deg, rgba(255,255,255,0.03), rgba(255,255,255,0.01));
+      border-top:1px solid rgba(255,255,255,0.05);
+      border-bottom:1px solid rgba(255,255,255,0.05);
     }
 
-    /* Stats */
-    .stats {
-      background: rgba(12, 18, 28, 0.7);
-      backdrop-filter: blur(8px);
-      border-radius: 56px;
-      padding: 2.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-      text-align: center;
-      border: 1px solid rgba(239, 68, 68, 0.3);
+    .swiper{
+      padding-bottom:50px;
     }
 
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 800;
-      background: linear-gradient(135deg, #ef4444, #facc15);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
+    .swiper-slide{
+      background:rgba(255,255,255,0.04);
+      border-radius:28px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.06);
     }
 
-    .stat-label {
-      font-weight: 600;
-      color: #9ca3af;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.8rem;
+    .swiper-slide img{
+      width:100%;
+      height:320px;
+      object-fit:cover;
     }
 
-    /* UPDATED TRUST & PROJECTS SECTION - More attractive with client logos */
-    .trust-projects-section {
-      background: linear-gradient(125deg, #0a0f1a, #0d1428);
-      border-radius: 56px;
-      margin-top: 1rem;
-      padding: 2rem;
+    .slide-content{
+      padding:24px;
     }
 
-    .client-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
+    .slide-content h3{
+      margin-bottom:12px;
     }
 
-    .client-card {
-      background: rgba(20, 28, 44, 0.8);
-      backdrop-filter: blur(4px);
-      border-radius: 28px;
-      padding: 1.5rem;
-      transition: all 0.3s;
-      border: 1px solid rgba(239, 68, 68, 0.3);
-      cursor: pointer;
-      text-align: center;
+    .slide-content p{
+      color:var(--gray);
+      line-height:1.7;
     }
 
-    .client-card:hover {
-      transform: translateY(-6px);
-      border-color: #ef4444;
-      box-shadow: 0 20px 30px -12px rgba(239, 68, 68, 0.3);
-      background: rgba(30, 40, 60, 0.9);
+    .partners{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+      gap:24px;
     }
 
-    .client-icon {
-      font-size: 2.5rem;
-      background: linear-gradient(135deg, #facc15, #ef4444);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      margin-bottom: 1rem;
+    .partner-card{
+      background:rgba(255,255,255,0.04);
+      border-radius:28px;
+      padding:32px;
+      text-align:center;
+      border:1px solid rgba(255,255,255,0.06);
+      transition:0.3s;
     }
 
-    .client-card h4 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 0.5rem;
+    .partner-card:hover{
+      transform:translateY(-8px);
+      border-color:rgba(252,191,73,0.45);
     }
 
-    .client-card p {
-      color: #a0afc3;
-      font-size: 0.85rem;
+    .partner-card i{
+      font-size:3rem;
+      margin-bottom:18px;
+      color:var(--secondary);
     }
 
-    .project-badge {
-      display: inline-block;
-      background: rgba(239, 68, 68, 0.2);
-      padding: 0.3rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      margin-top: 0.8rem;
-      color: #facc15;
+    .partner-card p{
+      color:var(--gray);
+      margin-top:10px;
+      line-height:1.7;
     }
 
-    .row-two-columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin: 2rem 0;
+    .about-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:60px;
+      align-items:center;
     }
 
-    .col {
-      flex: 1;
-      min-width: 250px;
+    .about-grid img{
+      width:100%;
+      border-radius:34px;
+      border:1px solid rgba(255,255,255,0.08);
     }
 
-    .project-list {
-      background: rgba(12, 18, 28, 0.6);
-      border-radius: 32px;
-      padding: 1.5rem;
-      border: 1px solid #ef444430;
-      transition: all 0.2s;
+    .about-text p{
+      color:var(--gray);
+      line-height:2;
+      margin-bottom:20px;
     }
 
-    .project-list:hover {
-      border-color: #ef4444;
-      box-shadow: 0 8px 20px -6px rgba(239,68,68,0.3);
+    .feature-list{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+      margin-top:24px;
     }
 
-    .project-list h3 {
-      font-size: 1.3rem;
-      margin-bottom: 1rem;
-      color: #facc15;
+    .feature-item{
+      background:rgba(255,255,255,0.04);
+      padding:18px;
+      border-radius:20px;
+      border:1px solid rgba(255,255,255,0.05);
+      display:flex;
+      align-items:center;
+      gap:12px;
     }
 
-    .project-list ul {
-      list-style: none;
+    .feature-item i{
+      color:var(--secondary);
+      font-size:1.2rem;
     }
 
-    .project-list li {
-      padding: 0.6rem 0;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .cta{
+      text-align:center;
+      background:
+      linear-gradient(135deg, rgba(214,40,40,0.18), rgba(252,191,73,0.10));
+      border:1px solid rgba(255,255,255,0.08);
+      border-radius:40px;
+      padding:80px 40px;
     }
 
-    .project-list li i {
-      color: #ef4444;
-      width: 24px;
+    .cta h2{
+      font-size:3rem;
+      margin-bottom:18px;
     }
 
-    .click-hint {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-      color: #facc15;
+    .cta p{
+      color:var(--gray);
+      max-width:760px;
+      margin:auto auto 30px;
+      line-height:1.9;
     }
 
-    .click-hint i {
-      margin-right: 6px;
+    footer{
+      padding:30px 0;
+      text-align:center;
+      color:#94a3b8;
+      border-top:1px solid rgba(255,255,255,0.08);
+      margin-top:80px;
     }
+
+    @media(max-width:980px){
+      .hero-grid,
+      .about-grid{
+        grid-template-columns:1fr;
+      }
 
-    footer {
-      background: #030712;
-      color: #94a3b8;
-      text-align: center;
-      padding: 2rem;
-      border-top: 2px solid #ef4444;
+      .hero-text h1{
+        font-size:3.2rem;
+      }
+
+      .floating-card{
+        position:relative;
+        left:0;
+        bottom:0;
+        width:100%;
+        margin-top:20px;
+      }
     }
+
+    @media(max-width:640px){
+      .hero-text h1{
+        font-size:2.5rem;
+      }
+
+      .section-title h2,
+      .cta h2{
+        font-size:2rem;
+      }
+
+      nav{
+        gap:16px;
+        flex-wrap:wrap;
+      }
 
-    @media (max-width: 850px) {
-      .hero h1 { font-size: 2.5rem; }
-      .header-flex { flex-direction: column; }
-      .container { padding: 0 24px; }
-      .swiper-slide img { height: 220px; }
+      .feature-list{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
 <body>
 
 <header>
-  <div class="container header-flex">
-    <div class="logo-wrapper">
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/58x58/ef4444/ffffff?text=H'">
-      <div class="logo-text">HALU <span>Engineering</span></div>
+  <div class="container header-content">
+
+    <div class="logo">
+      <img src="52.jpg" alt="HALU Engineering Logo">
+      <h2>HALU <span>Engineering</span></h2>
     </div>
-    <div class="nav-links">
+
+    <nav>
       <a href="index.html" class="active">Home</a>
       <a href="about.html">About</a>
       <a href="services.html">Services</a>
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
-    </div>
+    </nav>
   </div>
 </header>
 
-<div class="hero">
-  <div class="container">
-    <h1>HVAC & <span>Engineering</span> <br>Future-Ready Climate Control</h1>
-    <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
-    <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
+<section class="hero">
+  <div class="container hero-grid">
 
-<!-- ENGINEERING ICONS -->
+    <div class="hero-text">
+      <h1>Premium HVAC & <span>Mechanical Engineering</span> Solutions</h1>
+
+      <p>
+        HALU Engineering delivers advanced HVAC systems, cold rooms, ventilation,
+        heat pumps, duct fabrication, and smart climate solutions for industries,
+        government institutions, commercial buildings, and high-performance infrastructure.
+      </p>
+
+      <div class="hero-buttons">
+        <a href="services.html" class="btn btn-primary">
+          Explore Services
+          <i class="fa-solid fa-arrow-right"></i>
+        </a>
+
+        <a href="contact.html" class="btn btn-secondary">
+          Contact Us
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-image">
+      <img src="1.jpg" alt="HALU Engineering HVAC">
+
+      <div class="floating-card">
+        <h3>180+</h3>
+        <p>
+          Successfully delivered HVAC, ventilation,
+          cold storage, and mechanical engineering projects.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <section>
   <div class="container">
-    <h2 class="section-title">Engineering Excellence</h2>
-    <div class="icons-grid">
-      <div class="icon-card"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div>
-      <div class="icon-card"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div>
-      <div class="icon-card"><i class="fas fa-robot"></i><h4>AI Optimization</h4></div>
-      <div class="icon-card"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div>
-      <div class="icon-card"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div>
-      <div class="icon-card"><i class="fas fa-shield-alt"></i><h4>24/7 Security</h4></div>
+
+    <div class="section-title">
+      <h2>Our Core Services</h2>
+      <p>
+        Premium engineering systems designed for performance,
+        reliability, energy efficiency, and long-term operational excellence.
+      </p>
+    </div>
+
+    <div class="services-grid">
+
+      <div class="service-card">
+        <i class="fa-solid fa-wind"></i>
+        <h3>Air Conditioning Systems</h3>
+        <p>
+          VRF systems, chillers, split units, central AC installation,
+          maintenance, and high-capacity cooling solutions.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-temperature-low"></i>
+        <h3>Cold Rooms & Freezers</h3>
+        <p>
+          Industrial cold rooms, food storage systems,
+          pharmaceutical cooling, and temperature-controlled environments.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-fire"></i>
+        <h3>Heat Pump Systems</h3>
+        <p>
+          Energy-efficient heating technologies,
+          hot water systems, and sustainable thermal engineering.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-fan"></i>
+        <h3>Ventilation Solutions</h3>
+        <p>
+          Kitchen ventilation, toilet exhaust systems,
+          industrial airflow optimization, and smoke extraction.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-compass-drafting"></i>
+        <h3>Duct Fabrication</h3>
+        <p>
+          Custom spiral and rectangular ducts,
+          engineered for durability and maximum airflow efficiency.
+        </p>
+      </div>
+
+      <div class="service-card">
+        <i class="fa-solid fa-microchip"></i>
+        <h3>Smart HVAC Controls</h3>
+        <p>
+          IoT-enabled climate control systems,
+          smart monitoring, and AI-assisted optimization.
+        </p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- MOVABLE IMAGE SLIDER -->
-<section class="slider-section">
+<section class="projects-section">
   <div class="container">
-    <h2 class="section-title">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2>
+
+    <div class="section-title">
+      <h2>Featured Projects</h2>
+      <p>
+        Engineering excellence delivered across commercial,
+        government, industrial, and institutional projects.
+      </p>
+    </div>
+
     <div class="swiper mySwiper">
-      <div class="swiper-wrapper" id="swiperWrapper"></div>
+      <div class="swiper-wrapper">
+
+        <div class="swiper-slide">
+          <img src="2.jpg" alt="Project">
+          <div class="slide-content">
+            <h3>Industrial Chiller Plant</h3>
+            <p>Advanced climate control infrastructure for industrial operations.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="28.jpg" alt="Project">
+          <div class="slide-content">
+            <h3>Cold Storage Facility</h3>
+            <p>Precision-controlled cold room systems for food preservation.</p>
+          </div>
+        </div>
+
+        <div class="swiper-slide">
+          <img src="33.jpg" alt="Project">
+          <div class="slide-content">
+            <h3>Commercial HVAC</h3>
+            <p>High-performance HVAC systems with energy optimization.</p>
+          </div>
+        </div>
+
+      </div>
+
       <div class="swiper-pagination"></div>
-      <div class="swiper-button-next"></div>
-      <div class="swiper-button-prev"></div>
     </div>
+
   </div>
 </section>
 
-<!-- Core Expertise Cards -->
 <section>
   <div class="container">
-    <h2 class="section-title">Core Expertise</h2>
-    <div class="grid">
-      <div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div>
-      <div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div>
-      <div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div>
-      <div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div>
-      <div class="card"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control, humidity & energy recovery ventilators.</p></div>
-      <div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div>
+
+    <div class="section-title">
+      <h2>Trusted By Leading Organizations</h2>
+      <p>
+        HALU Engineering proudly supports high-profile institutions,
+        construction companies, and enterprise clients.
+      </p>
+    </div>
+
+    <div class="partners">
+
+      <div class="partner-card">
+        <i class="fa-solid fa-plane"></i>
+        <h3>BOEING</h3>
+        <p>Aerospace-grade climate and engineering support systems.</p>
+      </div>
+
+      <div class="partner-card">
+        <i class="fa-solid fa-shield"></i>
+        <h3>INSA</h3>
+        <p>Secure cooling infrastructure and mission-critical HVAC systems.</p>
+      </div>
+
+      <div class="partner-card">
+        <i class="fa-solid fa-building-columns"></i>
+        <h3>Prime Minister Offices</h3>
+        <p>Premium governmental infrastructure climate solutions.</p>
+      </div>
+
+      <div class="partner-card">
+        <i class="fa-solid fa-truck-fast"></i>
+        <h3>DHL</h3>
+        <p>Advanced logistics and warehouse cooling environments.</p>
+      </div>
+
+      <div class="partner-card">
+        <i class="fa-solid fa-hard-hat"></i>
+        <h3>Minaye Construction</h3>
+        <p>Integrated HVAC systems for modern construction projects.</p>
+      </div>
+
+      <div class="partner-card">
+        <i class="fa-solid fa-apple-whole"></i>
+        <h3>Foods Product</h3>
+        <p>Cold storage and food processing climate solutions.</p>
+      </div>
+
     </div>
   </div>
 </section>
 
-<!-- UPDATED TRUST & PROJECTS SECTION - Updated Clients and Stats -->
-<section style="background: #0a0f1a;">
+<section>
+  <div class="container about-grid">
+
+    <div>
+      <img src="35.jpg" alt="HALU Engineering Team">
+    </div>
+
+    <div class="about-text">
+      <div class="section-title" style="text-align:left; margin-bottom:25px;">
+        <h2>Why Choose HALU Engineering?</h2>
+      </div>
+
+      <p>
+        We combine innovation, engineering precision,
+        and premium workmanship to deliver reliable HVAC and mechanical systems.
+      </p>
+
+      <p>
+        Our solutions are designed for maximum efficiency,
+        long-term performance, and future-ready infrastructure.
+      </p>
+
+      <div class="feature-list">
+
+        <div class="feature-item">
+          <i class="fa-solid fa-check"></i>
+          <span>24/7 Technical Support</span>
+        </div>
+
+        <div class="feature-item">
+          <i class="fa-solid fa-check"></i>
+          <span>Energy Efficient Systems</span>
+        </div>
+
+        <div class="feature-item">
+          <i class="fa-solid fa-check"></i>
+          <span>Certified Engineering Team</span>
+        </div>
+
+        <div class="feature-item">
+          <i class="fa-solid fa-check"></i>
+          <span>Premium Project Delivery</span>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
   <div class="container">
-    <h2 class="section-title">Why Industry Leaders Trust HALU</h2>
+
     <div class="stats">
-      <!-- Updated experience more than 5 years -> 8+ Years, Projects more than 15 -> 180+ delivered -->
-      <div><div class="stat-number">8+</div><div class="stat-label">Years Excellence</div></div>
-      <div><div class="stat-number">180+</div><div class="stat-label">Projects Delivered</div></div>
-      <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
-      <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
+
+      <div class="stat-box">
+        <h3>8+</h3>
+        <p>Years Experience</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>180+</h3>
+        <p>Projects Delivered</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>24/7</h3>
+        <p>Emergency Support</p>
+      </div>
+
+      <div class="stat-box">
+        <h3>100%</h3>
+        <p>Client Satisfaction</p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="container">
+
+    <div class="cta">
+      <h2>Build The Future With HALU Engineering</h2>
+
+      <p>
+        Ready to transform your building with world-class HVAC,
+        ventilation, and mechanical engineering systems?
+        Partner with HALU Engineering today.
+      </p>
+
+      <a href="contact.html" class="btn btn-primary">
+        Request Consultation
+        <i class="fa-solid fa-arrow-right"></i>
+      </a>
     </div>
 
-    <div class="trust-projects-section">
-      <!-- Major Clients Row (clickable to services) - updated: TAPU changed to "Foods Product" and Minaye Construction for Construction -->
-      <h3 style="color: #facc15; margin-bottom: 1rem; font-size: 1.5rem;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3>
-      <div class="client-grid" id="clientsGrid">
-        <!-- DHL, BOEING, INSA, CIVIL SERVICE, PRIME MINISTER OFFICES, FOODS PRODUCT, MINAYE CONSTRUCTION -->
-      </div>
-
-      <!-- Wide Projects - MESOB PROJECTS & more -->
-      <div class="row-two-columns">
-        <div class="col">
-          <div class="project-list" style="cursor: pointer;">
-            <h3><i class="fas fa-building"></i> MESOB Projects</h3>
-            <ul>
-              <li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li>
-              <li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li>
-              <li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li>
-              <li><i class="fas fa-map-marker-alt"></i> Afar Region</li>
-            </ul>
-          </div>
-        </div>
-        <div class="col">
-          <div class="project-list" style="cursor: pointer;">
-            <h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3>
-            <ul>
-              <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
-              <li><i class="fas fa-city"></i> Civil Service</li>
-              <li><i class="fas fa-landmark"></i> Prime Minister Offices</li>
-              <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
-              <li><i class="fas fa-apple-alt"></i> Foods Product (Premium Cold Storage)</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <div class="click-hint">
-        <i class="fas fa-mouse-pointer"></i> <strong>Click on any client logo or project card above to explore our HVAC services →</strong>
-      </div>
-    </div>
   </div>
 </section>
 
 <footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
+  <div class="container">
+    <p>
+      © 2026 HALU Engineering — Premium HVAC & Mechanical Engineering Solutions
+    </p>
+  </div>
 </footer>
 
+<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
 <script>
-  // Active nav link
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    if(link.getAttribute('href') === 'index.html' || (link.innerText.trim() === 'Home' && (window.location.pathname === '/' || window.location.pathname.includes('index')))) {
-      link.classList.add('active');
-    }
-  });
-
-  // Logo fallback
-  const logoImg = document.querySelector('.logo-img');
-  if(logoImg) logoImg.addEventListener('error', () => console.log("Ensure 52.jpg exists"));
-
-  // Swiper Initialization - Movable images
-  const swiper = new Swiper('.mySwiper', {
+  new Swiper('.mySwiper', {
     slidesPerView: 1,
-    spaceBetween: 24,
+    spaceBetween: 30,
     loop: true,
-    autoplay: { delay: 4000, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
-    speed: 800
-  });
-
-  // Image list (7.jpg removed as per original)
-  const imageList = [
-    { src: "1.jpg", name: "VRF System Install" },
-    { src: "2.jpg", name: "Chiller Plant" },
-    { src: "28.jpg", name: "Cold Storage" },
-    { src: "13.jpg", name: "Heat Pump Array" },
-    { src: "17.jpg", name: "Duct Fabrication" },
-    { src: "33.jpg", name: "Industrial AHU" },
-    { src: "34.jpg", name: "Precision Cooling" },
-    { src: "35.jpg", name: "Ventilation Duct" },
-    { src: "37.jpg", name: "Smart Controls" }
-  ];
-
-  const swiperWrapper = document.querySelector('#swiperWrapper');
-  if (swiperWrapper) {
-    imageList.forEach(img => {
-      const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      slide.innerHTML = `
-        <img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/ef4444/ffffff?text=${img.name.replace(/ /g, '+')}'">
-        <div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>
-      `;
-      swiperWrapper.appendChild(slide);
-    });
-    swiper.update();
-  }
-
-  // Clients data array with updated names: TAPU replaced with "Foods Product", Minaye Construction remains and is specified correctly.
-  const clients = [
-    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
-    { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
-    { name: "INSA", icon: "fas fa-shield-alt", projects: "Data Center Cooling" },
-    { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
-    { name: "Prime Minister Offices", icon: "fas fa-landmark", projects: "Premium HVAC" },
-    { name: "Foods Product", icon: "fas fa-apple-alt", projects: "Cold Storage & Processing" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" }
-  ];
-
-  const clientsGrid = document.getElementById('clientsGrid');
-  if (clientsGrid) {
-    clients.forEach(client => {
-      const card = document.createElement('div');
-      card.className = 'client-card';
-      card.setAttribute('data-href', 'services.html');
-      card.style.cursor = 'pointer';
-      card.innerHTML = `
-        <div class="client-icon"><i class="${client.icon}"></i></div>
-        <h4>${client.name}</h4>
-        <p>${client.projects}</p>
-        <div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>
-      `;
-      card.addEventListener('click', () => {
-        window.location.href = 'services.html';
-      });
-      clientsGrid.appendChild(card);
-    });
-  }
-
-  // Also make the MESOB project cards and the Key Government project list clickable to services
-  const projectLists = document.querySelectorAll('.project-list');
-  projectLists.forEach(list => {
-    list.style.cursor = 'pointer';
-    list.addEventListener('click', () => {
-      window.location.href = 'services.html';
-    });
-  });
-  
-  // Additional hover effect for stats to reinforce interactive feel but maintain readability
-  const statsBoxes = document.querySelectorAll('.stats > div');
-  statsBoxes.forEach(box => {
-    box.style.transition = 'all 0.2s';
-    box.addEventListener('mouseenter', (e) => {
-      box.style.transform = 'translateY(-5px)';
-      box.style.textShadow = '0 0 5px #ef4444';
-    });
-    box.addEventListener('mouseleave', () => {
-      box.style.transform = 'translateY(0)';
-      box.style.textShadow = 'none';
-    });
-  });
-
-  // Dynamic year update in footer if needed (optional fancy)
-  const footerYear = document.querySelector('footer p');
-  if(footerYear) {
-    const currentYear = new Date().getFullYear();
-    if(footerYear.innerHTML.includes('2026')) {
-      footerYear.innerHTML = footerYear.innerHTML.replace('2026', currentYear);
+    autoplay: {
+      delay: 3500,
+      disableOnInteraction: false,
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      clickable: true,
+    },
+    breakpoints: {
+      768: {
+        slidesPerView: 2,
+      },
+      1100: {
+        slidesPerView: 3,
+      }
     }
-  }
+  });
 </script>
+
 </body>
 </html>
+```
+
+## Extra Improvements You Should Add
+
+* Use high-quality HVAC project images.
+* Add animated counters.
+* Add WhatsApp floating button.
+* Add dark/light theme toggle.
+* Add project filtering.
+* Add real client logos.
+* Add scroll animations using AOS.
+* Add loading animation.
+* Optimize all images for faster speed.
+
+## Important
+
+Your uploaded booklet PDF could not be fully read automatically because it appears image-based/scanned. If you upload the booklet pages as images (PNG/JPG) or a clearer PDF, I can perfectly match:
+
+* booklet colors
+* exact company wording
+* services
+* typography
+* layout style
+* branding
+* company profile sections
+* contact details
+* project showcases
+
+and redesign the website exactly like your company booklet with a premium modern style.

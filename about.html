@@ -85,17 +85,17 @@
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
-      background: linear-gradient(135deg, #fff5f5, #ffffff);
-      padding: 6px 18px 6px 12px;
+      gap: 8px;
+      background: transparent;
+      padding: 4px 8px 4px 0;
       border-radius: 60px;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      border: none;
+      box-shadow: none;
       transition: all 0.3s ease;
     }
     .logo-wrapper:hover {
-      box-shadow: 0 4px 15px rgba(220,38,38,0.15);
-      border-color: #dc2626;
+      box-shadow: none;
+      border-color: transparent;
     }
 
     .logo-img {
@@ -110,14 +110,7 @@
     }
     .logo-img:hover { transform: scale(1.03); }
 
-    .logo-text {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111;
-    }
-    .logo-text span { color: #dc2626; }
-
+    /* Removed the logo-text styling completely to eliminate any text next to logo */
     .nav-links {
       display: flex;
       gap: 2rem;
@@ -453,7 +446,6 @@
       .header-flex { flex-direction: column; }
       .nav-links { gap: 1.5rem; }
       .logo-img { height: 52px; }
-      .logo-text { font-size: 1.5rem; }
       .stats-row { flex-direction: column; }
       .points-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
@@ -471,8 +463,9 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <img src="80.jpeg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=H'">
-      <div class="logo-text">HALU <span>Engineering</span></div>
+      <!-- Updated logo image to 80.JPG (case-sensitive as requested) -->
+      <img src="80.JPG" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=H'">
+      <!-- Removed the logo-text div completely to eliminate "HALU Engineering" text next to logo -->
     </div>
     <div class="nav-links">
       <a href="index.html">Home</a>
@@ -495,7 +488,8 @@
       <p>HALU Engineering delivers premium electro-mechanical solutions for factories, warehouses, office buildings, hotels, hospitals, and beyond. Quality, reliability, and innovation drive everything we do.</p>
     </div>
     <div class="hero-image" data-aos="fade-left">
-      <img src="80.jpeg" alt="HALU Engineering" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=HALU'">
+      <!-- Hero image also points to 80.JPG for consistency -->
+      <img src="80.JPG" alt="HALU Engineering" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=HALU'">
     </div>
   </div>
 </section>
@@ -608,7 +602,7 @@
     }
   });
 
-  // Logo error handling
+  // Logo error handling (updated to use 80.JPG)
   const logoImg = document.querySelector('.logo-img');
   if(logoImg) {
     logoImg.addEventListener('error', function() {
@@ -616,7 +610,7 @@
     });
   }
 
-  // Hero image error handling
+  // Hero image error handling (updated to use 80.JPG)
   const heroImage = document.querySelector('.hero-image img');
   if(heroImage) {
     heroImage.addEventListener('error', function() {

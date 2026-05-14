@@ -236,7 +236,7 @@
       border-left: 3px solid #dc2626;
     }
 
-    /* Testimonials Section - Attractive Grid with Images */
+    /* Testimonials Section - Attractive Grid with Clickable Images (Lightbox) */
     .testimonials-section {
       margin: 4rem 0;
     }
@@ -282,26 +282,28 @@
       position: relative;
       display: inline-block;
       margin-bottom: 1.2rem;
+      cursor: pointer;
     }
     .testimonial-img {
-      width: 120px;
-      height: 120px;
+      width: 140px;
+      height: 140px;
       border-radius: 50%;
       object-fit: cover;
       border: 4px solid #dc2626;
       box-shadow: 0 10px 25px rgba(220, 38, 38, 0.25);
-      transition: transform 0.3s;
+      transition: transform 0.3s, box-shadow 0.3s;
     }
-    .testimonial-card:hover .testimonial-img {
+    .testimonial-img-wrapper:hover .testimonial-img {
       transform: scale(1.05);
+      box-shadow: 0 15px 35px rgba(220, 38, 38, 0.35);
     }
-    .quote-icon {
+    .zoom-icon {
       position: absolute;
       bottom: 5px;
       right: 5px;
       background: #dc2626;
-      width: 35px;
-      height: 35px;
+      width: 36px;
+      height: 36px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -309,6 +311,10 @@
       color: white;
       font-size: 1rem;
       border: 2px solid white;
+      transition: transform 0.2s;
+    }
+    .testimonial-img-wrapper:hover .zoom-icon {
+      transform: scale(1.1);
     }
     .testimonial-text {
       font-style: italic;
@@ -339,6 +345,51 @@
       color: #dc2626;
       font-weight: 500;
       margin-top: 0.25rem;
+    }
+
+    /* Lightbox Modal Styles */
+    .lightbox-modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      z-index: 10000;
+      cursor: pointer;
+      justify-content: center;
+      align-items: center;
+      animation: fadeIn 0.3s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .lightbox-modal.active {
+      display: flex;
+    }
+    .lightbox-img {
+      max-width: 85%;
+      max-height: 85%;
+      object-fit: contain;
+      border-radius: 16px;
+      border: 3px solid #dc2626;
+      box-shadow: 0 0 40px rgba(220, 38, 38, 0.3);
+    }
+    .close-lightbox {
+      position: absolute;
+      top: 25px;
+      right: 35px;
+      color: white;
+      font-size: 45px;
+      font-weight: bold;
+      transition: 0.3s;
+      cursor: pointer;
+      z-index: 10001;
+    }
+    .close-lightbox:hover {
+      color: #dc2626;
     }
 
     /* CTA Banner */
@@ -404,7 +455,7 @@
       .container { padding: 0 24px; }
       .projects-grid { grid-template-columns: 1fr; }
       .testimonials-grid { grid-template-columns: 1fr; }
-      .testimonial-img { width: 90px; height: 90px; }
+      .testimonial-img { width: 100px; height: 100px; }
     }
   </style>
 </head>
@@ -509,32 +560,35 @@
     </div>
   </div>
 
-  <!-- Testimonials Section - Attractive with testimonial.jpg and testimonial2.jpg prominently displayed -->
+  <!-- Testimonials Section - Attractive with testimonial.jpg and testimonial2.jpg (clickable, movable) -->
   <div class="testimonials-section" data-aos="fade-up">
     <h2 class="section-title">What Our Clients Say</h2>
     <div class="testimonials-grid">
       <!-- Testimonial 1 with testimonial.jpg -->
       <div class="testimonial-card">
-        <div class="testimonial-img-wrapper">
-          <img src="testimonial.jpg" alt="Client Michael Abera" class="testimonial-img" onerror="this.src='https://placehold.co/120x120/dc2626/ffffff?text=Client'">
-          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <div class="testimonial-img-wrapper" onclick="openLightbox('testimonial.jpg')">
+          <img src="testimonial.jpg" alt="Client Michael Abera" class="testimonial-img" onerror="this.src='https://placehold.co/140x140/dc2626/ffffff?text=Client'">
+          <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
         </div>
         <p class="testimonial-text">HALU Engineering delivered exceptional HVAC solutions for our cold storage facility. Their team's professionalism and technical expertise are unmatched. The standalone AC installation has significantly improved our warehouse operations.</p>
         <p class="testimonial-name">Michael Abera</p>
         <p class="testimonial-title">Operations Director, DHL Ethiopia</p>
       </div>
-      <!-- Testimonial 2 with testimonial2.jpg -->
+      <!-- Testimonial 2 with testimonial2.jpg - only image visible, text removed as requested -->
       <div class="testimonial-card">
-        <div class="testimonial-img-wrapper">
-          <img src="testimonial2.jpg" alt="Client Li Wei" class="testimonial-img" onerror="this.src='https://placehold.co/120x120/dc2626/ffffff?text=Client'">
-          <div class="quote-icon"><i class="fas fa-quote-right"></i></div>
+        <div class="testimonial-img-wrapper" onclick="openLightbox('testimonial2.jpg')">
+          <img src="testimonial2.jpg" alt="Client testimonial" class="testimonial-img" onerror="this.src='https://placehold.co/140x140/dc2626/ffffff?text=Client'">
+          <div class="zoom-icon"><i class="fas fa-search-plus"></i></div>
         </div>
-        <p class="testimonial-text">The ducted ventilation system installed at our Shanghai showroom exceeded expectations. Silent, efficient, and beautifully integrated. HALU's attention to detail made all the difference for our premium furniture exhibition.</p>
-        <p class="testimonial-name">Li Wei</p>
-        <p class="testimonial-title">Facility Manager, Shanghai Furniture Expo</p>
+        <!-- Testimonial text removed as per request -->
       </div>
     </div>
-    <!-- Additional note: both images are now displayed prominently with attractive styling -->
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div id="lightboxModal" class="lightbox-modal" onclick="closeLightbox()">
+    <span class="close-lightbox">&times;</span>
+    <img class="lightbox-img" id="lightboxImg" src="" alt="Enlarged view">
   </div>
 
   <!-- CTA Banner -->
@@ -557,6 +611,28 @@
 </footer>
 
 <script>
+  // Lightbox functionality
+  function openLightbox(imageSrc) {
+    const modal = document.getElementById('lightboxModal');
+    const lightboxImg = document.getElementById('lightboxImg');
+    lightboxImg.src = imageSrc;
+    modal.classList.add('active');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeLightbox() {
+    const modal = document.getElementById('lightboxModal');
+    modal.classList.remove('active');
+    document.body.style.overflow = '';
+  }
+
+  // Close with Escape key
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      closeLightbox();
+    }
+  });
+
   // Remove loader
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');

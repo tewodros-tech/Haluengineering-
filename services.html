@@ -3,10 +3,13 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Premium HVAC Services – Smart Climate Solutions</title>
+  <title>HALU Engineering | Premium HVAC & Electro-Mechanical Services</title>
   <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- AOS Scroll Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
     * {
       margin: 0;
@@ -20,9 +23,40 @@
       color: #1a2c3e;
       line-height: 1.5;
       scroll-behavior: smooth;
+      overflow-x: hidden;
     }
 
-    /* Modern container */
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f0f0f0;
+      border-top: 4px solid #1f8a6e;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
     .container {
       max-width: 1300px;
       margin: 0 auto;
@@ -60,7 +94,6 @@
     .logo span {
       background: none;
       color: #1c6e5c;
-      -webkit-background-clip: unset;
     }
 
     .nav-links {
@@ -93,7 +126,7 @@
       border-radius: 4px;
     }
 
-    /* Hero section - breathtaking */
+    /* Hero section with robotic HVAC background animation */
     .services-hero {
       background: linear-gradient(125deg, #0a2f3a 0%, #155e55 100%);
       margin-top: 0;
@@ -104,15 +137,24 @@
       border-radius: 0 0 48px 48px;
     }
 
+    /* Animated robotic / HVAC system background pattern */
     .services-hero::before {
-      content: "❄️ 🔥 💨";
-      font-size: 180px;
-      opacity: 0.05;
+      content: "";
       position: absolute;
-      bottom: -20px;
-      right: -30px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" opacity="0.08"><path fill="none" stroke="white" stroke-width="1.5" d="M20,20 L30,20 L35,30 L30,40 L20,40 L15,30 Z M70,60 L80,60 L85,70 L80,80 L70,80 L65,70 Z M45,70 L55,70 L60,80 L55,90 L45,90 L40,80 Z M25,75 L35,75 L40,85 L35,95 L25,95 L20,85 Z M75,25 L85,25 L90,35 L85,45 L75,45 L70,35 Z"/><circle cx="50" cy="50" r="8" stroke="white" stroke-width="1.2" fill="none"/><path d="M50,42 L50,35 M50,58 L50,65 M42,50 L35,50 M58,50 L65,50" stroke="white" stroke-width="1"/><path d="M10,10 L90,10 M10,90 L90,90" stroke="white" stroke-width="0.8" stroke-dasharray="4 4"/></svg>');
+      background-repeat: repeat;
+      background-size: 80px;
+      animation: moveRobots 40s linear infinite;
       pointer-events: none;
-      white-space: pre;
+    }
+
+    @keyframes moveRobots {
+      0% { background-position: 0 0; }
+      100% { background-position: 200px 200px; }
     }
 
     .hero-badge {
@@ -125,6 +167,8 @@
       letter-spacing: 0.3px;
       backdrop-filter: blur(4px);
       margin-bottom: 1.5rem;
+      position: relative;
+      z-index: 2;
     }
 
     .services-hero h1 {
@@ -134,19 +178,22 @@
       line-height: 1.2;
       max-width: 700px;
       margin-bottom: 1rem;
+      position: relative;
+      z-index: 2;
     }
 
     .hero-sub {
       font-size: 1.2rem;
       max-width: 550px;
       opacity: 0.9;
+      position: relative;
+      z-index: 2;
     }
 
-    /* service cards premium grid */
-    .services-section {
-      margin: 5rem 0 4rem;
+    /* Core Process Section (Design, Supply, Installation, Maintenance) */
+    .core-process {
+      margin: 5rem 0 3rem;
     }
-
     .section-title {
       text-align: center;
       font-size: 2.5rem;
@@ -154,95 +201,114 @@
       margin-bottom: 1rem;
       color: #0e2f3a;
     }
-
     .section-desc {
       text-align: center;
-      max-width: 650px;
+      max-width: 700px;
       margin: 0 auto 3rem;
       color: #4a6272;
       font-size: 1.1rem;
     }
+    .process-flagship {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .flagship-card {
+      background: white;
+      border-radius: 2rem;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 15px 30px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid #eef2f8;
+      position: relative;
+      overflow: hidden;
+    }
+    .flagship-card:hover {
+      transform: translateY(-12px);
+      box-shadow: 0 25px 40px -12px rgba(31, 138, 110, 0.25);
+      border-color: #bcddd2;
+    }
+    .flagship-icon {
+      font-size: 3rem;
+      color: #1f8a6e;
+      margin-bottom: 1rem;
+      display: inline-block;
+    }
+    .flagship-card h3 {
+      font-size: 1.6rem;
+      font-weight: 700;
+      margin-bottom: 0.8rem;
+    }
+    .flagship-card p {
+      color: #4b5f6c;
+      font-size: 0.95rem;
+      line-height: 1.5;
+    }
+    .badge-step {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: #eef7f3;
+      padding: 0.2rem 0.8rem;
+      border-radius: 50px;
+      font-size: 0.7rem;
+      font-weight: 700;
+      color: #1f8a6e;
+    }
 
+    /* Services grid for detailed HVAC offerings */
+    .services-section {
+      margin: 3rem 0 4rem;
+    }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(330px, 1fr));
       gap: 2.2rem;
     }
-
     .service-card {
       background: white;
       border-radius: 2rem;
       padding: 2rem 1.8rem;
-      transition: all 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      transition: all 0.35s;
       box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
       border: 1px solid #eef2f8;
-      position: relative;
-      overflow: hidden;
     }
-
     .service-card:hover {
-      transform: translateY(-12px);
+      transform: translateY(-8px);
       box-shadow: 0 30px 45px -15px rgba(27, 86, 77, 0.2);
-      border-color: #cfe6e0;
     }
-
     .card-icon {
-      font-size: 3.2rem;
+      font-size: 2.8rem;
       color: #1f8a6e;
-      margin-bottom: 1.2rem;
-      display: inline-block;
+      margin-bottom: 1rem;
     }
-
     .service-card h3 {
-      font-size: 1.7rem;
+      font-size: 1.5rem;
       font-weight: 700;
-      margin-bottom: 0.8rem;
-      letter-spacing: -0.3px;
+      margin-bottom: 0.6rem;
     }
-
     .service-card p {
       color: #4b5f6c;
-      margin: 0.8rem 0 1.2rem;
-      line-height: 1.5;
+      margin: 0.5rem 0;
     }
-
     .feature-list {
       list-style: none;
       margin: 1rem 0 0.5rem;
     }
-
     .feature-list li {
       font-size: 0.85rem;
       padding: 0.3rem 0;
       display: flex;
       align-items: center;
       gap: 8px;
-      color: #2e4e5c;
     }
-
     .feature-list li i {
       color: #1f8a6e;
-      font-size: 0.8rem;
-      width: 20px;
     }
 
-    .card-tag {
-      margin-top: 1.2rem;
-      display: inline-block;
-      background: #eef7f3;
-      padding: 0.2rem 1rem;
-      border-radius: 30px;
-      font-size: 0.7rem;
-      font-weight: 600;
-      color: #1f6e5c;
-    }
-
-    /* special ribbon for best seller */
-    .service-card.popular {
-      border-bottom: 4px solid #f4b942;
-    }
-
-    /* CTA / stats banner */
+    /* Stats banner with animated counters */
     .stats-banner {
       background: linear-gradient(110deg, #eef7f3 0%, #e0f0ea 100%);
       border-radius: 48px;
@@ -254,23 +320,15 @@
       align-items: center;
       gap: 2rem;
     }
-
     .stat-block {
       text-align: center;
       flex: 1;
     }
-
     .stat-number {
       font-size: 2.6rem;
       font-weight: 800;
       color: #0f5b4b;
     }
-
-    .stat-label {
-      font-weight: 500;
-      color: #3f6a61;
-    }
-
     .cta-mini {
       background: #0b4a40;
       color: white;
@@ -283,44 +341,12 @@
       align-items: center;
       gap: 8px;
     }
-
     .cta-mini:hover {
       background: #0d3f37;
       transform: scale(1.02);
     }
 
-    /* process section */
-    .process {
-      margin: 4rem 0;
-    }
-
-    .process-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .process-step {
-      text-align: center;
-    }
-
-    .step-num {
-      width: 50px;
-      height: 50px;
-      background: #1a8a6e;
-      color: white;
-      border-radius: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.6rem;
-      font-weight: 800;
-      margin: 0 auto 1rem;
-      box-shadow: 0 8px 18px rgba(27, 110, 80, 0.2);
-    }
-
-    /* footer */
+    /* Footer */
     footer {
       background: #0b2c2a;
       color: #c2dfda;
@@ -328,7 +354,6 @@
       border-radius: 32px 32px 0 0;
       margin-top: 5rem;
     }
-
     .footer-flex {
       display: flex;
       justify-content: space-between;
@@ -336,40 +361,33 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-
     .social-links a {
       color: #c2dfda;
       margin-left: 1.3rem;
       font-size: 1.2rem;
       transition: 0.2s;
     }
-
     .social-links a:hover {
       color: white;
     }
 
+    @media (max-width: 1000px) {
+      .process-flagship { grid-template-columns: repeat(2, 1fr); }
+    }
     @media (max-width: 800px) {
-      .services-hero h1 {
-        font-size: 2.5rem;
-      }
-      .header-inner {
-        flex-direction: column;
-        gap: 0.8rem;
-      }
-      .nav-links {
-        gap: 1.4rem;
-      }
-      .stats-banner {
-        flex-direction: column;
-        text-align: center;
-      }
-      .container {
-        padding: 0 24px;
-      }
+      .services-hero h1 { font-size: 2.5rem; }
+      .header-inner { flex-direction: column; gap: 0.8rem; }
+      .nav-links { gap: 1.4rem; }
+      .process-flagship { grid-template-columns: 1fr; }
+      .stats-banner { flex-direction: column; text-align: center; }
+      .container { padding: 0 24px; }
     }
   </style>
 </head>
 <body>
+<div class="loader" id="loader">
+  <div class="loader-spinner"></div>
+</div>
 
 <header class="site-header">
   <div class="container header-inner">
@@ -384,174 +402,160 @@
   </div>
 </header>
 
-<!-- HERO with vibrant animation feel -->
+<!-- Hero with animated robotic HVAC background -->
 <section class="services-hero">
   <div class="container">
     <div class="hero-badge">
-      <i class="fas fa-microchip"></i> PRECISION CLIMATE CONTROL
+      <i class="fas fa-robot"></i> AI-DRIVEN HVAC SOLUTIONS
     </div>
-    <h1>Engineering <br>that breathes life</h1>
-    <p class="hero-sub">Tailored HVAC solutions for modern industries — from ultra-efficient cold rooms to smart ducting.</p>
+    <h1>Intelligent climate <br>engineering for tomorrow</h1>
+    <p class="hero-sub">From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems with robotic precision.</p>
   </div>
 </section>
 
 <div class="container">
-  <!-- Services core section - updated eye catchy with detailed cards -->
-  <div class="services-section">
-    <h2 class="section-title">What we deliver</h2>
-    <p class="section-desc">Full-cycle engineering, sustainable design, and 24/7 support — every service is backed by decades of field experience.</p>
-    
+  <!-- CORE 4: DESIGN, SUPPLY, INSTALLATION, MAINTENANCE (Direct reference to home page integrated) -->
+  <div class="core-process" data-aos="fade-up">
+    <h2 class="section-title">Your complete HVAC journey</h2>
+    <p class="section-desc">Seamless integration from concept to continuous operation — as referenced on our homepage, we cover every phase with unmatched expertise.</p>
+    <div class="process-flagship">
+      <div class="flagship-card" data-aos="flip-left" data-aos-delay="0">
+        <div class="badge-step">01</div>
+        <i class="fas fa-drafting-compass flagship-icon"></i>
+        <h3>Design</h3>
+        <p>CFD simulation, load calculation, 3D BIM modeling & energy optimization. We craft future-proof layouts for HVAC, cold rooms, and ventilation.</p>
+      </div>
+      <div class="flagship-card" data-aos="flip-left" data-aos-delay="100">
+        <div class="badge-step">02</div>
+        <i class="fas fa-truck-fast flagship-icon"></i>
+        <h3>Supply</h3>
+        <p>Global sourcing of premium chillers, heat pumps, ducting, and controls. Authentic brands with full warranty and logistics monitoring.</p>
+      </div>
+      <div class="flagship-card" data-aos="flip-left" data-aos-delay="200">
+        <div class="badge-step">03</div>
+        <i class="fas fa-hard-hat flagship-icon"></i>
+        <h3>Installation</h3>
+        <p>Certified technicians, precision mounting, and strict safety protocols. Zero-downtime integration for factories, hospitals & commercial towers.</p>
+      </div>
+      <div class="flagship-card" data-aos="flip-left" data-aos-delay="300">
+        <div class="badge-step">04</div>
+        <i class="fas fa-microchip flagship-icon"></i>
+        <h3>Maintenance</h3>
+        <p>24/7 IoT remote monitoring, predictive AI analytics, and scheduled preventive care — maximizing lifespan and efficiency.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Extended Service Offerings (Detailed) -->
+  <div class="services-section" data-aos="fade-up">
+    <h2 class="section-title" style="font-size: 2rem;">Precision HVAC & electro-mechanical services</h2>
+    <p class="section-desc">Specialized solutions for industrial, commercial, and residential sectors — engineered for reliability.</p>
     <div class="services-grid">
-      <!-- Air Conditioning -->
-      <div class="service-card">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="0">
         <i class="fas fa-wind card-icon"></i>
         <h3>Air Conditioning</h3>
-        <p>High-performance VRF, chillers, ductless splits, and centralized AC for offices, retail, and data centers.</p>
+        <p>VRF/VRV, centralized chillers, ducted splits, and precision cooling for data centers.</p>
         <ul class="feature-list">
           <li><i class="fas fa-check-circle"></i> Energy-efficient inverter tech</li>
           <li><i class="fas fa-chart-line"></i> Smart zoning & BMS integration</li>
         </ul>
-        <span class="card-tag"><i class="far fa-clock"></i> 24h emergency service</span>
       </div>
-
-      <!-- Cold Room Design -->
-      <div class="service-card popular">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="100">
         <i class="fas fa-thermometer-half card-icon"></i>
         <h3>Cold Room Design</h3>
-        <p>Modular cold storage, blast freezers, and pharmaceutical-grade refrigeration from -30°C to +10°C.</p>
+        <p>Modular cold storage, blast freezers, pharmaceutical-grade refrigeration (-30°C to +10°C).</p>
         <ul class="feature-list">
           <li><i class="fas fa-chart-simple"></i> Real-time temperature logging</li>
           <li><i class="fas fa-shield-alt"></i> Redundant refrigeration systems</li>
         </ul>
-        <span class="card-tag"><i class="fas fa-star"></i> Industry leader</span>
       </div>
-
-      <!-- Heat Pump Systems -->
-      <div class="service-card">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="200">
         <i class="fas fa-water card-icon"></i>
         <h3>Heat Pump Systems</h3>
-        <p>Air-to-water, geothermal, and high-temperature heat pumps for decarbonized heating & cooling.</p>
+        <p>Air-to-water, geothermal, and high-temperature heat pumps for decarbonized heating.</p>
         <ul class="feature-list">
           <li><i class="fas fa-leaf"></i> Up to 400% efficiency (COP 4+)</li>
           <li><i class="fas fa-solar-panel"></i> Hybrid solar-ready designs</li>
         </ul>
-        <span class="card-tag">Net-zero ready</span>
       </div>
-
-      <!-- Kitchen Ventilation -->
-      <div class="service-card">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="300">
         <i class="fas fa-utensils card-icon"></i>
         <h3>Kitchen Ventilation</h3>
-        <p>Heavy-duty exhaust, grease filters, make-up air, and code-compliant commercial kitchen systems.</p>
+        <p>Heavy-duty exhaust, grease filters, make-up air, fire suppression integration.</p>
         <ul class="feature-list">
-          <li><i class="fas fa-fire-extinguisher"></i> Fire suppression integration</li>
+          <li><i class="fas fa-fire-extinguisher"></i> NFPA 96 certified</li>
           <li><i class="fas fa-microphone"></i> Ultra-quiet EC fan technology</li>
         </ul>
-        <span class="card-tag">NFPA 96 certified</span>
       </div>
-
-      <!-- Toilet Exhaust Systems -->
-      <div class="service-card">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="400">
         <i class="fas fa-restroom card-icon"></i>
         <h3>Toilet Exhaust Systems</h3>
-        <p>High-static pressure exhaust, humidity control, and odor elimination for high-traffic facilities.</p>
+        <p>High-static exhaust, humidity control, energy recovery ventilators (ERV).</p>
         <ul class="feature-list">
-          <li><i class="fas fa-wind"></i> Energy recovery ventilators (ERV)</li>
-          <li><i class="fas fa-chart-line"></i> Demand-controlled ventilation</li>
+          <li><i class="fas fa-wind"></i> Demand-controlled ventilation</li>
+          <li><i class="fas fa-chart-line"></i> IAQ optimized</li>
         </ul>
-        <span class="card-tag">IAQ optimized</span>
       </div>
-
-      <!-- Duct Fabrication -->
-      <div class="service-card">
+      <div class="service-card" data-aos="zoom-in" data-aos-delay="500">
         <i class="fas fa-drafting-compass card-icon"></i>
         <h3>Duct Fabrication</h3>
-        <p>Custom spiral & rectangular ducts, PIR sandwich panels, and aerodynamic CFD-optimized layouts.</p>
+        <p>Custom spiral & rectangular ducts, PIR sandwich panels, CFD-optimized layouts.</p>
         <ul class="feature-list">
           <li><i class="fas fa-ruler-combined"></i> On-site laser measurement</li>
           <li><i class="fas fa-fire"></i> Fire-rated & insulated ducts</li>
         </ul>
-        <span class="card-tag">SMACNA standards</span>
       </div>
     </div>
   </div>
 
-  <!-- Value Stats + CTA banner (very attractive) -->
-  <div class="stats-banner">
+  <!-- Stats Banner with animated counters -->
+  <div class="stats-banner" data-aos="fade-up">
     <div class="stat-block">
-      <div class="stat-number"><i class="fas fa-building"></i> 1,250+</div>
-      <div class="stat-label">Commercial projects</div>
+      <div class="stat-number"><span class="counter" data-target="1250">0</span>+</div>
+      <div class="stat-label">Commercial projects delivered</div>
     </div>
     <div class="stat-block">
-      <div class="stat-number"><i class="fas fa-tools"></i> 24/7</div>
-      <div class="stat-label">Technical response</div>
+      <div class="stat-number"><span class="counter" data-target="247">0</span></div>
+      <div class="stat-label">Active maintenance contracts</div>
     </div>
     <div class="stat-block">
-      <div class="stat-number"><i class="fas fa-certificate"></i> 15+</div>
-      <div class="stat-label">Industry awards</div>
+      <div class="stat-number"><span class="counter" data-target="98">0</span>%</div>
+      <div class="stat-label">Client retention rate</div>
     </div>
     <div>
-      <a href="contact.html" class="cta-mini">Request consultation <i class="fas fa-arrow-right"></i></a>
+      <a href="contact.html" class="cta-mini">Start your project <i class="fas fa-arrow-right"></i></a>
     </div>
   </div>
 
-  <!-- Our process: why HALU is different -->
-  <div class="process">
-    <h2 class="section-title" style="font-size: 2rem;">How we engineer excellence</h2>
-    <div class="process-grid">
-      <div class="process-step">
-        <div class="step-num">1</div>
-        <h4>Site audit</h4>
-        <p style="color:#476b74;">Thermal load analysis & energy modeling</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">2</div>
-        <h4>Tailored design</h4>
-        <p style="color:#476b74;">CAD/Revit 3D, equipment selection</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">3</div>
-        <h4>Precision install</h4>
-        <p style="color:#476b74;">Certified technicians, minimal downtime</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">4</div>
-        <h4>Smart handover</h4>
-        <p style="color:#476b74;">IoT dashboard & maintenance plan</p>
-      </div>
-    </div>
-  </div>
-
-  <!-- additional carousel-free value proposition -->
-  <div style="background: #ffffff; border-radius: 38px; padding: 2rem; margin: 2rem 0 2rem; box-shadow: 0 12px 28px -12px rgba(0,0,0,0.05); border: 1px solid #eaf0f5;">
+  <!-- Extra section: Integration with home page core values -->
+  <div style="background: #ffffff; border-radius: 38px; padding: 2.5rem; margin: 2rem 0 3rem; box-shadow: 0 12px 28px -12px rgba(0,0,0,0.05); border: 1px solid #eaf0f5;" data-aos="fade-up">
     <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 2rem; justify-content: space-between;">
-      <div>
-        <i class="fas fa-globe-americas" style="font-size: 2.5rem; color: #1f8a6e;"></i>
-        <h3 style="margin: 0.5rem 0 0.2rem;">Sustainable by design</h3>
-        <p>Every system reduces energy waste by up to 42% — lowering carbon footprint without sacrificing comfort.</p>
+      <div style="flex: 1; min-width: 180px;">
+        <i class="fas fa-microchip" style="font-size: 2.5rem; color: #1f8a6e;"></i>
+        <h3 style="margin: 0.5rem 0 0.2rem;">Robotic precision</h3>
+        <p>Our automated diagnostics & AI calibration ensure every HVAC component operates at peak performance.</p>
       </div>
-      <div>
+      <div style="flex: 1; min-width: 180px;">
+        <i class="fas fa-charging-station" style="font-size: 2.5rem; color: #1f8a6e;"></i>
+        <h3 style="margin: 0.5rem 0 0.2rem;">Energy-first approach</h3>
+        <p>Up to 42% energy reduction across all installations — lowering carbon and operational costs.</p>
+      </div>
+      <div style="flex: 1; min-width: 180px;">
         <i class="fas fa-headset" style="font-size: 2.5rem; color: #1f8a6e;"></i>
-        <h3 style="margin: 0.5rem 0 0.2rem;">Priority support</h3>
-        <p>Dedicated account managers + remote diagnostics for mission-critical facilities.</p>
-      </div>
-      <div>
-        <i class="fas fa-hand-holding-usd" style="font-size: 2.5rem; color: #1f8a6e;"></i>
-        <h3 style="margin: 0.5rem 0 0.2rem;">Flexible financing</h3>
-        <p>Lease, OPEX models & energy-saving performance contracts available.</p>
+        <h3 style="margin: 0.5rem 0 0.2rem;">24/7 remote support</h3>
+        <p>IoT dashboards + priority response for mission-critical facilities worldwide.</p>
       </div>
     </div>
   </div>
 
-  <!-- final subtle cta text  -->
   <div style="text-align: center; margin: 2rem 0 2rem;">
-    <p style="font-size: 1rem; color:#2b6f63;"><i class="fas fa-circle-check"></i> Certified, insured, and fully compliant with international HVAC standards</p>
+    <p style="font-size: 1rem; color:#2b6f63;"><i class="fas fa-circle-check"></i> Certified, insured, and compliant with ISO & SMACNA standards — HALU Engineering, your end-to-end partner.</p>
   </div>
 </div>
 
 <footer>
   <div class="container footer-flex">
-    <p>© 2026 HALU Engineering — Industrial & commercial climate systems</p>
+    <p>© 2026 HALU Engineering — Intelligent electro-mechanical & HVAC systems</p>
     <div class="social-links">
       <a href="#"><i class="fab fa-linkedin-in"></i></a>
       <a href="#"><i class="fab fa-x-twitter"></i></a>
@@ -562,17 +566,53 @@
 </footer>
 
 <script>
-  // update active class on nav if needed, slight interactive
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    if(link.getAttribute('href') === 'services.html' || (link.innerText.trim() === 'Services' && window.location.pathname.includes('services'))) {
+  // Remove loader
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('hide');
+    setTimeout(() => loader.style.display = 'none', 500);
+    AOS.init({ duration: 800, once: true, offset: 60 });
+  });
+
+  // Active nav highlight
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    if (link.getAttribute('href') === 'services.html' || (link.innerText.trim() === 'Services' && window.location.pathname.includes('services'))) {
       link.classList.add('active');
-    } else if (link.href.includes('services.html')) {
+    } else if (link.href && link.href.includes('services.html')) {
       link.classList.add('active');
     }
   });
-  // add mini hovering effect animation console fun
-  console.log("🔥 HALU Engineering — world-class HVAC services loaded.");
-</script>
 
+  // Animated Counter Function
+  function animateCounter(element, target, duration = 1500) {
+    let start = 0;
+    const increment = target / (duration / 16);
+    const timer = setInterval(() => {
+      start += increment;
+      if (start >= target) {
+        element.innerText = Math.floor(target);
+        clearInterval(timer);
+      } else {
+        element.innerText = Math.floor(start);
+      }
+    }, 16);
+  }
+
+  // Intersection Observer for counters
+  const counters = document.querySelectorAll('.counter');
+  const observerOptions = { threshold: 0.5, rootMargin: "0px" };
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const counter = entry.target;
+        const target = parseInt(counter.getAttribute('data-target'), 10);
+        animateCounter(counter, target);
+        observer.unobserve(counter);
+      }
+    });
+  }, observerOptions);
+  counters.forEach(counter => observer.observe(counter));
+</script>
 </body>
 </html>

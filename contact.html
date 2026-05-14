@@ -10,8 +10,6 @@
   <!-- AOS Scroll Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-  <!-- Leaflet CSS for beautiful map -->
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
   <style>
     * {
       margin: 0;
@@ -148,13 +146,18 @@
       border-bottom: 1px solid #fee2e2;
     }
     .contact-hero::before {
-      content: "📞 📍 ✉️";
+      content: "📞 📍 ✉️ 💬";
       font-size: 140px;
       opacity: 0.03;
       position: absolute;
       bottom: 20px;
       right: 20px;
       pointer-events: none;
+      animation: floatIcon 15s infinite alternate;
+    }
+    @keyframes floatIcon {
+      0% { transform: translateY(0px) rotate(0deg); }
+      100% { transform: translateY(-30px) rotate(5deg); }
     }
     .hero-badge {
       display: inline-block;
@@ -313,12 +316,6 @@
       overflow: hidden;
       box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
     }
-    #map {
-      height: 100%;
-      min-height: 400px;
-      width: 100%;
-      border-radius: 32px;
-    }
     .map-container iframe {
       width: 100%;
       height: 100%;
@@ -352,6 +349,76 @@
       color: #dc2626;
     }
 
+    /* Social Media Section */
+    .social-section {
+      margin: 2rem 0 3rem;
+      text-align: center;
+    }
+    .social-section h3 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      color: #111;
+    }
+    .social-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 0.8rem 2rem;
+      border-radius: 60px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: all 0.3s;
+      background: white;
+      border: 1px solid #fee2e2;
+      color: #1f2937;
+    }
+    .social-btn i {
+      font-size: 1.3rem;
+    }
+    .social-btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 20px -8px rgba(0,0,0,0.2);
+    }
+    .btn-whatsapp:hover { background: #25D366; color: white; border-color: #25D366; }
+    .btn-telegram:hover { background: #0088cc; color: white; border-color: #0088cc; }
+    .btn-facebook:hover { background: #1877f2; color: white; border-color: #1877f2; }
+
+    /* Floating Social Icons */
+    .floating-social {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .floating-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .floating-icon:hover {
+      transform: scale(1.1);
+    }
+    .floating-wa { background: #25D366; color: white; }
+    .floating-telegram { background: #0088cc; color: white; }
+    .floating-fb { background: #1877f2; color: white; }
+    .floating-icon i { font-size: 1.8rem; }
+
     /* Footer */
     footer {
       background: #f8fafc;
@@ -368,34 +435,13 @@
       flex-wrap: wrap;
       gap: 1rem;
     }
-    .social-icons a {
+    .footer-social a {
       color: #6b7280;
       margin-left: 1rem;
       font-size: 1.2rem;
       transition: color 0.2s;
     }
-    .social-icons a:hover { color: #dc2626; }
-
-    /* WhatsApp Float */
-    .whatsapp-float {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: transform 0.3s;
-      text-decoration: none;
-    }
-    .whatsapp-float:hover { transform: scale(1.1); background: #20b859; }
+    .footer-social a:hover { color: #dc2626; }
 
     /* Mobile Responsive */
     @media (max-width: 860px) {
@@ -409,7 +455,11 @@
       .form-container { padding: 1.5rem; }
       .form-container h3 { font-size: 1.5rem; }
       .map-container iframe { min-height: 300px; }
-      .whatsapp-float { width: 50px; height: 50px; font-size: 1.6rem; bottom: 20px; right: 20px; }
+      .social-buttons { flex-direction: column; align-items: center; }
+      .social-btn { width: 200px; justify-content: center; }
+      .floating-social { bottom: 20px; right: 20px; gap: 8px; }
+      .floating-icon { width: 45px; height: 45px; }
+      .floating-icon i { font-size: 1.4rem; }
     }
 
     @media (max-width: 480px) {
@@ -508,6 +558,22 @@
     <p><i class="fas fa-clock"></i> <strong>Working Hours:</strong> Monday - Saturday: 8:00 AM - 6:00 PM</p>
   </div>
 
+  <!-- Social Media Section -->
+  <div class="social-section" data-aos="fade-up">
+    <h3><i class="fas fa-share-alt"></i> Connect With Us On Social Media</h3>
+    <div class="social-buttons">
+      <a href="https://wa.me/251918036609?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" target="_blank" class="social-btn btn-whatsapp">
+        <i class="fab fa-whatsapp"></i> WhatsApp
+      </a>
+      <a href="https://t.me/haluengineering" target="_blank" class="social-btn btn-telegram">
+        <i class="fab fa-telegram-plane"></i> Telegram
+      </a>
+      <a href="https://www.facebook.com/haluengineering" target="_blank" class="social-btn btn-facebook">
+        <i class="fab fa-facebook-f"></i> Facebook
+      </a>
+    </div>
+  </div>
+
   <!-- CTA Banner -->
   <div style="background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; margin: 2rem 0 3rem; text-align: center; color: white;" data-aos="zoom-in">
     <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem;">Looking for a quote?</h3>
@@ -516,19 +582,31 @@
   </div>
 </div>
 
+<!-- Floating Social Icons -->
+<div class="floating-social">
+  <a href="https://wa.me/251918036609?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" target="_blank" class="floating-icon floating-wa">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram">
+    <i class="fab fa-telegram-plane"></i>
+  </a>
+  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb">
+    <i class="fab fa-facebook-f"></i>
+  </a>
+</div>
+
 <footer>
   <div class="container footer-content">
     <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
-    <div class="social-icons">
+    <div class="footer-social">
+      <a href="https://wa.me/251918036609" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+      <a href="https://t.me/haluengineering" target="_blank" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+      <a href="https://www.facebook.com/haluengineering" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
       <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
     </div>
   </div>
 </footer>
-
-<a href="https://wa.me/251918036609?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
 <script>
   // Remove loader

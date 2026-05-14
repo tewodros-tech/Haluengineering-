@@ -89,16 +89,24 @@
       display: flex;
       align-items: center;
       gap: 14px;
+      background: linear-gradient(135deg, #fff5f5, #ffffff);
+      padding: 6px 18px 6px 12px;
+      border-radius: 60px;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
     }
 
     .logo-img {
-      height: 68px;
+      height: 72px;
       width: auto;
       object-fit: contain;
       transition: transform 0.3s;
-      border-radius: 12px;
+      border-radius: 16px;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 4px 12px rgba(220,38,38,0.15);
     }
-    .logo-img:hover { transform: scale(1.03); }
+    .logo-img:hover { transform: scale(1.05); }
 
     .logo-text {
       font-size: 2rem;
@@ -382,6 +390,7 @@
     body.dark .hero { background: #111827; }
     body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
     body.dark .logo-text { color: white; }
+    body.dark .logo-wrapper { background: #1f2937; border-color: #374151; }
 
     footer {
       background: #f8fafc;
@@ -397,7 +406,9 @@
       .hero h1 { font-size: 2.5rem; }
       .header-flex { flex-direction: column; }
       .container { padding: 0 24px; }
-      .logo-img { height: 50px; }
+      .logo-img { height: 55px; }
+      .logo-text { font-size: 1.6rem; }
+      .logo-wrapper { padding: 4px 12px 4px 8px; }
     }
   </style>
 </head>
@@ -409,7 +420,7 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper">
-      <img src="53.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/68x68/dc2626/ffffff?text=HALU'">
+      <img src="53.jpg" alt="HALU Engineering - Premium HVAC Solutions" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/72x72/dc2626/ffffff?text=HALU'">
       <div class="logo-text">HALU <span>Engineering</span></div>
     </div>
     <div style="display: flex; align-items: center; gap: 16px;">
@@ -629,13 +640,22 @@
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
 
-  // Logo error handling - ensure visibility
-  const logoImgElement = document.querySelector('.logo-img');
-  if(logoImgElement) {
-    logoImgElement.addEventListener('error', function() {
-      this.src = 'https://placehold.co/68x68/dc2626/ffffff?text=HALU';
-      this.style.objectFit = 'cover';
+  // Enhanced logo visibility: force check and retry if 53.jpg fails
+  const logoElement = document.querySelector('.logo-img');
+  if(logoElement) {
+    const originalSrc = logoElement.src;
+    logoElement.addEventListener('error', function() {
+      if(this.src !== originalSrc) return;
+      this.src = 'https://placehold.co/72x72/dc2626/ffffff?text=HALU';
+      this.style.border = '2px solid #dc2626';
+      this.style.backgroundColor = '#ffffff';
     });
+    // Add a small delay to ensure image loads properly
+    setTimeout(() => {
+      if(logoElement.complete && logoElement.naturalHeight === 0) {
+        logoElement.src = 'https://placehold.co/72x72/dc2626/ffffff?text=HALU';
+      }
+    }, 500);
   }
 </script>
 </body>

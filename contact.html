@@ -144,6 +144,7 @@
       padding: 4rem 0 5rem;
       position: relative;
       border-bottom: 1px solid #fee2e2;
+      overflow: hidden;
     }
     .contact-hero::before {
       content: "📞 📍 ✉️ 💬";
@@ -443,31 +444,93 @@
     }
     .footer-social a:hover { color: #dc2626; }
 
-    /* Mobile Responsive */
-    @media (max-width: 860px) {
-      .contact-hero h1 { font-size: 2.4rem; }
-      .header-flex { flex-direction: column; }
-      .nav-links { gap: 1.2rem; justify-content: center; }
-      .logo-img { height: 52px; }
+    /* ======================================== */
+    /* FULLY OPTIMIZED MOBILE RESPONSIVE STYLES */
+    /* ======================================== */
+    @media (max-width: 900px) {
       .container { padding: 0 24px; }
-      .contact-wrapper { grid-template-columns: 1fr; gap: 1.5rem; }
-      .contact-cards { gap: 1.2rem; }
-      .form-container { padding: 1.5rem; }
-      .form-container h3 { font-size: 1.5rem; }
-      .map-container iframe { min-height: 300px; }
-      .social-buttons { flex-direction: column; align-items: center; }
-      .social-btn { width: 200px; justify-content: center; }
-      .floating-social { bottom: 20px; right: 20px; gap: 8px; }
-      .floating-icon { width: 45px; height: 45px; }
-      .floating-icon i { font-size: 1.4rem; }
+      .contact-hero h1 { font-size: 2.5rem; }
+      .hero-sub { font-size: 1rem; }
     }
 
-    @media (max-width: 480px) {
+    @media (max-width: 768px) {
+      /* Header Mobile */
+      .header-flex { 
+        flex-direction: column; 
+        text-align: center;
+        gap: 0.8rem;
+      }
+      .logo-img { height: 55px; }
+      .nav-links { 
+        gap: 1.2rem; 
+        justify-content: center;
+      }
+      .nav-links a { font-size: 0.9rem; }
+
+      /* Hero Mobile */
+      .contact-hero { padding: 2.5rem 0 3rem; }
       .contact-hero h1 { font-size: 1.8rem; }
-      .hero-badge { font-size: 0.7rem; }
+      .hero-badge { font-size: 0.7rem; padding: 0.3rem 1rem; }
+      .hero-sub { font-size: 0.9rem; }
+
+      /* Section Titles */
+      .contact-cards { gap: 1.2rem; margin: 2rem 0; }
       .contact-card { padding: 1.5rem; }
       .contact-icon { width: 55px; height: 55px; }
       .contact-icon i { font-size: 1.5rem; }
+      .contact-card h3 { font-size: 1.2rem; }
+
+      /* Contact Form & Map */
+      .contact-wrapper { 
+        grid-template-columns: 1fr; 
+        gap: 1.5rem;
+        margin: 2rem 0 3rem;
+      }
+      .form-container { padding: 1.5rem; }
+      .form-container h3 { font-size: 1.5rem; }
+      .input-group input, .input-group textarea { padding: 0.8rem 1rem; font-size: 0.9rem; }
+      .submit-btn { padding: 0.8rem 1.5rem; font-size: 0.9rem; }
+      .map-container iframe { min-height: 280px; }
+
+      /* Location Details Mobile */
+      .location-details { padding: 1.2rem; margin: 1.5rem 0; }
+      .location-details p { font-size: 0.85rem; gap: 8px; }
+      .location-details i { width: 20px; font-size: 0.85rem; }
+
+      /* Social Section Mobile */
+      .social-section { margin: 1.5rem 0 2rem; }
+      .social-section h3 { font-size: 1.2rem; }
+      .social-buttons { flex-direction: column; align-items: center; gap: 1rem; }
+      .social-btn { width: 200px; justify-content: center; padding: 0.6rem 1.5rem; }
+
+      /* CTA Banner Mobile */
+      .cta-banner-mobile { padding: 2rem 1.5rem !important; margin: 1.5rem 0 !important; }
+      .cta-banner-mobile h3 { font-size: 1.3rem !important; }
+      .cta-banner-mobile p { font-size: 0.85rem !important; }
+      .cta-banner-mobile a { padding: 0.7rem 1.5rem !important; font-size: 0.85rem !important; }
+
+      /* Floating Social Mobile */
+      .floating-social { bottom: 20px; right: 20px; gap: 8px; }
+      .floating-icon { width: 45px; height: 45px; }
+      .floating-icon i { font-size: 1.4rem; }
+
+      /* Footer Mobile */
+      .footer-content { flex-direction: column; text-align: center; gap: 0.8rem; }
+      .footer-social a { margin: 0 0.5rem; }
+      footer p { font-size: 0.7rem; }
+    }
+
+    @media (max-width: 480px) {
+      .container { padding: 0 16px; }
+      .contact-hero h1 { font-size: 1.5rem; }
+      .hero-badge { font-size: 0.65rem; padding: 0.3rem 0.8rem; }
+      .contact-cards { gap: 1rem; }
+      .contact-card { padding: 1.2rem; }
+      .form-container h3 { font-size: 1.3rem; }
+      .location-details p { font-size: 0.75rem; }
+      .social-btn { width: 180px; padding: 0.5rem 1rem; font-size: 0.85rem; }
+      .cta-banner-mobile h3 { font-size: 1.1rem !important; }
+      .cta-banner-mobile a { padding: 0.6rem 1.2rem !important; font-size: 0.8rem !important; }
     }
   </style>
 </head>
@@ -575,7 +638,7 @@
   </div>
 
   <!-- CTA Banner -->
-  <div style="background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; margin: 2rem 0 3rem; text-align: center; color: white;" data-aos="zoom-in">
+  <div class="cta-banner-mobile" style="background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; margin: 2rem 0 3rem; text-align: center; color: white;" data-aos="zoom-in">
     <h3 style="font-size: 1.8rem; font-weight: 800; margin-bottom: 1rem;">Looking for a quote?</h3>
     <p style="max-width: 550px; margin: 0 auto 1.5rem; opacity: 0.9;">Tell us about your HVAC or electro-mechanical project, and we'll provide a tailored solution.</p>
     <a href="#" onclick="document.querySelector('.form-container').scrollIntoView({behavior:'smooth'}); return false;" style="background: white; color: #dc2626; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s;">Request a Quote <i class="fas fa-arrow-right"></i></a>
@@ -614,7 +677,7 @@
     const loader = document.getElementById('loader');
     loader.classList.add('hide');
     setTimeout(() => loader.style.display = 'none', 500);
-    AOS.init({ duration: 800, once: true, offset: 60 });
+    AOS.init({ duration: 800, once: true, offset: 60, easing: 'ease-out-quad' });
   });
 
   // Active nav highlight

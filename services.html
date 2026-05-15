@@ -11,17 +11,6 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e1e2a; scroll-behavior: smooth; overflow-x: hidden; }
-    .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.8s ease; }
-    .splash-screen.hide { opacity: 0; visibility: hidden; }
-    .splash-logo { text-align: center; animation: splashPulse 1.5s ease-in-out; }
-    @keyframes splashPulse { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-    .splash-logo img { width: 180px; border-radius: 30px; box-shadow: 0 0 50px rgba(220,38,38,0.5); animation: logoFloat 2s infinite alternate; }
-    @keyframes logoFloat { 0% { transform: translateY(0px); } 100% { transform: translateY(-15px); } }
-    .splash-logo h2 { margin-top: 2rem; font-size: 2rem; background: linear-gradient(135deg, #ffffff, #fca5a5); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .splash-logo p { color: rgba(255,255,255,0.7); margin-top: 0.5rem; letter-spacing: 3px; }
-    .splash-progress { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); width: 200px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
-    .splash-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #dc2626, #f97316); animation: progressLoad 2.5s ease forwards; }
-    @keyframes progressLoad { 100% { width: 100%; } }
     .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
     .loader.hide { opacity: 0; visibility: hidden; }
     .loader-spinner { width: 60px; height: 60px; border: 5px solid #f0f0f0; border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
@@ -40,7 +29,7 @@
     .services-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; color: #111; }
     .services-hero h1 span { color: #dc2626; }
     .process-flagship { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; margin: 3rem 0; }
-    .flagship-card { background: white; border-radius: 28px; padding: 2rem 1.5rem; text-align: center; border: 1px solid #fee2e2; transition: all 0.3s; }
+    .flagship-card { background: white; border-radius: 28px; padding: 2rem 1.5rem; text-align: center; border: 1px solid #fee2e2; transition: all 0.3s; position: relative; }
     .flagship-card:hover { transform: translateY(-10px); border-color: #dc2626; }
     .flagship-icon { font-size: 3rem; color: #dc2626; margin-bottom: 1rem; }
     .badge-step { position: absolute; top: 1rem; right: 1rem; background: #fee2e2; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; color: #dc2626; }
@@ -59,7 +48,9 @@
     .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; transform: translateY(100%); transition: transform 0.3s; }
     .gallery-item:hover .gallery-overlay { transform: translateY(0); }
     .gallery-overlay span { color: white; font-weight: 600; }
-    .cta-banner-responsive { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
+    .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
+    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
+    .btn-cta:hover { transform: translateY(-3px); gap: 14px; }
     footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; }
     .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
     .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
@@ -69,22 +60,20 @@
     .floating-fb { background: #1877f2; color: white; }
     @media (max-width: 1000px) { .process-flagship { grid-template-columns: repeat(2,1fr); } }
     @media (max-width: 850px) { .services-hero h1 { font-size: 2.5rem; } .header-flex { flex-direction: column; } .nav-links { gap: 1.2rem; justify-content: center; } .process-flagship { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
-    @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } .splash-logo img { width: 120px; } }
+    @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } }
   </style>
 </head>
 <body>
-<div class="splash-screen" id="splashScreen"><div class="splash-logo"><img src="80.JPG"><h2>HALU Engineering</h2><p>PRECISION • INNOVATION • EXCELLENCE</p><div class="splash-progress"><div class="splash-progress-bar"></div></div></div></div>
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
 <header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div></div></header>
 <section class="services-hero"><div class="container"><div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div><h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1><p class="hero-sub">From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems with precision and reliability.</p></div></section>
 <div class="container"><div class="process-flagship"><div class="flagship-card" data-aos="flip-left"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div><div class="flagship-card" data-aos="flip-left" data-aos-delay="100"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div><div class="flagship-card" data-aos="flip-left" data-aos-delay="200"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div><div class="flagship-card" data-aos="flip-left" data-aos-delay="300"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div></div>
 <div class="services-grid"><div class="service-card"><i class="fas fa-wind card-icon"></i><h3>Air Conditioning</h3><p>VRF/VRV, chillers, ducted splits, precision cooling</p><ul class="feature-list"><li><i class="fas fa-check-circle"></i> Energy-efficient inverter tech</li><li><i class="fas fa-chart-line"></i> Smart zoning & BMS integration</li></ul></div><div class="service-card"><i class="fas fa-thermometer-half card-icon"></i><h3>Cold Room Design</h3><p>Modular cold storage, blast freezers (-30°C to +10°C)</p><ul class="feature-list"><li><i class="fas fa-chart-simple"></i> Real-time temperature logging</li><li><i class="fas fa-shield-alt"></i> Redundant refrigeration systems</li></ul></div><div class="service-card"><i class="fas fa-water card-icon"></i><h3>Heat Pump Systems</h3><p>Air-to-water, geothermal, high-temperature heat pumps</p><ul class="feature-list"><li><i class="fas fa-leaf"></i> Up to 400% efficiency (COP 4+)</li><li><i class="fas fa-solar-panel"></i> Hybrid solar-ready designs</li></ul></div><div class="service-card"><i class="fas fa-utensils card-icon"></i><h3>Kitchen Ventilation</h3><p>Heavy-duty exhaust, grease filters, fire suppression</p><ul class="feature-list"><li><i class="fas fa-fire-extinguisher"></i> NFPA 96 certified</li><li><i class="fas fa-microphone"></i> Ultra-quiet EC fan technology</li></ul></div><div class="service-card"><i class="fas fa-restroom card-icon"></i><h3>Toilet Exhaust Systems</h3><p>High-static exhaust, humidity control, ERV</p><ul class="feature-list"><li><i class="fas fa-wind"></i> Demand-controlled ventilation</li><li><i class="fas fa-chart-line"></i> IAQ optimized</li></ul></div><div class="service-card"><i class="fas fa-drafting-compass card-icon"></i><h3>Duct Fabrication</h3><p>Custom spiral & rectangular ducts, CFD-optimized</p><ul class="feature-list"><li><i class="fas fa-ruler-combined"></i> On-site laser measurement</li><li><i class="fas fa-fire"></i> Fire-rated & insulated ducts</li></ul></div></div>
 <div class="gallery-grid"><div class="gallery-item"><img src="12.jpg" alt="Chiller Plant" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Chiller'"><div class="gallery-overlay"><span>Central Chiller Plant</span></div></div><div class="gallery-item"><img src="13.jpg" alt="Maintenance" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Support'"><div class="gallery-overlay"><span>24/7 Technical Support</span></div></div><div class="gallery-item"><img src="37.jpg" alt="Smart Controls" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Smart'"><div class="gallery-overlay"><span>Smart Building Controls</span></div></div></div>
-<div class="cta-banner-responsive"><h3>Ready to work with HALU Engineering?</h3><p>From design to maintenance, we deliver excellence at every step.</p><a href="contact.html" class="btn-cta" style="background:white;color:#dc2626;padding:0.9rem 2rem;border-radius:60px;font-weight:700;text-decoration:none;display:inline-flex;align-items:center;gap:10px;">Get in touch <i class="fas fa-arrow-right"></i></a></div></div>
+<div class="cta-banner"><h3>Ready to work with HALU Engineering?</h3><p>From design to maintenance, we deliver excellence at every step.</p><a href="contact.html" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a></div></div>
 <footer><p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
-  setTimeout(()=>{document.getElementById('splashScreen')?.classList.add('hide');setTimeout(()=>document.getElementById('splashScreen')?.remove(),800);},2500);
   window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
   const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.alt='HALU Engineering';logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:70px;height:70px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
 </script>

@@ -47,10 +47,10 @@
       visibility: hidden;
     }
     .loader-spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid #f0f0f0;
-      border-top: 4px solid #dc2626;
+      width: 60px;
+      height: 60px;
+      border: 5px solid #f0f0f0;
+      border-top: 5px solid #dc2626;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
@@ -67,15 +67,15 @@
       z-index: 2;
     }
 
-    /* Header White/Red */
+    /* Header */
     header {
       background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(8px);
+      backdrop-filter: blur(12px);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 2px solid #dc2626;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
     }
 
     .header-flex {
@@ -92,36 +92,16 @@
       align-items: center;
       background: transparent;
       padding: 0;
-      border: none;
-      box-shadow: none;
     }
 
     .logo-img {
       height: 70px;
       width: auto;
-      max-width: 220px;
       object-fit: contain;
       transition: transform 0.3s;
       border-radius: 12px;
-      background: transparent;
-      display: block;
     }
-    .logo-img:hover { transform: scale(1.03); }
-
-    .logo-fallback {
-      width: 70px;
-      height: 70px;
-      background: linear-gradient(145deg, #dc2626, #b91c1c);
-      border-radius: 18px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: white;
-      font-size: 2.2rem;
-      font-weight: 800;
-      box-shadow: 0 6px 18px rgba(220,38,38,0.35);
-      transition: transform 0.3s;
-    }
+    .logo-img:hover { transform: scale(1.05); }
 
     .nav-links {
       display: flex;
@@ -146,21 +126,22 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
+      height: 3px;
       background: #dc2626;
       border-radius: 4px;
+      box-shadow: 0 0 8px #dc2626;
     }
 
-    /* Hero Section with Animated Background */
+    /* Hero Section - Ultra Attractive */
     .hero {
-      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-      padding: 5rem 0 7rem;
+      background: radial-gradient(ellipse at 20% 30%, #fff5f5 0%, #ffffff 90%);
+      padding: 6rem 0 8rem;
       position: relative;
       overflow: hidden;
     }
 
-    /* Animated Background Elements */
-    .animated-bg {
+    /* Animated Particles Background */
+    .particles {
       position: absolute;
       top: 0;
       left: 0;
@@ -170,72 +151,80 @@
       z-index: 1;
     }
 
-    .floating-icon-bg {
+    .particle {
       position: absolute;
-      font-size: 3rem;
-      opacity: 0.12;
-      animation: floatAround 20s infinite ease-in-out;
+      background: linear-gradient(135deg, #dc2626, #f97316);
+      border-radius: 50%;
+      opacity: 0.15;
+      animation: floatParticle 12s infinite ease-in-out;
+    }
+
+    @keyframes floatParticle {
+      0% { transform: translateY(0) translateX(0) rotate(0deg); opacity: 0.1; }
+      50% { transform: translateY(-50px) translateX(30px) rotate(180deg); opacity: 0.2; }
+      100% { transform: translateY(0) translateX(0) rotate(360deg); opacity: 0.1; }
+    }
+
+    /* Floating HVAC Icons */
+    .floating-icon-super {
+      position: absolute;
+      font-size: 4rem;
+      opacity: 0.08;
+      animation: floatIcon 15s infinite alternate;
       pointer-events: none;
+      z-index: 1;
     }
 
-    @keyframes floatAround {
-      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
-      25% { transform: translate(30px, -20px) rotate(5deg); opacity: 0.15; }
-      50% { transform: translate(-20px, 30px) rotate(-5deg); opacity: 0.12; }
-      75% { transform: translate(20px, 15px) rotate(3deg); opacity: 0.1; }
-      100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+    @keyframes floatIcon {
+      0% { transform: translate(0, 0) rotate(0deg) scale(1); opacity: 0.05; }
+      50% { transform: translate(40px, -30px) rotate(10deg) scale(1.1); opacity: 0.12; }
+      100% { transform: translate(-20px, 20px) rotate(-5deg) scale(0.95); opacity: 0.07; }
     }
 
-    /* Different speeds for different elements */
-    .floating-icon-bg:nth-child(1) { top: 10%; left: 5%; animation-duration: 18s; font-size: 4rem; }
-    .floating-icon-bg:nth-child(2) { top: 60%; left: 85%; animation-duration: 22s; font-size: 3.5rem; }
-    .floating-icon-bg:nth-child(3) { top: 75%; left: 15%; animation-duration: 25s; font-size: 3rem; }
-    .floating-icon-bg:nth-child(4) { top: 25%; left: 75%; animation-duration: 20s; font-size: 4.5rem; }
-    .floating-icon-bg:nth-child(5) { top: 45%; left: 45%; animation-duration: 28s; font-size: 3rem; }
-    .floating-icon-bg:nth-child(6) { top: 85%; left: 55%; animation-duration: 17s; font-size: 3.2rem; }
-    .floating-icon-bg:nth-child(7) { top: 15%; left: 35%; animation-duration: 24s; font-size: 3.8rem; }
-    .floating-icon-bg:nth-child(8) { top: 50%; left: 10%; animation-duration: 19s; font-size: 2.8rem; }
-    .floating-icon-bg:nth-child(9) { top: 90%; left: 90%; animation-duration: 21s; font-size: 3rem; }
-    .floating-icon-bg:nth-child(10) { top: 5%; left: 60%; animation-duration: 26s; font-size: 3.2rem; }
-    .floating-icon-bg:nth-child(11) { top: 35%; left: 95%; animation-duration: 23s; font-size: 2.5rem; }
-    .floating-icon-bg:nth-child(12) { top: 70%; left: 70%; animation-duration: 16s; font-size: 3.5rem; }
-
-    /* Pulsing circle behind hero */
-    .pulse-circle {
+    /* Glow Orb */
+    .glow-orb {
       position: absolute;
       top: 50%;
       left: 50%;
-      width: 300px;
-      height: 300px;
-      background: radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%);
+      width: 500px;
+      height: 500px;
+      background: radial-gradient(circle, rgba(220,38,38,0.15) 0%, transparent 70%);
       border-radius: 50%;
       transform: translate(-50%, -50%);
-      animation: pulse 4s infinite;
+      animation: pulseGlow 4s infinite;
       pointer-events: none;
     }
 
-    @keyframes pulse {
-      0% { width: 200px; height: 200px; opacity: 0.5; }
-      50% { width: 400px; height: 400px; opacity: 0.2; }
-      100% { width: 200px; height: 200px; opacity: 0.5; }
+    @keyframes pulseGlow {
+      0% { width: 300px; height: 300px; opacity: 0.4; }
+      50% { width: 550px; height: 550px; opacity: 0.2; }
+      100% { width: 300px; height: 300px; opacity: 0.4; }
     }
 
     .hero h1 {
-      font-size: 3.8rem;
-      font-weight: 800;
-      line-height: 1.2;
+      font-size: 4.2rem;
+      font-weight: 900;
+      line-height: 1.15;
       margin-bottom: 1.5rem;
-      color: #111;
+      background: linear-gradient(135deg, #111 30%, #dc2626 80%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       position: relative;
       z-index: 2;
     }
-    .hero h1 span { color: #dc2626; }
+    .hero h1 span { 
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
     .hero p {
-      font-size: 1.2rem;
+      font-size: 1.25rem;
       color: #4b5563;
-      max-width: 650px;
+      max-width: 600px;
       margin-bottom: 2rem;
-      line-height: 1.6;
+      line-height: 1.7;
       position: relative;
       z-index: 2;
     }
@@ -243,24 +232,23 @@
       display: inline-flex;
       align-items: center;
       gap: 12px;
-      background: #dc2626;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
       color: white;
-      padding: 14px 32px;
+      padding: 16px 38px;
       border-radius: 60px;
       font-weight: 700;
       text-decoration: none;
       transition: all 0.3s;
-      box-shadow: 0 10px 20px -6px rgba(220,38,38,0.4);
+      box-shadow: 0 15px 30px -8px rgba(220,38,38,0.4);
       border: none;
-      cursor: pointer;
       font-size: 1rem;
       position: relative;
       z-index: 2;
     }
     .btn:hover {
-      transform: translateY(-4px);
-      background: #b91c1c;
-      box-shadow: 0 20px 30px -10px #dc2626;
+      transform: translateY(-5px);
+      box-shadow: 0 25px 40px -12px #dc2626;
+      gap: 16px;
     }
     .btn-outline {
       background: transparent;
@@ -271,9 +259,10 @@
     .btn-outline:hover {
       background: #dc2626;
       color: white;
+      box-shadow: 0 15px 30px -8px rgba(220,38,38,0.4);
     }
 
-    /* Cards & sections */
+    /* Cards with 3D Hover */
     section {
       padding: 5rem 0;
     }
@@ -282,18 +271,21 @@
       font-weight: 800;
       margin-bottom: 2.5rem;
       position: relative;
-      color: #111;
       text-align: center;
+      background: linear-gradient(135deg, #111, #dc2626);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .section-title:after {
       content: '';
       position: absolute;
-      bottom: -12px;
+      bottom: -15px;
       left: 50%;
       transform: translateX(-50%);
-      width: 80px;
+      width: 100px;
       height: 4px;
-      background: #dc2626;
+      background: linear-gradient(90deg, #dc2626, #f97316);
       border-radius: 4px;
     }
 
@@ -305,30 +297,48 @@
     }
     .card {
       background: #ffffff;
-      border-radius: 28px;
-      padding: 2rem 1.8rem;
-      transition: 0.35s;
+      border-radius: 32px;
+      padding: 2.2rem 1.8rem;
+      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
       text-align: center;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      border: 1px solid rgba(220,38,38,0.15);
+      box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.08);
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(90deg, transparent, rgba(220,38,38,0.05), transparent);
+      transition: left 0.5s;
+    }
+    .card:hover::before {
+      left: 100%;
     }
     .card:hover {
-      transform: translateY(-8px);
+      transform: translateY(-12px) scale(1.02);
       border-color: #dc2626;
-      box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2);
+      box-shadow: 0 30px 45px -15px rgba(220,38,38,0.25);
     }
     .card i {
-      font-size: 3rem;
-      color: #dc2626;
+      font-size: 3.5rem;
+      background: linear-gradient(135deg, #dc2626, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 1rem;
     }
-    .card h3 { font-size: 1.6rem; margin-bottom: 0.75rem; color: #111; }
-    .card p { color: #4b5563; font-size: 0.95rem; line-height: 1.5; }
+    .card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; color: #111; }
+    .card p { color: #6b7280; font-size: 0.95rem; line-height: 1.5; }
 
-    /* Stats */
+    /* Stats Glowing */
     .stats {
-      background: #fef2f2;
-      border-radius: 48px;
+      background: linear-gradient(135deg, #fef2f2, #ffffff);
+      border-radius: 56px;
       padding: 2.5rem 2rem;
       display: flex;
       justify-content: space-between;
@@ -336,12 +346,16 @@
       gap: 1.5rem;
       margin-top: 2rem;
       text-align: center;
-      border: 1px solid #fecaca;
+      border: 1px solid rgba(220,38,38,0.2);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     }
     .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #dc2626;
+      font-size: 3rem;
+      font-weight: 900;
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
     }
     .stat-label { font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
 
@@ -354,51 +368,49 @@
     }
     .icon-card {
       background: #ffffff;
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 1.5rem 0.8rem;
       transition: all 0.3s;
       text-align: center;
-      border: 1px solid #fee2e2;
+      border: 1px solid rgba(220,38,38,0.1);
       cursor: pointer;
     }
     .icon-card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-8px);
       border-color: #dc2626;
-      box-shadow: 0 15px 25px -10px rgba(220,38,38,0.15);
+      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.2);
     }
     .icon-card i {
-      font-size: 2.5rem;
-      color: #dc2626;
+      font-size: 2.8rem;
+      background: linear-gradient(135deg, #dc2626, #f97316);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
       margin-bottom: 0.8rem;
-      display: inline-block;
     }
-    .icon-card h4 {
-      font-size: 1rem;
-      font-weight: 700;
-      color: #111;
-    }
+    .icon-card h4 { font-size: 1rem; font-weight: 700; color: #111; }
 
     /* Swiper Gallery */
     .slider-section {
-      background: #fefaf5;
-      border-radius: 48px;
+      background: linear-gradient(135deg, #fefaf5, #ffffff);
+      border-radius: 56px;
       margin: 2rem 0;
       padding: 3rem 0;
     }
     .swiper { width: 100%; padding: 20px 0 50px; }
     .swiper-slide {
       background: white;
-      border-radius: 28px;
+      border-radius: 32px;
       overflow: hidden;
-      transition: transform 0.3s;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      border: 1px solid rgba(220,38,38,0.15);
+      box-shadow: 0 15px 30px -10px rgba(0,0,0,0.1);
     }
-    .swiper-slide:hover { transform: scale(1.02); border-color: #dc2626; }
+    .swiper-slide:hover { transform: scale(1.03); border-color: #dc2626; box-shadow: 0 25px 40px -12px rgba(220,38,38,0.25); }
     .swiper-slide img { width: 100%; height: 260px; object-fit: cover; display: block; }
-    .slide-caption { padding: 1rem; text-align: center; background: white; color: #111; font-weight: 600; font-size: 0.9rem; border-top: 1px solid #fee2e2; }
+    .slide-caption { padding: 1rem; text-align: center; background: white; font-weight: 700; font-size: 0.9rem; border-top: 1px solid rgba(220,38,38,0.1); }
     .swiper-pagination-bullet-active { background: #dc2626; }
-    .swiper-button-next, .swiper-button-prev { color: #dc2626; width: 40px; height: 40px; background: white; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+    .swiper-button-next, .swiper-button-prev { color: #dc2626; width: 45px; height: 45px; background: white; border-radius: 50%; box-shadow: 0 4px 15px rgba(0,0,0,0.15); }
 
     /* Clients Grid */
     .client-grid {
@@ -409,51 +421,48 @@
     }
     .client-card {
       background: #ffffff;
-      border-radius: 24px;
+      border-radius: 28px;
       padding: 1.8rem;
       transition: all 0.3s;
-      border: 1px solid #fee2e2;
+      border: 1px solid rgba(220,38,38,0.1);
       cursor: pointer;
       text-align: center;
     }
     .client-card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
       border-color: #dc2626;
-      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
+      box-shadow: 0 25px 35px -12px rgba(220,38,38,0.2);
     }
-    .client-icon i { font-size: 2.5rem; color: #dc2626; margin-bottom: 1rem; }
-    .client-card h4 { font-size: 1.3rem; font-weight: 700; color: #111; margin-bottom: 0.3rem; }
+    .client-icon i { font-size: 2.8rem; color: #dc2626; margin-bottom: 1rem; }
+    .client-card h4 { font-size: 1.3rem; font-weight: 700; color: #111; }
     .client-card p { color: #6b7280; font-size: 0.85rem; }
-    .project-badge { display: inline-block; background: #fee2e2; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.7rem; margin-top: 1rem; color: #dc2626; font-weight: 600; }
-
-    /* Row Two Columns */
-    .row-two-columns { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
-    .col { flex: 1; min-width: 280px; }
-    .project-list {
-      background: #fef2f2;
-      border-radius: 28px;
-      padding: 1.8rem;
-      border: 1px solid #fecaca;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .project-list:hover { border-color: #dc2626; box-shadow: 0 8px 20px rgba(220,38,38,0.1); }
-    .project-list h3 { color: #dc2626; margin-bottom: 1rem; font-size: 1.3rem; }
-    .project-list ul { list-style: none; }
-    .project-list li { padding: 0.6rem 0; border-bottom: 1px solid #ffdede; display: flex; align-items: center; gap: 10px; color: #1f2937; font-size: 0.9rem; }
-    .project-list li i { color: #dc2626; width: 24px; }
-    .click-hint { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #dc2626; font-weight: 500; }
 
     /* CTA Section */
     .cta-section {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      border-radius: 48px;
-      padding: 3rem;
+      background: linear-gradient(135deg, #dc2626, #991b1b);
+      border-radius: 56px;
+      padding: 3.5rem;
       text-align: center;
       color: white;
+      position: relative;
+      overflow: hidden;
     }
-    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
-    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; }
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -20%;
+      width: 140%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, transparent 70%);
+      animation: shimmer 6s infinite;
+    }
+    @keyframes shimmer {
+      0% { transform: translateX(-30%) rotate(15deg); }
+      100% { transform: translateX(30%) rotate(15deg); }
+    }
+    .cta-section h2 { font-size: 2.2rem; margin-bottom: 1rem; position: relative; z-index: 2; }
+    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; position: relative; z-index: 2; }
 
     /* Floating Social Icons */
     .floating-social {
@@ -476,13 +485,12 @@
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .floating-icon:hover { transform: scale(1.1); }
+    .floating-icon:hover { transform: scale(1.15); }
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    .floating-icon i { font-size: 1.8rem; }
 
-    /* Dark mode */
+    /* Dark Mode Toggle */
     .theme-toggle {
       background: #f3f4f6;
       border: none;
@@ -490,54 +498,34 @@
       padding: 6px 14px;
       cursor: pointer;
       font-weight: 600;
-      color: #111;
       margin-left: 0.5rem;
       font-size: 0.85rem;
     }
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero, body.dark .icon-card {
-      background: #1f2937;
-      color: #f3f4f6;
-      border-color: #374151;
-    }
-    body.dark .card p, body.dark .client-card p, body.dark .project-list li { color: #cbd5e1; }
-    body.dark .hero { background: #111827; }
-    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4, body.dark .icon-card h4 { color: white; }
 
     footer {
       background: #f8fafc;
-      color: #4b5563;
       text-align: center;
       padding: 2rem;
       border-top: 2px solid #dc2626;
-      margin-top: 2rem;
-      font-size: 0.9rem;
     }
 
-    /* Mobile Responsive */
+    /* Responsive */
     @media (max-width: 1000px) {
       .icons-grid { grid-template-columns: repeat(3, 1fr); }
     }
     @media (max-width: 850px) {
-      .container { padding: 0 24px; }
-      .hero h1 { font-size: 2.2rem; }
-      .hero p { font-size: 1rem; }
-      .hero { padding: 3rem 0 4rem; }
-      .header-flex { flex-direction: column; text-align: center; }
+      .hero h1 { font-size: 2.5rem; }
+      .header-flex { flex-direction: column; }
       .nav-links { justify-content: center; gap: 1.2rem; }
-      .section-title { font-size: 1.8rem; }
+      .section-title { font-size: 2rem; }
       .icons-grid { grid-template-columns: repeat(2, 1fr); }
+      .stats { flex-direction: column; }
       .floating-icon { width: 45px; height: 45px; }
-      .floating-icon i { font-size: 1.4rem; }
     }
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.8rem; }
-      .section-title { font-size: 1.5rem; }
-      .card h3 { font-size: 1.3rem; }
-      .icons-grid { grid-template-columns: repeat(2, 1fr); }
+      .section-title { font-size: 1.6rem; }
+      .btn { padding: 12px 24px; font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -551,7 +539,7 @@
     <div class="logo-wrapper" id="logoWrapper">
       <div id="logoContainer"></div>
     </div>
-    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap; justify-content: center;">
+    <div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap;">
       <div class="nav-links">
         <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
@@ -559,45 +547,37 @@
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
-      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> Dark</button>
     </div>
   </div>
 </header>
 
 <main>
-  <!-- Hero Section with Animated Background -->
+  <!-- Hero Section with Animated Elements -->
   <div class="hero">
-    <div class="animated-bg">
-      <div class="floating-icon-bg"><i class="fas fa-wind"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-thermometer-half"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-snowflake"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-tools"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-drafting-compass"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-microchip"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-charging-station"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-fan"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-leaf"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-hard-hat"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-building"></i></div>
-      <div class="floating-icon-bg"><i class="fas fa-industry"></i></div>
-    </div>
-    <div class="pulse-circle"></div>
+    <div class="particles" id="particles"></div>
+    <div class="glow-orb"></div>
+    <div class="floating-icon-super" style="top: 15%; left: 5%;"><i class="fas fa-wind"></i></div>
+    <div class="floating-icon-super" style="top: 70%; right: 8%; animation-duration: 18s;"><i class="fas fa-snowflake"></i></div>
+    <div class="floating-icon-super" style="top: 80%; left: 10%; animation-duration: 22s;"><i class="fas fa-microchip"></i></div>
+    <div class="floating-icon-super" style="top: 20%; right: 15%; animation-duration: 20s;"><i class="fas fa-charging-station"></i></div>
+    <div class="floating-icon-super" style="top: 45%; left: 85%; animation-duration: 25s;"><i class="fas fa-tools"></i></div>
     <div class="container">
-      <div data-aos="fade-up" data-aos-duration="800">
+      <div data-aos="fade-up" data-aos-duration="1000">
         <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
         <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 20px; flex-wrap: wrap;">
           <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-          <a href="contact.html" class="btn btn-outline">Request Quote</a>
+          <a href="contact.html" class="btn btn-outline">Request Quote <i class="fas fa-file-invoice"></i></a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- Engineering Excellence Icons Grid -->
+  <!-- Engineering Excellence -->
   <section>
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
+      <h2 class="section-title" data-aos="fade-up">⚡ Engineering Excellence ⚡</h2>
       <div class="icons-grid" data-aos="fade-up" data-aos-delay="100">
         <div class="icon-card"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div>
         <div class="icon-card"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div>
@@ -609,10 +589,10 @@
     </div>
   </section>
 
-  <!-- Movable Image Slider -->
+  <!-- Project Gallery Swiper -->
   <section class="slider-section">
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-images" style="font-size: 1.8rem;"></i></h2>
+      <h2 class="section-title" data-aos="fade-up">📸 Project Gallery</h2>
       <div class="swiper mySwiper" data-aos="fade-up">
         <div class="swiper-wrapper" id="swiperWrapper"></div>
         <div class="swiper-pagination"></div>
@@ -622,10 +602,10 @@
     </div>
   </section>
 
-  <!-- Core Expertise Cards -->
+  <!-- Core Expertise -->
   <section>
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Core Expertise</h2>
+      <h2 class="section-title" data-aos="fade-up">🎯 Core Expertise</h2>
       <div class="grid">
         <div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div>
         <div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div>
@@ -637,59 +617,37 @@
     </div>
   </section>
 
-  <!-- Trust & Projects -->
+  <!-- Stats -->
   <section>
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
+      <h2 class="section-title" data-aos="fade-up">📊 Trusted Numbers</h2>
       <div class="stats" data-aos="fade-up">
         <div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
-        <div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div>
+        <div><div class="stat-number">120+</div><div class="stat-label">Projects Delivered</div></div>
         <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
         <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
-      </div>
-
-      <div class="trust-projects-section" style="background: #fefaf5; border-radius: 48px; padding: 2rem; margin-top: 2rem;">
-        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3>
-        <div class="client-grid" id="clientsGrid"></div>
-
-        <div class="row-two-columns">
-          <div class="col">
-            <div class="project-list" data-aos="fade-right">
-              <h3><i class="fas fa-building"></i> MESOB Projects</h3>
-              <ul>
-                <li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Afar Region</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="project-list" data-aos="fade-left">
-              <h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3>
-              <ul>
-                <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
-                <li><i class="fas fa-city"></i> Civil Service</li>
-                <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
-                <li><i class="fas fa-charging-station"></i> TAPU Foods</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="click-hint">
-          <i class="fas fa-mouse-pointer"></i> <strong>Click on any client logo or project card → explore our HVAC services</strong>
-        </div>
       </div>
     </div>
   </section>
 
-  <!-- CTA Section -->
+  <!-- Partners -->
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">🤝 Trusted Partners</h2>
+      <div class="client-grid" id="clientsGrid"></div>
+      <div class="click-hint" style="text-align: center; margin-top: 1rem; color: #dc2626;">
+        <i class="fas fa-mouse-pointer"></i> Click any partner → Explore services
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
   <section>
     <div class="container">
       <div class="cta-section" data-aos="zoom-in">
-        <h2>Ready to Upgrade Your Infrastructure?</h2>
-        <p style="margin-bottom: 1.5rem; opacity: 0.95;">Get a free consultation from our engineering experts.</p>
-        <a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+        <h2>Ready to Transform Your Infrastructure?</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.95;">Get a free consultation from our engineering experts today!</p>
+        <a href="contact.html" class="btn">Contact Us Now <i class="fas fa-arrow-right"></i></a>
       </div>
     </div>
   </section>
@@ -699,17 +657,10 @@
   <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
 </footer>
 
-<!-- Floating Social Icons -->
 <div class="floating-social">
-  <a href="https://wa.me/251918036609?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" target="_blank" class="floating-icon floating-wa">
-    <i class="fab fa-whatsapp"></i>
-  </a>
-  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram">
-    <i class="fab fa-telegram-plane"></i>
-  </a>
-  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb">
-    <i class="fab fa-facebook-f"></i>
-  </a>
+  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
 </div>
 
 <script>
@@ -718,7 +669,24 @@
     loader.classList.add('hide');
     setTimeout(() => loader.style.display = 'none', 500);
     AOS.init({ duration: 800, once: true, offset: 60 });
+    createParticles();
   });
+
+  function createParticles() {
+    const container = document.getElementById('particles');
+    for (let i = 0; i < 30; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      const size = Math.random() * 8 + 4;
+      particle.style.width = size + 'px';
+      particle.style.height = size + 'px';
+      particle.style.left = Math.random() * 100 + '%';
+      particle.style.top = Math.random() * 100 + '%';
+      particle.style.animationDuration = 10 + Math.random() * 15 + 's';
+      particle.style.animationDelay = Math.random() * 5 + 's';
+      container.appendChild(particle);
+    }
+  }
 
   const toggleBtn = document.getElementById('darkModeToggle');
   toggleBtn.addEventListener('click', () => {
@@ -756,7 +724,7 @@
     imageList.forEach(img => {
       const slide = document.createElement('div');
       slide.className = 'swiper-slide';
-      slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`;
+      slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`;
       swiperWrapper.appendChild(slide);
     });
     swiper.update();
@@ -767,7 +735,7 @@
     { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
     { name: "INSA", icon: "fas fa-shield-alt", projects: "Data Center Cooling" },
     { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" },
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC" },
     { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Cold Storage Solutions" }
   ];
   const clientsGrid = document.getElementById('clientsGrid');
@@ -775,26 +743,13 @@
     clients.forEach(client => {
       const card = document.createElement('div');
       card.className = 'client-card';
-      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><p>${client.projects}</p><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`;
+      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><p>${client.projects}</p><div style="margin-top:0.8rem; color:#dc2626; font-size:0.7rem;"><i class="fas fa-arrow-right"></i> View solutions</div>`;
       card.addEventListener('click', () => window.location.href = 'services.html');
       clientsGrid.appendChild(card);
     });
   }
 
-  document.querySelectorAll('.project-list').forEach(el => {
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', () => window.location.href = 'services.html');
-  });
-
   const logoContainer = document.getElementById('logoContainer');
-  function createFallbackLogo() {
-    const fallbackDiv = document.createElement('div');
-    fallbackDiv.className = 'logo-fallback';
-    fallbackDiv.innerHTML = '<i class="fas fa-wind" style="font-size: 2rem;"></i>';
-    fallbackDiv.title = 'HALU Engineering';
-    logoContainer.innerHTML = '';
-    logoContainer.appendChild(fallbackDiv);
-  }
   function tryLoadLogo(url) {
     const img = new Image();
     img.onload = function() {
@@ -806,14 +761,16 @@
       logoContainer.appendChild(logoImg);
     };
     img.onerror = function() {
-      if (url === '80.jpeg') tryLoadLogo('80.jpg');
-      else if (url === '80.jpg') tryLoadLogo('80.JPG');
-      else if (url === '80.JPG') tryLoadLogo('80.png');
-      else createFallbackLogo();
+      const fallbackDiv = document.createElement('div');
+      fallbackDiv.className = 'logo-fallback';
+      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>';
+      fallbackDiv.style.cssText = 'width:70px;height:70px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(fallbackDiv);
     };
     img.src = url;
   }
-  tryLoadLogo('80.jpeg');
+  tryLoadLogo('80.JPG');
 </script>
 </body>
 </html>

@@ -63,9 +63,11 @@
       max-width: 1280px;
       margin: 0 auto;
       padding: 0 32px;
+      position: relative;
+      z-index: 2;
     }
 
-    /* Header White/Red - Mobile Friendly */
+    /* Header White/Red */
     header {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(8px);
@@ -120,7 +122,6 @@
       box-shadow: 0 6px 18px rgba(220,38,38,0.35);
       transition: transform 0.3s;
     }
-    .logo-fallback:hover { transform: scale(1.03); }
 
     .nav-links {
       display: flex;
@@ -150,18 +151,83 @@
       border-radius: 4px;
     }
 
-    /* Hero Section - Enhanced Visibility */
+    /* Hero Section with Animated Background */
     .hero {
       background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-      padding: 5rem 0 6rem;
+      padding: 5rem 0 7rem;
       position: relative;
+      overflow: hidden;
     }
+
+    /* Animated Background Elements */
+    .animated-bg {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    .floating-icon-bg {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0.12;
+      animation: floatAround 20s infinite ease-in-out;
+      pointer-events: none;
+    }
+
+    @keyframes floatAround {
+      0% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+      25% { transform: translate(30px, -20px) rotate(5deg); opacity: 0.15; }
+      50% { transform: translate(-20px, 30px) rotate(-5deg); opacity: 0.12; }
+      75% { transform: translate(20px, 15px) rotate(3deg); opacity: 0.1; }
+      100% { transform: translate(0, 0) rotate(0deg); opacity: 0.08; }
+    }
+
+    /* Different speeds for different elements */
+    .floating-icon-bg:nth-child(1) { top: 10%; left: 5%; animation-duration: 18s; font-size: 4rem; }
+    .floating-icon-bg:nth-child(2) { top: 60%; left: 85%; animation-duration: 22s; font-size: 3.5rem; }
+    .floating-icon-bg:nth-child(3) { top: 75%; left: 15%; animation-duration: 25s; font-size: 3rem; }
+    .floating-icon-bg:nth-child(4) { top: 25%; left: 75%; animation-duration: 20s; font-size: 4.5rem; }
+    .floating-icon-bg:nth-child(5) { top: 45%; left: 45%; animation-duration: 28s; font-size: 3rem; }
+    .floating-icon-bg:nth-child(6) { top: 85%; left: 55%; animation-duration: 17s; font-size: 3.2rem; }
+    .floating-icon-bg:nth-child(7) { top: 15%; left: 35%; animation-duration: 24s; font-size: 3.8rem; }
+    .floating-icon-bg:nth-child(8) { top: 50%; left: 10%; animation-duration: 19s; font-size: 2.8rem; }
+    .floating-icon-bg:nth-child(9) { top: 90%; left: 90%; animation-duration: 21s; font-size: 3rem; }
+    .floating-icon-bg:nth-child(10) { top: 5%; left: 60%; animation-duration: 26s; font-size: 3.2rem; }
+    .floating-icon-bg:nth-child(11) { top: 35%; left: 95%; animation-duration: 23s; font-size: 2.5rem; }
+    .floating-icon-bg:nth-child(12) { top: 70%; left: 70%; animation-duration: 16s; font-size: 3.5rem; }
+
+    /* Pulsing circle behind hero */
+    .pulse-circle {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 300px;
+      height: 300px;
+      background: radial-gradient(circle, rgba(220,38,38,0.08) 0%, transparent 70%);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      animation: pulse 4s infinite;
+      pointer-events: none;
+    }
+
+    @keyframes pulse {
+      0% { width: 200px; height: 200px; opacity: 0.5; }
+      50% { width: 400px; height: 400px; opacity: 0.2; }
+      100% { width: 200px; height: 200px; opacity: 0.5; }
+    }
+
     .hero h1 {
       font-size: 3.8rem;
       font-weight: 800;
       line-height: 1.2;
       margin-bottom: 1.5rem;
       color: #111;
+      position: relative;
+      z-index: 2;
     }
     .hero h1 span { color: #dc2626; }
     .hero p {
@@ -170,6 +236,8 @@
       max-width: 650px;
       margin-bottom: 2rem;
       line-height: 1.6;
+      position: relative;
+      z-index: 2;
     }
     .btn {
       display: inline-flex;
@@ -186,6 +254,8 @@
       border: none;
       cursor: pointer;
       font-size: 1rem;
+      position: relative;
+      z-index: 2;
     }
     .btn:hover {
       transform: translateY(-4px);
@@ -275,10 +345,7 @@
     }
     .stat-label { font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
 
-    /* Icons Grid - Engineering Excellence */
-    .engineering-section {
-      background: #ffffff;
-    }
+    /* Icons Grid */
     .icons-grid {
       display: grid;
       grid-template-columns: repeat(6, 1fr);
@@ -332,7 +399,6 @@
     .slide-caption { padding: 1rem; text-align: center; background: white; color: #111; font-weight: 600; font-size: 0.9rem; border-top: 1px solid #fee2e2; }
     .swiper-pagination-bullet-active { background: #dc2626; }
     .swiper-button-next, .swiper-button-prev { color: #dc2626; width: 40px; height: 40px; background: white; border-radius: 50%; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
-    .swiper-button-next:after, .swiper-button-prev:after { font-size: 1.2rem; }
 
     /* Clients Grid */
     .client-grid {
@@ -360,7 +426,7 @@
     .client-card p { color: #6b7280; font-size: 0.85rem; }
     .project-badge { display: inline-block; background: #fee2e2; padding: 0.3rem 1rem; border-radius: 40px; font-size: 0.7rem; margin-top: 1rem; color: #dc2626; font-weight: 600; }
 
-    /* Project Lists */
+    /* Row Two Columns */
     .row-two-columns { display: flex; flex-wrap: wrap; gap: 1.5rem; margin: 2rem 0; }
     .col { flex: 1; min-width: 280px; }
     .project-list {
@@ -387,8 +453,7 @@
       color: white;
     }
     .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
-    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; padding: 14px 32px; }
-    .cta-section .btn:hover { background: #fff5f5; transform: translateY(-3px); }
+    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; }
 
     /* Floating Social Icons */
     .floating-social {
@@ -451,13 +516,11 @@
       margin-top: 2rem;
       font-size: 0.9rem;
     }
-    body.dark footer { background: #030712; color: #9ca3af; }
 
-    /* Mobile Responsive - Enhanced Visibility */
+    /* Mobile Responsive */
     @media (max-width: 1000px) {
       .icons-grid { grid-template-columns: repeat(3, 1fr); }
     }
-
     @media (max-width: 850px) {
       .container { padding: 0 24px; }
       .hero h1 { font-size: 2.2rem; }
@@ -465,32 +528,16 @@
       .hero { padding: 3rem 0 4rem; }
       .header-flex { flex-direction: column; text-align: center; }
       .nav-links { justify-content: center; gap: 1.2rem; }
-      .nav-links a { font-size: 0.9rem; }
-      .logo-img, .logo-fallback { height: 55px; width: auto; }
       .section-title { font-size: 1.8rem; }
-      section { padding: 3rem 0; }
-      .grid { grid-template-columns: 1fr; gap: 1.2rem; }
-      .stats { flex-direction: column; gap: 1rem; padding: 1.5rem; }
-      .icons-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
-      .icon-card { padding: 1rem 0.5rem; }
-      .icon-card i { font-size: 2rem; }
-      .icon-card h4 { font-size: 0.85rem; }
-      .client-grid { grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 1rem; }
-      .cta-section { padding: 2rem 1.5rem; }
-      .cta-section h2 { font-size: 1.4rem; }
-      .btn { padding: 10px 24px; font-size: 0.9rem; }
-      .floating-social { bottom: 15px; right: 15px; gap: 8px; }
+      .icons-grid { grid-template-columns: repeat(2, 1fr); }
       .floating-icon { width: 45px; height: 45px; }
       .floating-icon i { font-size: 1.4rem; }
     }
-
     @media (max-width: 480px) {
       .hero h1 { font-size: 1.8rem; }
       .section-title { font-size: 1.5rem; }
       .card h3 { font-size: 1.3rem; }
-      .stat-number { font-size: 1.8rem; }
       .icons-grid { grid-template-columns: repeat(2, 1fr); }
-      .btn { padding: 8px 20px; font-size: 0.85rem; }
     }
   </style>
 </head>
@@ -518,8 +565,23 @@
 </header>
 
 <main>
-  <!-- Hero Section -->
+  <!-- Hero Section with Animated Background -->
   <div class="hero">
+    <div class="animated-bg">
+      <div class="floating-icon-bg"><i class="fas fa-wind"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-thermometer-half"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-snowflake"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-tools"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-drafting-compass"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-microchip"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-charging-station"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-fan"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-leaf"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-hard-hat"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-building"></i></div>
+      <div class="floating-icon-bg"><i class="fas fa-industry"></i></div>
+    </div>
+    <div class="pulse-circle"></div>
     <div class="container">
       <div data-aos="fade-up" data-aos-duration="800">
         <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
@@ -533,7 +595,7 @@
   </div>
 
   <!-- Engineering Excellence Icons Grid -->
-  <section class="engineering-section">
+  <section>
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
       <div class="icons-grid" data-aos="fade-up" data-aos-delay="100">
@@ -547,7 +609,7 @@
     </div>
   </section>
 
-  <!-- Movable Image Slider (Swiper) -->
+  <!-- Movable Image Slider -->
   <section class="slider-section">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-images" style="font-size: 1.8rem;"></i></h2>

@@ -11,17 +11,6 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e1e2a; scroll-behavior: smooth; overflow-x: hidden; }
-    .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f0c29 0%, #302b63 50%, #24243e 100%); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.8s ease; }
-    .splash-screen.hide { opacity: 0; visibility: hidden; }
-    .splash-logo { text-align: center; animation: splashPulse 1.5s ease-in-out; }
-    @keyframes splashPulse { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-    .splash-logo img { width: 180px; border-radius: 30px; box-shadow: 0 0 50px rgba(220,38,38,0.5); animation: logoFloat 2s infinite alternate; }
-    @keyframes logoFloat { 0% { transform: translateY(0px); } 100% { transform: translateY(-15px); } }
-    .splash-logo h2 { margin-top: 2rem; font-size: 2rem; background: linear-gradient(135deg, #ffffff, #fca5a5); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .splash-logo p { color: rgba(255,255,255,0.7); margin-top: 0.5rem; letter-spacing: 3px; }
-    .splash-progress { position: absolute; bottom: 15%; left: 50%; transform: translateX(-50%); width: 200px; height: 3px; background: rgba(255,255,255,0.2); border-radius: 3px; overflow: hidden; }
-    .splash-progress-bar { height: 100%; width: 0%; background: linear-gradient(90deg, #dc2626, #f97316); animation: progressLoad 2.5s ease forwards; }
-    @keyframes progressLoad { 100% { width: 100%; } }
     .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
     .loader.hide { opacity: 0; visibility: hidden; }
     .loader-spinner { width: 60px; height: 60px; border: 5px solid #f0f0f0; border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
@@ -70,11 +59,10 @@
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
     @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .hero-content h1 { font-size: 2.5rem; } .header-flex { flex-direction: column; } .nav-links { gap: 1.2rem; justify-content: center; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
-    @media (max-width: 480px) { .hero-content h1 { font-size: 1.8rem; } .section-title { font-size: 1.5rem; } .splash-logo img { width: 120px; } }
+    @media (max-width: 480px) { .hero-content h1 { font-size: 1.8rem; } .section-title { font-size: 1.5rem; } }
   </style>
 </head>
 <body>
-<div class="splash-screen" id="splashScreen"><div class="splash-logo"><img src="80.JPG"><h2>HALU Engineering</h2><p>PRECISION • INNOVATION • EXCELLENCE</p><div class="splash-progress"><div class="splash-progress-bar"></div></div></div></div>
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
 <header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html" class="active">About</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div></div></header>
 <section class="hero-about"><div class="container hero-grid"><div class="hero-content" data-aos="fade-right"><div class="hero-badge"><i class="fas fa-bolt"></i> NEXT-GEN ELECTRO-MECHANICAL</div><h1>Engineering <span>Tomorrow's</span><br>Digital Climate</h1><p>HALU Engineering delivers premium, future-ready electro-mechanical solutions for factories, smart warehouses, high-tech offices, hotels, hospitals & beyond.</p></div><div class="hero-image" data-aos="fade-left"><img src="52.jpg" alt="HALU Engineering" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=HALU'"></div></div></section>
@@ -85,7 +73,6 @@
 <footer><div class="container footer-content"><p>© 2026 HALU Engineering — Digital Electro-Mechanical Excellence | <i class="fas fa-bolt"></i> Engineered for tomorrow</p></div></footer>
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
-  setTimeout(()=>{document.getElementById('splashScreen')?.classList.add('hide');setTimeout(()=>document.getElementById('splashScreen')?.remove(),800);},2500);
   window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
   const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.alt='HALU Engineering';logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:70px;height:70px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
 </script>

@@ -7,9 +7,6 @@
   <!-- Google Fonts + Font Awesome -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Swiper JS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- AOS Scroll Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -360,7 +357,7 @@
     }
     .icon-card h4 { font-size: 1rem; font-weight: 700; color: #111; }
 
-    /* Enhanced Gallery - No Arrows, Beautiful Cards */
+    /* STUNNING GALLERY - ATTRACTIVE IMAGE APPEARANCE */
     .gallery-section {
       background: linear-gradient(135deg, #fefaf5, #ffffff);
       border-radius: 56px;
@@ -378,45 +375,61 @@
       border-radius: 28px;
       overflow: hidden;
       cursor: pointer;
-      transition: all 0.4s cubic-bezier(0.2, 0.9, 0.4, 1.1);
-      box-shadow: 0 15px 30px -10px rgba(0, 0, 0, 0.15);
+      opacity: 0;
+      transform: translateY(30px);
+      transition: all 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+      box-shadow: 0 15px 35px -10px rgba(0, 0, 0, 0.15);
+    }
+    .gallery-card.visible {
+      opacity: 1;
+      transform: translateY(0);
     }
     .gallery-card:hover {
-      transform: translateY(-10px) scale(1.02);
-      box-shadow: 0 30px 45px -15px rgba(220, 38, 38, 0.3);
+      transform: translateY(-10px) scale(1.03);
+      box-shadow: 0 30px 50px -15px rgba(220, 38, 38, 0.35);
     }
     .gallery-card img {
       width: 100%;
-      height: 280px;
+      height: 300px;
       object-fit: cover;
       display: block;
-      transition: transform 0.5s ease;
+      transition: transform 0.5s ease, filter 0.5s ease;
     }
     .gallery-card:hover img {
-      transform: scale(1.08);
+      transform: scale(1.1);
+      filter: brightness(1.05);
     }
     .gallery-overlay {
       position: absolute;
       bottom: 0;
       left: 0;
       right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-      padding: 1.5rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      padding: 1.8rem;
       transform: translateY(0);
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
     }
     .gallery-card:hover .gallery-overlay {
-      padding-bottom: 2rem;
+      padding-bottom: 2.2rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.95), transparent);
     }
     .gallery-overlay h4 {
       color: white;
-      font-size: 1.3rem;
+      font-size: 1.4rem;
       font-weight: 700;
       margin-bottom: 0.3rem;
+      transform: translateY(0);
+      transition: transform 0.3s;
     }
     .gallery-overlay p {
       color: rgba(255,255,255,0.85);
       font-size: 0.85rem;
+      transform: translateY(0);
+      transition: transform 0.3s 0.05s;
+    }
+    .gallery-card:hover .gallery-overlay h4,
+    .gallery-card:hover .gallery-overlay p {
+      transform: translateY(-5px);
     }
     .gallery-badge {
       position: absolute;
@@ -424,14 +437,20 @@
       right: 15px;
       background: rgba(220,38,38,0.9);
       color: white;
-      padding: 0.4rem 1rem;
+      padding: 0.4rem 1.2rem;
       border-radius: 50px;
       font-size: 0.7rem;
       font-weight: 600;
       backdrop-filter: blur(4px);
+      z-index: 2;
+      transition: all 0.3s;
+    }
+    .gallery-card:hover .gallery-badge {
+      background: #dc2626;
+      transform: scale(1.05);
     }
 
-    /* Projects Grid - Clickable Cards */
+    /* Projects Grid */
     .project-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -676,7 +695,7 @@
     </div>
   </section>
 
-  <!-- Beautiful Gallery - No Arrows -->
+  <!-- STUNNING GALLERY - Images appear with beautiful animation -->
   <section class="gallery-section">
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">📸 Project Gallery</h2>
@@ -751,6 +770,21 @@
     loader.classList.add('hide');
     setTimeout(() => loader.style.display = 'none', 500);
     AOS.init({ duration: 800, once: true, offset: 60 });
+    
+    // Trigger image animations on scroll
+    const observerOptions = { threshold: 0.2, rootMargin: '0px' };
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    document.querySelectorAll('.gallery-card').forEach(card => {
+      observer.observe(card);
+    });
   });
 
   const toggleBtn = document.getElementById('darkModeToggle');
@@ -769,7 +803,7 @@
     }
   });
 
-  // Gallery Images - Beautiful Grid without arrows
+  // Gallery Images - Stunning grid with beautiful appearance animation
   const galleryImages = [
     { src: "1.jpg", name: "VRF System Install", desc: "Advanced VRF technology for multi-zone comfort" },
     { src: "2.jpg", name: "Chiller Plant", desc: "Industrial-grade central cooling solutions" },
@@ -784,12 +818,13 @@
   
   const galleryGrid = document.getElementById('galleryGrid');
   if(galleryGrid){
-    galleryImages.forEach(img => {
+    galleryImages.forEach((img, index) => {
       const card = document.createElement('div');
       card.className = 'gallery-card';
+      card.style.transitionDelay = `${index * 0.05}s`;
       card.innerHTML = `
         <img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name}'">
-        <div class="gallery-badge"><i class="fas fa-camera"></i> Featured</div>
+        <div class="gallery-badge"><i class="fas fa-camera"></i> Featured Project</div>
         <div class="gallery-overlay">
           <h4>${img.name}</h4>
           <p>${img.desc}</p>

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | About – Premium Electro-Mechanical Solutions</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;600;700;800;900&display=swap" rel="stylesheet">
+  <title>HALU Engineering | Projects – Electro-Mechanical Excellence in Action</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -35,42 +35,168 @@
     .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
     .overlay.active { opacity: 1; visibility: visible; }
-    .hero-about { background: radial-gradient(circle at 10% 20%, #fff5f5 0%, #ffffff 90%); padding: 4rem 0 5rem; }
-    .hero-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; }
-    .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(220,38,38,0.12); color: #dc2626; padding: 0.5rem 1.4rem; border-radius: 40px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; }
-    .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; background: linear-gradient(135deg, #111 30%, #dc2626 80%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero-content p { font-size: 1.1rem; color: #4b5563; line-height: 1.7; }
-    .hero-image { border-radius: 32px; overflow: hidden; box-shadow: 0 25px 40px -12px rgba(0,0,0,0.2); border: 2px solid rgba(220,38,38,0.2); transition: all 0.3s; }
-    .hero-image:hover { transform: scale(1.02); }
-    .hero-image img { width: 100%; height: auto; display: block; }
-    .history-card { background: rgba(255,255,255,0.95); border-radius: 40px; padding: 2.5rem; border: 1px solid rgba(220,38,38,0.2); margin: 3rem 0; }
-    .history-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #111; }
-    .history-card p { color: #374151; line-height: 1.8; margin-top: 1rem; font-size: 1rem; }
-    .satisfaction-section { background: linear-gradient(145deg, #fefaf5, #ffffff); border-radius: 48px; padding: 3rem; margin: 2rem 0; border: 1px solid rgba(220,38,38,0.15); }
-    .satisfaction-section h3 { font-size: 2rem; font-weight: 800; text-align: center; display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 2rem; }
-    .points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap: 1.5rem; }
-    .point-card { background: white; padding: 1.5rem; border-radius: 28px; display: flex; align-items: center; gap: 1rem; border: 1px solid #fee2e2; transition: all 0.3s; }
-    .point-card:hover { transform: translateX(10px) translateY(-5px); border-color: #dc2626; }
-    .point-card i { font-size: 2rem; color: #dc2626; min-width: 55px; background: rgba(220,38,38,0.08); padding: 12px; border-radius: 24px; }
-    .services-showcase { margin: 3rem 0; }
-    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap: 1.8rem; margin-top: 2rem; }
-    .service-item { background: white; border-radius: 32px; padding: 2rem 1.5rem; text-align: center; border: 1px solid #fee2e2; transition: all 0.3s; }
-    .service-item:hover { transform: translateY(-10px); border-color: #dc2626; box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2); }
-    .service-item i { font-size: 2.6rem; color: #dc2626; margin-bottom: 1rem; }
-    .service-item h4 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.6rem; }
-    .service-item p { color: #6b7280; font-size: 0.9rem; }
-    .cta-banner { background: linear-gradient(125deg, #dc2626, #b91c1c); border-radius: 56px; padding: 3rem; text-align: center; color: white; position: relative; overflow: hidden; margin: 3rem 0; }
-    .btn-cta { background: white; color: #dc2626; padding: 1rem 2.5rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 12px; transition: all 0.3s; }
-    .btn-cta:hover { transform: translateY(-4px); gap: 16px; background: #fff5f5; }
-    footer { background: #0f172a; color: #cbd5e1; text-align: center; padding: 2rem; border-top: 3px solid #dc2626; margin-top: 2rem; }
+    .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; position: relative; overflow: hidden; }
+    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .projects-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
+    .projects-hero h1 span { color: #dc2626; }
+    .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 2rem; margin: 3rem 0; }
+    .project-card { background: white; border-radius: 28px; overflow: hidden; border: 1px solid #fee2e2; transition: all 0.3s; }
+    .project-card:hover { transform: translateY(-10px); border-color: #dc2626; box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15); }
+    .card-img { height: 220px; background-size: cover; background-position: center; transition: transform 0.3s; }
+    .project-card:hover .card-img { transform: scale(1.02); }
+    .card-content { padding: 1.5rem; }
+    .card-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: #111; }
+    .card-content p { color: #4b5563; line-height: 1.5; }
+
+    /* Attractive Gallery Section - Full Width Images with Clear Captions */
+    .gallery-section {
+      margin: 4rem 0;
+    }
+    .gallery-title {
+      text-align: center;
+      font-size: 2.2rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: #111;
+      position: relative;
+    }
+    .gallery-title:after {
+      content: '';
+      position: absolute;
+      bottom: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: linear-gradient(90deg, #dc2626, #f97316);
+      border-radius: 4px;
+    }
+    .gallery-subtitle {
+      text-align: center;
+      color: #6b7280;
+      margin-bottom: 2.5rem;
+      margin-top: 1.5rem;
+      font-size: 1rem;
+    }
+    .slideshow-container {
+      position: relative;
+      max-width: 1100px;
+      margin: 0 auto;
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 0 30px 50px -20px rgba(0, 0, 0, 0.3);
+      background: #000;
+    }
+    .slide {
+      display: none;
+      animation: fadeEffect 0.8s ease;
+      position: relative;
+    }
+    .slide.active {
+      display: block;
+    }
+    @keyframes fadeEffect {
+      from { opacity: 0.4; }
+      to { opacity: 1; }
+    }
+    .slide img {
+      width: 100%;
+      height: auto;
+      max-height: 600px;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.5) 50%, transparent 100%);
+      color: white;
+      padding: 2rem;
+      text-align: center;
+      font-weight: 700;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    }
+    .slide-caption i {
+      margin-right: 10px;
+      font-size: 1.4rem;
+    }
+    .prev-btn, .next-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(220, 38, 38, 0.85);
+      color: white;
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 1.4rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+      z-index: 10;
+      backdrop-filter: blur(4px);
+    }
+    .prev-btn:hover, .next-btn:hover {
+      background: #dc2626;
+      transform: translateY(-50%) scale(1.1);
+    }
+    .prev-btn { left: 20px; }
+    .next-btn { right: 20px; }
+    .dots-container {
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    .dot {
+      height: 12px;
+      width: 12px;
+      margin: 0 8px;
+      background-color: #fecaca;
+      border-radius: 50%;
+      display: inline-block;
+      transition: all 0.3s;
+      cursor: pointer;
+    }
+    .dot.active-dot {
+      background-color: #dc2626;
+      transform: scale(1.3);
+      box-shadow: 0 0 8px rgba(220,38,38,0.5);
+    }
+
+    .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
+    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2.2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
+    .btn-cta:hover { transform: translateY(-3px); gap: 14px; background: #fff5f5; }
+    footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; margin-top: 2rem; }
     .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
     .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .floating-icon:hover { transform: scale(1.15); }
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    @media (max-width: 900px) { .hero-grid { grid-template-columns: 1fr; text-align: center; } .hero-content h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
-    @media (max-width: 480px) { .hero-content h1 { font-size: 1.8rem; } .history-card h2 { font-size: 1.5rem; } .satisfaction-section h3 { font-size: 1.5rem; } }
+
+    @media (max-width: 850px) { 
+      .projects-hero h1 { font-size: 2.5rem; } 
+      .nav-links { display: none; } 
+      .hamburger { display: flex; } 
+      .projects-grid { grid-template-columns: 1fr; } 
+      .container { padding: 0 24px; } 
+      .floating-icon { width: 45px; height: 45px; }
+      .gallery-title { font-size: 1.6rem; }
+      .slide-caption { font-size: 0.9rem; padding: 1rem; }
+      .slide-caption i { font-size: 1rem; }
+      .prev-btn, .next-btn { width: 40px; height: 40px; font-size: 1.1rem; }
+    }
+    @media (max-width: 480px) {
+      .projects-hero h1 { font-size: 1.8rem; }
+      .gallery-title { font-size: 1.4rem; }
+      .slide-caption { font-size: 0.75rem; padding: 0.8rem; }
+    }
   </style>
 </head>
 <body>
@@ -81,95 +207,89 @@
     <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
     <div class="nav-links">
       <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
+      <a href="about.html">About</a>
       <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
+      <a href="projects.html" class="active">Projects</a>
       <a href="contact.html">Contact</a>
     </div>
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
-  <a href="about.html" class="active">About</a>
+  <a href="about.html">About</a>
   <a href="services.html">Services</a>
-  <a href="projects.html">Projects</a>
+  <a href="projects.html" class="active">Projects</a>
   <a href="contact.html">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
 
-<section class="hero-about">
-  <div class="container hero-grid">
-    <div class="hero-content" data-aos="fade-right">
-      <div class="hero-badge"><i class="fas fa-bolt"></i> NEXT-GEN ELECTRO-MECHANICAL</div>
-      <h1>Engineering <span>Tomorrow's</span><br>Digital Climate</h1>
-      <p>HALU Engineering delivers premium, future-ready electro-mechanical solutions for factories, smart warehouses, high-tech offices, hotels, hospitals & beyond. Innovation meets reliability.</p>
-    </div>
-    <div class="hero-image" data-aos="fade-left">
-      <img src="52.jpg" alt="HALU Engineering advanced solutions" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=HALU+Digital'">
-    </div>
+<section class="projects-hero">
+  <div class="container">
+    <div class="hero-badge" data-aos="fade-up"><i class="fas fa-trophy"></i> 120+ SUCCESSFUL PROJECTS</div>
+    <h1 data-aos="fade-up" data-aos-delay="100">Where <span>engineering excellence</span><br>meets real-world impact</h1>
   </div>
 </section>
 
 <div class="container">
-  <!-- History Section - NO RED UNDERLINE ON HALU ENGINEERING TEXT -->
-  <div class="history-section" data-aos="fade-up">
-    <div class="history-card">
-      <h2>Driving Innovation Since 2018</h2>
-      <p>HALU Engineering was established in 2018 to provide excellent electro-mechanical solutions for factories, warehouses, office buildings, residential buildings, hotels, restaurants, hospitals, and many other projects. We have worked on extensive projects, ranging from small to large, and gained profound experience in the business. We have satisfied all our clients with what we could deliver to them. But our commitments are not limited to quality — we embrace digital transformation, sustainable energy, and precision engineering.</p>
+  <!-- Projects Grid -->
+  <div class="projects-grid">
+    <div class="project-card" data-aos="fade-up">
+      <div class="card-img" style="background-image:url('DHL.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-content"><h3>DHL Logistics Hub</h3><p>Standalone air conditioning installation for main sorting facility</p></div>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+      <div class="card-img" style="background-image:url('shangai.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-content"><h3>Shanghai Furniture Showroom</h3><p>Ducted ventilation system for premium exhibition space</p></div>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+      <div class="card-img" style="background-image:url('oromiya.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-content"><h3>Oromiya Regional Office</h3><p>Split AC machines across 25 office spaces</p></div>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="300">
+      <div class="card-img" style="background-image:url('industry.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><p>Factory ventilation system for improved air quality</p></div>
+    </div>
+    <div class="project-card" data-aos="fade-up" data-aos-delay="400">
+      <div class="card-img" style="background-image:url('a.jpg'); background-size: cover; background-position: center;"></div>
+      <div class="card-content"><h3>TAPU Foods</h3><p>Kitchen ventilation systems for commercial kitchen</p></div>
     </div>
   </div>
 
-  <!-- What Lies Behind Our Clients' Satisfaction -->
-  <div class="satisfaction-section" data-aos="fade-up">
-    <h3><i class="fas fa-crown"></i> The Core of Our Excellence</h3>
-    <div class="points-grid">
-      <div class="point-card" data-aos="fade-right" data-aos-delay="0"><i class="fas fa-coins"></i><p>Budgetary smart solutions optimized for ROI</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="50"><i class="fas fa-clock"></i><p>100% on-time delivery with digital tracking</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-truck-fast"></i><p>Global electro-mechanical supply chain</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="150"><i class="fas fa-handshake"></i><p>Family-like collaboration & transparent workflow</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="200"><i class="fas fa-chart-simple"></i><p>Data-driven project management & AI insights</p></div>
-    </div>
-  </div>
-
-  <!-- Our Services Section -->
-  <div class="services-showcase" data-aos="fade-up">
-    <h2 class="section-title" style="font-size:2rem; text-align:center; margin-bottom:2rem; position:relative;">Integrated Digital Services</h2>
-    <div class="services-grid">
-      <div class="service-item" data-aos="flip-up" data-aos-delay="0">
-        <i class="fas fa-cubes"></i>
-        <h4>Smart Design</h4>
-        <p>AI-assisted HVAC & electro-mechanical modeling for peak efficiency</p>
+  <!-- Attractive Gallery Section - Full Width Images with Clear Captions -->
+  <div class="gallery-section" data-aos="fade-up">
+    <h2 class="gallery-title"><i class="fas fa-images" style="color:#dc2626; margin-right:10px;"></i> Project Highlights Gallery</h2>
+    <p class="gallery-subtitle">Explore our featured projects and successful installations</p>
+    
+    <div class="slideshow-container">
+      <button class="prev-btn" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
+      <button class="next-btn" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
+      
+      <div class="slide">
+        <img src="testimonial.jpg" alt="HALU Engineering Industrial HVAC Project" onerror="this.src='https://placehold.co/1100x600/dc2626/ffffff?text=Industrial+HVAC+Excellence'">
+        <div class="slide-caption"><i class="fas fa-industry"></i> Industrial HVAC Excellence | HALU Engineering</div>
       </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="100">
-        <i class="fas fa-globe"></i>
-        <h4>Global Supply</h4>
-        <p>Premium certified equipment with real-time logistics</p>
+      <div class="slide">
+        <img src="testimonial2.JPG" alt="HALU Engineering Climate Control Solutions" onerror="this.src='https://placehold.co/1100x600/dc2626/ffffff?text=Advanced+Climate+Control'">
+        <div class="slide-caption"><i class="fas fa-microchip"></i> Advanced Climate Control Solutions | HALU Engineering</div>
       </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="200">
-        <i class="fas fa-microchip"></i>
-        <h4>Precision Install</h4>
-        <p>IoT-enabled installation by certified engineers</p>
-      </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="300">
-        <i class="fas fa-charging-station"></i>
-        <h4>Predictive Maintenance</h4>
-        <p>24/7 cloud monitoring & predictive AI support</p>
+      
+      <div class="dots-container">
+        <span class="dot" onclick="currentSlide(0)"></span>
+        <span class="dot" onclick="currentSlide(1)"></span>
       </div>
     </div>
   </div>
 
-  <!-- Digital CTA Banner -->
+  <!-- CTA Banner -->
   <div class="cta-banner" data-aos="zoom-in">
-    <h3><i class="fas fa-waveform"></i> Ready to digitize your infrastructure?</h3>
-    <p>From design to AI-driven maintenance — HALU Engineering delivers the future of electro-mechanical systems.</p>
-    <a href="contact.html" class="btn-cta">Launch Your Project <i class="fas fa-arrow-right"></i></a>
+    <h3>Ready to bring your project to life?</h3>
+    <p>From standalone AC to complex industrial ventilation — HALU Engineering delivers excellence.</p>
+    <a href="contact.html" class="btn-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></a>
   </div>
 </div>
 
 <footer>
-  <div class="container footer-content">
-    <p>© 2026 HALU Engineering — Digital Electro-Mechanical Excellence | <i class="fas fa-bolt"></i> Engineered for tomorrow</p>
-  </div>
+  <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
 </footer>
 
 <div class="floating-social">
@@ -179,7 +299,57 @@
 </div>
 
 <script>
-  // Remove loader after page fully loads
+  // Slideshow functionality
+  let slideIndex = 0;
+  const slides = document.querySelectorAll('.slide');
+  const dots = document.querySelectorAll('.dot');
+
+  function showSlide(n) {
+    if (slides.length === 0) return;
+    if (n >= slides.length) slideIndex = 0;
+    if (n < 0) slideIndex = slides.length - 1;
+    
+    slides.forEach((slide, i) => {
+      slide.classList.remove('active');
+      if (dots[i]) dots[i].classList.remove('active-dot');
+    });
+    
+    slides[slideIndex].classList.add('active');
+    if (dots[slideIndex]) dots[slideIndex].classList.add('active-dot');
+  }
+
+  function changeSlide(direction) {
+    slideIndex += direction;
+    showSlide(slideIndex);
+  }
+
+  function currentSlide(n) {
+    slideIndex = n;
+    showSlide(slideIndex);
+  }
+
+  // Auto-advance slides every 5 seconds
+  let autoInterval = setInterval(() => {
+    changeSlide(1);
+  }, 5000);
+
+  // Pause auto-advance on hover
+  const container = document.querySelector('.slideshow-container');
+  if (container) {
+    container.addEventListener('mouseenter', () => {
+      clearInterval(autoInterval);
+    });
+    container.addEventListener('mouseleave', () => {
+      autoInterval = setInterval(() => {
+        changeSlide(1);
+      }, 5000);
+    });
+  }
+
+  // Initialize slideshow
+  showSlide(0);
+
+  // Remove loader and init AOS
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
     if(loader) {
@@ -189,7 +359,7 @@
     AOS.init({ duration: 800, once: true, offset: 60 });
   });
 
-  // Hamburger Menu Functionality
+  // Hamburger Menu
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
@@ -209,7 +379,7 @@
   }
   document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 
-  // Logo loading with fallback
+  // Logo loading
   const logoContainer = document.getElementById('logoContainer');
   function tryLoadLogo(url) {
     const img = new Image();

@@ -17,39 +17,42 @@
     @keyframes spin { 100% { transform: rotate(360deg); } }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
     header { background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #dc2626; }
-    .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; flex-wrap: wrap; gap: 1rem; }
-    .logo-img { height: 70px; width: auto; border-radius: 16px; background: white; padding: 4px; box-shadow: 0 4px 12px rgba(220,38,38,0.2); transition: transform 0.3s; }
-    .logo-img:hover { transform: scale(1.03); }
-    .nav-links { display: flex; gap: 2rem; flex-wrap: wrap; }
-    .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; transition: 0.25s; position: relative; }
+    .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+    .logo-img { height: 65px; width: auto; border-radius: 12px; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; position: relative; }
     .nav-links a:hover, .nav-links a.active { color: #dc2626; }
-    .nav-links a.active:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 2.5px; background: #dc2626; border-radius: 4px; }
-    .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; position: relative; overflow: hidden; }
-    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; }
+    .nav-links a.active:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 3px; background: #dc2626; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
+    .hamburger span { width: 30px; height: 3px; background: #dc2626; border-radius: 4px; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+    .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: white; z-index: 1000; transition: right 0.3s ease; padding: 100px 30px 30px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+    .overlay.active { opacity: 1; visibility: visible; }
+    .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; }
+    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.5rem 1.5rem; border-radius: 40px; margin-bottom: 1.5rem; }
     .projects-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
     .projects-hero h1 span { color: #dc2626; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 2rem; margin: 3rem 0; }
     .project-card { background: white; border-radius: 28px; overflow: hidden; border: 1px solid #fee2e2; transition: all 0.3s; }
     .project-card:hover { transform: translateY(-10px); border-color: #dc2626; }
-    .card-img { height: 220px; background-size: cover; background-position: center; position: relative; }
+    .card-img { height: 220px; background-size: cover; background-position: center; }
     .card-content { padding: 1.5rem; }
-    .card-content h3 { font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
-    .project-location { display: flex; align-items: center; gap: 6px; font-size: 0.8rem; color: #dc2626; margin-bottom: 0.8rem; }
-    .briefing { background: #fef2f2; padding: 1rem; border-radius: 16px; margin-top: 1rem; border-left: 3px solid #dc2626; }
     .slideshow-container { position: relative; max-width: 1000px; margin: 0 auto; border-radius: 32px; overflow: hidden; border: 2px solid #fee2e2; }
     .slide { display: none; animation: fadeEffect 0.8s ease; }
     .slide.active { display: block; }
     @keyframes fadeEffect { from { opacity: 0.4; } to { opacity: 1; } }
     .slide img { width: 100%; max-height: 550px; object-fit: cover; }
     .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.8), transparent); color: white; padding: 1.5rem; text-align: center; }
-    .prev-btn, .next-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(220,38,38,0.8); color: white; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; font-size: 1.3rem; }
+    .prev-btn, .next-btn { position: absolute; top: 50%; transform: translateY(-50%); background: rgba(220,38,38,0.8); color: white; border: none; width: 48px; height: 48px; border-radius: 50%; cursor: pointer; }
     .prev-btn { left: 20px; } .next-btn { right: 20px; }
-    .dots-container { text-align: center; margin-top: 1.5rem; }
-    .dot { height: 12px; width: 12px; margin: 0 6px; background-color: #fecaca; border-radius: 50%; display: inline-block; cursor: pointer; }
-    .dot.active-dot { background-color: #dc2626; transform: scale(1.3); }
     .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
-    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2.2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
-    .btn-cta:hover { transform: translateY(-3px); }
+    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2.2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
     footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; }
     .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
     .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
@@ -57,27 +60,31 @@
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    @media (max-width: 850px) { .projects-hero h1 { font-size: 2.5rem; } .header-flex { flex-direction: column; } .nav-links { gap: 1.2rem; justify-content: center; } .projects-grid { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
-    @media (max-width: 480px) { .projects-hero h1 { font-size: 1.8rem; } }
+    @media (max-width: 850px) { .projects-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .projects-grid { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
   </style>
 </head>
 <body>
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
-<header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html" class="active">Projects</a><a href="contact.html">Contact</a></div></div></header>
+<header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html" class="active">Projects</a><a href="contact.html">Contact</a></div></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html" class="active">Projects</a><a href="contact.html">Contact</a></div>
+<div class="overlay" id="overlay"></div>
 <section class="projects-hero"><div class="container"><div class="hero-badge"><i class="fas fa-trophy"></i> 120+ SUCCESSFUL PROJECTS</div><h1>Where <span>engineering excellence</span><br>meets real-world impact</h1></div></section>
-<div class="container"><div class="projects-grid"><div class="project-card"><div class="card-img" style="background-image:url('DHL.jpg')"></div><div class="card-content"><h3>DHL Logistics Hub</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</div><p><strong>HALU Engineering installed standalone air conditioning</strong> for the main sorting facility.</p><div class="briefing"><i class="fas fa-info-circle"></i> Standalone AC units are self-contained systems ideal for warehouses and logistics centers.</div></div></div><div class="project-card"><div class="card-img" style="background-image:url('shangai.jpg')"></div><div class="card-content"><h3>Shanghai Furniture Showroom</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> Shanghai, China</div><p><strong>Supply & installation of ducted ventilation system</strong> for a premium 5,000m² exhibition space.</p><div class="briefing"><i class="fas fa-wind"></i> Ducted ventilation provides centralized, silent, efficient air distribution.</div></div></div><div class="project-card"><div class="card-img" style="background-image:url('oromiya.jpg')"></div><div class="card-content"><h3>Oromiya Regional Office</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> Oromiya, Ethiopia</div><p><strong>Supply and installation of split AC machines</strong> across 25 office spaces.</p><div class="briefing"><i class="fas fa-snowflake"></i> Split AC systems offer powerful, energy-efficient cooling with quiet operation.</div></div></div><div class="project-card"><div class="card-img" style="background-image:url('industry.jpg')"></div><div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> Eastern Industrial Park, Ethiopia</div><p><strong>Factory ventilation system</strong> for improved air quality and worker safety.</p><div class="briefing"><i class="fas fa-industry"></i> Industrial ventilation controls heat, dust, and fumes for compliance.</div></div></div><div class="project-card"><div class="card-img" style="background-image:url('a.jpg')"></div><div class="card-content"><h3>TAPU Foods</h3><div class="project-location"><i class="fas fa-map-marker-alt"></i> Addis Ababa, Ethiopia</div><p><strong>Supply and installation of kitchen ventilation systems</strong> for commercial kitchen.</p><div class="briefing"><i class="fas fa-utensils"></i> Commercial kitchen ventilation removes heat, grease, and smoke.</div></div></div></div>
-<div class="slideshow-container"><button class="prev-btn" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button><button class="next-btn" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button><div class="slide"><img src="testimonial.jpg" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Gallery+1'"><div class="slide-caption">🏭 Industrial HVAC Excellence | HALU Engineering</div></div><div class="slide"><img src="testimonial2.jpg" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Gallery+2'"><div class="slide-caption">❄️ Advanced Climate Control Solutions | HALU Engineering</div></div><div class="dots-container"><span class="dot" onclick="currentSlide(0)"></span><span class="dot" onclick="currentSlide(1)"></span></div></div>
+<div class="container"><div class="projects-grid"><div class="project-card"><div class="card-img" style="background-image:url('DHL.jpg')"></div><div class="card-content"><h3>DHL Logistics Hub</h3><p>Standalone air conditioning installation for main sorting facility</p></div></div><div class="project-card"><div class="card-img" style="background-image:url('shangai.jpg')"></div><div class="card-content"><h3>Shanghai Furniture Showroom</h3><p>Ducted ventilation system for premium exhibition space</p></div></div><div class="project-card"><div class="card-img" style="background-image:url('oromiya.jpg')"></div><div class="card-content"><h3>Oromiya Regional Office</h3><p>Split AC machines across 25 office spaces</p></div></div><div class="project-card"><div class="card-img" style="background-image:url('industry.jpg')"></div><div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><p>Factory ventilation system for improved air quality</p></div></div><div class="project-card"><div class="card-img" style="background-image:url('a.jpg')"></div><div class="card-content"><h3>TAPU Foods</h3><p>Kitchen ventilation systems for commercial kitchen</p></div></div></div>
+<div class="slideshow-container"><button class="prev-btn" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button><button class="next-btn" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button><div class="slide"><img src="testimonial.jpg" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Gallery'"><div class="slide-caption">Industrial HVAC Excellence | HALU Engineering</div></div><div class="slide"><img src="testimonial2.jpg" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Gallery'"><div class="slide-caption">Advanced Climate Control | HALU Engineering</div></div><div class="dots-container" style="text-align:center; margin-top:1rem;"><span class="dot" style="height:12px;width:12px;margin:0 6px;background:#fecaca;border-radius:50%;display:inline-block;cursor:pointer;" onclick="currentSlide(0)"></span><span class="dot" style="height:12px;width:12px;margin:0 6px;background:#fecaca;border-radius:50%;display:inline-block;cursor:pointer;" onclick="currentSlide(1)"></span></div></div>
 <div class="cta-banner"><h3>Ready to bring your project to life?</h3><p>From standalone AC to complex industrial ventilation — HALU Engineering delivers excellence.</p><a href="contact.html" class="btn-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></a></div></div>
 <footer><p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
   let slideIndex=0; const slides=document.querySelectorAll('.slide'),dots=document.querySelectorAll('.dot');
-  function showSlide(n){if(slides.length===0)return;if(n>=slides.length)slideIndex=0;if(n<0)slideIndex=slides.length-1;slides.forEach((s,i)=>{s.classList.remove('active');if(dots[i])dots[i].classList.remove('active-dot');});slides[slideIndex].classList.add('active');if(dots[slideIndex])dots[slideIndex].classList.add('active-dot');}
+  function showSlide(n){if(slides.length===0)return;if(n>=slides.length)slideIndex=0;if(n<0)slideIndex=slides.length-1;slides.forEach((s,i)=>{s.classList.remove('active');if(dots[i])dots[i].style.backgroundColor='#fecaca';});slides[slideIndex].classList.add('active');if(dots[slideIndex])dots[slideIndex].style.backgroundColor='#dc2626';}
   function changeSlide(d){slideIndex+=d;showSlide(slideIndex);}
   function currentSlide(n){slideIndex=n;showSlide(slideIndex);}
   let autoInterval=setInterval(()=>changeSlide(1),5000); const container=document.querySelector('.slideshow-container'); if(container){container.addEventListener('mouseenter',()=>clearInterval(autoInterval));container.addEventListener('mouseleave',()=>{autoInterval=setInterval(()=>changeSlide(1),5000);});} showSlide(0);
   window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
-  const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.alt='HALU Engineering';logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:70px;height:70px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
+  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');const overlay=document.getElementById('overlay');
+  function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');overlay.classList.toggle('active');document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';}
+  hamburger.addEventListener('click',toggleMenu);overlay.addEventListener('click',toggleMenu);document.querySelectorAll('.mobile-menu a').forEach(link=>link.addEventListener('click',toggleMenu));
+  const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
 </script>
 </body>
 </html>

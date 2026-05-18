@@ -14,251 +14,687 @@
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e1e2a; scroll-behavior: smooth; overflow-x: hidden; }
-
-    /* Splash Screen */
-    .splash-screen { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: linear-gradient(135deg, #0f0c29 0%, #1a1a3e 50%, #24243e 100%); display: flex; justify-content: center; align-items: center; z-index: 10000; transition: opacity 0.8s ease; }
-    .splash-screen.hide { opacity: 0; visibility: hidden; }
-    .splash-logo { text-align: center; animation: splashPulse 1.5s ease-in-out; }
-    @keyframes splashPulse { 0% { transform: scale(0.3); opacity: 0; } 50% { transform: scale(1.1); opacity: 1; } 100% { transform: scale(1); opacity: 1; } }
-    .splash-logo img { width: 220px; border-radius: 40px; box-shadow: 0 0 80px rgba(220,38,38,0.8); animation: logoFloat 2s infinite alternate, logoGlow 1.5s infinite alternate; }
-    @keyframes logoFloat { 0% { transform: translateY(0px); } 100% { transform: translateY(-20px); } }
-    @keyframes logoGlow { 0% { filter: drop-shadow(0 0 10px rgba(220,38,38,0.5)); } 100% { filter: drop-shadow(0 0 30px rgba(220,38,38,0.9)); } }
-    .splash-logo h2 { margin-top: 2rem; font-size: 2.5rem; background: linear-gradient(135deg, #ffffff, #fca5a5, #ef4444); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .splash-logo p { color: rgba(255,255,255,0.8); margin-top: 0.8rem; letter-spacing: 5px; }
-
-    .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
-    .loader.hide { opacity: 0; visibility: hidden; }
-    .loader-spinner { width: 60px; height: 60px; border: 5px solid #f0f0f0; border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-
-    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; position: relative; z-index: 2; }
-
-    /* Header with Hamburger */
-    header { background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #dc2626; }
-    .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
-    .logo-img { height: 65px; width: auto; border-radius: 12px; transition: transform 0.3s; }
-    .logo-img:hover { transform: scale(1.05); }
-    
-    /* Desktop Navigation */
-    .nav-links { display: flex; gap: 2rem; align-items: center; }
-    .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; transition: 0.25s; position: relative; }
-    .nav-links a:hover, .nav-links a.active { color: #dc2626; }
-    .nav-links a.active:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 3px; background: #dc2626; border-radius: 4px; }
-    
-    /* Hamburger Menu Button */
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
-    .hamburger span { width: 30px; height: 3px; background: #dc2626; border-radius: 4px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
-    
-    /* Mobile Menu */
-    .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.1); z-index: 1000; transition: right 0.3s ease; padding: 100px 30px 30px; display: flex; flex-direction: column; gap: 1.5rem; }
-    .mobile-menu.active { right: 0; }
-    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; transition: 0.25s; }
-    .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
-    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
-    .overlay.active { opacity: 1; visibility: visible; }
-
-    /* Hero Section */
-    .hero { position: relative; padding: 6rem 0 8rem; overflow: hidden; background: linear-gradient(125deg, #0f0c29 0%, #302b63 50%, #24243e 100%); }
-    .hero h1 { font-size: 4.2rem; font-weight: 900; line-height: 1.15; margin-bottom: 1.5rem; background: linear-gradient(135deg, #ffffff 30%, #fca5a5 80%); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero h1 span { background: linear-gradient(135deg, #f87171, #ef4444); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .hero p { font-size: 1.25rem; color: #e2e8f0; max-width: 600px; margin-bottom: 2rem; line-height: 1.7; }
-    .btn { display: inline-flex; align-items: center; gap: 12px; background: linear-gradient(135deg, #ef4444, #dc2626); color: white; padding: 16px 38px; border-radius: 60px; font-weight: 700; text-decoration: none; transition: all 0.3s; box-shadow: 0 15px 35px -8px rgba(220,38,38,0.5); }
-    .btn:hover { transform: translateY(-5px); gap: 16px; }
-    .btn-outline { background: transparent; border: 2px solid #ef4444; color: #ef4444; box-shadow: none; }
-    .btn-outline:hover { background: #ef4444; color: white; }
-
-    section { padding: 5rem 0; }
-    .section-title { font-size: 2.8rem; font-weight: 800; text-align: center; background: linear-gradient(135deg, #111, #dc2626); -webkit-background-clip: text; background-clip: text; color: transparent; position: relative; margin-bottom: 2.5rem; }
-    .section-title:after { content: ''; position: absolute; bottom: -15px; left: 50%; transform: translateX(-50%); width: 100px; height: 4px; background: linear-gradient(90deg, #dc2626, #f97316); border-radius: 4px; }
-    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin-top: 2rem; }
-    .card { background: rgba(255,255,255,0.95); backdrop-filter: blur(10px); border-radius: 32px; padding: 2rem; text-align: center; border: 1px solid rgba(220,38,38,0.2); transition: all 0.3s; }
-    .card:hover { transform: translateY(-12px); border-color: #dc2626; background: white; }
-    .card i { font-size: 3.5rem; background: linear-gradient(135deg, #dc2626, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 1rem; }
-    .card h3 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.75rem; color: #111; }
-    .stats { background: linear-gradient(135deg, #fef2f2, #ffffff); border-radius: 56px; padding: 2.5rem 2rem; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 1.5rem; margin-top: 2rem; text-align: center; }
-    .stat-number { font-size: 3rem; font-weight: 900; background: linear-gradient(135deg, #dc2626, #b91c1c); -webkit-background-clip: text; background-clip: text; color: transparent; }
-    .stat-label { font-weight: 600; color: #4b5563; text-transform: uppercase; font-size: 0.8rem; }
-    .icons-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1.5rem; margin: 2rem 0; }
-    .icon-card { background: rgba(255,255,255,0.9); backdrop-filter: blur(8px); border-radius: 28px; padding: 1.5rem 0.8rem; text-align: center; border: 1px solid rgba(220,38,38,0.15); transition: all 0.3s; cursor: pointer; }
-    .icon-card:hover { transform: translateY(-8px); border-color: #dc2626; background: white; }
-    .icon-card i { font-size: 2.8rem; background: linear-gradient(135deg, #dc2626, #f97316); -webkit-background-clip: text; background-clip: text; color: transparent; margin-bottom: 0.8rem; }
-    .slider-section { background: linear-gradient(135deg, #fefaf5, #ffffff); border-radius: 56px; padding: 3rem 0; margin: 2rem 0; }
-    .swiper { width: 100%; padding: 20px 0 60px; }
-    .swiper-slide { background: white; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.1); transition: all 0.4s ease; border: 1px solid rgba(220,38,38,0.2); position: relative; }
-    .swiper-slide:hover { transform: translateY(-10px) scale(1.01); border-color: #dc2626; box-shadow: 0 25px 40px -12px rgba(220,38,38,0.3); }
-    .swiper-slide img { width: 100%; height: 280px; object-fit: cover; transition: transform 0.5s ease; display: block; }
-    .swiper-slide:hover img { transform: scale(1.03); }
-    .slide-caption { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.4), transparent); color: white; padding: 1.5rem 1rem 1rem; font-weight: 700; font-size: 1.2rem; text-align: center; backdrop-filter: blur(2px); letter-spacing: 0.5px; text-shadow: 0 2px 5px rgba(0,0,0,0.5); border-bottom-left-radius: 32px; border-bottom-right-radius: 32px; z-index: 2; pointer-events: none; }
-    /* Unique gradient border effect on images */
-    .swiper-slide::before { content: ''; position: absolute; inset: 0; border-radius: 32px; padding: 2px; background: linear-gradient(135deg, #dc2626, #f97316, #facc15); mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0); -webkit-mask-composite: xor; mask-composite: exclude; pointer-events: none; opacity: 0; transition: opacity 0.3s; z-index: 1; }
-    .swiper-slide:hover::before { opacity: 1; }
-    
-    /* Attractive Swiper Navigation Buttons */
-    .swiper-button-next, .swiper-button-prev { background: rgba(220, 38, 38, 0.9); backdrop-filter: blur(8px); width: 52px; height: 52px; border-radius: 60px; color: white; box-shadow: 0 10px 20px rgba(0,0,0,0.2), 0 0 0 2px rgba(255,255,255,0.5); transition: all 0.3s ease; }
-    .swiper-button-next:after, .swiper-button-prev:after { font-size: 1.6rem; font-weight: bold; }
-    .swiper-button-next:hover, .swiper-button-prev:hover { background: #ef4444; transform: scale(1.1); box-shadow: 0 0 0 3px rgba(220,38,38,0.4), 0 15px 25px rgba(0,0,0,0.3); }
-    .swiper-pagination-bullet { background: #dc2626; opacity: 0.5; width: 10px; height: 10px; transition: all 0.2s; }
-    .swiper-pagination-bullet-active { background: #dc2626; opacity: 1; width: 28px; border-radius: 6px; }
-    
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 2rem; margin: 2rem 0; }
-    .project-card { background: white; border-radius: 28px; padding: 1.8rem; text-align: center; border: 1px solid #fee2e2; cursor: pointer; transition: all 0.3s; }
-    .project-card:hover { transform: translateY(-8px); border-color: #dc2626; }
-    .project-icon i { font-size: 2.8rem; color: #dc2626; margin-bottom: 1rem; }
-    .cta-section { background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 56px; padding: 3.5rem; text-align: center; color: white; }
-    .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
-    .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
-    .floating-icon:hover { transform: scale(1.15); }
-    .floating-wa { background: #25D366; color: white; }
-    .floating-telegram { background: #0088cc; color: white; }
-    .floating-fb { background: #1877f2; color: white; }
-    footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; }
-
-    @media (max-width: 1000px) { .icons-grid { grid-template-columns: repeat(3, 1fr); } }
-    @media (max-width: 850px) {
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .hero h1 { font-size: 2.5rem; }
-      .section-title { font-size: 2rem; }
-      .icons-grid { grid-template-columns: repeat(2, 1fr); }
-      .stats { flex-direction: column; }
-      .projects-grid { grid-template-columns: repeat(2, 1fr); }
-      .container { padding: 0 24px; }
-      .floating-icon { width: 45px; height: 45px; }
-      .splash-logo img { width: 150px; }
-      .swiper-button-next, .swiper-button-prev { width: 40px; height: 40px; }
-      .swiper-button-next:after, .swiper-button-prev:after { font-size: 1.2rem; }
-      .slide-caption { font-size: 0.9rem; padding: 1rem 0.8rem; }
-      .swiper-slide img { height: 220px; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
-    @media (max-width: 550px) { .projects-grid { grid-template-columns: 1fr; } .grid { grid-template-columns: 1fr; } }
-    @media (max-width: 480px) { .hero h1 { font-size: 1.8rem; } .section-title { font-size: 1.6rem; } .splash-logo img { width: 120px; } .splash-logo h2 { font-size: 1.5rem; } }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e1e2a;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    /* Particle background container */
+    #particles-js {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+
+    /* Ensure content appears above particles */
+    header, main, footer, .hero, section, .container, .loader {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Make backgrounds slightly transparent to show particles */
+    .hero, .card, .stats, .slider-section, .trust-projects-section, .project-list, .client-card, .cta-section {
+      background: rgba(255, 255, 255, 0.92);
+      backdrop-filter: blur(2px);
+    }
+
+    body.dark .hero, body.dark .card, body.dark .stats, body.dark .slider-section, body.dark .trust-projects-section, body.dark .project-list, body.dark .client-card {
+      background: rgba(31, 41, 55, 0.92);
+    }
+
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-spinner {
+      width: 50px;
+      height: 50px;
+      border: 4px solid #f0f0f0;
+      border-top: 4px solid #dc2626;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 32px;
+    }
+
+    /* Header White/Red */
+    header {
+      background: rgba(255, 255, 255, 0.95);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 2px solid #dc2626;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
+
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: linear-gradient(135deg, #fff5f5, #ffffff);
+      padding: 6px 18px 6px 12px;
+      border-radius: 60px;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+      transition: all 0.3s ease;
+    }
+    .logo-wrapper:hover {
+      box-shadow: 0 4px 15px rgba(220,38,38,0.15);
+      border-color: #dc2626;
+    }
+
+    .logo-img {
+      height: 70px;
+      width: auto;
+      object-fit: contain;
+      transition: transform 0.3s;
+      border-radius: 16px;
+      background: white;
+      padding: 4px;
+      box-shadow: 0 4px 12px rgba(220,38,38,0.2);
+    }
+    .logo-img:hover { transform: scale(1.03); }
+
+    .logo-text {
+      font-size: 2rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #111;
+    }
+    .logo-text span { color: #dc2626; }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1f2937;
+      transition: 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #dc2626;
+    }
+    .nav-links a.active:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 2.5px;
+      background: #dc2626;
+      border-radius: 4px;
+    }
+
+    /* Hero Red/White */
+    .hero {
+      background: rgba(255, 245, 245, 0.9);
+      padding: 5rem 0 6rem;
+      position: relative;
+      border-radius: 0 0 32px 32px;
+    }
+    .hero h1 {
+      font-size: 4rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #111;
+    }
+    .hero h1 span { color: #dc2626; }
+    .hero p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 580px;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #dc2626;
+      color: white;
+      padding: 14px 38px;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px -6px rgba(220,38,38,0.4);
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #b91c1c;
+      box-shadow: 0 20px 30px -10px #dc2626;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #dc2626;
+      color: #dc2626;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #dc2626;
+      color: white;
+    }
+
+    section {
+      padding: 5rem 0;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      position: relative;
+      color: #111;
+      text-align: center;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #dc2626;
+      border-radius: 4px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      transition: 0.35s;
+      text-align: center;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      backdrop-filter: blur(2px);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #dc2626;
+      box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2);
+    }
+    .card i {
+      font-size: 3rem;
+      color: #dc2626;
+      margin-bottom: 1rem;
+    }
+    .card h3 { font-size: 1.6rem; margin-bottom: 0.75rem; color: #111; }
+    .card p { color: #4b5563; }
+
+    .stats {
+      background: rgba(254, 242, 242, 0.9);
+      border-radius: 56px;
+      padding: 2.5rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin-top: 2rem;
+      text-align: center;
+      border: 1px solid #fecaca;
+      backdrop-filter: blur(2px);
+    }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: #dc2626;
+    }
+    .stat-label { font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
+
+    .slider-section {
+      background: rgba(254, 250, 245, 0.9);
+      border-radius: 48px;
+      margin: 2rem 0;
+      padding: 2rem 0;
+      backdrop-filter: blur(2px);
+    }
+    .swiper { width: 100%; padding: 20px 0 40px; }
+    .swiper-slide {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .swiper-slide:hover { transform: scale(1.02); border-color: #dc2626; }
+    .swiper-slide img { width: 100%; height: 280px; object-fit: cover; display: block; }
+    .slide-caption { padding: 1rem; text-align: center; background: white; color: #111; font-weight: 600; border-top: 1px solid #fee2e2; }
+    .swiper-pagination-bullet-active { background: #dc2626; }
+    .swiper-button-next, .swiper-button-prev { color: #dc2626; }
+
+    .client-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.8rem;
+      margin: 2rem 0;
+    }
+    .client-card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 28px;
+      padding: 1.8rem;
+      transition: all 0.3s;
+      border: 1px solid #fee2e2;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+      backdrop-filter: blur(2px);
+    }
+    .client-card:hover {
+      transform: translateY(-6px);
+      border-color: #dc2626;
+      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
+    }
+    .client-icon i { font-size: 2.8rem; color: #dc2626; margin-bottom: 1rem; }
+    .client-card h4 { font-size: 1.3rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+    .client-card p { color: #6b7280; font-size: 0.85rem; }
+    .project-badge { display: inline-block; background: #fee2e2; padding: 0.3rem 0.8rem; border-radius: 40px; font-size: 0.7rem; margin-top: 0.8rem; color: #dc2626; font-weight: 600; }
+
+    .row-two-columns { display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0; }
+    .col { flex: 1; min-width: 250px; }
+    .project-list {
+      background: rgba(254, 242, 242, 0.9);
+      border-radius: 32px;
+      padding: 1.5rem;
+      border: 1px solid #fecaca;
+      transition: 0.2s;
+      cursor: pointer;
+      backdrop-filter: blur(2px);
+    }
+    .project-list:hover { border-color: #dc2626; box-shadow: 0 8px 20px rgba(220,38,38,0.1); }
+    .project-list h3 { color: #dc2626; margin-bottom: 1rem; }
+    .project-list ul { list-style: none; }
+    .project-list li { padding: 0.6rem 0; border-bottom: 1px solid #ffdede; display: flex; align-items: center; gap: 10px; color: #1f2937; }
+    .project-list li i { color: #dc2626; width: 24px; }
+    .click-hint { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #dc2626; font-weight: 500; }
+
+    .cta-section {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      border-radius: 48px;
+      padding: 3rem;
+      text-align: center;
+      color: white;
+    }
+    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
+    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; }
+    .cta-section .btn:hover { background: #fff5f5; transform: translateY(-3px); }
+
+    .whatsapp-float {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      z-index: 1000;
+      transition: transform 0.3s;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover { transform: scale(1.1); background: #20b859; }
+
+    .theme-toggle {
+      background: #f3f4f6;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #111;
+      margin-left: 1rem;
+    }
+    body.dark {
+      background: #0a0c10;
+      color: #eef2ff;
+    }
+    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero {
+      background: rgba(31, 41, 55, 0.9);
+      color: #f3f4f6;
+      border-color: #374151;
+    }
+    body.dark .card p, body.dark .client-card p, body.dark .project-list li { color: #cbd5e1; }
+    body.dark .hero { background: rgba(17, 24, 39, 0.9); }
+    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
+    body.dark .logo-text { color: white; }
+    body.dark .logo-wrapper { background: #1f2937; border-color: #374151; }
+
+    footer {
+      background: #f8fafc;
+      color: #4b5563;
+      text-align: center;
+      padding: 2rem;
+      border-top: 2px solid #dc2626;
+      margin-top: 2rem;
+    }
+    body.dark footer { background: #030712; color: #9ca3af; }
+
+    @media (max-width: 850px) {
+      .hero h1 { font-size: 2.5rem; }
+      .header-flex { flex-direction: column; }
+      .container { padding: 0 24px; }
+      .logo-img { height: 52px; }
+      .logo-text { font-size: 1.5rem; }
+    }
   </style>
 </head>
 <body>
-<div class="splash-screen" id="splashScreen"><div class="splash-logo"><img src="80.JPG" alt="HALU Engineering"><h2>HALU Engineering</h2><p>PRECISION • INNOVATION • EXCELLENCE</p></div></div>
-<div class="loader" id="loader"><div class="loader-spinner"></div></div>
+<!-- Particle Background -->
+<div id="particles-js"></div>
+
+<div class="loader" id="loader">
+  <div class="loader-spinner"></div>
+</div>
 
 <header>
   <div class="container header-flex">
-    <div class="logo-wrapper" id="logoContainer"></div>
-    <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
-    <div class="nav-links"><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
+    <div class="logo-wrapper">
+      <img src="80.JPG" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=H'">
+      <div class="logo-text">HALU <span>Engineering</span></div>
+    </div>
+    <div style="display: flex; align-items: center; gap: 16px;">
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+    </div>
   </div>
 </header>
-<div class="mobile-menu" id="mobileMenu"><a href="index.html" class="active">Home</a><a href="about.html">About</a><a href="services.html">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
-<div class="overlay" id="overlay"></div>
 
 <main>
-  <div class="hero"><div class="container"><div data-aos="fade-up"><h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1><p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p><div style="display:flex; gap:20px; flex-wrap:wrap;"><a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a><a href="contact.html" class="btn btn-outline">Request Quote <i class="fas fa-file-invoice"></i></a></div></div></div></div>
-  <section><div class="container"><h2 class="section-title">⚡ Engineering Excellence ⚡</h2><div class="icons-grid"><div class="icon-card"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="icon-card"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="icon-card"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="icon-card"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div><div class="icon-card"><i class="fas fa-shield-alt"></i><h4>24/7 Security</h4></div><div class="icon-card"><i class="fas fa-charging-station"></i><h4>HVAC Optimization</h4></div></div></div></section>
-  <section class="slider-section"><div class="container"><h2 class="section-title">📸 Project Gallery</h2><div class="swiper mySwiper"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
-  <section><div class="container"><h2 class="section-title">🎯 Core Expertise</h2><div class="grid"><div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div><div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control, humidity & energy recovery ventilators.</p></div><div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
-  <section><div class="container"><h2 class="section-title">📊 Trusted Numbers</h2><div class="stats"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div>
-  <div style="margin-top:2rem"><h3 style="color:#dc2626; text-align:center; margin-bottom:1rem; font-size:1.8rem; font-weight:700;"><i class="fas fa-trophy"></i> 🏆 Featured Success Stories</h3><div class="projects-grid" id="projectsGrid"></div><div class="click-hint" style="text-align:center; color:#dc2626; margin-top:0.5rem;"><i class="fas fa-mouse-pointer"></i> Click any success story → explore our HVAC services</div></div></div></section>
-  <section><div class="container"><div class="cta-section"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom:1.5rem;">Get a free consultation from our engineering experts today!</p><a href="contact.html" class="btn">Contact Us Now <i class="fas fa-arrow-right"></i></a></div></div></section>
+  <div class="hero">
+    <div class="container">
+      <div data-aos="fade-up" data-aos-duration="800">
+        <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
+        <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
+        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+          <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-outline">Request Quote</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
+      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
+        <div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div>
+        <div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div>
+        <div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div>
+        <div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div>
+        <div class="card" style="padding: 1rem;"><i class="fas fa-shield-alt"></i><h4>24/7 Security</h4></div>
+        <div class="card" style="padding: 1rem;"><i class="fas fa-charging-station"></i><h4>HVAC Optimization</h4></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="slider-section">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2>
+      <div class="swiper mySwiper" data-aos="fade-up">
+        <div class="swiper-wrapper" id="swiperWrapper"></div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Core Expertise</h2>
+      <div class="grid">
+        <div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control, humidity & energy recovery ventilators.</p></div>
+        <div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section style="background: transparent;">
+    <div class="container">
+      <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
+      <div class="stats" data-aos="fade-up">
+        <div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
+        <div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div>
+        <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
+        <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
+      </div>
+
+      <div class="trust-projects-section" style="background: rgba(254, 250, 245, 0.9); border-radius: 56px; padding: 2rem; margin-top: 2rem; backdrop-filter: blur(2px);">
+        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3>
+        <div class="client-grid" id="clientsGrid"></div>
+
+        <div class="row-two-columns">
+          <div class="col">
+            <div class="project-list" data-aos="fade-right">
+              <h3><i class="fas fa-building"></i> MESOB Projects</h3>
+              <ul>
+                <li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li>
+                <li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li>
+                <li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li>
+                <li><i class="fas fa-map-marker-alt"></i> Afar Region</li>
+              </ul>
+            </div>
+          </div>
+          <div class="col">
+            <div class="project-list" data-aos="fade-left">
+              <h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3>
+              <ul>
+                <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
+                <li><i class="fas fa-city"></i> Civil Service</li>
+                <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
+                <li><i class="fas fa-charging-station"></i> TAPU Foods</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="click-hint">
+          <i class="fas fa-mouse-pointer"></i> <strong>Click on any client logo or project card → explore our HVAC services</strong>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="container">
+      <div class="cta-section" data-aos="zoom-in">
+        <h2>Ready to Upgrade Your Infrastructure?</h2>
+        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Get a free consultation from our engineering experts.</p>
+        <a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+      </div>
+    </div>
+  </section>
 </main>
-<footer><p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
-<div class="floating-social"><a href="https://wa.me/251918036609?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 
+<footer>
+  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
+</footer>
+
+<a href="https://wa.me/251900000000?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
-  setTimeout(()=>{const splash=document.getElementById('splashScreen');if(splash){splash.classList.add('hide');setTimeout(()=>splash.style.display='none',800);}},2500);
-  window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
-  
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');overlay.classList.toggle('active');document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';}
-  hamburger.addEventListener('click', toggleMenu);
-  overlay.addEventListener('click', toggleMenu);
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  // Remove loader
+  window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    loader.classList.add('hide');
+    setTimeout(() => loader.style.display = 'none', 500);
+  });
 
-  // Swiper initialization with attractive navigation + visible caption fix
-  const swiper = new Swiper('.mySwiper', {
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: true,
-    autoplay: { delay: 4500, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true, dynamicBullets: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    effect: 'slide',
-    speed: 800,
-    breakpoints: {
-      640: { slidesPerView: 2, spaceBetween: 24 },
-      1024: { slidesPerView: 3, spaceBetween: 28 }
+  // AOS init
+  AOS.init({ duration: 800, once: true, offset: 80 });
+
+  // Dark mode toggle
+  const toggleBtn = document.getElementById('darkModeToggle');
+  toggleBtn.addEventListener('click', () => {
+    document.body.classList.toggle('dark');
+    const icon = toggleBtn.querySelector('i');
+    const span = toggleBtn.querySelector('span');
+    if(document.body.classList.contains('dark')) {
+      icon.classList.remove('fa-moon');
+      icon.classList.add('fa-sun');
+      span.innerText = ' Light';
+    } else {
+      icon.classList.remove('fa-sun');
+      icon.classList.add('fa-moon');
+      span.innerText = ' Dark';
     }
   });
-  
-  // Enhanced gallery images with high quality and unique captions (fully visible)
-  const images = [
-    { src: "1.jpg", name: "❄️ VRF System | Precision Cooling" },
-    { src: "2.jpg", name: "🏭 Chiller Plant | Industrial Grade" },
-    { src: "28.jpg", name: "🧊 Cold Storage | Blast Freezer" },
-    { src: "13.jpg", name: "🔥 Heat Pump | Energy Efficient" },
-    { src: "17.jpg", name: "🔧 Duct Fabrication | Custom HVAC" },
-    { src: "33.jpg", name: "⚙️ Industrial AHU | High Airflow" },
-    { src: "34.jpg", name: "🎛️ Precision Cooling | Server Rooms" },
-    { src: "35.jpg", name: "💨 Ventilation System | Fresh Air" },
-    { src: "37.jpg", name: "📱 Smart Controls | IoT Ready" }
+
+  // Particles.js Configuration
+  particlesJS("particles-js", {
+    "particles": {
+      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+      "color": { "value": "#dc2626" },
+      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+      "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
+      "size": { "value": 3, "random": true, "anim": { "enable": false } },
+      "line_linked": { "enable": true, "distance": 150, "color": "#dc2626", "opacity": 0.4, "width": 1 },
+      "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
+    },
+    "interactivity": {
+      "detect_on": "canvas",
+      "events": {
+        "onhover": { "enable": true, "mode": "repulse" },
+        "onclick": { "enable": true, "mode": "push" },
+        "resize": true
+      }
+    },
+    "retina_detect": true
+  });
+
+  // Swiper
+  const swiper = new Swiper('.mySwiper', {
+    slidesPerView: 1, spaceBetween: 24, loop: true, autoplay: { delay: 4000, disableOnInteraction: false },
+    pagination: { el: '.swiper-pagination', clickable: true },
+    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+    breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } },
+    speed: 800
+  });
+
+  // Dynamic gallery images
+  const imageList = [
+    { src: "1.jpg", name: "VRF System Install" }, { src: "2.jpg", name: "Chiller Plant" },
+    { src: "28.jpg", name: "Cold Storage" }, { src: "13.jpg", name: "Heat Pump Array" },
+    { src: "17.jpg", name: "Duct Fabrication" }, { src: "33.jpg", name: "Industrial AHU" },
+    { src: "34.jpg", name: "Precision Cooling" }, { src: "35.jpg", name: "Ventilation Duct" },
+    { src: "37.jpg", name: "Smart Controls" }
   ];
-  const wrapper = document.querySelector('#swiperWrapper');
-  if(wrapper) {
-    images.forEach(img => {
+  const swiperWrapper = document.querySelector('#swiperWrapper');
+  if(swiperWrapper){
+    imageList.forEach(img => {
       const slide = document.createElement('div');
       slide.className = 'swiper-slide';
-      slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${encodeURIComponent(img.name)}'"><div class="slide-caption">${img.name}</div>`;
-      wrapper.appendChild(slide);
+      slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`;
+      swiperWrapper.appendChild(slide);
     });
     swiper.update();
   }
-  
-  // Success stories (formerly partners) - keeping same icons and companies but rebranded as success stories
-  const successStories = [
-    { name: "DHL", icon: "fas fa-truck-fast" },
-    { name: "BOEING", icon: "fas fa-plane" },
-    { name: "INSA", icon: "fas fa-shield-alt" },
-    { name: "Civil Service", icon: "fas fa-users" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat" },
-    { name: "TAPU Foods", icon: "fas fa-apple-alt" }
+
+  // Clients data
+  const clients = [
+    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
+    { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
+    { name: "INSA", icon: "fas fa-shield-alt", projects: "Data Center Cooling" },
+    { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" },
+    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Cold Storage Solutions" }
   ];
-  const projectsGrid = document.getElementById('projectsGrid');
-  if(projectsGrid) {
-    successStories.forEach(project => {
+  const clientsGrid = document.getElementById('clientsGrid');
+  if(clientsGrid){
+    clients.forEach(client => {
       const card = document.createElement('div');
-      card.className = 'project-card';
-      card.innerHTML = `<div class="project-icon"><i class="${project.icon}"></i></div><h4>${project.name}</h4><div class="project-badge" style="background:#fee2e2; padding:0.3rem 1rem; border-radius:40px; font-size:0.7rem; margin-top:0.8rem; color:#dc2626;"><i class="fas fa-arrow-right"></i> View solutions</div>`;
+      card.className = 'client-card';
+      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><p>${client.projects}</p><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`;
       card.addEventListener('click', () => window.location.href = 'services.html');
-      projectsGrid.appendChild(card);
+      clientsGrid.appendChild(card);
     });
   }
-  
-  // Logo loader with fallback
-  const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) {
-    const img = new Image();
-    img.onload = () => {
-      const logoImg = document.createElement('img');
-      logoImg.src = url;
-      logoImg.alt = 'HALU Engineering';
-      logoImg.className = 'logo-img';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(logoImg);
-    };
-    img.onerror = () => {
-      const fallback = document.createElement('div');
-      fallback.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
-      fallback.innerHTML = '<i class="fas fa-wind"></i>';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(fallback);
-    };
-    img.src = url;
+
+  // Make project lists clickable
+  document.querySelectorAll('.project-list').forEach(el => {
+    el.style.cursor = 'pointer';
+    el.addEventListener('click', () => window.location.href = 'services.html');
+  });
+
+  // Logo error handling
+  const logoImg = document.querySelector('.logo-img');
+  if(logoImg) {
+    logoImg.addEventListener('error', function() {
+      this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=H';
+    });
   }
-  tryLoadLogo('80.JPG');
 </script>
 </body>
 </html>

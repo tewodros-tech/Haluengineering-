@@ -34,6 +34,111 @@
     .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
     .overlay.active { opacity: 1; visibility: visible; }
+    
+    /* Dark Mode Toggle Button */
+    .theme-toggle {
+      background: #f3f4f6;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #111;
+      margin-left: 1rem;
+      transition: all 0.3s;
+    }
+    .theme-toggle:hover {
+      transform: scale(1.02);
+    }
+    
+    /* Dark Mode Styles */
+    body.dark {
+      background: #0a0c10;
+      color: #eef2ff;
+    }
+    body.dark header {
+      background: rgba(18, 22, 35, 0.98);
+      border-bottom-color: #dc2626;
+    }
+    body.dark .nav-links a {
+      color: #e2e8f0;
+    }
+    body.dark .nav-links a:hover,
+    body.dark .nav-links a.active {
+      color: #dc2626;
+    }
+    body.dark .services-hero {
+      background: #111827;
+    }
+    body.dark .services-hero h1,
+    body.dark .services-hero p {
+      color: white;
+    }
+    body.dark .hero-badge {
+      background: #374151;
+      color: #dc2626;
+    }
+    body.dark .flagship-card {
+      background: #1f2937;
+      border-color: #374151;
+      color: #f3f4f6;
+    }
+    body.dark .flagship-card p {
+      color: #cbd5e1;
+    }
+    body.dark .flagship-card h3 {
+      color: white;
+    }
+    body.dark .badge-step {
+      background: #374151;
+      color: #dc2626;
+    }
+    body.dark .service-card {
+      background: #1f2937;
+      border-color: #374151;
+      color: #f3f4f6;
+    }
+    body.dark .service-card p {
+      color: #cbd5e1;
+    }
+    body.dark .service-card h3 {
+      color: white;
+    }
+    body.dark .gallery-item {
+      border-color: #374151;
+    }
+    body.dark .gallery-overlay span {
+      color: white;
+    }
+    body.dark .cta-banner {
+      background: linear-gradient(135deg, #b91c1c, #991b1b);
+    }
+    body.dark footer {
+      background: #030712;
+      color: #9ca3af;
+    }
+    body.dark footer p {
+      color: #9ca3af;
+    }
+    body.dark .mobile-menu {
+      background: #1f2937;
+    }
+    body.dark .mobile-menu a {
+      color: #eef2ff;
+      border-bottom-color: #374151;
+    }
+    body.dark .mobile-menu a:hover,
+    body.dark .mobile-menu a.active {
+      color: #dc2626;
+    }
+    body.dark .theme-toggle {
+      background: #374151;
+      color: white;
+    }
+    body.dark .floating-icon {
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    
     .services-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; }
     .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
     .services-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
@@ -63,14 +168,47 @@
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
     @media (max-width: 1000px) { .process-flagship { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 850px) { .services-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .process-flagship { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
+    @media (max-width: 850px) { 
+      .services-hero h1 { font-size: 2.5rem; } 
+      .nav-links { display: none; } 
+      .hamburger { display: flex; } 
+      .process-flagship { grid-template-columns: 1fr; } 
+      .container { padding: 0 24px; } 
+      .floating-icon { width: 45px; height: 45px; }
+      .theme-toggle { padding: 6px 12px; font-size: 0.8rem; margin-left: 0.5rem; }
+    }
     @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } }
   </style>
 </head>
 <body>
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
-<header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div></div></header>
-<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
+<header>
+  <div class="container header-flex">
+    <div class="logo-wrapper" id="logoContainer"></div>
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html" class="active">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+    </div>
+  </div>
+</header>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html">Home</a>
+  <a href="about.html">About</a>
+  <a href="services.html" class="active">Services</a>
+  <a href="projects.html">Projects</a>
+  <a href="contact.html">Contact</a>
+</div>
 <div class="overlay" id="overlay"></div>
 <section class="services-hero"><div class="container"><div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div><h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1><p>From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems.</p></div></section>
 <div class="container"><div class="process-flagship"><div class="flagship-card"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div><div class="flagship-card"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div><div class="flagship-card"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div><div class="flagship-card"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div></div>
@@ -80,11 +218,66 @@
 <footer><p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
-  window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
-  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');const overlay=document.getElementById('overlay');
-  function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');overlay.classList.toggle('active');document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';}
-  hamburger.addEventListener('click',toggleMenu);overlay.addEventListener('click',toggleMenu);document.querySelectorAll('.mobile-menu a').forEach(link=>link.addEventListener('click',toggleMenu));
-  const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
+  window.addEventListener('load',()=>{
+    document.getElementById('loader')?.classList.add('hide');
+    setTimeout(()=>document.getElementById('loader')?.remove(),500);
+    AOS.init({duration:800,once:true,offset:60});
+  });
+  
+  // Dark Mode Toggle
+  const toggleBtn = document.getElementById('darkModeToggle');
+  if(toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const icon = toggleBtn.querySelector('i');
+      const span = toggleBtn.querySelector('span');
+      if(document.body.classList.contains('dark')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        span.innerText = ' Light';
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        span.innerText = ' Dark';
+      }
+    });
+  }
+  
+  // Hamburger Menu
+  const hamburger=document.getElementById('hamburger');
+  const mobileMenu=document.getElementById('mobileMenu');
+  const overlay=document.getElementById('overlay');
+  function toggleMenu(){
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';
+  }
+  hamburger.addEventListener('click',toggleMenu);
+  overlay.addEventListener('click',toggleMenu);
+  document.querySelectorAll('.mobile-menu a').forEach(link=>link.addEventListener('click',toggleMenu));
+  
+  // Logo loading
+  const logoContainer=document.getElementById('logoContainer');
+  function tryLoadLogo(url){
+    const img=new Image();
+    img.onload=()=>{
+      const logoImg=document.createElement('img');
+      logoImg.src=url;
+      logoImg.className='logo-img';
+      logoContainer.innerHTML='';
+      logoContainer.appendChild(logoImg);
+    };
+    img.onerror=()=>{
+      const fallback=document.createElement('div');
+      fallback.style.cssText='width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
+      fallback.innerHTML='<i class="fas fa-wind"></i>';
+      logoContainer.innerHTML='';
+      logoContainer.appendChild(fallback);
+    };
+    img.src=url;
+  }
+  tryLoadLogo('80.JPG');
 </script>
 </body>
 </html>

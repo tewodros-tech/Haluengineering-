@@ -159,7 +159,7 @@
   <section class="slider-section"><div class="container"><h2 class="section-title">📸 Project Gallery</h2><div class="swiper mySwiper"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
   <section><div class="container"><h2 class="section-title">🎯 Core Expertise</h2><div class="grid"><div class="card"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div><div class="card"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control, humidity & energy recovery ventilators.</p></div><div class="card"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
   <section><div class="container"><h2 class="section-title">📊 Trusted Numbers</h2><div class="stats"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div>
-  <div style="margin-top:2rem"><h3 style="color:#dc2626; text-align:center; margin-bottom:1rem;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3><div class="projects-grid" id="projectsGrid"></div><div class="click-hint" style="text-align:center; color:#dc2626;"><i class="fas fa-mouse-pointer"></i> Click any partner → explore our HVAC services</div></div></div></section>
+  <div style="margin-top:2rem"><h3 style="color:#dc2626; text-align:center; margin-bottom:1rem; font-size:1.8rem; font-weight:700;"><i class="fas fa-trophy"></i> 🏆 Featured Success Stories</h3><div class="projects-grid" id="projectsGrid"></div><div class="click-hint" style="text-align:center; color:#dc2626; margin-top:0.5rem;"><i class="fas fa-mouse-pointer"></i> Click any success story → explore our HVAC services</div></div></div></section>
   <section><div class="container"><div class="cta-section"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom:1.5rem;">Get a free consultation from our engineering experts today!</p><a href="contact.html" class="btn">Contact Us Now <i class="fas fa-arrow-right"></i></a></div></div></section>
 </main>
 <footer><p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
@@ -217,8 +217,8 @@
     swiper.update();
   }
   
-  // Partners grid (unchanged)
-  const projects = [
+  // Success stories (formerly partners) - keeping same icons and companies but rebranded as success stories
+  const successStories = [
     { name: "DHL", icon: "fas fa-truck-fast" },
     { name: "BOEING", icon: "fas fa-plane" },
     { name: "INSA", icon: "fas fa-shield-alt" },
@@ -228,7 +228,7 @@
   ];
   const projectsGrid = document.getElementById('projectsGrid');
   if(projectsGrid) {
-    projects.forEach(project => {
+    successStories.forEach(project => {
       const card = document.createElement('div');
       card.className = 'project-card';
       card.innerHTML = `<div class="project-icon"><i class="${project.icon}"></i></div><h4>${project.name}</h4><div class="project-badge" style="background:#fee2e2; padding:0.3rem 1rem; border-radius:40px; font-size:0.7rem; margin-top:0.8rem; color:#dc2626;"><i class="fas fa-arrow-right"></i> View solutions</div>`;

@@ -490,7 +490,7 @@
     </div>
   </div>
 
-  <!-- Engineering Icons Row - REMOVED AI Optimization and 24/7 Security -->
+  <!-- Engineering Icons Row -->
   <section>
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
@@ -543,7 +543,6 @@
       </div>
 
       <div class="trust-projects-section" style="background: #fefaf5; border-radius: 56px; padding: 2rem; margin-top: 2rem;">
-        <!-- Changed from "Our Prestigious Partners" to "Our Successful Projects" -->
         <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3>
         <div class="client-grid" id="clientsGrid"></div>
 
@@ -682,21 +681,22 @@
     swiper.update();
   }
 
-  // Clients data - REMOVED specific text as requested
+  // Clients data - DESCRIPTIONS REMOVED as requested (only show names)
   const clients = [
-    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics Solutions" },
-    { name: "BOEING", icon: "fas fa-plane", projects: "Precision Engineering Solutions" },
-    { name: "INSA", icon: "fas fa-shield-alt", projects: "Secure Infrastructure Solutions" },
-    { name: "Civil Service", icon: "fas fa-users", projects: "Government Infrastructure" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC Solutions" },
-    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Food Industry Solutions" }
+    { name: "DHL", icon: "fas fa-truck-fast", projects: "" },
+    { name: "BOEING", icon: "fas fa-plane", projects: "" },
+    { name: "INSA", icon: "fas fa-shield-alt", projects: "" },
+    { name: "Civil Service", icon: "fas fa-users", projects: "" },
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "" },
+    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "" }
   ];
   const clientsGrid = document.getElementById('clientsGrid');
   if(clientsGrid){
     clients.forEach(client => {
       const card = document.createElement('div');
       card.className = 'client-card';
-      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><p>${client.projects}</p><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`;
+      // Only show name and icon, no description paragraph
+      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`;
       card.addEventListener('click', () => window.location.href = 'services.html');
       clientsGrid.appendChild(card);
     });

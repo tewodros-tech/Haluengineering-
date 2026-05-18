@@ -28,23 +28,6 @@
       overflow-x: hidden;
     }
 
-    /* Particle background container */
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Ensure content appears above particles */
-    .loader, header, .hero, section, footer, .container, .swiper, .stats, .trust-projects-section {
-      position: relative;
-      z-index: 1;
-    }
-
     /* Loading Animation */
     .loader {
       position: fixed;
@@ -64,15 +47,14 @@
       visibility: hidden;
     }
     .loader-spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid #f0f0f0;
-      border-top: 4px solid #dc2626;
+      width: 60px;
+      height: 60px;
+      border: 5px solid #f0f0f0;
+      border-top: 5px solid #dc2626;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
     @keyframes spin {
-      0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
@@ -88,7 +70,7 @@
       backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       border-bottom: 2px solid #dc2626;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
@@ -105,24 +87,15 @@
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
     }
 
     .logo-img {
-      height: 58px;
+      height: 65px;
       width: auto;
-      object-fit: contain;
+      border-radius: 12px;
       transition: transform 0.3s;
     }
     .logo-img:hover { transform: scale(1.03); }
-
-    .logo-text {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111;
-    }
-    .logo-text span { color: #dc2626; }
 
     .nav-links {
       display: flex;
@@ -146,7 +119,7 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
+      height: 3px;
       background: #dc2626;
       border-radius: 4px;
     }
@@ -426,51 +399,31 @@
     .cta-section .btn { background: white; color: #dc2626; box-shadow: none; }
     .cta-section .btn:hover { background: #fff5f5; transform: translateY(-3px); }
 
-    /* Floating WhatsApp */
-    .whatsapp-float {
+    /* Floating Social Icons */
+    .floating-social {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
-      background: #25D366;
-      color: white;
-      width: 60px;
-      height: 60px;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .floating-icon {
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 2rem;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-      z-index: 1000;
-      transition: transform 0.3s;
       text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .whatsapp-float:hover { transform: scale(1.1); background: #20b859; }
-
-    /* Dark mode toggle */
-    .theme-toggle {
-      background: #f3f4f6;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111;
-      margin-left: 1rem;
-    }
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero {
-      background: #1f2937;
-      color: #f3f4f6;
-      border-color: #374151;
-    }
-    body.dark .card p, body.dark .client-card p, body.dark .project-list li { color: #cbd5e1; }
-    body.dark .hero { background: #111827; }
-    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
-    body.dark .logo-text { color: white; }
+    .floating-icon:hover { transform: scale(1.15); }
+    .floating-wa { background: #25D366; color: white; }
+    .floating-telegram { background: #0088cc; color: white; }
+    .floating-fb { background: #1877f2; color: white; }
 
     footer {
       background: #f8fafc;
@@ -480,7 +433,6 @@
       border-top: 2px solid #dc2626;
       margin-top: 2rem;
     }
-    body.dark footer { background: #030712; color: #9ca3af; }
 
     @media (max-width: 850px) {
       .hero h1 { font-size: 2.5rem; }
@@ -489,24 +441,15 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .logo-img { height: 52px; }
-      .logo-text { font-size: 1.5rem; }
     }
   </style>
 </head>
 <body>
-<!-- Particle Background -->
-<div id="particles-js"></div>
-
-<div class="loader" id="loader">
-  <div class="loader-spinner"></div>
-</div>
+<div class="loader" id="loader"><div class="loader-spinner"></div></div>
 
 <header>
   <div class="container header-flex">
-    <div class="logo-wrapper">
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.src='https://placehold.co/58x58/dc2626/ffffff?text=H'">
-      <div class="logo-text">HALU <span>Engineering</span></div>
-    </div>
+    <div class="logo-wrapper" id="logoContainer"></div>
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -519,7 +462,6 @@
       <a href="projects.html">Projects</a>
       <a href="contact.html">Contact</a>
     </div>
-    <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
   </div>
 </header>
 
@@ -652,9 +594,12 @@
   <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
 </footer>
 
-<a href="https://wa.me/251900000000?text=Hello%20HALU%20Engineering%2C%20I%20need%20HVAC%20solutions" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<div class="floating-social">
+  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
+</div>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 <script>
   // Remove loader
   window.addEventListener('load', () => {
@@ -664,46 +609,50 @@
   });
 
   // AOS init
-  AOS.init({ duration: 800, once: true, offset: 80 });
+  AOS.init({ duration: 800, once: true, offset: 60 });
 
-  // Dark mode toggle
-  const toggleBtn = document.getElementById('darkModeToggle');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const icon = toggleBtn.querySelector('i');
-    const span = toggleBtn.querySelector('span');
-    if(document.body.classList.contains('dark')) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-      span.innerText = ' Light';
-    } else {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-      span.innerText = ' Dark';
-    }
-  });
+  // Hamburger Menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+  
+  function toggleMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
+  }
+  
+  if(hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+  if(overlay) {
+    overlay.addEventListener('click', toggleMenu);
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 
-  // Particles.js Configuration
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-      "color": { "value": "#dc2626" },
-      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-      "opacity": { "value": 0.4, "random": false },
-      "size": { "value": 3, "random": true },
-      "line_linked": { "enable": true, "distance": 150, "color": "#dc2626", "opacity": 0.3, "width": 1 },
-      "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      }
-    },
-    "retina_detect": true
-  });
+  // Logo loading
+  const logoContainer = document.getElementById('logoContainer');
+  function tryLoadLogo(url) {
+    const img = new Image();
+    img.onload = function() {
+      const logoImg = document.createElement('img');
+      logoImg.src = url;
+      logoImg.alt = 'HALU Engineering';
+      logoImg.className = 'logo-img';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(logoImg);
+    };
+    img.onerror = function() {
+      const fallbackDiv = document.createElement('div');
+      fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
+      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(fallbackDiv);
+    };
+    img.src = url;
+  }
+  tryLoadLogo('80.JPG');
 
   // Swiper
   const swiper = new Swiper('.mySwiper', {
@@ -758,26 +707,6 @@
     el.style.cursor = 'pointer';
     el.addEventListener('click', () => window.location.href = 'services.html');
   });
-
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  
-  function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  }
-  
-  if(hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-  }
-  if(overlay) {
-    overlay.addEventListener('click', toggleMenu);
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 </script>
 </body>
 </html>

@@ -441,6 +441,7 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .logo-img { height: 52px; }
+      .floating-icon { width: 45px; height: 45px; }
     }
   </style>
 </head>
@@ -489,17 +490,15 @@
     </div>
   </div>
 
-  <!-- Engineering Icons Row -->
+  <!-- Engineering Icons Row - REMOVED AI Optimization and 24/7 Security -->
   <section>
     <div class="container">
       <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
       <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
         <div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div>
         <div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div>
-        <div class="card" style="padding: 1rem;"><i class="fas fa-robot"></i><h4>AI Optimization</h4></div>
         <div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div>
         <div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div>
-        <div class="card" style="padding: 1rem;"><i class="fas fa-shield-alt"></i><h4>24/7 Security</h4></div>
       </div>
     </div>
   </section>
@@ -544,7 +543,8 @@
       </div>
 
       <div class="trust-projects-section" style="background: #fefaf5; border-radius: 56px; padding: 2rem; margin-top: 2rem;">
-        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-handshake"></i> Our Prestigious Partners</h3>
+        <!-- Changed from "Our Prestigious Partners" to "Our Successful Projects" -->
+        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3>
         <div class="client-grid" id="clientsGrid"></div>
 
         <div class="row-two-columns">
@@ -572,7 +572,7 @@
           </div>
         </div>
         <div class="click-hint">
-          <i class="fas fa-mouse-pointer"></i> <strong>Click on any client logo or project card → explore our HVAC services</strong>
+          <i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong>
         </div>
       </div>
     </div>
@@ -682,14 +682,14 @@
     swiper.update();
   }
 
-  // Clients data
+  // Clients data - REMOVED specific text as requested
   const clients = [
-    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics HVAC" },
-    { name: "BOEING", icon: "fas fa-plane", projects: "Aerospace Climate Control" },
-    { name: "INSA", icon: "fas fa-shield-alt", projects: "Data Center Cooling" },
-    { name: "Civil Service", icon: "fas fa-users", projects: "Govt. Infrastructure" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC & Construction" },
-    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Cold Storage Solutions" }
+    { name: "DHL", icon: "fas fa-truck-fast", projects: "Global Logistics Solutions" },
+    { name: "BOEING", icon: "fas fa-plane", projects: "Precision Engineering Solutions" },
+    { name: "INSA", icon: "fas fa-shield-alt", projects: "Secure Infrastructure Solutions" },
+    { name: "Civil Service", icon: "fas fa-users", projects: "Government Infrastructure" },
+    { name: "Minaye Construction", icon: "fas fa-hard-hat", projects: "Industrial HVAC Solutions" },
+    { name: "TAPU Foods", icon: "fas fa-apple-alt", projects: "Food Industry Solutions" }
   ];
   const clientsGrid = document.getElementById('clientsGrid');
   if(clientsGrid){

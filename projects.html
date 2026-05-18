@@ -36,7 +36,6 @@
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
     .overlay.active { opacity: 1; visibility: visible; }
     .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; position: relative; overflow: hidden; }
-    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.5rem 1.5rem; border-radius: 40px; font-size: 0.85rem; font-weight: 700; margin-bottom: 1.5rem; }
     .projects-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
     .projects-hero h1 span { color: #dc2626; }
     .projects-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(360px,1fr)); gap: 2rem; margin: 3rem 0; }
@@ -48,19 +47,19 @@
     .card-content h3 { font-size: 1.3rem; font-weight: 700; margin-bottom: 0.5rem; color: #111; }
     .card-content p { color: #4b5563; line-height: 1.5; }
 
-    /* Attractive Gallery Section */
-    .gallery-section {
+    /* Testimonials Section */
+    .testimonials-section {
       margin: 4rem 0;
     }
-    .gallery-title {
+    .testimonials-title {
       text-align: center;
       font-size: 2.2rem;
       font-weight: 800;
-      margin-bottom: 2rem;
+      margin-bottom: 1rem;
       color: #111;
       position: relative;
     }
-    .gallery-title:after {
+    .testimonials-title:after {
       content: '';
       position: absolute;
       bottom: -14px;
@@ -71,100 +70,66 @@
       background: linear-gradient(90deg, #dc2626, #f97316);
       border-radius: 4px;
     }
-    .gallery-subtitle {
+    .testimonials-subtitle {
       text-align: center;
       color: #6b7280;
       margin-bottom: 2.5rem;
       font-size: 1rem;
-    }
-    .slideshow-container {
-      position: relative;
-      max-width: 1000px;
-      margin: 0 auto;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 25px 45px -15px rgba(0, 0, 0, 0.25);
-      border: 2px solid #fee2e2;
-      background: #000;
-    }
-    .slide {
-      display: none;
-      animation: fadeEffect 0.8s ease;
-    }
-    .slide.active {
-      display: block;
-    }
-    @keyframes fadeEffect {
-      from { opacity: 0.4; transform: scale(0.98); }
-      to { opacity: 1; transform: scale(1); }
-    }
-    .slide img {
-      width: 100%;
-      height: auto;
-      max-height: 550px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .slideshow-container:hover .slide img {
-      transform: scale(1.02);
-    }
-    .slide-caption {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
-      color: white;
-      padding: 1.8rem;
-      text-align: center;
-      font-weight: 600;
-      font-size: 1.1rem;
-      letter-spacing: 0.5px;
-    }
-    .prev-btn, .next-btn {
-      position: absolute;
-      top: 50%;
-      transform: translateY(-50%);
-      background: rgba(220, 38, 38, 0.85);
-      color: white;
-      border: none;
-      width: 48px;
-      height: 48px;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.3rem;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s;
-      z-index: 10;
-      backdrop-filter: blur(4px);
-    }
-    .prev-btn:hover, .next-btn:hover {
-      background: #dc2626;
-      transform: translateY(-50%) scale(1.1);
-    }
-    .prev-btn { left: 20px; }
-    .next-btn { right: 20px; }
-    .dots-container {
-      text-align: center;
       margin-top: 1.5rem;
     }
-    .dot {
-      height: 12px;
-      width: 12px;
-      margin: 0 8px;
-      background-color: #fecaca;
-      border-radius: 50%;
-      display: inline-block;
-      transition: all 0.3s;
-      cursor: pointer;
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
     }
-    .dot.active-dot {
-      background-color: #dc2626;
-      transform: scale(1.3);
-      box-shadow: 0 0 8px rgba(220,38,38,0.5);
+    .testimonial-card {
+      background: #ffffff;
+      border-radius: 32px;
+      overflow: hidden;
+      border: 1px solid #fee2e2;
+      transition: all 0.3s;
+      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.05);
+    }
+    .testimonial-card:hover {
+      transform: translateY(-8px);
+      border-color: #dc2626;
+      box-shadow: 0 20px 35px -12px rgba(220,38,38,0.15);
+    }
+    .testimonial-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.3s;
+    }
+    .testimonial-card:hover .testimonial-img {
+      transform: scale(1.02);
+    }
+    .testimonial-content {
+      padding: 1.8rem;
+      text-align: center;
+    }
+    .testimonial-content i {
+      font-size: 2rem;
+      color: #dc2626;
+      opacity: 0.5;
+      margin-bottom: 1rem;
+    }
+    .testimonial-content p {
+      color: #4b5563;
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 1rem;
+    }
+    .testimonial-author {
+      font-weight: 700;
+      color: #dc2626;
+      margin-top: 0.5rem;
+    }
+    .testimonial-role {
+      font-size: 0.8rem;
+      color: #9ca3af;
     }
 
     .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
@@ -183,15 +148,15 @@
       .nav-links { display: none; } 
       .hamburger { display: flex; } 
       .projects-grid { grid-template-columns: 1fr; } 
+      .testimonials-grid { grid-template-columns: 1fr; }
       .container { padding: 0 24px; } 
       .floating-icon { width: 45px; height: 45px; }
-      .gallery-title { font-size: 1.6rem; }
-      .slide-caption { font-size: 0.8rem; padding: 1rem; }
-      .prev-btn, .next-btn { width: 36px; height: 36px; font-size: 1rem; }
+      .testimonials-title { font-size: 1.6rem; }
     }
     @media (max-width: 480px) {
       .projects-hero h1 { font-size: 1.8rem; }
-      .gallery-title { font-size: 1.4rem; }
+      .testimonials-title { font-size: 1.4rem; }
+      .testimonial-img { height: 220px; }
     }
   </style>
 </head>
@@ -221,7 +186,6 @@
 
 <section class="projects-hero">
   <div class="container">
-    <div class="hero-badge" data-aos="fade-up"><i class="fas fa-trophy"></i> 120+ SUCCESSFUL PROJECTS</div>
     <h1 data-aos="fade-up" data-aos-delay="100">Where <span>engineering excellence</span><br>meets real-world impact</h1>
   </div>
 </section>
@@ -251,27 +215,29 @@
     </div>
   </div>
 
-  <!-- Attractive Gallery Section with Title -->
-  <div class="gallery-section" data-aos="fade-up">
-    <h2 class="gallery-title"><i class="fas fa-images" style="color:#dc2626; margin-right:10px;"></i> Project Highlights Gallery</h2>
-    <p class="gallery-subtitle">Explore our featured projects and successful installations</p>
+  <!-- Testimonials Section - Replaced Gallery -->
+  <div class="testimonials-section" data-aos="fade-up">
+    <h2 class="testimonials-title"><i class="fas fa-star" style="color:#dc2626; margin-right:10px;"></i> Testimonials from our completed projects</h2>
+    <p class="testimonials-subtitle">What our clients say about working with HALU Engineering</p>
     
-    <div class="slideshow-container">
-      <button class="prev-btn" onclick="changeSlide(-1)"><i class="fas fa-chevron-left"></i></button>
-      <button class="next-btn" onclick="changeSlide(1)"><i class="fas fa-chevron-right"></i></button>
-      
-      <div class="slide">
-        <img src="testimonial.jpg" alt="HALU Engineering Industrial HVAC Project" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Industrial+HVAC+Excellence'">
-        <div class="slide-caption"><i class="fas fa-industry"></i> Industrial HVAC Excellence | HALU Engineering</div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="0">
+        <img src="testimonial.jpg" alt="Client Testimonial" class="testimonial-img" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=Client+Testimonial'">
+        <div class="testimonial-content">
+          <i class="fas fa-quote-right"></i>
+          <p>"HALU Engineering delivered exceptional HVAC solutions for our facility. Their team was professional, timely, and the quality of work exceeded our expectations. Highly recommended!"</p>
+          <div class="testimonial-author">— Alemtsehay Bekele</div>
+          <div class="testimonial-role">Facility Manager, UNILEVER PLC</div>
+        </div>
       </div>
-      <div class="slide">
-        <img src="testimonial2.jpg" alt="HALU Engineering Climate Control Solutions" onerror="this.src='https://placehold.co/1000x550/dc2626/ffffff?text=Advanced+Climate+Control'">
-        <div class="slide-caption"><i class="fas fa-microchip"></i> Advanced Climate Control Solutions | HALU Engineering</div>
-      </div>
-      
-      <div class="dots-container">
-        <span class="dot" onclick="currentSlide(0)"></span>
-        <span class="dot" onclick="currentSlide(1)"></span>
+      <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
+        <img src="testimonial2.jpg" alt="Client Testimonial 2" class="testimonial-img" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=Client+Testimonial+2'">
+        <div class="testimonial-content">
+          <i class="fas fa-quote-right"></i>
+          <p>"Working with HALU Engineering was a game-changer for our cold storage project. Their technical expertise and commitment to quality ensured everything was completed on schedule."</p>
+          <div class="testimonial-author">— Tsegaye Worku</div>
+          <div class="testimonial-role">Operations Director, TAPU Foods</div>
+        </div>
       </div>
     </div>
   </div>
@@ -295,56 +261,6 @@
 </div>
 
 <script>
-  // Slideshow functionality - FIXED for both images
-  let slideIndex = 0;
-  const slides = document.querySelectorAll('.slide');
-  const dots = document.querySelectorAll('.dot');
-
-  function showSlide(n) {
-    if (slides.length === 0) return;
-    if (n >= slides.length) slideIndex = 0;
-    if (n < 0) slideIndex = slides.length - 1;
-    
-    slides.forEach((slide, i) => {
-      slide.classList.remove('active');
-      if (dots[i]) dots[i].classList.remove('active-dot');
-    });
-    
-    slides[slideIndex].classList.add('active');
-    if (dots[slideIndex]) dots[slideIndex].classList.add('active-dot');
-  }
-
-  function changeSlide(direction) {
-    slideIndex += direction;
-    showSlide(slideIndex);
-  }
-
-  function currentSlide(n) {
-    slideIndex = n;
-    showSlide(slideIndex);
-  }
-
-  // Auto-advance slides every 5 seconds
-  let autoInterval = setInterval(() => {
-    changeSlide(1);
-  }, 5000);
-
-  // Pause auto-advance on hover
-  const container = document.querySelector('.slideshow-container');
-  if (container) {
-    container.addEventListener('mouseenter', () => {
-      clearInterval(autoInterval);
-    });
-    container.addEventListener('mouseleave', () => {
-      autoInterval = setInterval(() => {
-        changeSlide(1);
-      }, 5000);
-    });
-  }
-
-  // Initialize slideshow
-  showSlide(0);
-
   // Remove loader and init AOS
   window.addEventListener('load', () => {
     const loader = document.getElementById('loader');
@@ -375,7 +291,7 @@
   }
   document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 
-  // Logo loading
+  // Logo loading with 80.JPG
   const logoContainer = document.getElementById('logoContainer');
   function tryLoadLogo(url) {
     const img = new Image();

@@ -25,23 +25,6 @@
       overflow-x: hidden;
     }
 
-    /* Particle background container */
-    #particles-js {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    /* Ensure content appears above particles */
-    .loader, header, .hero-about, .container, footer, .history-card, .stats-row, .satisfaction-section, .services-showcase, .cta-banner {
-      position: relative;
-      z-index: 1;
-    }
-
     /* Loading Animation */
     .loader {
       position: fixed;
@@ -61,15 +44,14 @@
       visibility: hidden;
     }
     .loader-spinner {
-      width: 50px;
-      height: 50px;
-      border: 4px solid #f0f0f0;
-      border-top: 4px solid #dc2626;
+      width: 60px;
+      height: 60px;
+      border: 5px solid #f0f0f0;
+      border-top: 5px solid #dc2626;
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
     @keyframes spin {
-      0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
 
@@ -85,7 +67,7 @@
       backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
       border-bottom: 2px solid #dc2626;
       box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
     }
@@ -102,25 +84,15 @@
     .logo-wrapper {
       display: flex;
       align-items: center;
-      gap: 14px;
     }
 
     .logo-img {
-      height: 70px;
+      height: 65px;
       width: auto;
-      object-fit: contain;
+      border-radius: 12px;
       transition: transform 0.3s;
-      border-radius: 16px;
     }
     .logo-img:hover { transform: scale(1.03); }
-
-    .logo-text {
-      font-size: 2rem;
-      font-weight: 800;
-      letter-spacing: -0.02em;
-      color: #111;
-    }
-    .logo-text span { color: #dc2626; }
 
     .nav-links {
       display: flex;
@@ -144,7 +116,7 @@
       bottom: -6px;
       left: 0;
       width: 100%;
-      height: 2.5px;
+      height: 3px;
       background: #dc2626;
       border-radius: 4px;
     }
@@ -512,21 +484,31 @@
     }
     .social-icons a:hover { color: #dc2626; }
 
-    body.dark .hero-about, body.dark .history-card, body.dark .stat-card, 
-    body.dark .satisfaction-section, body.dark .point-card, body.dark .service-item {
-      background: #1f2937;
-      color: #f3f4f6;
-      border-color: #374151;
+    /* Floating Social Icons */
+    .floating-social {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
     }
-    body.dark .hero-content h1, body.dark .history-card h2, body.dark .satisfaction-section h3,
-    body.dark .services-showcase h2, body.dark .service-item h4, body.dark .point-card p {
-      color: white;
+    .floating-icon {
+      width: 55px;
+      height: 55px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    body.dark .hero-content p, body.dark .history-card p, body.dark .service-item p {
-      color: #cbd5e1;
-    }
-    body.dark .logo-text { color: white; }
-    body.dark footer { background: #030712; color: #9ca3af; }
+    .floating-icon:hover { transform: scale(1.15); }
+    .floating-wa { background: #25D366; color: white; }
+    .floating-telegram { background: #0088cc; color: white; }
+    .floating-fb { background: #1877f2; color: white; }
 
     @media (max-width: 960px) {
       .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
@@ -538,10 +520,10 @@
       .nav-links { display: none; }
       .hamburger { display: flex; }
       .logo-img { height: 52px; }
-      .logo-text { font-size: 1.5rem; }
       .stats-row { flex-direction: column; }
       .points-grid { grid-template-columns: 1fr; }
       .services-grid { grid-template-columns: repeat(2, 1fr); }
+      .floating-icon { width: 45px; height: 45px; }
     }
     @media (max-width: 550px) {
       .services-grid { grid-template-columns: 1fr; }
@@ -549,19 +531,11 @@
   </style>
 </head>
 <body>
-<!-- Particle Background -->
-<div id="particles-js"></div>
-
-<div class="loader" id="loader">
-  <div class="loader-spinner"></div>
-</div>
+<div class="loader" id="loader"><div class="loader-spinner"></div></div>
 
 <header>
   <div class="container header-flex">
-    <div class="logo-wrapper">
-      <img src="52.jpg" alt="HALU Engineering Logo" class="logo-img" onerror="this.onerror=null; this.src='https://placehold.co/70x70/dc2626/ffffff?text=H'">
-      <div class="logo-text">HALU <span>Engineering</span></div>
-    </div>
+    <div class="logo-wrapper" id="logoContainer"></div>
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
@@ -687,7 +661,12 @@
   </div>
 </footer>
 
-<script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+<div class="floating-social">
+  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
+</div>
+
 <script>
   // Remove loader
   window.addEventListener('load', () => {
@@ -697,7 +676,7 @@
   });
 
   // AOS init
-  AOS.init({ duration: 800, once: true, offset: 80 });
+  AOS.init({ duration: 800, once: true, offset: 60 });
 
   // Active nav highlight
   const currentPath = window.location.pathname.split("/").pop();
@@ -709,35 +688,48 @@
     }
   });
 
-  // Particles.js Configuration
-  particlesJS("particles-js", {
-    "particles": {
-      "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
-      "color": { "value": "#dc2626" },
-      "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-      "opacity": { "value": 0.4, "random": false },
-      "size": { "value": 3, "random": true },
-      "line_linked": { "enable": true, "distance": 150, "color": "#dc2626", "opacity": 0.3, "width": 1 },
-      "move": { "enable": true, "speed": 2, "direction": "none", "random": false, "straight": false, "out_mode": "out" }
-    },
-    "interactivity": {
-      "detect_on": "canvas",
-      "events": {
-        "onhover": { "enable": true, "mode": "repulse" },
-        "onclick": { "enable": true, "mode": "push" },
-        "resize": true
-      }
-    },
-    "retina_detect": true
-  });
-
-  // Logo error handling
-  const logoImg = document.querySelector('.logo-img');
-  if(logoImg) {
-    logoImg.addEventListener('error', function() {
-      this.src = 'https://placehold.co/70x70/dc2626/ffffff?text=H';
-    });
+  // Hamburger Menu
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobileMenu');
+  const overlay = document.getElementById('overlay');
+  
+  function toggleMenu() {
+    hamburger.classList.toggle('active');
+    mobileMenu.classList.toggle('active');
+    overlay.classList.toggle('active');
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
   }
+  
+  if(hamburger) {
+    hamburger.addEventListener('click', toggleMenu);
+  }
+  if(overlay) {
+    overlay.addEventListener('click', toggleMenu);
+  }
+  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+
+  // Logo loading
+  const logoContainer = document.getElementById('logoContainer');
+  function tryLoadLogo(url) {
+    const img = new Image();
+    img.onload = function() {
+      const logoImg = document.createElement('img');
+      logoImg.src = url;
+      logoImg.alt = 'HALU Engineering';
+      logoImg.className = 'logo-img';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(logoImg);
+    };
+    img.onerror = function() {
+      const fallbackDiv = document.createElement('div');
+      fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
+      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>';
+      logoContainer.innerHTML = '';
+      logoContainer.appendChild(fallbackDiv);
+    };
+    img.src = url;
+  }
+  tryLoadLogo('80.JPG');
 
   // Hero image error handling
   const heroImage = document.querySelector('.hero-image img');
@@ -776,26 +768,6 @@
     });
   }, observerOptions);
   counters.forEach(counter => observer.observe(counter));
-
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  
-  function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  }
-  
-  if(hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-  }
-  if(overlay) {
-    overlay.addEventListener('click', toggleMenu);
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
 </script>
 </body>
 </html>

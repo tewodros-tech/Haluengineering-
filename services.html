@@ -18,274 +18,73 @@
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
     header { background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #dc2626; }
     .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
-    .logo-wrapper { display: flex; align-items: center; }
-    .logo-img { height: 65px; width: auto; border-radius: 12px; transition: transform 0.3s; }
-    .logo-img:hover { transform: scale(1.03); }
-    
-    /* Right group - contains nav-links, hamburger, and dark mode toggle (if any) */
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-    
+    .logo-img { height: 65px; width: auto; border-radius: 12px; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; transition: 0.25s; position: relative; }
     .nav-links a:hover, .nav-links a.active { color: #dc2626; }
     .nav-links a.active:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 3px; background: #dc2626; border-radius: 4px; }
-    
-    /* Hamburger Menu */
     .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
     .hamburger span { width: 30px; height: 3px; background: #dc2626; border-radius: 4px; transition: all 0.3s ease; }
     .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
     .hamburger.active span:nth-child(2) { opacity: 0; }
     .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
-    
     .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.1); z-index: 1000; transition: right 0.3s ease; padding: 100px 30px 30px; display: flex; flex-direction: column; gap: 1.5rem; }
     .mobile-menu.active { right: 0; }
-    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; transition: 0.25s; }
+    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; }
     .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
     .overlay.active { opacity: 1; visibility: visible; }
-    
-    /* Dark Mode Support */
-    body.dark { background: #0a0c10; color: #eef2ff; }
-    body.dark .services-hero { background: #111827; }
-    body.dark .services-hero h1, body.dark .services-hero p { color: white; }
-    body.dark .flagship-card, body.dark .service-card, body.dark .gallery-item { background: #1f2937; border-color: #374151; color: #f3f4f6; }
-    body.dark .flagship-card p, body.dark .service-card p { color: #cbd5e1; }
-    body.dark .mobile-menu { background: #1f2937; }
-    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
-    body.dark .mobile-menu a:hover { color: #dc2626; }
-    body.dark .hero-badge { background: #374151; color: #dc2626; }
-    body.dark footer { background: #030712; color: #9ca3af; }
-    
     .services-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; }
     .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
     .services-hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
     .services-hero h1 span { color: #dc2626; }
-    .services-hero p { font-size: 1.1rem; color: #4b5563; max-width: 600px; margin-top: 1rem; }
-    
     .process-flagship { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.8rem; margin: 3rem 0; }
     .flagship-card { background: white; border-radius: 28px; padding: 2rem 1.5rem; text-align: center; border: 1px solid #fee2e2; transition: all 0.3s; position: relative; }
     .flagship-card:hover { transform: translateY(-10px); border-color: #dc2626; }
     .flagship-icon { font-size: 3rem; color: #dc2626; margin-bottom: 1rem; }
     .badge-step { position: absolute; top: 1rem; right: 1rem; background: #fee2e2; padding: 0.2rem 0.8rem; border-radius: 50px; font-size: 0.7rem; font-weight: 700; color: #dc2626; }
-    .flagship-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #111; }
-    .flagship-card p { color: #6b7280; font-size: 0.9rem; }
-    
     .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 2rem; margin: 3rem 0; }
     .service-card { background: white; border-radius: 28px; padding: 2rem; border: 1px solid #fee2e2; transition: all 0.3s; }
     .service-card:hover { transform: translateY(-8px); border-color: #dc2626; }
     .card-icon { font-size: 2.8rem; color: #dc2626; margin-bottom: 1rem; }
-    .service-card h3 { font-size: 1.3rem; margin-bottom: 0.5rem; color: #111; }
-    .service-card p { color: #6b7280; font-size: 0.9rem; }
-    
     .gallery-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 1.8rem; margin: 3rem 0; }
-    .gallery-item { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid #fee2e2; transition: all 0.3s; cursor: pointer; }
+    .gallery-item { position: relative; border-radius: 24px; overflow: hidden; aspect-ratio: 4/3; border: 1px solid #fee2e2; transition: all 0.3s; }
     .gallery-item:hover { transform: translateY(-8px) scale(1.02); border-color: #dc2626; }
     .gallery-item img { width: 100%; height: 100%; object-fit: cover; }
     .gallery-overlay { position: absolute; bottom: 0; left: 0; right: 0; background: linear-gradient(to top, rgba(0,0,0,0.7), transparent); padding: 1rem; transform: translateY(100%); transition: transform 0.3s; }
     .gallery-item:hover .gallery-overlay { transform: translateY(0); }
-    .gallery-overlay span { color: white; font-weight: 600; }
-    
     .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
-    .cta-banner h3 { font-size: 2rem; margin-bottom: 1rem; }
-    .cta-banner p { margin-bottom: 1.5rem; opacity: 0.9; }
-    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
-    .btn-cta:hover { transform: translateY(-3px); gap: 14px; }
-    
-    footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; margin-top: 2rem; }
-    footer p { color: #4b5563; }
-    
+    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
+    footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; }
     .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
     .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .floating-icon:hover { transform: scale(1.15); }
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    
-    /* Dark mode toggle button */
-    .theme-toggle {
-      background: #f3f4f6;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111;
-    }
-    body.dark .theme-toggle { background: #374151; color: white; }
-    
-    @media (max-width: 1000px) { 
-      .process-flagship { grid-template-columns: repeat(2,1fr); } 
-    }
-    @media (max-width: 850px) { 
-      .services-hero h1 { font-size: 2.5rem; } 
-      .nav-links { display: none; } 
-      .hamburger { display: flex; } 
-      .right-group { gap: 0.8rem; }
-      .process-flagship { grid-template-columns: 1fr; } 
-      .container { padding: 0 24px; } 
-      .floating-icon { width: 45px; height: 45px; }
-      .services-grid { grid-template-columns: 1fr; }
-      .gallery-grid { grid-template-columns: 1fr; }
-    }
-    @media (max-width: 480px) { 
-      .services-hero h1 { font-size: 1.8rem; } 
-      .cta-banner h3 { font-size: 1.5rem; }
-      .cta-banner { padding: 2rem; }
-    }
+    @media (max-width: 1000px) { .process-flagship { grid-template-columns: repeat(2,1fr); } }
+    @media (max-width: 850px) { .services-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .process-flagship { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } }
+    @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } }
   </style>
 </head>
 <body>
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
-
-<header>
-  <div class="container header-flex">
-    <div class="logo-wrapper" id="logoContainer"></div>
-    <div class="right-group">
-      <div class="nav-links">
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html" class="active">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
-      </div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
-    </div>
-  </div>
-</header>
-
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html" class="active">Services</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-</div>
+<header><div class="container header-flex"><div class="logo-wrapper" id="logoContainer"></div><div class="hamburger" id="hamburger"><span></span><span></span><span></span></div><div class="nav-links"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div></div></header>
+<div class="mobile-menu" id="mobileMenu"><a href="index.html">Home</a><a href="about.html">About</a><a href="services.html" class="active">Services</a><a href="projects.html">Projects</a><a href="contact.html">Contact</a></div>
 <div class="overlay" id="overlay"></div>
-
-<section class="services-hero">
-  <div class="container">
-    <div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div>
-    <h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1>
-    <p>From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems.</p>
-  </div>
-</section>
-
-<div class="container">
-  <div class="process-flagship">
-    <div class="flagship-card"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div>
-    <div class="flagship-card"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div>
-    <div class="flagship-card"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div>
-    <div class="flagship-card"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div>
-  </div>
-
-  <div class="services-grid">
-    <div class="service-card"><i class="fas fa-wind card-icon"></i><h3>Air Conditioning</h3><p>VRF/VRV, chillers, ducted splits</p></div>
-    <div class="service-card"><i class="fas fa-thermometer-half card-icon"></i><h3>Cold Room Design</h3><p>Modular cold storage, blast freezers</p></div>
-    <div class="service-card"><i class="fas fa-water card-icon"></i><h3>Heat Pump Systems</h3><p>Air-to-water, geothermal systems</p></div>
-    <div class="service-card"><i class="fas fa-utensils card-icon"></i><h3>Kitchen Ventilation</h3><p>Heavy-duty exhaust, grease filters</p></div>
-    <div class="service-card"><i class="fas fa-restroom card-icon"></i><h3>Toilet Exhaust</h3><p>High-static exhaust, humidity control</p></div>
-    <div class="service-card"><i class="fas fa-drafting-compass card-icon"></i><h3>Duct Fabrication</h3><p>Custom spiral & rectangular ducts</p></div>
-  </div>
-
-  <div class="gallery-grid">
-    <div class="gallery-item"><img src="12.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Chiller'"><div class="gallery-overlay"><span>Central Chiller Plant</span></div></div>
-    <div class="gallery-item"><img src="13.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Support'"><div class="gallery-overlay"><span>24/7 Technical Support</span></div></div>
-    <div class="gallery-item"><img src="37.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Smart'"><div class="gallery-overlay"><span>Smart Building Controls</span></div></div>
-  </div>
-
-  <div class="cta-banner">
-    <h3>Ready to work with HALU Engineering?</h3>
-    <p>From design to maintenance, we deliver excellence.</p>
-    <a href="contact.html" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a>
-  </div>
-</div>
-
-<footer>
-  <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
-</footer>
-
-<div class="floating-social">
-  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
-  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
-</div>
-
+<section class="services-hero"><div class="container"><div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div><h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1><p>From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems.</p></div></section>
+<div class="container"><div class="process-flagship"><div class="flagship-card"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div><div class="flagship-card"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div><div class="flagship-card"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div><div class="flagship-card"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div></div>
+<div class="services-grid"><div class="service-card"><i class="fas fa-wind card-icon"></i><h3>Air Conditioning</h3><p>VRF/VRV, chillers, ducted splits</p></div><div class="service-card"><i class="fas fa-thermometer-half card-icon"></i><h3>Cold Room Design</h3><p>Modular cold storage, blast freezers</p></div><div class="service-card"><i class="fas fa-water card-icon"></i><h3>Heat Pump Systems</h3><p>Air-to-water, geothermal systems</p></div><div class="service-card"><i class="fas fa-utensils card-icon"></i><h3>Kitchen Ventilation</h3><p>Heavy-duty exhaust, grease filters</p></div><div class="service-card"><i class="fas fa-restroom card-icon"></i><h3>Toilet Exhaust</h3><p>High-static exhaust, humidity control</p></div><div class="service-card"><i class="fas fa-drafting-compass card-icon"></i><h3>Duct Fabrication</h3><p>Custom spiral & rectangular ducts</p></div></div>
+<div class="gallery-grid"><div class="gallery-item"><img src="12.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Chiller'"><div class="gallery-overlay"><span>Central Chiller Plant</span></div></div><div class="gallery-item"><img src="13.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Support'"><div class="gallery-overlay"><span>24/7 Technical Support</span></div></div><div class="gallery-item"><img src="37.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Smart'"><div class="gallery-overlay"><span>Smart Building Controls</span></div></div></div>
+<div class="cta-banner"><h3>Ready to work with HALU Engineering?</h3><p>From design to maintenance, we deliver excellence.</p><a href="contact.html" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a></div></div>
+<footer><p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
+<div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
-  window.addEventListener('load',()=>{
-    document.getElementById('loader')?.classList.add('hide');
-    setTimeout(()=>document.getElementById('loader')?.remove(),500);
-    AOS.init({duration:800,once:true,offset:60});
-  });
-  
-  // Dark Mode Toggle
-  const toggleBtn = document.getElementById('darkModeToggle');
-  if(toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const icon = toggleBtn.querySelector('i');
-      const span = toggleBtn.querySelector('span');
-      if(document.body.classList.contains('dark')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        span.innerText = ' Light';
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        span.innerText = ' Dark';
-      }
-    });
-  }
-  
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  
-  function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  }
-  
-  if(hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-  }
-  if(overlay) {
-    overlay.addEventListener('click', toggleMenu);
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
-  
-  // Logo loading
-  const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) {
-    const img = new Image();
-    img.onload = () => {
-      const logoImg = document.createElement('img');
-      logoImg.src = url;
-      logoImg.className = 'logo-img';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(logoImg);
-    };
-    img.onerror = () => {
-      const fallback = document.createElement('div');
-      fallback.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
-      fallback.innerHTML = '<i class="fas fa-wind"></i>';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(fallback);
-    };
-    img.src = url;
-  }
-  tryLoadLogo('80.JPG');
+  window.addEventListener('load',()=>{document.getElementById('loader')?.classList.add('hide');setTimeout(()=>document.getElementById('loader')?.remove(),500);AOS.init({duration:800,once:true,offset:60});});
+  const hamburger=document.getElementById('hamburger');const mobileMenu=document.getElementById('mobileMenu');const overlay=document.getElementById('overlay');
+  function toggleMenu(){hamburger.classList.toggle('active');mobileMenu.classList.toggle('active');overlay.classList.toggle('active');document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';}
+  hamburger.addEventListener('click',toggleMenu);overlay.addEventListener('click',toggleMenu);document.querySelectorAll('.mobile-menu a').forEach(link=>link.addEventListener('click',toggleMenu));
+  const logoContainer=document.getElementById('logoContainer'); function tryLoadLogo(url){const img=new Image();img.onload=()=>{const logoImg=document.createElement('img');logoImg.src=url;logoImg.className='logo-img';logoContainer.innerHTML='';logoContainer.appendChild(logoImg);};img.onerror=()=>{const fallback=document.createElement('div');fallback.style.cssText='width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';fallback.innerHTML='<i class="fas fa-wind"></i>';logoContainer.innerHTML='';logoContainer.appendChild(fallback);};img.src=url;} tryLoadLogo('80.JPG');
 </script>
 </body>
 </html>

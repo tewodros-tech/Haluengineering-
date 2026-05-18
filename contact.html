@@ -1,21 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
   <title>HALU Engineering | Contact – Get in Touch & Location</title>
 
-  <!-- Fonts -->
+  <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
 
-  <!-- Icons -->
+  <!-- Font Awesome -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <!-- AOS -->
+  <!-- AOS Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
   <style>
+
     *{
       margin:0;
       padding:0;
@@ -37,6 +38,7 @@
     }
 
     /* Loader */
+
     .loader{
       position:fixed;
       top:0;
@@ -45,8 +47,8 @@
       height:100%;
       background:#fff;
       display:flex;
-      justify-content:center;
       align-items:center;
+      justify-content:center;
       z-index:9999;
       transition:0.5s;
     }
@@ -72,12 +74,13 @@
     }
 
     /* Header */
+
     header{
-      background:rgba(255,255,255,0.98);
-      backdrop-filter:blur(10px);
       position:sticky;
       top:0;
       z-index:1000;
+      background:rgba(255,255,255,0.98);
+      backdrop-filter:blur(10px);
       border-bottom:2px solid #dc2626;
     }
 
@@ -101,8 +104,8 @@
 
     .nav-links a{
       text-decoration:none;
+      color:#111827;
       font-weight:600;
-      color:#1f2937;
       position:relative;
       transition:0.3s;
     }
@@ -120,16 +123,16 @@
       width:100%;
       height:3px;
       background:#dc2626;
-      border-radius:20px;
+      border-radius:10px;
     }
 
     /* Hamburger */
+
     .hamburger{
       display:none;
       flex-direction:column;
       gap:6px;
       cursor:pointer;
-      z-index:1001;
     }
 
     .hamburger span{
@@ -141,7 +144,7 @@
     }
 
     .hamburger.active span:nth-child(1){
-      transform:rotate(45deg) translate(7px,7px);
+      transform:rotate(45deg) translate(6px,6px);
     }
 
     .hamburger.active span:nth-child(2){
@@ -153,6 +156,7 @@
     }
 
     /* Mobile Menu */
+
     .mobile-menu{
       position:fixed;
       top:0;
@@ -163,7 +167,7 @@
       background:white;
       z-index:1000;
       transition:0.35s;
-      padding:100px 30px 30px;
+      padding:100px 30px;
       display:flex;
       flex-direction:column;
       gap:1.5rem;
@@ -178,12 +182,11 @@
       font-size:1.2rem;
       font-weight:600;
       color:#111827;
-      padding:12px 0;
       border-bottom:1px solid #fee2e2;
+      padding:12px 0;
     }
 
-    .mobile-menu a:hover,
-    .mobile-menu a.active{
+    .mobile-menu a:hover{
       color:#dc2626;
       padding-left:10px;
     }
@@ -204,6 +207,7 @@
     }
 
     /* Hero */
+
     .contact-hero{
       background:linear-gradient(135deg,#fff5f5 0%,#ffffff 100%);
       padding:5rem 0;
@@ -217,16 +221,16 @@
       color:#dc2626;
       padding:0.5rem 1.3rem;
       border-radius:50px;
-      margin-bottom:1.5rem;
       font-weight:600;
+      margin-bottom:1.5rem;
     }
 
     .contact-hero h1{
       font-size:3.5rem;
       font-weight:900;
       line-height:1.15;
-      margin-bottom:1rem;
       color:#111;
+      margin-bottom:1rem;
     }
 
     .contact-hero h1 span{
@@ -236,11 +240,12 @@
     .contact-hero p{
       max-width:700px;
       color:#4b5563;
+      line-height:1.8;
       font-size:1.1rem;
-      line-height:1.7;
     }
 
     /* Cards */
+
     .contact-cards{
       display:grid;
       grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
@@ -254,30 +259,30 @@
       padding:2rem;
       text-align:center;
       border:1px solid #fee2e2;
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
       transition:0.35s;
-      box-shadow:0 10px 25px rgba(0,0,0,0.04);
     }
 
     .contact-card:hover{
       transform:translateY(-8px);
       border-color:#dc2626;
-      box-shadow:0 20px 30px rgba(220,38,38,0.12);
+      box-shadow:0 20px 35px rgba(220,38,38,0.15);
     }
 
     .contact-icon{
       width:75px;
       height:75px;
-      border-radius:50%;
       background:#fee2e2;
+      border-radius:50%;
       display:flex;
       align-items:center;
       justify-content:center;
-      margin:auto auto 1.2rem;
+      margin:auto auto 1rem;
     }
 
     .contact-icon i{
-      font-size:2rem;
       color:#dc2626;
+      font-size:2rem;
     }
 
     .contact-card h3{
@@ -291,7 +296,8 @@
       font-weight:600;
     }
 
-    /* Wrapper */
+    /* Contact Section */
+
     .contact-wrapper{
       display:grid;
       grid-template-columns:1fr 1fr;
@@ -304,7 +310,7 @@
       border-radius:32px;
       padding:2rem;
       border:1px solid #fee2e2;
-      box-shadow:0 10px 25px rgba(0,0,0,0.04);
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
     }
 
     .form-container h3{
@@ -325,8 +331,8 @@
     .input-group textarea{
       width:100%;
       padding:1rem 1.2rem;
-      border:1px solid #e5e7eb;
       border-radius:20px;
+      border:1px solid #e5e7eb;
       background:#f9fafb;
       font-family:inherit;
       transition:0.3s;
@@ -358,12 +364,13 @@
       transform:translateY(-3px);
     }
 
-    /* Map */
+    /* MAP */
+
     .map-container{
       border-radius:32px;
       overflow:hidden;
       border:1px solid #fee2e2;
-      box-shadow:0 10px 25px rgba(0,0,0,0.04);
+      box-shadow:0 10px 25px rgba(0,0,0,0.05);
     }
 
     .map-container iframe{
@@ -373,7 +380,8 @@
       border:none;
     }
 
-    /* Details */
+    /* Location Details */
+
     .location-details{
       background:#fef2f2;
       border-radius:28px;
@@ -384,7 +392,6 @@
     .location-details h4{
       margin-bottom:1rem;
       font-size:1.4rem;
-      color:#111;
     }
 
     .location-details p{
@@ -393,7 +400,7 @@
       gap:12px;
       margin-bottom:1rem;
       color:#374151;
-      line-height:1.6;
+      line-height:1.7;
     }
 
     .location-details i{
@@ -402,6 +409,7 @@
     }
 
     /* CTA */
+
     .quote-box{
       background:linear-gradient(135deg,#dc2626,#b91c1c);
       border-radius:48px;
@@ -442,6 +450,7 @@
     }
 
     /* Footer */
+
     footer{
       background:#f8fafc;
       text-align:center;
@@ -450,6 +459,7 @@
     }
 
     /* Floating */
+
     .floating-social{
       position:fixed;
       bottom:25px;
@@ -467,8 +477,8 @@
       display:flex;
       align-items:center;
       justify-content:center;
-      text-decoration:none;
       color:white;
+      text-decoration:none;
       font-size:1.2rem;
       box-shadow:0 6px 16px rgba(0,0,0,0.25);
       transition:0.3s;
@@ -491,6 +501,7 @@
     }
 
     /* Responsive */
+
     @media(max-width:900px){
 
       .contact-wrapper{
@@ -524,27 +535,27 @@
         padding:2rem;
       }
 
-      .quote-box h3{
-        font-size:1.5rem;
-      }
-
       .floating-icon{
         width:48px;
         height:48px;
       }
     }
+
   </style>
 </head>
 
 <body>
 
 <!-- Loader -->
+
 <div class="loader" id="loader">
   <div class="loader-spinner"></div>
 </div>
 
 <!-- Header -->
+
 <header>
+
   <div class="container header-flex">
 
     <div class="logo-wrapper" id="logoContainer"></div>
@@ -564,21 +575,27 @@
     </div>
 
   </div>
+
 </header>
 
-<!-- Mobile -->
+<!-- Mobile Menu -->
+
 <div class="mobile-menu" id="mobileMenu">
+
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
   <a href="services.html">Services</a>
   <a href="projects.html">Projects</a>
-  <a href="contact.html" class="active">Contact</a>
+  <a href="contact.html">Contact</a>
+
 </div>
 
 <div class="overlay" id="overlay"></div>
 
 <!-- Hero -->
+
 <section class="contact-hero">
+
   <div class="container">
 
     <div class="hero-badge" data-aos="fade-up">
@@ -592,20 +609,24 @@
     </h1>
 
     <p data-aos="fade-up" data-aos-delay="200">
-      Have a project in mind? Reach out to HALU Engineering —
-      we’re ready to bring your HVAC and electro-mechanical vision to life.
+      Reach out to HALU Engineering for HVAC, ventilation,
+      cold room, and electro-mechanical solutions.
     </p>
 
   </div>
+
 </section>
 
 <!-- Main -->
+
 <div class="container">
 
-  <!-- Cards -->
+  <!-- Contact Cards -->
+
   <div class="contact-cards">
 
     <div class="contact-card" data-aos="fade-up">
+
       <div class="contact-icon">
         <i class="fas fa-phone-alt"></i>
       </div>
@@ -613,12 +634,21 @@
       <h3>Call Us</h3>
 
       <p>
-        <a href="tel:+251918036609">+251 918 036 609</a><br><br>
-        <a href="tel:+251991711748">+251 991 711 748</a>
+        <a href="tel:+251918036609">
+          +251 918 036 609
+        </a>
+
+        <br><br>
+
+        <a href="tel:+251991711748">
+          +251 991 711 748
+        </a>
       </p>
+
     </div>
 
     <div class="contact-card" data-aos="fade-up" data-aos-delay="100">
+
       <div class="contact-icon">
         <i class="fas fa-envelope"></i>
       </div>
@@ -630,9 +660,11 @@
           haileabgb@gmail.com
         </a>
       </p>
+
     </div>
 
     <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
+
       <div class="contact-icon">
         <i class="fas fa-map-marker-alt"></i>
       </div>
@@ -641,23 +673,26 @@
 
       <p>
         Legetafo Kebele 01,<br>
-        Melkamu Metal Works Compound<br>
+        Melkamu Metal Works Compound,<br>
         Addis Ababa, Ethiopia
       </p>
+
     </div>
 
   </div>
 
-  <!-- Form + Map -->
+  <!-- Contact Wrapper -->
+
   <div class="contact-wrapper">
 
     <!-- Form -->
+
     <div class="form-container" data-aos="fade-right">
 
       <h3>Send us a message</h3>
 
       <p>
-        Our team will get back to you within 24 hours.
+        Our team will get back to you shortly.
       </p>
 
       <form id="contactForm">
@@ -687,12 +722,13 @@
 
     </div>
 
-    <!-- MAP -->
+    <!-- PINNED MAP -->
+
     <div class="map-container" data-aos="fade-left">
 
       <iframe
-        src="https://maps.google.com/maps?q=Legetafo%20Kebele%2001%20Melkamu%20Metal%20Works%20Compound&t=&z=15&ie=UTF8&iwloc=&output=embed"
-        allowfullscreen
+        src="https://www.google.com/maps?q=Legetafo%20Kebele%2001,%20Melkamu%20Metal%20Works%20Compound,%20Addis%20Ababa,%20Ethiopia&output=embed"
+        allowfullscreen=""
         loading="lazy">
       </iframe>
 
@@ -701,6 +737,7 @@
   </div>
 
   <!-- Location Details -->
+
   <div class="location-details" data-aos="fade-up">
 
     <h4>
@@ -735,13 +772,14 @@
   </div>
 
   <!-- Quote -->
+
   <div class="quote-box" data-aos="zoom-in">
 
     <h3>Looking for a quote?</h3>
 
     <p>
-      Tell us about your HVAC or electro-mechanical project,
-      and we’ll provide a tailored solution for your business.
+      Tell us about your HVAC or electro-mechanical project
+      and we’ll provide a tailored solution.
     </p>
 
     <a href="#"
@@ -758,15 +796,19 @@
 </div>
 
 <!-- Footer -->
+
 <footer>
+
   <p>
     © 2026 HALU Engineering — Electro-Mechanical Excellence
     <i class="fas fa-fire"></i>
     Engineered to inspire
   </p>
+
 </footer>
 
 <!-- Floating Social -->
+
 <div class="floating-social">
 
   <!-- WhatsApp -->
@@ -799,9 +841,11 @@
 </div>
 
 <!-- Scripts -->
+
 <script>
 
   // Loader
+
   window.addEventListener('load', () => {
 
     const loader = document.getElementById('loader');
@@ -809,18 +853,23 @@
     loader.classList.add('hide');
 
     setTimeout(() => {
+
       loader.style.display = 'none';
+
     }, 500);
 
     AOS.init({
-      duration: 900,
-      once: true,
-      offset: 60
+
+      duration:900,
+      once:true,
+      offset:60
+
     });
 
   });
 
-  // Contact Form
+  // Form
+
   document.getElementById('contactForm').addEventListener('submit', function(e){
 
     e.preventDefault();
@@ -832,6 +881,7 @@
   });
 
   // Mobile Menu
+
   const hamburger = document.getElementById('hamburger');
   const mobileMenu = document.getElementById('mobileMenu');
   const overlay = document.getElementById('overlay');
@@ -857,6 +907,7 @@
   });
 
   // Logo Loader
+
   const logoContainer = document.getElementById('logoContainer');
 
   function tryLoadLogo(url){

@@ -77,8 +77,6 @@
       justify-content: space-between;
       align-items: center;
       padding: 0.8rem 0;
-      flex-wrap: wrap;
-      gap: 1rem;
     }
 
     .logo-wrapper {
@@ -93,6 +91,13 @@
       transition: transform 0.3s;
     }
     .logo-img:hover { transform: scale(1.03); }
+
+    /* Right side group - contains nav-links, hamburger, and dark mode toggle */
+    .right-group {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
 
     .nav-links {
       display: flex;
@@ -193,6 +198,41 @@
       opacity: 1;
       visibility: visible;
     }
+
+    /* Dark Mode Toggle */
+    .theme-toggle {
+      background: #f3f4f6;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #111;
+    }
+    body.dark {
+      background: #0a0c10;
+      color: #eef2ff;
+    }
+    body.dark .hero-about, body.dark .history-card, body.dark .stat-card, 
+    body.dark .satisfaction-section, body.dark .point-card, body.dark .service-item {
+      background: #1f2937;
+      color: #f3f4f6;
+      border-color: #374151;
+    }
+    body.dark .hero-content h1, body.dark .history-card h2, body.dark .satisfaction-section h3,
+    body.dark .services-showcase h2, body.dark .service-item h4, body.dark .point-card p {
+      color: white;
+    }
+    body.dark .hero-content p, body.dark .history-card p, body.dark .service-item p {
+      color: #cbd5e1;
+    }
+    body.dark .hero-badge { background: #374151; color: #dc2626; }
+    body.dark .stats-row .stat-card .stat-label { color: #9ca3af; }
+    body.dark footer { background: #030712; color: #9ca3af; }
+    body.dark .mobile-menu { background: #1f2937; }
+    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
+    body.dark .mobile-menu a:hover { color: #dc2626; }
+    body.dark .theme-toggle { background: #374151; color: white; }
 
     /* Hero Section */
     .hero-about {
@@ -516,9 +556,9 @@
     @media (max-width: 860px) {
       .container { padding: 0 24px; }
       .hero-content h1 { font-size: 2.4rem; }
-      .header-flex { flex-direction: column; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
+      .right-group { gap: 0.8rem; }
       .logo-img { height: 52px; }
       .stats-row { flex-direction: column; }
       .points-grid { grid-template-columns: 1fr; }
@@ -536,17 +576,20 @@
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper" id="logoContainer"></div>
-    <div class="hamburger" id="hamburger">
-      <span></span>
-      <span></span>
-      <span></span>
-    </div>
-    <div class="nav-links">
-      <a href="index.html">Home</a>
-      <a href="about.html" class="active">About</a>
-      <a href="services.html">Services</a>
-      <a href="projects.html">Projects</a>
-      <a href="contact.html">Contact</a>
+    <div class="right-group">
+      <div class="nav-links">
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div class="hamburger" id="hamburger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
     </div>
   </div>
 </header>
@@ -677,6 +720,25 @@
 
   // AOS init
   AOS.init({ duration: 800, once: true, offset: 60 });
+
+  // Dark Mode Toggle
+  const toggleBtn = document.getElementById('darkModeToggle');
+  if(toggleBtn) {
+    toggleBtn.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      const icon = toggleBtn.querySelector('i');
+      const span = toggleBtn.querySelector('span');
+      if(document.body.classList.contains('dark')) {
+        icon.classList.remove('fa-moon');
+        icon.classList.add('fa-sun');
+        span.innerText = ' Light';
+      } else {
+        icon.classList.remove('fa-sun');
+        icon.classList.add('fa-moon');
+        span.innerText = ' Dark';
+      }
+    });
+  }
 
   // Active nav highlight
   const currentPath = window.location.pathname.split("/").pop();

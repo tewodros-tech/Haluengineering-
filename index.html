@@ -183,7 +183,7 @@
     @media (max-width: 550px) {
       .engineering-video-wrapper { max-height: 240px; }
       .engineering-video-wrapper video { max-height: 240px; }
-      .video-caption-soft { font-size: 0.6rem; padding: 4px 12px; bottom: 6px; right: 8px; }
+      .video-caption-soft { font-size: 0.55rem; padding: 3px 10px; }
     }
 
     header, main, footer, .floating-social {
@@ -852,11 +852,11 @@
     <div class="logo-wrapper" id="logoContainer"></div>
     <div class="right-group">
       <div class="nav-links">
-        <a href="#" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Projects</a>
-        <a href="#">Contact</a>
+        <a href="index.html" class="active">Home</a>
+        <a href="about.html">About</a>
+        <a href="services.html">Services</a>
+        <a href="projects.html">Projects</a>
+        <a href="contact.html">Contact</a>
       </div>
       <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
@@ -864,7 +864,7 @@
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#">Home</a> <a href="#">About</a> <a href="#">Services</a> <a href="#">Projects</a> <a href="#">Contact</a>
+  <a href="index.html">Home</a> <a href="about.html">About</a> <a href="services.html">Services</a> <a href="projects.html">Projects</a> <a href="contact.html">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
 <main>
@@ -874,14 +874,14 @@
         <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
         <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-          <a href="#" class="btn btn-outline">Request Quote</a>
+          <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-outline">Request Quote</a>
         </div>
       </div>
     </div>
   </div>
 
-  <!-- ENGINEERING MP4 VIDEO SECTION (No extra text/button removed as requested) -->
+  <!-- ENGINEERING MP4 VIDEO SECTION -->
   <div class="engineering-video-section">
     <div class="engineering-video-wrapper">
       <video id="haluEngineeringVideo" autoplay loop muted playsinline preload="auto">
@@ -901,7 +901,7 @@
   
   <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list" data-aos="fade-right"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list" data-aos="fade-left"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
   
-  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="#" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
+  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
 </main>
 
 <!-- Footer with HVAC.png image at bottom only -->
@@ -950,8 +950,8 @@
   const imageList = [{ src: "1.jpg", name: "VRF System Install" },{ src: "2.jpg", name: "Chiller Plant" },{ src: "28.jpg", name: "Cold Storage" },{ src: "13.jpg", name: "Heat Pump Array" },{ src: "17.jpg", name: "Duct Fabrication" },{ src: "33.jpg", name: "Industrial AHU" },{ src: "34.jpg", name: "Precision Cooling" },{ src: "35.jpg", name: "Ventilation Duct" },{ src: "37.jpg", name: "Smart Controls" }];
   const swiperWrapper = document.querySelector('#swiperWrapper'); if(swiperWrapper){ imageList.forEach(img => { const slide = document.createElement('div'); slide.className = 'swiper-slide'; slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`; swiperWrapper.appendChild(slide); }); swiper.update(); }
   const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];
-  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => window.location.href = '#'); clientsGrid.appendChild(card); }); }
-  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => window.location.href = '#'); });
+  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => window.location.href = 'services.html'); clientsGrid.appendChild(card); }); }
+  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => window.location.href = 'services.html'); });
   const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.4 + 0.1, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>

@@ -130,68 +130,87 @@
     .streak-3 { top: 80%; left: 0%; animation-delay: 7s; width: 400px; transform: rotate(8deg); }
     .streak-4 { top: 15%; left: 10%; animation-delay: 2s; width: 280px; transform: rotate(35deg); }
 
-    /* ===== ENGINEERING MP4 BACKGROUND SECTION - NEW ADDITION (preserving all content) ===== */
+    /* ===== ENGINEERING MP4 VIDEO SECTION - FIXED & ENHANCED ===== */
     .engineering-video-section {
       position: relative;
       width: 100%;
-      background: #000;
+      background: #050a12;
       overflow: hidden;
-      border-top: 2px solid rgba(220,38,38,0.6);
-      border-bottom: 2px solid rgba(220,38,38,0.6);
-      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
+      border-top: 3px solid #dc2626;
+      border-bottom: 3px solid #dc2626;
+      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.4);
       z-index: 5;
     }
     .engineering-video-wrapper {
       width: 100%;
-      max-height: 460px;
+      max-height: 520px;
       display: flex;
       justify-content: center;
       align-items: center;
-      background: #0a0c12;
+      background: #000000;
     }
     .engineering-video-wrapper video {
       width: 100%;
       height: auto;
-      max-height: 460px;
+      max-height: 520px;
       object-fit: cover;
       display: block;
-      transition: transform 0.4s ease, filter 0.4s ease;
-      filter: brightness(0.98) contrast(1.05);
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.96) contrast(1.08);
     }
     .engineering-video-wrapper video:hover {
-      transform: scale(1.008);
-      filter: brightness(1.02) contrast(1.08);
+      transform: scale(1.01);
+      filter: brightness(1.02) contrast(1.1);
     }
-    /* Overlay caption for cinematic feel (optional but non-intrusive) */
     .video-caption-soft {
       position: absolute;
-      bottom: 18px;
-      right: 24px;
-      background: rgba(0,0,0,0.55);
-      backdrop-filter: blur(6px);
-      padding: 6px 16px;
+      bottom: 20px;
+      right: 28px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      padding: 8px 22px;
       border-radius: 60px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      color: #f0f0f0;
-      letter-spacing: 0.5px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.6px;
       pointer-events: none;
       z-index: 2;
       font-family: 'Inter', monospace;
-      border-left: 3px solid #dc2626;
+      border-left: 4px solid #dc2626;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
     }
     .video-caption-soft i {
-      margin-right: 6px;
+      margin-right: 8px;
       color: #dc2626;
     }
+    /* fallback message if video fails */
+    .video-fallback-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(220,38,38,0.85);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+      z-index: 3;
+      display: none;
+      pointer-events: none;
+    }
     @media (max-width: 768px) {
-      .engineering-video-wrapper { max-height: 280px; }
-      .engineering-video-wrapper video { max-height: 280px; object-fit: cover; }
-      .video-caption-soft { bottom: 8px; right: 12px; font-size: 0.65rem; padding: 4px 12px; }
+      .engineering-video-wrapper { max-height: 320px; }
+      .engineering-video-wrapper video { max-height: 320px; object-fit: cover; }
+      .video-caption-soft { bottom: 10px; right: 14px; font-size: 0.7rem; padding: 5px 14px; }
     }
     @media (max-width: 550px) {
-      .engineering-video-wrapper { max-height: 200px; }
-      .engineering-video-wrapper video { max-height: 200px; }
+      .engineering-video-wrapper { max-height: 240px; }
+      .engineering-video-wrapper video { max-height: 240px; }
+      .video-caption-soft { font-size: 0.6rem; padding: 4px 12px; bottom: 6px; right: 8px; }
     }
 
     header, main, footer, .floating-social {
@@ -231,8 +250,8 @@
       background: #1f2937dd;
     }
     body.dark .engineering-video-section {
-      border-top-color: #dc2626;
-      border-bottom-color: #dc2626;
+      border-top-color: #f87171;
+      border-bottom-color: #f87171;
       background: #03060c;
     }
 
@@ -780,7 +799,7 @@
       margin-top: 2rem;
     }
 
-    /* ===== WIDE HVAC IMAGE - FULL WIDTH, PERFECTLY FITTED TO BORDERS ===== */
+    /* ===== WIDE HVAC IMAGE - FULL WIDTH ===== */
     .hvac-image-section {
       background: rgba(248, 250, 252, 0.96);
       backdrop-filter: blur(4px);
@@ -789,66 +808,25 @@
       border-top: 1px solid rgba(220,38,38,0.25);
       border-bottom: 1px solid rgba(220,38,38,0.25);
     }
-    .hvac-image-wrapper {
-      width: 100%;
-      max-width: 100%;
-      padding: 0;
-      margin: 0;
-    }
     .hvac-image-wrapper img {
       width: 100%;
       height: auto;
       max-height: 220px;
       object-fit: cover;
       display: block;
-      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.06));
       transition: all 0.3s ease;
     }
-    .hvac-image-wrapper img:hover {
-      transform: scale(1.01);
-      filter: drop-shadow(0 10px 24px rgba(220,38,38,0.1));
-    }
-    body.dark .hvac-image-section {
-      background: rgba(17, 24, 39, 0.92);
-      border-color: rgba(220,38,38,0.4);
-    }
-    body.dark .hvac-image-wrapper img {
-      filter: brightness(0.95) drop-shadow(0 4px 12px rgba(0,0,0,0.2));
-    }
     @media (max-width: 768px) {
-      .hvac-image-wrapper img { max-height: 160px; object-fit: cover; }
-      .hvac-image-section { padding: 1.2rem 0; }
-    }
-    @media (max-width: 550px) {
-      .hvac-image-wrapper img { max-height: 120px; }
-    }
-    @media (max-width: 992px) {
-      .hero h1 { font-size: 3rem; }
-      .section-title { font-size: 2rem; }
-    }
-    @media (max-width: 850px) {
-      .hero h1 { font-size: 2.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .right-group { gap: 0.8rem; }
-      .logo-img { height: 52px; }
-      .floating-icon { width: 45px; height: 45px; }
-      .container { padding: 0 24px; }
-      .stats { flex-direction: column; align-items: center; }
-      .grid { grid-template-columns: 1fr; }
-      .client-grid { grid-template-columns: 1fr; }
-      .row-two-columns { flex-direction: column; }
-      .hero { padding: 3rem 0; }
-      section { padding: 3rem 0; }
-      .cta-section { padding: 2rem; }
-      .cta-section h2 { font-size: 1.5rem; }
+      .hvac-image-wrapper img { max-height: 160px; }
     }
     @media (max-width: 550px) {
       .hero h1 { font-size: 1.8rem; }
       .section-title { font-size: 1.5rem; }
-      .btn { padding: 10px 24px; font-size: 0.9rem; }
-      .card { padding: 1.5rem; }
-      .stat-number { font-size: 2rem; }
+      .btn { padding: 10px 24px; }
+      .stats { flex-direction: column; align-items: center; }
+      .grid { grid-template-columns: 1fr; }
+      .client-grid { grid-template-columns: 1fr; }
+      .row-two-columns { flex-direction: column; }
     }
   </style>
 </head>
@@ -903,18 +881,19 @@
     </div>
   </div>
 
-  <!-- ========= ENGINEERING MP4 VIDEO SECTION (ADDED WITHOUT CHANGING ANY OTHER CONTENT) ========= -->
+  <!-- ========= ENGINEERING.MP4 VIDEO SECTION - DIRECT AND ROBUST ========= -->
   <div class="engineering-video-section">
     <div class="engineering-video-wrapper">
-      <video autoplay loop muted playsinline preload="metadata">
-        <source src="ENGINEERINGMP4" type="video/mp4">
-        Your browser does not support the video tag.
+      <video id="haluEngineeringVideo" autoplay loop muted playsinline preload="auto">
+        <source src="ENGINEERING.mp4" type="video/mp4">
+        Your browser does not support the video tag. Please check the video file.
       </video>
-      <div class="video-caption-soft"><i class="fas fa-video"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
+      <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
+      <div id="videoFallbackMsg" class="video-fallback-message"><i class="fas fa-exclamation-triangle"></i> Loading ENGINEERING.mp4...</div>
     </div>
   </div>
 
-  <!-- WIDE HVAC IMAGE - FULL WIDTH (FITS TO BORDERS PERFECTLY) -->
+  <!-- WIDE HVAC IMAGE - FULL WIDTH (FITS PERFECTLY) -->
   <div class="hvac-image-section">
     <div class="hvac-image-wrapper">
       <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x220/dc2626/white?text=HVAC+Engineering'">
@@ -930,7 +909,16 @@
 <footer><p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 <script>
-  window.addEventListener('load', () => { const loader = document.getElementById('loader'); loader.classList.add('hide'); setTimeout(() => loader.style.display = 'none', 500); });
+  window.addEventListener('load', () => { const loader = document.getElementById('loader'); loader.classList.add('hide'); setTimeout(() => loader.style.display = 'none', 500); 
+    // Additional video check: hide fallback after load attempt
+    const video = document.getElementById('haluEngineeringVideo');
+    const fallbackDiv = document.getElementById('videoFallbackMsg');
+    if(video && fallbackDiv) {
+      video.addEventListener('canplay', () => { fallbackDiv.style.display = 'none'; });
+      video.addEventListener('error', () => { fallbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please ensure ENGINEERING.mp4 is in the same folder'; fallbackDiv.style.display = 'flex'; });
+      setTimeout(() => { if(video.readyState < 2) fallbackDiv.style.display = 'flex'; else fallbackDiv.style.display = 'none'; }, 800);
+    }
+  });
   AOS.init({ duration: 800, once: true, offset: 60 });
   const toggleBtn = document.getElementById('darkModeToggle'); toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } });
   const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');

@@ -46,7 +46,6 @@
       height: 100%;
     }
 
-    /* Animated particles (airflow / HVAC tech aesthetic) */
     .particle {
       position: absolute;
       background: rgba(220, 38, 38, 0.2);
@@ -73,7 +72,6 @@
       }
     }
 
-    /* Floating ducts / HVAC symbols (movable objects) */
     .hvac-float-icon {
       position: absolute;
       font-size: 3rem;
@@ -99,7 +97,6 @@
     .icon-5 { top: 70%; right: 20%; animation-duration: 28s; animation-delay: -3s; }
     .icon-6 { top: 15%; right: 35%; animation-duration: 24s; animation-delay: -6s; }
 
-    /* Moving light streaks (HVAC airflow concept) */
     .airflow-streak {
       position: absolute;
       width: 200px;
@@ -133,13 +130,11 @@
     .streak-3 { top: 80%; left: 0%; animation-delay: 7s; width: 400px; transform: rotate(8deg); }
     .streak-4 { top: 15%; left: 10%; animation-delay: 2s; width: 280px; transform: rotate(35deg); }
 
-    /* Ensure content is above BG but readable */
     header, main, footer, .floating-social {
       position: relative;
       z-index: 10;
     }
 
-    /* Make cards, sections slightly more readable with light overlay on moving BG? Actually white bg sections will cover but hero area needs slight bg blending */
     .hero {
       background: rgba(255, 245, 245, 0.92);
       backdrop-filter: blur(2px);
@@ -172,7 +167,6 @@
       background: #1f2937dd;
     }
 
-    /* Loading Animation with Background Image from loading.io */
     .loader {
       position: fixed;
       top: 0;
@@ -208,7 +202,6 @@
       margin: 0 auto;
       padding: 0 32px;
     }
-    /* Header White/Red */
     header {
       background: rgba(255, 255, 255, 0.98);
       backdrop-filter: blur(8px);
@@ -237,7 +230,6 @@
     .logo-img:hover {
       transform: scale(1.03);
     }
-    /* Right side group - contains hamburger, nav-links, and dark mode toggle */
     .right-group {
       display: flex;
       align-items: center;
@@ -269,7 +261,6 @@
       background: #dc2626;
       border-radius: 4px;
     }
-    /* Hamburger Menu */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -341,7 +332,6 @@
       opacity: 1;
       visibility: visible;
     }
-    /* Dark Mode Toggle */
     .theme-toggle {
       background: #f3f4f6;
       border: none;
@@ -402,7 +392,6 @@
     body.dark .mobile-menu a:hover {
       color: #dc2626;
     }
-    /* Hero Red/White */
     .hero {
       background: rgba(255, 245, 245, 0.92);
       padding: 5rem 0 6rem;
@@ -454,7 +443,6 @@
       background: #dc2626;
       color: white;
     }
-    /* Cards & sections white bg */
     section {
       padding: 5rem 0;
     }
@@ -511,7 +499,6 @@
     .card p {
       color: #4b5563;
     }
-    /* Stats White/Red */
     .stats {
       background: #fef2f2dd;
       border-radius: 56px;
@@ -536,7 +523,6 @@
       letter-spacing: 1px;
       font-size: 0.8rem;
     }
-    /* Swiper Gallery */
     .slider-section {
       background: rgba(254, 250, 245, 0.95);
       border-radius: 48px;
@@ -579,7 +565,6 @@
     .swiper-button-next, .swiper-button-prev {
       color: #dc2626;
     }
-    /* Clients Grid */
     .client-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -623,7 +608,6 @@
       color: #dc2626;
       font-weight: 600;
     }
-    /* Project lists */
     .row-two-columns {
       display: flex;
       flex-wrap: wrap;
@@ -672,7 +656,6 @@
       color: #dc2626;
       font-weight: 500;
     }
-    /* CTA */
     .cta-section {
       background: linear-gradient(135deg, #dc2626, #b91c1c);
       border-radius: 48px;
@@ -693,7 +676,6 @@
       background: #fff5f5;
       transform: translateY(-3px);
     }
-    /* Floating Social Icons */
     .floating-social {
       position: fixed;
       bottom: 25px;
@@ -729,16 +711,15 @@
       margin-top: 2rem;
     }
 
-    /* ===== SINGLE INFINITE SCROLL MARQUEE - CLEAN, ATTRACTIVE, PERFECT FIT ===== */
+    /* ===== ATTRACTIVE SINGLE LOGO MARQUEE - ONLY Logo.JPG ===== */
     .marquee-section {
       background: rgba(248, 250, 252, 0.96);
       backdrop-filter: blur(4px);
       padding: 2rem 0;
       overflow: hidden;
-      border-top: 1px solid rgba(220,38,38,0.25);
-      border-bottom: 1px solid rgba(220,38,38,0.25);
+      border-top: 1px solid rgba(220,38,38,0.3);
+      border-bottom: 1px solid rgba(220,38,38,0.3);
       position: relative;
-      box-shadow: 0 8px 25px rgba(0,0,0,0.03);
     }
     .marquee-wrapper {
       width: 100%;
@@ -748,7 +729,7 @@
     .marquee-track {
       display: flex;
       width: fit-content;
-      animation: scrollMarqueeSingle 25s linear infinite;
+      animation: scrollLogo 25s linear infinite;
       gap: 2.5rem;
       align-items: center;
     }
@@ -757,32 +738,32 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(255,255,255,0.85);
+      background: rgba(255,255,255,0.9);
       backdrop-filter: blur(2px);
       padding: 0.75rem 2.2rem;
       border-radius: 100px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.04);
-      transition: all 0.25s ease;
+      box-shadow: 0 10px 22px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
       border: 1px solid rgba(220,38,38,0.2);
-      cursor: default;
+      cursor: pointer;
     }
     .marquee-item img {
-      max-height: 70px;
+      max-height: 75px;
       width: auto;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.05));
-      transition: transform 0.2s;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.08));
+      transition: transform 0.25s;
     }
     .marquee-item:hover {
-      transform: translateY(-4px) scale(1.02);
+      transform: translateY(-5px) scale(1.03);
       background: white;
       border-color: #dc2626;
-      box-shadow: 0 12px 22px rgba(220,38,38,0.12);
+      box-shadow: 0 15px 28px rgba(220,38,38,0.15);
     }
     .marquee-item:hover img {
       transform: scale(1.02);
     }
-    @keyframes scrollMarqueeSingle {
+    @keyframes scrollLogo {
       0% { transform: translateX(0); }
       100% { transform: translateX(-50%); }
     }
@@ -791,9 +772,8 @@
       border-color: rgba(220,38,38,0.4);
     }
     body.dark .marquee-item {
-      background: rgba(31, 41, 55, 0.8);
+      background: rgba(31, 41, 55, 0.85);
       border-color: rgba(220,38,38,0.4);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
     }
     body.dark .marquee-item img {
       filter: brightness(0.95) drop-shadow(0 2px 4px rgba(0,0,0,0.2));
@@ -803,9 +783,9 @@
       border-color: #dc2626;
     }
     @media (max-width: 768px) {
-      .marquee-item { padding: 0.5rem 1.2rem; margin: 0 0.2rem; }
-      .marquee-item img { max-height: 52px; }
-      .marquee-section { padding: 1.3rem 0; }
+      .marquee-item { padding: 0.5rem 1.4rem; }
+      .marquee-item img { max-height: 55px; }
+      .marquee-section { padding: 1.4rem 0; }
     }
     @media (max-width: 992px) {
       .hero h1 { font-size: 3rem; }
@@ -834,14 +814,13 @@
       .btn { padding: 10px 24px; font-size: 0.9rem; }
       .card { padding: 1.5rem; }
       .stat-number { font-size: 2rem; }
-      .marquee-item img { max-height: 45px; }
-      .marquee-item { padding: 0.4rem 1rem; }
+      .marquee-item img { max-height: 48px; }
+      .marquee-item { padding: 0.4rem 1.1rem; }
     }
   </style>
 </head>
 <body>
 
-<!-- MOVABLE HVAC BACKGROUND: dynamic particles, floating icons & air streaks -->
 <div class="moving-bg">
   <canvas class="bg-canvas" id="hvacCanvas"></canvas>
   <div class="hvac-float-icon icon-1"><i class="fas fa-wind"></i></div>
@@ -891,7 +870,7 @@
     </div>
   </div>
 
-  <!-- ===== ATTRACTIVE SINGLE MARQUEE (Logo.JPG + 53.jpg, perfectly fitted, no duplication issues) ===== -->
+  <!-- ATTRACTIVE MARQUEE: Only Logo.JPG - smooth infinite scroll, perfect fit -->
   <div class="marquee-section">
     <div class="marquee-wrapper">
       <div class="marquee-track" id="marqueeTrack"></div>
@@ -921,23 +900,21 @@
   const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];
   const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => window.location.href = 'services.html'); clientsGrid.appendChild(card); }); }
   document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => window.location.href = 'services.html'); });
-  // MOVING PARTICLE CANVAS for extra dynamic airflow
+  
   const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.4 + 0.1, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 
-  // ========== SINGLE MARQUEE: Logo.JPG & 53.jpg with perfect fit, no double duplication ==========
+  // ===== PERFECT MARQUEE: Only Logo.JPG, properly fitted, smooth infinite scroll =====
   const marqueeTrack = document.getElementById('marqueeTrack');
   if(marqueeTrack) {
-    // Create sequence with both logos alternating for visual rhythm (each appears 7 times so total 14 items, then we duplicate for seamless loop)
-    const logoPaths = ['Logo.JPG', '53.jpg'];
-    let itemsArray = [];
-    // create 14 items total (7 of each logo) to have smooth scroll without excessive clone
-    for(let i = 0; i < 14; i++) {
-      const logo = logoPaths[i % 2];
-      itemsArray.push(`<div class="marquee-item"><img src="${logo}" alt="HALU Partner" onerror="this.src='https://placehold.co/200x80/dc2626/white?text=HALU'"></div>`);
+    // Create individual logo items (each item contains Logo.JPG)
+    const logoUrl = 'Logo.JPG';
+    const totalItems = 14; // enough items to fill screen width smoothly
+    let itemsHtml = '';
+    for(let i = 0; i < totalItems; i++) {
+      itemsHtml += `<div class="marquee-item"><img src="${logoUrl}" alt="HALU Partner Logo" onerror="this.src='https://placehold.co/200x80/dc2626/white?text=HALU'"></div>`;
     }
-    const originalHtml = itemsArray.join('');
-    marqueeTrack.innerHTML = originalHtml;
-    // Clone the track exactly once for seamless infinite effect (standard technique)
+    marqueeTrack.innerHTML = itemsHtml;
+    // Clone the track for seamless infinite loop (standard technique)
     const cloneTrack = marqueeTrack.cloneNode(true);
     marqueeTrack.parentElement.appendChild(cloneTrack);
   }

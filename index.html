@@ -1,805 +1,887 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover"/>
+
   <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
-  <!-- Google Fonts + Font Awesome -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Swiper JS -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"/>
+
+  <!-- Swiper -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-  <!-- AOS Scroll Animation -->
-  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet"/>
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <!-- THREE JS -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+
+  <!-- VANTA -->
+  <script src="https://cdn.jsdelivr.net/npm/vanta@latest/dist/vanta.net.min.js"></script>
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
     }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e1e2a;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
+    body{
+      font-family:'Inter',sans-serif;
+      background:#ffffff;
+      color:#111827;
+      overflow-x:hidden;
+      scroll-behavior:smooth;
     }
 
-    /* Loading Animation with Background Image from loading.io */
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: url('https://loading.io/asset/811675') center/cover no-repeat, #ffffff;
-      background-size: cover;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s;
-    }
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .loader-spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid rgba(255,255,255,0.3);
-      border-top: 5px solid #dc2626;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-      background: transparent;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
+    .container{
+      max-width:1280px;
+      margin:auto;
+      padding:0 30px;
     }
 
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
+    /* =========================
+       LOADER
+    ========================= */
+
+    .loader{
+      position:fixed;
+      inset:0;
+      background:#ffffff;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      z-index:99999;
+      transition:0.5s;
     }
 
-    /* Header White/Red */
-    header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 2px solid #dc2626;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    .loader.hide{
+      opacity:0;
+      visibility:hidden;
     }
 
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 0;
+    .loader-spinner{
+      width:70px;
+      height:70px;
+      border:6px solid rgba(220,38,38,0.2);
+      border-top:6px solid #dc2626;
+      border-radius:50%;
+      animation:spin 1s linear infinite;
     }
 
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-img {
-      height: 65px;
-      width: auto;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
-    .logo-img:hover { transform: scale(1.03); }
-
-    /* Right side group - contains hamburger, nav-links, and dark mode toggle */
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #1f2937;
-      transition: 0.25s;
-      position: relative;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: #dc2626;
-    }
-    .nav-links a.active:after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 4px;
-    }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 6px;
-      z-index: 1001;
-    }
-    .hamburger span {
-      width: 30px;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 8px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
-    }
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 350px;
-      height: 100vh;
-      background: white;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: right 0.3s ease;
-      padding: 100px 30px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .mobile-menu.active {
-      right: 0;
-    }
-    .mobile-menu a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #1f2937;
-      padding: 12px 0;
-      border-bottom: 1px solid #fee2e2;
-      transition: 0.25s;
-    }
-    .mobile-menu a:hover, .mobile-menu a.active {
-      color: #dc2626;
-      padding-left: 10px;
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 999;
-    }
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Dark Mode Toggle */
-    .theme-toggle {
-      background: #f3f4f6;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111;
-    }
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero {
-      background: #1f2937;
-      color: #f3f4f6;
-      border-color: #374151;
-    }
-    body.dark .card p, body.dark .client-card p, body.dark .project-list li { color: #cbd5e1; }
-    body.dark .hero { background: #111827; }
-    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 { color: white; }
-    body.dark .logo-text { color: white; }
-    body.dark footer { background: #030712; color: #9ca3af; }
-    body.dark .trust-projects-section { background: #1f2937; }
-    body.dark .stats { background: #1f2937; }
-    body.dark .slider-section { background: #1f2937; }
-    body.dark .stat-label { color: #9ca3af; }
-    body.dark .theme-toggle { background: #374151; color: white; }
-    body.dark .mobile-menu { background: #1f2937; }
-    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
-    body.dark .mobile-menu a:hover { color: #dc2626; }
-
-    /* Hero Red/White */
-    .hero {
-      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-      padding: 5rem 0 6rem;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 4rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: #111;
-    }
-    .hero h1 span { color: #dc2626; }
-    .hero p {
-      font-size: 1.2rem;
-      color: #4b5563;
-      max-width: 580px;
-      margin-bottom: 2rem;
-    }
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      background: #dc2626;
-      color: white;
-      padding: 14px 38px;
-      border-radius: 60px;
-      font-weight: 700;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 10px 20px -6px rgba(220,38,38,0.4);
-      border: none;
-      cursor: pointer;
-    }
-    .btn:hover {
-      transform: translateY(-4px);
-      background: #b91c1c;
-      box-shadow: 0 20px 30px -10px #dc2626;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #dc2626;
-      color: #dc2626;
-      box-shadow: none;
-    }
-    .btn-outline:hover {
-      background: #dc2626;
-      color: white;
-    }
-
-    /* Cards & sections white bg */
-    section {
-      padding: 5rem 0;
-    }
-    .section-title {
-      font-size: 2.5rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      position: relative;
-      color: #111;
-      text-align: center;
-    }
-    .section-title:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 4px;
-      background: #dc2626;
-      border-radius: 4px;
-    }
-
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .card {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 2rem 1.8rem;
-      transition: 0.35s;
-      text-align: center;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
-    }
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: #dc2626;
-      box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2);
-    }
-    .card i {
-      font-size: 3rem;
-      color: #dc2626;
-      margin-bottom: 1rem;
-    }
-    .card h3 { font-size: 1.6rem; margin-bottom: 0.75rem; color: #111; }
-    .card p { color: #4b5563; }
-
-    /* Stats White/Red */
-    .stats {
-      background: #fef2f2;
-      border-radius: 56px;
-      padding: 2.5rem 2rem;
-      display: flex;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin-top: 2rem;
-      text-align: center;
-      border: 1px solid #fecaca;
-    }
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #dc2626;
-    }
-    .stat-label { font-weight: 600; color: #4b5563; text-transform: uppercase; letter-spacing: 1px; font-size: 0.8rem; }
-
-    /* Swiper Gallery */
-    .slider-section {
-      background: #fefaf5;
-      border-radius: 48px;
-      margin: 2rem 0;
-      padding: 2rem 0;
-    }
-    .swiper { width: 100%; padding: 20px 0 40px; }
-    .swiper-slide {
-      background: white;
-      border-radius: 32px;
-      overflow: hidden;
-      transition: transform 0.3s;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .swiper-slide:hover { transform: scale(1.02); border-color: #dc2626; }
-    .swiper-slide img { width: 100%; height: 280px; object-fit: cover; display: block; }
-    .slide-caption { padding: 1rem; text-align: center; background: white; color: #111; font-weight: 600; border-top: 1px solid #fee2e2; }
-    .swiper-pagination-bullet-active { background: #dc2626; }
-    .swiper-button-next, .swiper-button-prev { color: #dc2626; }
-
-    /* Clients Grid */
-    .client-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 1.8rem;
-      margin: 2rem 0;
-    }
-    .client-card {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 1.8rem;
-      transition: all 0.3s;
-      border: 1px solid #fee2e2;
-      cursor: pointer;
-      text-align: center;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
-    }
-    .client-card:hover {
-      transform: translateY(-6px);
-      border-color: #dc2626;
-      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
-    }
-    .client-icon i { font-size: 2.8rem; color: #dc2626; margin-bottom: 1rem; }
-    .client-card h4 { font-size: 1.3rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
-    .project-badge { display: inline-block; background: #fee2e2; padding: 0.3rem 0.8rem; border-radius: 40px; font-size: 0.7rem; margin-top: 0.8rem; color: #dc2626; font-weight: 600; }
-
-    /* Project lists */
-    .row-two-columns { display: flex; flex-wrap: wrap; gap: 2rem; margin: 2rem 0; }
-    .col { flex: 1; min-width: 250px; }
-    .project-list {
-      background: #fef2f2;
-      border-radius: 32px;
-      padding: 1.5rem;
-      border: 1px solid #fecaca;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .project-list:hover { border-color: #dc2626; box-shadow: 0 8px 20px rgba(220,38,38,0.1); }
-    .project-list h3 { color: #dc2626; margin-bottom: 1rem; }
-    .project-list ul { list-style: none; }
-    .project-list li { padding: 0.6rem 0; border-bottom: 1px solid #ffdede; display: flex; align-items: center; gap: 10px; color: #1f2937; }
-    .project-list li i { color: #dc2626; width: 24px; }
-    .click-hint { text-align: center; margin-top: 1.5rem; font-size: 0.9rem; color: #dc2626; font-weight: 500; }
-
-    /* CTA */
-    .cta-section {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      border-radius: 48px;
-      padding: 3rem;
-      text-align: center;
-      color: white;
-    }
-    .cta-section h2 { font-size: 2rem; margin-bottom: 1rem; }
-    .cta-section .btn { background: white; color: #dc2626; box-shadow: none; }
-    .cta-section .btn:hover { background: #fff5f5; transform: translateY(-3px); }
-
-    /* Floating Social Icons */
-    .floating-social {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 1000;
-    }
-    .floating-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
-    .floating-icon:hover { transform: scale(1.15); }
-    .floating-wa { background: #25D366; color: white; }
-    .floating-telegram { background: #0088cc; color: white; }
-    .floating-fb { background: #1877f2; color: white; }
-
-    footer {
-      background: #f8fafc;
-      color: #4b5563;
-      text-align: center;
-      padding: 2rem;
-      border-top: 2px solid #dc2626;
-      margin-top: 2rem;
-    }
-
-    /* Mobile Responsive Styles */
-    @media (max-width: 992px) {
-      .hero h1 { font-size: 3rem; }
-      .section-title { font-size: 2rem; }
-    }
-
-    @media (max-width: 850px) {
-      .hero h1 { font-size: 2.5rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .right-group {
-        gap: 0.8rem;
+    @keyframes spin{
+      100%{
+        transform:rotate(360deg);
       }
-      .logo-img { height: 52px; }
-      .floating-icon { width: 45px; height: 45px; }
-      .container { padding: 0 24px; }
-      .stats { flex-direction: column; align-items: center; }
-      .stat-card { width: 100%; }
-      .grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: 1fr; }
-      .client-grid { grid-template-columns: 1fr; }
-      .row-two-columns { flex-direction: column; }
-      .hero { padding: 3rem 0; }
-      section { padding: 3rem 0; }
-      .cta-section { padding: 2rem; }
-      .cta-section h2 { font-size: 1.5rem; }
-      .project-list li { font-size: 0.9rem; }
     }
 
-    @media (max-width: 550px) {
-      .hero h1 { font-size: 1.8rem; }
-      .section-title { font-size: 1.5rem; }
-      .btn { padding: 10px 24px; font-size: 0.9rem; }
-      .card { padding: 1.5rem; }
-      .card h3 { font-size: 1.3rem; }
-      .stat-number { font-size: 2rem; }
-      .client-card h4 { font-size: 1.1rem; }
+    /* =========================
+       HEADER
+    ========================= */
+
+    header{
+      position:fixed;
+      top:0;
+      width:100%;
+      z-index:999;
+      background:rgba(255,255,255,0.95);
+      backdrop-filter:blur(12px);
+      border-bottom:1px solid #fee2e2;
     }
+
+    .header-flex{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:16px 0;
+    }
+
+    .logo{
+      font-size:30px;
+      font-weight:800;
+      color:#dc2626;
+      letter-spacing:2px;
+    }
+
+    .nav-links{
+      display:flex;
+      gap:35px;
+    }
+
+    .nav-links a{
+      text-decoration:none;
+      color:#111827;
+      font-weight:600;
+      transition:0.3s;
+      position:relative;
+    }
+
+    .nav-links a:hover{
+      color:#dc2626;
+    }
+
+    .nav-links a::after{
+      content:'';
+      position:absolute;
+      left:0;
+      bottom:-8px;
+      width:0%;
+      height:3px;
+      background:#dc2626;
+      transition:0.3s;
+      border-radius:10px;
+    }
+
+    .nav-links a:hover::after{
+      width:100%;
+    }
+
+    .theme-toggle{
+      border:none;
+      background:#f3f4f6;
+      padding:12px 18px;
+      border-radius:50px;
+      cursor:pointer;
+      font-weight:600;
+    }
+
+    /* =========================
+       HERO
+    ========================= */
+
+    .hero{
+      position:relative;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      overflow:hidden;
+    }
+
+    #vanta-bg{
+      position:absolute;
+      inset:0;
+      width:100%;
+      height:100%;
+      z-index:0;
+    }
+
+    .hero-overlay{
+      position:absolute;
+      inset:0;
+      background:
+      linear-gradient(
+        135deg,
+        rgba(255,255,255,0.90),
+        rgba(255,255,255,0.75)
+      );
+      z-index:1;
+    }
+
+    .hero .container{
+      position:relative;
+      z-index:5;
+      animation:floatingHero 5s ease-in-out infinite;
+    }
+
+    @keyframes floatingHero{
+      0%{ transform:translateY(0px); }
+      50%{ transform:translateY(-8px); }
+      100%{ transform:translateY(0px); }
+    }
+
+    .hero h1{
+      font-size:5rem;
+      line-height:1.1;
+      font-weight:900;
+      margin-bottom:25px;
+      max-width:900px;
+    }
+
+    .hero h1 span{
+      color:#dc2626;
+      text-shadow:
+      0 0 10px rgba(220,38,38,0.25),
+      0 0 20px rgba(220,38,38,0.15);
+    }
+
+    .hero p{
+      font-size:1.2rem;
+      max-width:650px;
+      line-height:1.8;
+      color:#374151;
+      margin-bottom:35px;
+    }
+
+    .hero-buttons{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+    }
+
+    .btn{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      text-decoration:none;
+      padding:16px 34px;
+      border-radius:60px;
+      font-weight:700;
+      transition:0.35s;
+    }
+
+    .btn-primary{
+      background:#dc2626;
+      color:white;
+      box-shadow:0 15px 30px rgba(220,38,38,0.25);
+    }
+
+    .btn-primary:hover{
+      transform:translateY(-4px);
+      background:#b91c1c;
+    }
+
+    .btn-outline{
+      border:2px solid #dc2626;
+      color:#dc2626;
+      background:white;
+    }
+
+    .btn-outline:hover{
+      background:#dc2626;
+      color:white;
+    }
+
+    /* =========================
+       SECTION
+    ========================= */
+
+    section{
+      padding:100px 0;
+    }
+
+    .section-title{
+      text-align:center;
+      font-size:2.8rem;
+      font-weight:800;
+      margin-bottom:60px;
+      position:relative;
+    }
+
+    .section-title::after{
+      content:'';
+      position:absolute;
+      left:50%;
+      transform:translateX(-50%);
+      bottom:-18px;
+      width:90px;
+      height:5px;
+      background:#dc2626;
+      border-radius:50px;
+    }
+
+    /* =========================
+       CARDS
+    ========================= */
+
+    .grid{
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+      gap:30px;
+    }
+
+    .card{
+      background:white;
+      border-radius:32px;
+      padding:40px 30px;
+      border:1px solid #fee2e2;
+      transition:0.35s;
+      text-align:center;
+      box-shadow:0 10px 30px rgba(0,0,0,0.05);
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+      border-color:#dc2626;
+      box-shadow:0 25px 40px rgba(220,38,38,0.15);
+    }
+
+    .card i{
+      font-size:3rem;
+      color:#dc2626;
+      margin-bottom:20px;
+    }
+
+    .card h3{
+      font-size:1.5rem;
+      margin-bottom:15px;
+    }
+
+    .card p{
+      color:#4b5563;
+      line-height:1.7;
+    }
+
+    /* =========================
+       SWIPER
+    ========================= */
+
+    .slider-section{
+      background:#fff5f5;
+      border-radius:50px;
+      margin:50px 0;
+      padding:60px 0;
+    }
+
+    .swiper{
+      padding-bottom:50px;
+    }
+
+    .swiper-slide{
+      background:white;
+      border-radius:30px;
+      overflow:hidden;
+      border:1px solid #fee2e2;
+      transition:0.3s;
+    }
+
+    .swiper-slide:hover{
+      transform:scale(1.02);
+    }
+
+    .swiper-slide img{
+      width:100%;
+      height:280px;
+      object-fit:cover;
+    }
+
+    .slide-caption{
+      padding:20px;
+      font-weight:700;
+      text-align:center;
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev{
+      color:#dc2626;
+    }
+
+    .swiper-pagination-bullet-active{
+      background:#dc2626;
+    }
+
+    /* =========================
+       STATS
+    ========================= */
+
+    .stats{
+      background:#fff5f5;
+      border-radius:40px;
+      padding:50px;
+      display:flex;
+      justify-content:space-between;
+      flex-wrap:wrap;
+      gap:30px;
+      text-align:center;
+    }
+
+    .stat-number{
+      font-size:3rem;
+      font-weight:900;
+      color:#dc2626;
+    }
+
+    .stat-label{
+      color:#4b5563;
+      text-transform:uppercase;
+      letter-spacing:1px;
+      font-weight:600;
+      margin-top:10px;
+    }
+
+    /* =========================
+       CTA
+    ========================= */
+
+    .cta{
+      background:
+      linear-gradient(
+        135deg,
+        #dc2626,
+        #b91c1c
+      );
+
+      padding:80px 40px;
+      border-radius:50px;
+      text-align:center;
+      color:white;
+    }
+
+    .cta h2{
+      font-size:3rem;
+      margin-bottom:20px;
+    }
+
+    .cta p{
+      margin-bottom:30px;
+      opacity:0.95;
+      font-size:1.1rem;
+    }
+
+    .cta .btn{
+      background:white;
+      color:#dc2626;
+    }
+
+    .cta .btn:hover{
+      background:#fff5f5;
+    }
+
+    /* =========================
+       FOOTER
+    ========================= */
+
+    footer{
+      background:#f9fafb;
+      padding:35px;
+      text-align:center;
+      border-top:1px solid #fee2e2;
+      color:#6b7280;
+    }
+
+    /* =========================
+       FLOATING SOCIALS
+    ========================= */
+
+    .floating-social{
+      position:fixed;
+      bottom:25px;
+      right:25px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      z-index:999;
+    }
+
+    .floating-icon{
+      width:58px;
+      height:58px;
+      border-radius:50%;
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      color:white;
+      text-decoration:none;
+      font-size:1.2rem;
+      transition:0.3s;
+      box-shadow:0 10px 25px rgba(0,0,0,0.2);
+    }
+
+    .floating-icon:hover{
+      transform:scale(1.12);
+    }
+
+    .floating-wa{ background:#25D366; }
+    .floating-telegram{ background:#0088cc; }
+    .floating-fb{ background:#1877f2; }
+
+    /* =========================
+       MOBILE
+    ========================= */
+
+    @media(max-width:900px){
+
+      .hero h1{
+        font-size:3rem;
+      }
+
+      .nav-links{
+        display:none;
+      }
+
+      .stats{
+        flex-direction:column;
+      }
+
+      .section-title{
+        font-size:2rem;
+      }
+
+    }
+
+    @media(max-width:550px){
+
+      .hero h1{
+        font-size:2.2rem;
+      }
+
+      .hero p{
+        font-size:1rem;
+      }
+
+      .btn{
+        width:100%;
+        justify-content:center;
+      }
+
+    }
+
   </style>
 </head>
+
 <body>
-<div class="loader" id="loader"><div class="loader-spinner"></div></div>
 
-<header>
-  <div class="container header-flex">
-    <div class="logo-wrapper" id="logoContainer"></div>
-    <div class="right-group">
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-spinner"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header>
+
+    <div class="container header-flex">
+
+      <div class="logo">
+        HALU
+      </div>
+
       <div class="nav-links">
-        <a href="index.html" class="active">Home</a>
-        <a href="about.html">About</a>
-        <a href="services.html">Services</a>
-        <a href="projects.html">Projects</a>
-        <a href="contact.html">Contact</a>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Projects</a>
+        <a href="#">Contact</a>
       </div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
-      <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
+
+      <button class="theme-toggle" id="darkModeToggle">
+        <i class="fas fa-moon"></i>
+      </button>
+
     </div>
-  </div>
-</header>
 
-<div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="projects.html">Projects</a>
-  <a href="contact.html">Contact</a>
-</div>
-<div class="overlay" id="overlay"></div>
+  </header>
 
-<main>
-  <!-- Hero Section -->
+  <!-- HERO -->
   <div class="hero">
+
+    <!-- ANIMATED HVAC BACKGROUND -->
+    <div id="vanta-bg"></div>
+
+    <!-- OVERLAY -->
+    <div class="hero-overlay"></div>
+
     <div class="container">
-      <div data-aos="fade-up" data-aos-duration="800">
-        <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
-        <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-          <a href="contact.html" class="btn btn-outline">Request Quote</a>
+
+      <div data-aos="fade-up">
+
+        <h1>
+          HVAC & <span>Mechanical Engineering</span><br>
+          Smart Climate Infrastructure
+        </h1>
+
+        <p>
+          Intelligent cooling systems, smart ventilation,
+          duct engineering, automation, IoT integration,
+          and future-ready HVAC infrastructure for modern buildings.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#" class="btn btn-primary">
+            Explore Solutions
+            <i class="fas fa-arrow-right"></i>
+          </a>
+
+          <a href="#" class="btn btn-outline">
+            Request Quote
+          </a>
+
         </div>
+
       </div>
+
     </div>
+
   </div>
 
-  <!-- Engineering Icons Row -->
+  <!-- SERVICES -->
   <section>
+
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2>
-      <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1.5rem;">
-        <div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div>
-        <div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div>
-        <div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div>
-        <div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div>
+
+      <h2 class="section-title" data-aos="fade-up">
+        Core Expertise
+      </h2>
+
+      <div class="grid">
+
+        <div class="card" data-aos="zoom-in">
+          <i class="fas fa-wind"></i>
+          <h3>Air Conditioning</h3>
+          <p>
+            Smart VRF systems, chillers, and industrial cooling.
+          </p>
+        </div>
+
+        <div class="card" data-aos="zoom-in">
+          <i class="fas fa-temperature-low"></i>
+          <h3>Cold Rooms</h3>
+          <p>
+            Pharmaceutical and industrial refrigeration systems.
+          </p>
+        </div>
+
+        <div class="card" data-aos="zoom-in">
+          <i class="fas fa-microchip"></i>
+          <h3>IoT HVAC</h3>
+          <p>
+            Smart automation and connected ventilation systems.
+          </p>
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Movable Image Slider (Swiper) -->
+  <!-- GALLERY -->
   <section class="slider-section">
+
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2>
-      <div class="swiper mySwiper" data-aos="fade-up">
-        <div class="swiper-wrapper" id="swiperWrapper"></div>
+
+      <h2 class="section-title">
+        Project Gallery
+      </h2>
+
+      <div class="swiper mySwiper">
+
+        <div class="swiper-wrapper">
+
+          <div class="swiper-slide">
+            <img src="1.jpg">
+            <div class="slide-caption">
+              VRF Cooling System
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <img src="2.jpg">
+            <div class="slide-caption">
+              Smart Ventilation
+            </div>
+          </div>
+
+          <div class="swiper-slide">
+            <img src="3.jpg">
+            <div class="slide-caption">
+              Duct Engineering
+            </div>
+          </div>
+
+        </div>
+
         <div class="swiper-pagination"></div>
+
         <div class="swiper-button-next"></div>
         <div class="swiper-button-prev"></div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Core Expertise Cards -->
+  <!-- STATS -->
   <section>
+
     <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Core Expertise</h2>
-      <div class="grid">
-        <div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling for any scale.</p></div>
-        <div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div>
-        <div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div>
-        <div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div>
-        <div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control, humidity & energy recovery ventilators.</p></div>
-        <div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div>
+
+      <div class="stats">
+
+        <div>
+          <div class="stat-number">5+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+
+        <div>
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Projects</div>
+        </div>
+
+        <div>
+          <div class="stat-number">24/7</div>
+          <div class="stat-label">Support</div>
+        </div>
+
+        <div>
+          <div class="stat-number">100%</div>
+          <div class="stat-label">Client Satisfaction</div>
+        </div>
+
       </div>
+
     </div>
+
   </section>
 
-  <!-- Trust & Projects -->
-  <section style="background: #ffffff;">
-    <div class="container">
-      <h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2>
-      <div class="stats" data-aos="fade-up">
-        <div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div>
-        <div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div>
-        <div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div>
-        <div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div>
-      </div>
-
-      <div class="trust-projects-section" style="background: #fefaf5; border-radius: 56px; padding: 2rem; margin-top: 2rem;">
-        <h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3>
-        <div class="client-grid" id="clientsGrid"></div>
-
-        <div class="row-two-columns">
-          <div class="col">
-            <div class="project-list" data-aos="fade-right">
-              <h3><i class="fas fa-building"></i> MESOB Projects</h3>
-              <ul>
-                <li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li>
-                <li><i class="fas fa-map-marker-alt"></i> Afar Region</li>
-              </ul>
-            </div>
-          </div>
-          <div class="col">
-            <div class="project-list" data-aos="fade-left">
-              <h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3>
-              <ul>
-                <li><i class="fas fa-university"></i> INSA (Information Network Security Agency)</li>
-                <li><i class="fas fa-city"></i> Civil Service</li>
-                <li><i class="fas fa-hard-hat"></i> Minaye Construction</li>
-                <li><i class="fas fa-charging-station"></i> TAPU Foods</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-        <div class="click-hint">
-          <i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- CTA Section -->
+  <!-- CTA -->
   <section>
+
     <div class="container">
-      <div class="cta-section" data-aos="zoom-in">
-        <h2>Ready to Upgrade Your Infrastructure?</h2>
-        <p style="margin-bottom: 1.5rem; opacity: 0.9;">Get a free consultation from our engineering experts.</p>
-        <a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a>
+
+      <div class="cta">
+
+        <h2>
+          Upgrade Your HVAC Infrastructure
+        </h2>
+
+        <p>
+          Smart cooling and engineering solutions for modern enterprises.
+        </p>
+
+        <a href="#" class="btn">
+          Contact HALU
+        </a>
+
       </div>
+
     </div>
+
   </section>
-</main>
 
-<footer>
-  <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
-</footer>
+  <!-- FOOTER -->
+  <footer>
+    © 2026 HALU Engineering — Smart HVAC & Mechanical Systems
+  </footer>
 
-<div class="floating-social">
-  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
-  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
-</div>
+  <!-- FLOATING SOCIAL -->
+  <div class="floating-social">
 
-<script>
-  // Remove loader
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    loader.classList.add('hide');
-    setTimeout(() => loader.style.display = 'none', 500);
-  });
+    <a href="#" class="floating-icon floating-wa">
+      <i class="fab fa-whatsapp"></i>
+    </a>
 
-  // AOS init
-  AOS.init({ duration: 800, once: true, offset: 60 });
+    <a href="#" class="floating-icon floating-telegram">
+      <i class="fab fa-telegram-plane"></i>
+    </a>
 
-  // Dark mode toggle
-  const toggleBtn = document.getElementById('darkModeToggle');
-  toggleBtn.addEventListener('click', () => {
-    document.body.classList.toggle('dark');
-    const icon = toggleBtn.querySelector('i');
-    const span = toggleBtn.querySelector('span');
-    if(document.body.classList.contains('dark')) {
-      icon.classList.remove('fa-moon');
-      icon.classList.add('fa-sun');
-      span.innerText = ' Light';
-    } else {
-      icon.classList.remove('fa-sun');
-      icon.classList.add('fa-moon');
-      span.innerText = ' Dark';
+    <a href="#" class="floating-icon floating-fb">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+
+  </div>
+
+  <script>
+
+    /* =========================
+       LOADER
+    ========================= */
+
+    window.addEventListener('load',()=>{
+
+      const loader=document.getElementById('loader');
+
+      loader.classList.add('hide');
+
+      setTimeout(()=>{
+        loader.style.display='none';
+      },500);
+
+    });
+
+    /* =========================
+       AOS
+    ========================= */
+
+    AOS.init({
+      duration:900,
+      once:true
+    });
+
+    /* =========================
+       SWIPER
+    ========================= */
+
+    new Swiper(".mySwiper",{
+
+      slidesPerView:1,
+      spaceBetween:30,
+      loop:true,
+
+      autoplay:{
+        delay:3500,
+        disableOnInteraction:false
+      },
+
+      pagination:{
+        el:".swiper-pagination",
+        clickable:true
+      },
+
+      navigation:{
+        nextEl:".swiper-button-next",
+        prevEl:".swiper-button-prev"
+      },
+
+      breakpoints:{
+        768:{
+          slidesPerView:2
+        },
+        1024:{
+          slidesPerView:3
+        }
+      }
+
+    });
+
+    /* =========================
+       VANTA HVAC BACKGROUND
+    ========================= */
+
+    let vantaEffect;
+
+    function startVanta(){
+
+      if(vantaEffect) vantaEffect.destroy();
+
+      vantaEffect = VANTA.NET({
+
+        el:"#vanta-bg",
+
+        mouseControls:true,
+        touchControls:true,
+        gyroControls:false,
+
+        minHeight:200.00,
+        minWidth:200.00,
+
+        scale:1.00,
+        scaleMobile:1.00,
+
+        color:0xdc2626,
+        backgroundColor:0xfff5f5,
+
+        points:14.00,
+        maxDistance:24.00,
+        spacing:18.00,
+
+        showDots:true
+
+      });
+
     }
-  });
 
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  
-  function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  }
-  
-  if(hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-  }
-  if(overlay) {
-    overlay.addEventListener('click', toggleMenu);
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+    startVanta();
 
-  // Logo loading
-  const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) {
-    const img = new Image();
-    img.onload = function() {
-      const logoImg = document.createElement('img');
-      logoImg.src = url;
-      logoImg.alt = 'HALU Engineering';
-      logoImg.className = 'logo-img';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(logoImg);
-    };
-    img.onerror = function() {
-      const fallbackDiv = document.createElement('div');
-      fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
-      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(fallbackDiv);
-    };
-    img.src = url;
-  }
-  tryLoadLogo('80.JPG');
+  </script>
 
-  // Swiper
-  const swiper = new Swiper('.mySwiper', {
-    slidesPerView: 1,
-    spaceBetween: 24,
-    loop: true,
-    autoplay: { delay: 4000, disableOnInteraction: false },
-    pagination: { el: '.swiper-pagination', clickable: true },
-    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
-    breakpoints: { 
-      640: { slidesPerView: 2 }, 
-      1024: { slidesPerView: 3 } 
-    },
-    speed: 800
-  });
-
-  // Dynamic gallery images
-  const imageList = [
-    { src: "1.jpg", name: "VRF System Install" }, { src: "2.jpg", name: "Chiller Plant" },
-    { src: "28.jpg", name: "Cold Storage" }, { src: "13.jpg", name: "Heat Pump Array" },
-    { src: "17.jpg", name: "Duct Fabrication" }, { src: "33.jpg", name: "Industrial AHU" },
-    { src: "34.jpg", name: "Precision Cooling" }, { src: "35.jpg", name: "Ventilation Duct" },
-    { src: "37.jpg", name: "Smart Controls" }
-  ];
-  const swiperWrapper = document.querySelector('#swiperWrapper');
-  if(swiperWrapper){
-    imageList.forEach(img => {
-      const slide = document.createElement('div');
-      slide.className = 'swiper-slide';
-      slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`;
-      swiperWrapper.appendChild(slide);
-    });
-    swiper.update();
-  }
-
-  // Clients data - DESCRIPTIONS REMOVED
-  const clients = [
-    { name: "DHL", icon: "fas fa-truck-fast" },
-    { name: "BOEING", icon: "fas fa-plane" },
-    { name: "INSA", icon: "fas fa-shield-alt" },
-    { name: "Civil Service", icon: "fas fa-users" },
-    { name: "Minaye Construction", icon: "fas fa-hard-hat" },
-    { name: "TAPU Foods", icon: "fas fa-apple-alt" }
-  ];
-  const clientsGrid = document.getElementById('clientsGrid');
-  if(clientsGrid){
-    clients.forEach(client => {
-      const card = document.createElement('div');
-      card.className = 'client-card';
-      card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`;
-      card.addEventListener('click', () => window.location.href = 'services.html');
-      clientsGrid.appendChild(card);
-    });
-  }
-
-  // Make project lists clickable
-  document.querySelectorAll('.project-list').forEach(el => {
-    el.style.cursor = 'pointer';
-    el.addEventListener('click', () => window.location.href = 'services.html');
-  });
-</script>
 </body>
 </html>

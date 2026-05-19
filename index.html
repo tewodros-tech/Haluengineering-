@@ -306,6 +306,7 @@
       color: #1f2937;
       transition: 0.25s;
       position: relative;
+      cursor: pointer;
     }
     .nav-links a:hover, .nav-links a.active {
       color: #dc2626;
@@ -370,6 +371,7 @@
       padding: 12px 0;
       border-bottom: 1px solid #fee2e2;
       transition: 0.25s;
+      cursor: pointer;
     }
     .mobile-menu a:hover, .mobile-menu a.active {
       color: #dc2626;
@@ -504,6 +506,7 @@
     }
     section {
       padding: 4rem 0;
+      scroll-margin-top: 90px;
     }
     .section-title {
       font-size: 2.5rem;
@@ -816,6 +819,7 @@
       .card h3 { font-size: 1.3rem; }
       .cta-section h2 { font-size: 1.4rem; }
       .cta-section { padding: 1.8rem 1rem; }
+      section { scroll-margin-top: 70px; }
     }
     @media (max-width: 550px) {
       .hero h1 { font-size: 1.6rem; }
@@ -852,11 +856,11 @@
     <div class="logo-wrapper" id="logoContainer"></div>
     <div class="right-group">
       <div class="nav-links">
-        <a href="#" class="active">Home</a>
-        <a href="#">About</a>
-        <a href="#">Services</a>
-        <a href="#">Projects</a>
-        <a href="#">Contact</a>
+        <a data-nav="home" class="active">Home</a>
+        <a data-nav="about">About</a>
+        <a data-nav="services">Services</a>
+        <a data-nav="projects">Projects</a>
+        <a data-nav="contact">Contact</a>
       </div>
       <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
@@ -864,24 +868,27 @@
   </div>
 </header>
 <div class="mobile-menu" id="mobileMenu">
-  <a href="#">Home</a> <a href="#">About</a> <a href="#">Services</a> <a href="#">Projects</a> <a href="#">Contact</a>
+  <a data-nav="home">Home</a>
+  <a data-nav="about">About</a>
+  <a data-nav="services">Services</a>
+  <a data-nav="projects">Projects</a>
+  <a data-nav="contact">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
 <main>
-  <div class="hero">
+  <section id="home" class="hero">
     <div class="container">
       <div data-aos="fade-up" data-aos-duration="800">
         <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
         <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
         <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-          <a href="#" class="btn btn-outline">Request Quote</a>
+          <a href="#services" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+          <a href="#contact" class="btn btn-outline">Request Quote</a>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 
-  <!-- ENGINEERING MP4 VIDEO SECTION (No extra text/button removed as requested) -->
   <div class="engineering-video-section">
     <div class="engineering-video-wrapper">
       <video id="haluEngineeringVideo" autoplay loop muted playsinline preload="auto">
@@ -893,18 +900,17 @@
     </div>
   </div>
 
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
+  <section id="about"><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
   
-  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
+  <section id="projects" class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
   
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
+  <section id="services"><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
   
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list" data-aos="fade-right"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list" data-aos="fade-left"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
   
-  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="#" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
+  <section id="contact"><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="#" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
 </main>
 
-<!-- Footer with HVAC.png image at bottom only -->
 <footer>
   <div class="footer-hvac-image">
     <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x140/dc2626/white?text=HVAC+Engineering'">
@@ -917,6 +923,64 @@
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 
 <script>
+  // Navigation: Smooth scroll and active state
+  function initNavigation() {
+    const navLinks = document.querySelectorAll('[data-nav]');
+    const sections = {
+      home: document.getElementById('home'),
+      about: document.getElementById('about'),
+      services: document.getElementById('services'),
+      projects: document.getElementById('projects'),
+      contact: document.getElementById('contact')
+    };
+    
+    function setActive(navId) {
+      navLinks.forEach(link => {
+        if(link.getAttribute('data-nav') === navId) {
+          link.classList.add('active');
+        } else {
+          link.classList.remove('active');
+        }
+      });
+    }
+    
+    function scrollToSection(sectionId) {
+      const section = sections[sectionId];
+      if(section) {
+        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        setActive(sectionId);
+        // Close mobile menu if open
+        if(mobileMenu.classList.contains('active')) toggleMenu();
+      }
+    }
+    
+    navLinks.forEach(link => {
+      link.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = link.getAttribute('data-nav');
+        if(targetId && sections[targetId]) {
+          scrollToSection(targetId);
+        }
+      });
+    });
+    
+    // Update active state on scroll
+    window.addEventListener('scroll', () => {
+      let current = '';
+      const scrollPos = window.scrollY + 120;
+      for(const [id, section] of Object.entries(sections)) {
+        if(section) {
+          const offsetTop = section.offsetTop;
+          const offsetBottom = offsetTop + section.offsetHeight;
+          if(scrollPos >= offsetTop && scrollPos < offsetBottom) {
+            current = id;
+          }
+        }
+      }
+      if(current) setActive(current);
+    });
+  }
+  
   window.addEventListener('load', () => { 
     const loader = document.getElementById('loader'); 
     loader.classList.add('hide'); 
@@ -928,7 +992,9 @@
       video.addEventListener('error', () => { fallbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please ensure ENGINEERING.mp4 is in the same folder'; fallbackDiv.style.display = 'flex'; });
       setTimeout(() => { if(video.readyState < 2) fallbackDiv.style.display = 'flex'; else fallbackDiv.style.display = 'none'; }, 800);
     }
+    initNavigation();
   });
+  
   AOS.init({ duration: 800, once: true, offset: 60 });
   const toggleBtn = document.getElementById('darkModeToggle'); 
   toggleBtn.addEventListener('click', () => { 
@@ -943,15 +1009,15 @@
   });
   const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
   function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
-  if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu);
   const logoContainer = document.getElementById('logoContainer');
   function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
   const swiper = new Swiper('.mySwiper', { slidesPerView: 1, spaceBetween: 24, loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, speed: 800 });
   const imageList = [{ src: "1.jpg", name: "VRF System Install" },{ src: "2.jpg", name: "Chiller Plant" },{ src: "28.jpg", name: "Cold Storage" },{ src: "13.jpg", name: "Heat Pump Array" },{ src: "17.jpg", name: "Duct Fabrication" },{ src: "33.jpg", name: "Industrial AHU" },{ src: "34.jpg", name: "Precision Cooling" },{ src: "35.jpg", name: "Ventilation Duct" },{ src: "37.jpg", name: "Smart Controls" }];
   const swiperWrapper = document.querySelector('#swiperWrapper'); if(swiperWrapper){ imageList.forEach(img => { const slide = document.createElement('div'); slide.className = 'swiper-slide'; slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`; swiperWrapper.appendChild(slide); }); swiper.update(); }
   const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];
-  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => window.location.href = '#'); clientsGrid.appendChild(card); }); }
-  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => window.location.href = '#'); });
+  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })); clientsGrid.appendChild(card); }); }
+  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })); });
   const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.4 + 0.1, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>

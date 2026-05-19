@@ -3,11 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-  <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
-  <!-- Google Fonts + Font Awesome -->
+  <title>HALU Engineering | Premium HVAC & Electro-Mechanical Solutions</title>
+  <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- Swiper JS -->
+  <!-- Swiper JS for Gallery -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
   <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
   <!-- AOS Scroll Animation -->
@@ -19,7 +19,6 @@
       padding: 0;
       box-sizing: border-box;
     }
-
     body {
       font-family: 'Inter', sans-serif;
       background: #ffffff;
@@ -27,8 +26,7 @@
       scroll-behavior: smooth;
       overflow-x: hidden;
     }
-
-    /* ========= MOVABLE HVAC ANIMATED BACKGROUND ========= */
+    /* Moving HVAC Background */
     .moving-bg {
       position: fixed;
       top: 0;
@@ -39,195 +37,47 @@
       overflow: hidden;
       background: linear-gradient(145deg, #0b1120 0%, #0a1a2a 100%);
     }
-
     .bg-canvas {
       position: absolute;
       width: 100%;
       height: 100%;
     }
-
     .hvac-float-icon {
       position: absolute;
       font-size: 3rem;
-      opacity: 0.15;
+      opacity: 0.12;
       pointer-events: none;
       animation: driftIcon 18s infinite alternate ease-in-out;
       z-index: -1;
     }
-
     @keyframes driftIcon {
-      0% {
-        transform: translate(0, 0) rotate(0deg);
-      }
-      100% {
-        transform: translate(60px, 40px) rotate(12deg);
-      }
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(60px, 40px) rotate(12deg); }
     }
-
-    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; animation-delay: -2s; }
-    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; animation-delay: -5s; }
-    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; animation-delay: -1s; }
-    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; animation-delay: -8s; }
-    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; animation-delay: -3s; }
-    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; animation-delay: -6s; }
-
+    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; }
+    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; }
+    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; }
+    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; }
+    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; }
+    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; }
     .airflow-streak {
       position: absolute;
       width: 200px;
       height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), rgba(255,100,100,0.2), transparent);
+      background: linear-gradient(90deg, transparent, rgba(220,38,38,0.4), transparent);
       filter: blur(3px);
       animation: streakMove 12s linear infinite;
-      opacity: 0.4;
-      border-radius: 50%;
+      opacity: 0.3;
     }
-
     @keyframes streakMove {
-      0% {
-        transform: translateX(-30%) translateY(0) rotate(20deg);
-        opacity: 0;
-      }
-      20% {
-        opacity: 0.5;
-      }
-      80% {
-        opacity: 0.3;
-      }
-      100% {
-        transform: translateX(130%) translateY(30px) rotate(25deg);
-        opacity: 0;
-      }
+      0% { transform: translateX(-30%) translateY(0) rotate(20deg); opacity: 0; }
+      20% { opacity: 0.5; }
+      100% { transform: translateX(130%) translateY(30px) rotate(25deg); opacity: 0; }
     }
-
-    .streak-1 { top: 25%; left: -10%; animation-delay: 0s; width: 260px; }
-    .streak-2 { top: 55%; left: -5%; animation-delay: 4s; width: 320px; transform: rotate(15deg); }
-    .streak-3 { top: 80%; left: 0%; animation-delay: 7s; width: 400px; transform: rotate(8deg); }
-    .streak-4 { top: 15%; left: 10%; animation-delay: 2s; width: 280px; transform: rotate(35deg); }
-
-    /* ===== ENGINEERING MP4 VIDEO SECTION ===== */
-    .engineering-video-section {
-      position: relative;
-      width: 100%;
-      background: #050a12;
-      overflow: hidden;
-      border-top: 3px solid #dc2626;
-      border-bottom: 3px solid #dc2626;
-      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.4);
-      z-index: 5;
-    }
-    .engineering-video-wrapper {
-      width: 100%;
-      max-height: 520px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: #000000;
-    }
-    .engineering-video-wrapper video {
-      width: 100%;
-      height: auto;
-      max-height: 520px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.5s ease, filter 0.5s ease;
-      filter: brightness(0.96) contrast(1.08);
-    }
-    .engineering-video-wrapper video:hover {
-      transform: scale(1.01);
-      filter: brightness(1.02) contrast(1.1);
-    }
-    .video-caption-soft {
-      position: absolute;
-      bottom: 20px;
-      right: 28px;
-      background: rgba(0,0,0,0.65);
-      backdrop-filter: blur(8px);
-      padding: 8px 22px;
-      border-radius: 60px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #ffffff;
-      letter-spacing: 0.6px;
-      pointer-events: none;
-      z-index: 2;
-      font-family: 'Inter', monospace;
-      border-left: 4px solid #dc2626;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-    }
-    .video-caption-soft i {
-      margin-right: 8px;
-      color: #dc2626;
-    }
-    .video-fallback-message {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background: rgba(220,38,38,0.85);
-      color: white;
-      padding: 12px 24px;
-      border-radius: 60px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      white-space: nowrap;
-      backdrop-filter: blur(4px);
-      z-index: 3;
-      display: none;
-      pointer-events: none;
-    }
-    @media (max-width: 768px) {
-      .engineering-video-wrapper { max-height: 320px; }
-      .engineering-video-wrapper video { max-height: 320px; object-fit: cover; }
-      .video-caption-soft { bottom: 10px; right: 14px; font-size: 0.7rem; padding: 5px 14px; }
-    }
-    @media (max-width: 550px) {
-      .engineering-video-wrapper { max-height: 240px; }
-      .engineering-video-wrapper video { max-height: 240px; }
-      .video-caption-soft { font-size: 0.6rem; padding: 4px 12px; bottom: 6px; right: 8px; }
-    }
-
-    header, main, footer, .floating-social {
-      position: relative;
-      z-index: 10;
-    }
-
-    .hero {
-      background: rgba(255, 245, 245, 0.92);
-      backdrop-filter: blur(2px);
-    }
-
-    section:not(.slider-section) {
-      background: rgba(255, 255, 255, 0.95);
-    }
-
-    .slider-section {
-      background: rgba(254, 250, 245, 0.95);
-    }
-
-    body.dark .hero {
-      background: rgba(17, 24, 39, 0.92);
-    }
-    body.dark section:not(.slider-section) {
-      background: rgba(15, 25, 35, 0.95);
-    }
-    body.dark .slider-section {
-      background: rgba(20, 30, 44, 0.95);
-    }
-    body.dark .trust-projects-section {
-      background: rgba(25, 35, 50, 0.95) !important;
-    }
-    body.dark .project-list {
-      background: #1f2937dd;
-    }
-    body.dark .stats {
-      background: #1f2937dd;
-    }
-    body.dark .engineering-video-section {
-      border-top-color: #f87171;
-      border-bottom-color: #f87171;
-      background: #03060c;
-    }
-
+    .streak-1 { top: 25%; left: -10%; width: 260px; }
+    .streak-2 { top: 55%; left: -5%; width: 320px; transform: rotate(15deg); }
+    .streak-3 { top: 80%; left: 0%; width: 400px; transform: rotate(8deg); }
+    /* Loader */
     .loader {
       position: fixed;
       top: 0;
@@ -239,12 +89,9 @@
       justify-content: center;
       align-items: center;
       z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s;
+      transition: opacity 0.5s ease;
     }
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
+    .loader.hide { opacity: 0; visibility: hidden; }
     .loader-spinner {
       width: 60px;
       height: 60px;
@@ -253,22 +100,17 @@
       border-radius: 50%;
       animation: spin 1s linear infinite;
     }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    /* Header */
     header {
-      background: rgba(255, 255, 255, 0.98);
+      background: rgba(255,255,255,0.98);
       backdrop-filter: blur(8px);
       position: sticky;
       top: 0;
       z-index: 1000;
       border-bottom: 2px solid #dc2626;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
     }
     .header-flex {
       display: flex;
@@ -276,29 +118,9 @@
       align-items: center;
       padding: 0.8rem 0;
     }
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-    }
-    .logo-img {
-      height: 65px;
-      width: auto;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
-    .logo-img:hover {
-      transform: scale(1.03);
-    }
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-    }
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
+    .logo-img { height: 65px; width: auto; border-radius: 12px; transition: transform 0.3s; }
+    .logo-img:hover { transform: scale(1.03); }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a {
       text-decoration: none;
       font-weight: 600;
@@ -308,9 +130,7 @@
       position: relative;
       cursor: pointer;
     }
-    .nav-links a:hover, .nav-links a.active {
-      color: #dc2626;
-    }
+    .nav-links a:hover, .nav-links a.active { color: #dc2626; }
     .nav-links a.active:after {
       content: '';
       position: absolute;
@@ -335,15 +155,9 @@
       border-radius: 4px;
       transition: all 0.3s ease;
     }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 8px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
-    }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
     .mobile-menu {
       position: fixed;
       top: 0;
@@ -360,9 +174,7 @@
       flex-direction: column;
       gap: 1.5rem;
     }
-    .mobile-menu.active {
-      right: 0;
-    }
+    .mobile-menu.active { right: 0; }
     .mobile-menu a {
       text-decoration: none;
       font-weight: 600;
@@ -370,13 +182,9 @@
       color: #1f2937;
       padding: 12px 0;
       border-bottom: 1px solid #fee2e2;
-      transition: 0.25s;
       cursor: pointer;
     }
-    .mobile-menu a:hover, .mobile-menu a.active {
-      color: #dc2626;
-      padding-left: 10px;
-    }
+    .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
     .overlay {
       position: fixed;
       top: 0;
@@ -389,10 +197,7 @@
       transition: all 0.3s;
       z-index: 999;
     }
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
+    .overlay.active { opacity: 1; visibility: visible; }
     .theme-toggle {
       background: #f3f4f6;
       border: none;
@@ -403,77 +208,41 @@
       color: #111;
       display: flex;
       align-items: center;
-      gap: 6px;
+      gap: 8px;
+      margin-left: 1rem;
     }
+    /* Dark Mode */
     body.dark {
       background: #0a0c10;
       color: #eef2ff;
     }
-    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero {
-      background: #1f2937dd;
-      color: #f3f4f6;
-      border-color: #374151;
-    }
-    body.dark .card p, body.dark .client-card p, body.dark .project-list li {
-      color: #cbd5e1;
-    }
-    body.dark .hero {
-      background: rgba(17, 24, 39, 0.92);
-    }
-    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 {
-      color: white;
-    }
-    body.dark footer {
-      background: #030712;
-      color: #9ca3af;
-    }
-    body.dark .trust-projects-section {
-      background: rgba(31, 41, 55, 0.9);
-    }
-    body.dark .stats {
-      background: rgba(31, 41, 55, 0.9);
-    }
-    body.dark .slider-section {
-      background: rgba(31, 41, 55, 0.9);
-    }
-    body.dark .stat-label {
-      color: #9ca3af;
-    }
-    body.dark .theme-toggle {
-      background: #374151;
-      color: white;
-    }
-    body.dark .mobile-menu {
-      background: #1f2937;
-    }
-    body.dark .mobile-menu a {
-      color: #eef2ff;
-      border-bottom-color: #374151;
-    }
-    body.dark .mobile-menu a:hover {
-      color: #dc2626;
-    }
-    .hero {
-      background: rgba(255, 245, 245, 0.92);
-      padding: 4rem 0 5rem;
-      position: relative;
-    }
-    .hero h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: #111;
-    }
-    .hero h1 span {
-      color: #dc2626;
-    }
-    .hero p {
-      font-size: 1.2rem;
-      color: #4b5563;
-      max-width: 600px;
-      margin-bottom: 2rem;
-    }
+    body.dark header { background: rgba(18,22,35,0.98); border-bottom-color: #dc2626; }
+    body.dark .nav-links a { color: #e2e8f0; }
+    body.dark .nav-links a:hover, body.dark .nav-links a.active { color: #dc2626; }
+    body.dark .hero, body.dark .services-hero, body.dark .projects-hero, body.dark .contact-hero,
+    body.dark .hero-about { background: #111827; }
+    body.dark .hero h1, body.dark .hero-content h1, body.dark .services-hero h1,
+    body.dark .projects-hero h1, body.dark .contact-hero h1 { color: white; }
+    body.dark .card, body.dark .project-card, body.dark .service-card, body.dark .contact-card,
+    body.dark .flagship-card, body.dark .history-card, body.dark .stat-card,
+    body.dark .satisfaction-section, body.dark .point-card, body.dark .testimonial-card,
+    body.dark .form-container { background: #1f2937; border-color: #374151; color: #f3f4f6; }
+    body.dark .card p, body.dark .service-card p, body.dark .flagship-card p,
+    body.dark .history-card p, body.dark .hero-content p, body.dark .contact-card p { color: #cbd5e1; }
+    body.dark .hero-badge, body.dark .badge-step { background: #374151; color: #dc2626; }
+    body.dark .stats .stat-label, body.dark .location-details p { color: #9ca3af; }
+    body.dark footer { background: #030712; color: #9ca3af; }
+    body.dark .mobile-menu { background: #1f2937; }
+    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
+    body.dark .mobile-menu a:hover { color: #dc2626; }
+    body.dark .theme-toggle { background: #374151; color: white; }
+    body.dark .cta-banner { background: linear-gradient(135deg, #b91c1c, #991b1b); }
+    /* Common Sections */
+    section { padding: 4rem 0; scroll-margin-top: 90px; }
+    .hero { background: rgba(255,245,245,0.92); padding: 4rem 0 5rem; }
+    .hero h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; color: #111; }
+    .hero h1 span { color: #dc2626; }
+    .hero p { font-size: 1.2rem; color: #4b5563; max-width: 600px; margin-bottom: 2rem; }
     .btn {
       display: inline-flex;
       align-items: center;
@@ -489,32 +258,16 @@
       border: none;
       cursor: pointer;
     }
-    .btn:hover {
-      transform: translateY(-4px);
-      background: #b91c1c;
-      box-shadow: 0 20px 30px -10px #dc2626;
-    }
-    .btn-outline {
-      background: transparent;
-      border: 2px solid #dc2626;
-      color: #dc2626;
-      box-shadow: none;
-    }
-    .btn-outline:hover {
-      background: #dc2626;
-      color: white;
-    }
-    section {
-      padding: 4rem 0;
-      scroll-margin-top: 90px;
-    }
+    .btn:hover { transform: translateY(-4px); background: #b91c1c; }
+    .btn-outline { background: transparent; border: 2px solid #dc2626; color: #dc2626; box-shadow: none; }
+    .btn-outline:hover { background: #dc2626; color: white; }
     .section-title {
       font-size: 2.5rem;
       font-weight: 800;
       margin-bottom: 2rem;
+      text-align: center;
       position: relative;
       color: #111;
-      text-align: center;
     }
     .section-title:after {
       content: '';
@@ -527,217 +280,54 @@
       background: #dc2626;
       border-radius: 4px;
     }
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; margin-top: 2rem; }
     .card {
       background: #ffffffdd;
       backdrop-filter: blur(2px);
       border-radius: 32px;
-      padding: 2rem 1.8rem;
-      transition: 0.35s;
+      padding: 2rem;
       text-align: center;
       border: 1px solid #fee2e2;
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+      transition: 0.35s;
     }
-    .card:hover {
-      transform: translateY(-10px);
-      border-color: #dc2626;
-      box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2);
-    }
-    .card i {
-      font-size: 3rem;
-      color: #dc2626;
-      margin-bottom: 1rem;
-    }
-    .card h3 {
-      font-size: 1.6rem;
-      margin-bottom: 0.75rem;
-      color: #111;
-    }
-    .card p {
-      color: #4b5563;
-    }
+    .card:hover { transform: translateY(-10px); border-color: #dc2626; }
+    .card i { font-size: 3rem; color: #dc2626; margin-bottom: 1rem; }
     .stats {
       background: #fef2f2dd;
       border-radius: 56px;
-      padding: 2rem 1.5rem;
+      padding: 2rem;
       display: flex;
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1.5rem;
       margin-top: 2rem;
-      text-align: center;
-      border: 1px solid #fecaca;
     }
-    .stat-number {
-      font-size: 2.5rem;
-      font-weight: 800;
-      color: #dc2626;
-    }
-    .stat-label {
-      font-weight: 600;
-      color: #4b5563;
-      text-transform: uppercase;
-      letter-spacing: 1px;
-      font-size: 0.75rem;
-    }
-    .slider-section {
-      background: rgba(254, 250, 245, 0.95);
-      border-radius: 48px;
-      margin: 1rem 0;
-      padding: 2rem 0;
-    }
-    .swiper {
-      width: 100%;
-      padding: 20px 0 40px;
-    }
-    .swiper-slide {
-      background: white;
-      border-radius: 32px;
-      overflow: hidden;
-      transition: transform 0.3s;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-    }
-    .swiper-slide:hover {
-      transform: scale(1.02);
-      border-color: #dc2626;
-    }
-    .swiper-slide img {
-      width: 100%;
-      height: 260px;
-      object-fit: cover;
-      display: block;
-    }
-    .slide-caption {
-      padding: 1rem;
-      text-align: center;
-      background: white;
-      color: #111;
-      font-weight: 600;
-      border-top: 1px solid #fee2e2;
-    }
-    .swiper-pagination-bullet-active {
-      background: #dc2626;
-    }
-    .swiper-button-next, .swiper-button-prev {
-      color: #dc2626;
-    }
-    .client-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1.5rem;
-      margin: 2rem 0;
-    }
-    .client-card {
-      background: #ffffffdd;
-      backdrop-filter: blur(2px);
-      border-radius: 28px;
-      padding: 1.5rem;
-      transition: all 0.3s;
-      border: 1px solid #fee2e2;
-      cursor: pointer;
-      text-align: center;
-      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
-    }
-    .client-card:hover {
-      transform: translateY(-6px);
-      border-color: #dc2626;
-      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
-    }
-    .client-icon i {
-      font-size: 2.5rem;
-      color: #dc2626;
-      margin-bottom: 0.8rem;
-    }
-    .client-card h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5rem;
-    }
-    .project-badge {
-      display: inline-block;
-      background: #fee2e2;
-      padding: 0.3rem 0.8rem;
-      border-radius: 40px;
-      font-size: 0.7rem;
-      margin-top: 0.8rem;
-      color: #dc2626;
-      font-weight: 600;
-    }
-    .row-two-columns {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 2rem;
-      margin: 2rem 0;
-    }
-    .col {
-      flex: 1;
-      min-width: 240px;
-    }
-    .project-list {
-      background: #fef2f2dd;
-      border-radius: 32px;
-      padding: 1.5rem;
-      border: 1px solid #fecaca;
-      transition: 0.2s;
-      cursor: pointer;
-    }
-    .project-list:hover {
-      border-color: #dc2626;
-      box-shadow: 0 8px 20px rgba(220,38,38,0.1);
-    }
-    .project-list h3 {
-      color: #dc2626;
-      margin-bottom: 1rem;
-      font-size: 1.3rem;
-    }
-    .project-list ul {
-      list-style: none;
-    }
-    .project-list li {
-      padding: 0.6rem 0;
-      border-bottom: 1px solid #ffdede;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #1f2937;
-    }
-    .project-list li i {
-      color: #dc2626;
-      width: 24px;
-    }
-    .click-hint {
-      text-align: center;
-      margin-top: 1.5rem;
-      font-size: 0.9rem;
-      color: #dc2626;
-      font-weight: 500;
-    }
-    .cta-section {
+    .stat-number { font-size: 2.5rem; font-weight: 800; color: #dc2626; }
+    .stat-label { font-weight: 600; color: #4b5563; font-size: 0.75rem; text-transform: uppercase; }
+    .cta-banner {
       background: linear-gradient(135deg, #dc2626, #b91c1c);
       border-radius: 48px;
-      padding: 2.5rem 2rem;
+      padding: 3rem;
       text-align: center;
       color: white;
+      margin: 3rem 0;
     }
-    .cta-section h2 {
-      font-size: 1.8rem;
-      margin-bottom: 1rem;
-    }
-    .cta-section .btn {
+    .btn-cta {
       background: white;
       color: #dc2626;
-      box-shadow: none;
+      padding: 1rem 2rem;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
     }
-    .cta-section .btn:hover {
-      background: #fff5f5;
-      transform: translateY(-3px);
+    footer {
+      background: #f8fafc;
+      text-align: center;
+      padding: 2rem;
+      border-top: 2px solid #dc2626;
     }
     .floating-social {
       position: fixed;
@@ -749,8 +339,8 @@
       z-index: 1000;
     }
     .floating-icon {
-      width: 52px;
-      height: 52px;
+      width: 55px;
+      height: 55px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -759,110 +349,78 @@
       transition: all 0.3s;
       box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     }
-    .floating-icon:hover {
-      transform: scale(1.12);
-    }
+    .floating-icon:hover { transform: scale(1.15); }
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    
-    /* Footer with HVAC.png image */
-    footer {
-      background: #f8fafc;
-      color: #4b5563;
-      text-align: center;
-      border-top: 2px solid #dc2626;
-      margin-top: 2rem;
-    }
-    .footer-hvac-image {
-      width: 100%;
-      background: #0b1620;
-      border-bottom: 1px solid rgba(220,38,38,0.3);
-    }
-    .footer-hvac-image img {
-      width: 100%;
-      height: auto;
-      max-height: 140px;
-      object-fit: cover;
-      display: block;
-      opacity: 0.9;
-      transition: opacity 0.3s;
-    }
-    .footer-hvac-image img:hover {
-      opacity: 1;
-    }
-    .footer-content {
-      padding: 1.8rem;
-      font-size: 0.9rem;
-    }
-
-    /* FULL MOBILE VIEW COMPATIBILITY */
-    @media (max-width: 768px) {
-      .container { padding: 0 20px; }
-      .hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.6rem; }
-      .btn { padding: 10px 20px; font-size: 0.85rem; }
-      .stats { flex-direction: column; align-items: center; gap: 1rem; }
-      .grid { grid-template-columns: 1fr; gap: 1.2rem; }
-      .client-grid { grid-template-columns: 1fr; }
-      .row-two-columns { flex-direction: column; }
-      .hero { padding: 2.5rem 0 3rem; }
+    .footer-hvac-image img { width: 100%; max-height: 100px; object-fit: cover; background: #0b1620; }
+    /* Responsive */
+    @media (max-width: 900px) {
+      .container { padding: 0 24px; }
+      .hero h1 { font-size: 2.2rem; }
+      .section-title { font-size: 1.8rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .right-group { gap: 0.8rem; }
-      .theme-toggle { padding: 6px 12px; font-size: 0.75rem; }
-      .stat-number { font-size: 1.8rem; }
-      .footer-hvac-image img { max-height: 90px; }
-      .footer-content { padding: 1rem; font-size: 0.75rem; }
-      .swiper-button-next, .swiper-button-prev { display: none; }
-      .card { padding: 1.5rem; }
-      .card h3 { font-size: 1.3rem; }
-      .cta-section h2 { font-size: 1.4rem; }
-      .cta-section { padding: 1.8rem 1rem; }
+      .stats { flex-direction: column; align-items: center; }
+      .grid { grid-template-columns: 1fr; }
       section { scroll-margin-top: 70px; }
+      .theme-toggle { padding: 6px 12px; font-size: 0.8rem; margin-left: 0.5rem; }
     }
     @media (max-width: 550px) {
-      .hero h1 { font-size: 1.6rem; }
-      .hero p { font-size: 0.9rem; }
-      .btn { padding: 8px 16px; font-size: 0.8rem; gap: 6px; }
-      .section-title { font-size: 1.4rem; }
-      .card i { font-size: 2rem; }
-      .swiper-slide img { height: 180px; }
-      .footer-hvac-image img { max-height: 60px; }
-      .floating-icon { width: 42px; height: 42px; font-size: 1.2rem; }
-      .video-caption-soft { font-size: 0.55rem; padding: 3px 10px; }
+      .hero h1 { font-size: 1.8rem; }
+      .btn { padding: 10px 20px; font-size: 0.85rem; }
+      .floating-icon { width: 45px; height: 45px; }
+    }
+    /* About Page specific */
+    .hero-about { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: 3rem; align-items: center; }
+    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 800; color: #111; }
+    .history-card { background: white; border-radius: 32px; padding: 2.5rem; border: 1px solid #fee2e2; margin: 3rem 0; }
+    .points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin: 2rem 0; }
+    .point-card { background: white; padding: 1.5rem; border-radius: 24px; display: flex; align-items: center; gap: 1rem; border: 1px solid #fee2e2; }
+    /* Projects & Services */
+    .projects-grid, .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem; margin: 3rem 0; }
+    .project-card, .service-card { background: white; border-radius: 28px; overflow: hidden; border: 1px solid #fee2e2; transition: 0.35s; }
+    .project-card:hover, .service-card:hover { transform: translateY(-8px); border-color: #dc2626; }
+    .card-img { height: 220px; background-size: cover; background-position: center; }
+    .card-content { padding: 1.5rem; }
+    /* Contact */
+    .contact-wrapper { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin: 3rem 0; }
+    .form-container { background: white; border-radius: 32px; padding: 2rem; border: 1px solid #fee2e2; }
+    .input-group input, .input-group textarea { width: 100%; padding: 1rem; border-radius: 20px; border: 1px solid #e5e7eb; margin-bottom: 1rem; }
+    .map-container iframe { width: 100%; height: 450px; border-radius: 32px; border: none; }
+    .location-details { background: #fef2f2; border-radius: 28px; padding: 2rem; margin: 2rem 0; }
+    @media (max-width: 900px) {
+      .hero-grid, .contact-wrapper { grid-template-columns: 1fr; }
+      .hero-content h1 { font-size: 2rem; }
     }
   </style>
 </head>
 <body>
-
 <div class="moving-bg">
   <canvas class="bg-canvas" id="hvacCanvas"></canvas>
   <div class="hvac-float-icon icon-1"><i class="fas fa-wind"></i></div>
   <div class="hvac-float-icon icon-2"><i class="fas fa-fan"></i></div>
   <div class="hvac-float-icon icon-3"><i class="fas fa-temperature-high"></i></div>
   <div class="hvac-float-icon icon-4"><i class="fas fa-snowplow"></i></div>
-  <div class="hvac-float-icon icon-5"><i class="fas fa-microchip"></i></div>
-  <div class="hvac-float-icon icon-6"><i class="fas fa-charging-station"></i></div>
   <div class="airflow-streak streak-1"></div>
   <div class="airflow-streak streak-2"></div>
   <div class="airflow-streak streak-3"></div>
-  <div class="airflow-streak streak-4"></div>
 </div>
-
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper" id="logoContainer"></div>
-    <div class="right-group">
+    <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <div class="nav-links">
-        <a data-nav="home" class="active">Home</a>
+        <a data-nav="home">Home</a>
         <a data-nav="about">About</a>
         <a data-nav="services">Services</a>
         <a data-nav="projects">Projects</a>
         <a data-nav="contact">Contact</a>
       </div>
-      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
     </div>
   </div>
@@ -875,150 +433,91 @@
   <a data-nav="contact">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
+
 <main>
+  <!-- HOME Section -->
   <section id="home" class="hero">
     <div class="container">
-      <div data-aos="fade-up" data-aos-duration="800">
-        <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
-        <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
-          <a href="#services" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
-          <a href="#contact" class="btn btn-outline">Request Quote</a>
-        </div>
-      </div>
+      <div data-aos="fade-up"><h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
+      <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
+      <div style="display: flex; gap: 16px; flex-wrap: wrap;"><a href="#" data-nav="services" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a><a href="#" data-nav="contact" class="btn btn-outline">Request Quote</a></div></div>
     </div>
   </section>
 
-  <div class="engineering-video-section">
-    <div class="engineering-video-wrapper">
-      <video id="haluEngineeringVideo" autoplay loop muted playsinline preload="auto">
-        <source src="ENGINEERING.mp4" type="video/mp4">
-        Your browser does not support the video tag.
-      </video>
-      <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
-      <div id="videoFallbackMsg" class="video-fallback-message"><i class="fas fa-exclamation-triangle"></i> Loading ENGINEERING.mp4...</div>
+  <!-- ABOUT Section -->
+  <section id="about" class="hero-about">
+    <div class="container hero-grid">
+      <div data-aos="fade-right"><div class="hero-badge"><i class="fas fa-hard-hat"></i> EST. 2018 • ELECTRO-MECHANICAL EXCELLENCE</div><h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1><p>HALU Engineering delivers premium electro-mechanical solutions for factories, warehouses, office buildings, hotels, hospitals, and beyond.</p></div>
+      <div data-aos="fade-left" class="hero-image"><img src="52.jpg" alt="HALU" style="width:100%; border-radius:32px;" onerror="this.src='https://placehold.co/600x400/dc2626/white?text=HALU'"></div>
     </div>
-  </div>
+    <div class="container"><div class="history-card"><h2>HALU Engineering</h2><p>HALU Engineering was established in 2018 to provide excellent electro-mechanical solutions for factories, warehouses, office buildings, residential buildings, hotels, restaurants, hospitals, and many other projects. We have worked on extensive projects, ranging from small to large, and gained profound experience in the business. We have satisfied all our clients with what we could deliver to them.</p></div>
+    <div class="stats"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Satisfaction</div></div></div>
+    <div class="points-grid"><div class="point-card"><i class="fas fa-clock"></i><p>Committed to delivering projects on time</p></div><div class="point-card"><i class="fas fa-users"></i><p>Family relationship with clients</p></div><div class="point-card"><i class="fas fa-chart-line"></i><p>Project management skills make us dependable</p></div></div></div>
+  </section>
 
-  <section id="about"><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
-  
-  <section id="projects" class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
-  
-  <section id="services"><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
-  
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
-  
-  <section id="contact"><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="#" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
+  <!-- SERVICES Section -->
+  <section id="services">
+    <div class="container"><h2 class="section-title">Core Expertise</h2>
+    <div class="services-grid"><div class="service-card"><i class="fas fa-wind" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC</p></div></div>
+    <div class="service-card"><i class="fas fa-thermometer-half" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage</p></div></div>
+    <div class="service-card"><i class="fas fa-temperature-low" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Heat Pumps</h3><p>High-efficiency air-to-water systems</p></div></div>
+    <div class="service-card"><i class="fas fa-utensils" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air</p></div></div>
+    <div class="service-card"><i class="fas fa-toilet" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Toilet Exhaust</h3><p>Odor control & energy recovery</p></div></div>
+    <div class="service-card"><i class="fas fa-drafting-compass" style="font-size:2.5rem; color:#dc2626;"></i><div class="card-content"><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts</p></div></div></div>
+    <div class="cta-banner"><h3>Ready to work with HALU Engineering?</h3><p>From design to maintenance, we deliver excellence.</p><a href="#" data-nav="contact" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a></div></div>
+  </section>
+
+  <!-- PROJECTS Section -->
+  <section id="projects">
+    <div class="container"><h2 class="section-title">Our Successful Projects</h2>
+    <div class="projects-grid"><div class="project-card"><div class="card-img" style="background-image:url('DHL.jpg');"></div><div class="card-content"><h3>DHL Logistics Hub</h3><p>Standalone air conditioning installation for main sorting facility.</p></div></div>
+    <div class="project-card"><div class="card-img" style="background-image:url('shangai.jpg');"></div><div class="card-content"><h3>Shanghai Furniture Showroom</h3><p>Ducted ventilation system for premium exhibition space.</p></div></div>
+    <div class="project-card"><div class="card-img" style="background-image:url('oromiya.jpg');"></div><div class="card-content"><h3>Oromiya Regional Office</h3><p>Split AC installation across office facilities.</p></div></div>
+    <div class="project-card"><div class="card-img" style="background-image:url('industry.jpg');"></div><div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><p>Industrial ventilation system for improved airflow.</p></div></div></div>
+    <div class="stats" style="margin-bottom:2rem;"><div><div class="stat-number">DHL</div><div class="stat-label">Logistics Hub</div></div><div><div class="stat-number">INSA</div><div class="stat-label">Government</div></div><div><div class="stat-number">TAPU Foods</div><div class="stat-label">Cold Storage</div></div></div>
+    <div class="cta-banner"><h3>Looking for a quote?</h3><p>Tell us about your HVAC or electro-mechanical project.</p><a href="#" data-nav="contact" class="btn-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></a></div></div>
+  </section>
+
+  <!-- CONTACT Section -->
+  <section id="contact">
+    <div class="container"><h2 class="section-title">Get In Touch</h2>
+    <div class="contact-wrapper"><div class="form-container"><h3>Send us a message</h3><p>Our team will get back to you shortly.</p><form id="contactForm"><div class="input-group"><input type="text" placeholder="Your Full Name" required></div><div class="input-group"><input type="email" placeholder="Email Address" required></div><div class="input-group"><textarea rows="4" placeholder="Tell us about your project..."></textarea></div><button type="submit" class="btn">Send Message <i class="fas fa-paper-plane"></i></button></form></div>
+    <div class="map-container"><iframe src="https://www.google.com/maps?q=Legetafo%20Kebele%2001,%20Melkamu%20Metal%20Works%20Compound,%20Addis%20Ababa,%20Ethiopia&output=embed" allowfullscreen></iframe></div></div>
+    <div class="location-details"><h4><i class="fas fa-building"></i> Our Office Location</h4><p><i class="fas fa-location-dot"></i> Legetafo Kebele 01, Melkamu Metal Works Compound, Addis Ababa</p><p><i class="fas fa-phone"></i> +251 918 036 609 / +251 991 711 748</p><p><i class="fas fa-envelope"></i> haileabgb@gmail.com</p><p><i class="fas fa-clock"></i> Mon - Sat: 8:00 AM - 6:00 PM</p></div>
+    <div class="cta-banner"><h3>Request a Free Consultation</h3><p>Our experts are ready to help with your HVAC needs.</p><a href="#" data-nav="contact" class="btn-cta">Contact Now <i class="fas fa-arrow-right"></i></a></div></div>
+  </section>
 </main>
 
 <footer>
-  <div class="footer-hvac-image">
-    <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x140/dc2626/white?text=HVAC+Engineering'">
-  </div>
-  <div class="footer-content">
-    <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
-  </div>
+  <div class="footer-hvac-image"><img src="HVAC.png" alt="HVAC" onerror="this.style.display='none'"></div>
+  <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
 </footer>
-
 <div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 
 <script>
-  // Navigation: Smooth scroll and active state
-  function initNavigation() {
-    const navLinks = document.querySelectorAll('[data-nav]');
-    const sections = {
-      home: document.getElementById('home'),
-      about: document.getElementById('about'),
-      services: document.getElementById('services'),
-      projects: document.getElementById('projects'),
-      contact: document.getElementById('contact')
-    };
-    
-    function setActive(navId) {
-      navLinks.forEach(link => {
-        if(link.getAttribute('data-nav') === navId) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
-    
-    function scrollToSection(sectionId) {
-      const section = sections[sectionId];
-      if(section) {
-        section.scrollIntoView({ behavior: 'smooth', block: 'start' });
-        setActive(sectionId);
-        // Close mobile menu if open
-        if(mobileMenu.classList.contains('active')) toggleMenu();
-      }
-    }
-    
-    navLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const targetId = link.getAttribute('data-nav');
-        if(targetId && sections[targetId]) {
-          scrollToSection(targetId);
-        }
-      });
-    });
-    
-    // Update active state on scroll
-    window.addEventListener('scroll', () => {
-      let current = '';
-      const scrollPos = window.scrollY + 120;
-      for(const [id, section] of Object.entries(sections)) {
-        if(section) {
-          const offsetTop = section.offsetTop;
-          const offsetBottom = offsetTop + section.offsetHeight;
-          if(scrollPos >= offsetTop && scrollPos < offsetBottom) {
-            current = id;
-          }
-        }
-      }
-      if(current) setActive(current);
-    });
-  }
-  
-  window.addEventListener('load', () => { 
-    const loader = document.getElementById('loader'); 
-    loader.classList.add('hide'); 
-    setTimeout(() => loader.style.display = 'none', 500);
-    const video = document.getElementById('haluEngineeringVideo');
-    const fallbackDiv = document.getElementById('videoFallbackMsg');
-    if(video && fallbackDiv) {
-      video.addEventListener('canplay', () => { fallbackDiv.style.display = 'none'; });
-      video.addEventListener('error', () => { fallbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please ensure ENGINEERING.mp4 is in the same folder'; fallbackDiv.style.display = 'flex'; });
-      setTimeout(() => { if(video.readyState < 2) fallbackDiv.style.display = 'flex'; else fallbackDiv.style.display = 'none'; }, 800);
-    }
-    initNavigation();
-  });
-  
-  AOS.init({ duration: 800, once: true, offset: 60 });
-  const toggleBtn = document.getElementById('darkModeToggle'); 
-  toggleBtn.addEventListener('click', () => { 
-    document.body.classList.toggle('dark'); 
-    const icon = toggleBtn.querySelector('i'); 
-    const span = toggleBtn.querySelector('span'); 
-    if(document.body.classList.contains('dark')) { 
-      icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; 
-    } else { 
-      icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; 
-    } 
-  });
+  window.addEventListener('load', () => { document.getElementById('loader').classList.add('hide'); setTimeout(()=>document.getElementById('loader').style.display='none',500); AOS.init({duration:800,once:true,offset:60}); });
+  // Dark Mode
+  const toggleBtn = document.getElementById('darkModeToggle');
+  toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } });
+  // Smooth Navigation
+  const sections = { home: document.getElementById('home'), about: document.getElementById('about'), services: document.getElementById('services'), projects: document.getElementById('projects'), contact: document.getElementById('contact') };
+  function scrollToSection(sectionId) { const section = sections[sectionId]; if(section) { section.scrollIntoView({ behavior: 'smooth', block: 'start' }); setActiveNav(sectionId); if(mobileMenu.classList.contains('active')) toggleMenu(); } }
+  function setActiveNav(activeId) { document.querySelectorAll('.nav-links a, .mobile-menu a').forEach(link => { if(link.getAttribute('data-nav') === activeId) link.classList.add('active'); else link.classList.remove('active'); }); }
+  document.querySelectorAll('[data-nav]').forEach(link => { link.addEventListener('click', (e) => { e.preventDefault(); const target = link.getAttribute('data-nav'); if(target && sections[target]) scrollToSection(target); }); });
+  window.addEventListener('scroll', () => { let current = ''; const scrollPos = window.scrollY + 120; for(const [id, section] of Object.entries(sections)) { if(section) { const offsetTop = section.offsetTop, offsetBottom = offsetTop + section.offsetHeight; if(scrollPos >= offsetTop && scrollPos < offsetBottom) current = id; } } if(current) setActiveNav(current); });
+  // Hamburger Menu
   const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
   function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
-  if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu);
+  hamburger.addEventListener('click', toggleMenu); overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  // Logo
   const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
-  const swiper = new Swiper('.mySwiper', { slidesPerView: 1, spaceBetween: 24, loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, speed: 800 });
-  const imageList = [{ src: "1.jpg", name: "VRF System Install" },{ src: "2.jpg", name: "Chiller Plant" },{ src: "28.jpg", name: "Cold Storage" },{ src: "13.jpg", name: "Heat Pump Array" },{ src: "17.jpg", name: "Duct Fabrication" },{ src: "33.jpg", name: "Industrial AHU" },{ src: "34.jpg", name: "Precision Cooling" },{ src: "35.jpg", name: "Ventilation Duct" },{ src: "37.jpg", name: "Smart Controls" }];
-  const swiperWrapper = document.querySelector('#swiperWrapper'); if(swiperWrapper){ imageList.forEach(img => { const slide = document.createElement('div'); slide.className = 'swiper-slide'; slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`; swiperWrapper.appendChild(slide); }); swiper.update(); }
-  const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];
-  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })); clientsGrid.appendChild(card); }); }
-  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => document.getElementById('services').scrollIntoView({ behavior: 'smooth' })); });
-  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.4 + 0.1, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
+  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { logoContainer.innerHTML = '<div style="width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;"><i class="fas fa-wind"></i></div>'; }; img.src = url; } tryLoadLogo('80.JPG');
+  // Contact Form
+  document.getElementById('contactForm')?.addEventListener('submit', (e) => { e.preventDefault(); alert('Thank you! We will contact you shortly.'); e.target.reset(); });
+  // Canvas background
+  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas();
+  for(let i=0;i<60;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 3 + 1, speedX: (Math.random() - 0.5) * 0.5, speedY: Math.random() * 1 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.25 + 0.05})` }); }
+  function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>
 </html>

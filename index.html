@@ -711,31 +711,33 @@
       margin-top: 2rem;
     }
 
-    /* ===== SINGLE STATIC HVAC IMAGE - PERFECTLY FITTED ===== */
+    /* ===== WIDE HVAC IMAGE - FULL WIDTH, PERFECTLY FITTED TO BORDERS ===== */
     .hvac-image-section {
       background: rgba(248, 250, 252, 0.96);
       backdrop-filter: blur(4px);
-      padding: 2.5rem 0;
+      padding: 2rem 0;
       text-align: center;
       border-top: 1px solid rgba(220,38,38,0.25);
       border-bottom: 1px solid rgba(220,38,38,0.25);
     }
     .hvac-image-wrapper {
-      max-width: 500px;
-      margin: 0 auto;
-      padding: 0 20px;
+      width: 100%;
+      max-width: 100%;
+      padding: 0;
+      margin: 0;
     }
     .hvac-image-wrapper img {
       width: 100%;
       height: auto;
-      max-height: 180px;
-      object-fit: contain;
-      filter: drop-shadow(0 8px 20px rgba(0,0,0,0.08));
-      transition: transform 0.3s ease;
-      border-radius: 24px;
+      max-height: 220px;
+      object-fit: cover;
+      display: block;
+      filter: drop-shadow(0 6px 16px rgba(0,0,0,0.06));
+      transition: all 0.3s ease;
     }
     .hvac-image-wrapper img:hover {
-      transform: scale(1.02);
+      transform: scale(1.01);
+      filter: drop-shadow(0 10px 24px rgba(220,38,38,0.1));
     }
     body.dark .hvac-image-section {
       background: rgba(17, 24, 39, 0.92);
@@ -745,9 +747,11 @@
       filter: brightness(0.95) drop-shadow(0 4px 12px rgba(0,0,0,0.2));
     }
     @media (max-width: 768px) {
-      .hvac-image-wrapper { max-width: 320px; }
-      .hvac-image-wrapper img { max-height: 130px; }
-      .hvac-image-section { padding: 1.5rem 0; }
+      .hvac-image-wrapper img { max-height: 160px; object-fit: cover; }
+      .hvac-image-section { padding: 1.2rem 0; }
+    }
+    @media (max-width: 550px) {
+      .hvac-image-wrapper img { max-height: 120px; }
     }
     @media (max-width: 992px) {
       .hero h1 { font-size: 3rem; }
@@ -776,8 +780,6 @@
       .btn { padding: 10px 24px; font-size: 0.9rem; }
       .card { padding: 1.5rem; }
       .stat-number { font-size: 2rem; }
-      .hvac-image-wrapper { max-width: 260px; }
-      .hvac-image-wrapper img { max-height: 110px; }
     }
   </style>
 </head>
@@ -832,10 +834,10 @@
     </div>
   </div>
 
-  <!-- SINGLE STATIC HVAC IMAGE - PERFECTLY FITTED (NO MOVEMENT) -->
+  <!-- WIDE HVAC IMAGE - FULL WIDTH (FITS TO BORDERS PERFECTLY) -->
   <div class="hvac-image-section">
     <div class="hvac-image-wrapper">
-      <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/500x180/dc2626/white?text=HVAC+Engineering'">
+      <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x220/dc2626/white?text=HVAC+Engineering'">
     </div>
   </div>
 

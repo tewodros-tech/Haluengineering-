@@ -130,6 +130,70 @@
     .streak-3 { top: 80%; left: 0%; animation-delay: 7s; width: 400px; transform: rotate(8deg); }
     .streak-4 { top: 15%; left: 10%; animation-delay: 2s; width: 280px; transform: rotate(35deg); }
 
+    /* ===== ENGINEERING MP4 BACKGROUND SECTION - NEW ADDITION (preserving all content) ===== */
+    .engineering-video-section {
+      position: relative;
+      width: 100%;
+      background: #000;
+      overflow: hidden;
+      border-top: 2px solid rgba(220,38,38,0.6);
+      border-bottom: 2px solid rgba(220,38,38,0.6);
+      box-shadow: 0 12px 28px -8px rgba(0,0,0,0.3);
+      z-index: 5;
+    }
+    .engineering-video-wrapper {
+      width: 100%;
+      max-height: 460px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #0a0c12;
+    }
+    .engineering-video-wrapper video {
+      width: 100%;
+      height: auto;
+      max-height: 460px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease, filter 0.4s ease;
+      filter: brightness(0.98) contrast(1.05);
+    }
+    .engineering-video-wrapper video:hover {
+      transform: scale(1.008);
+      filter: brightness(1.02) contrast(1.08);
+    }
+    /* Overlay caption for cinematic feel (optional but non-intrusive) */
+    .video-caption-soft {
+      position: absolute;
+      bottom: 18px;
+      right: 24px;
+      background: rgba(0,0,0,0.55);
+      backdrop-filter: blur(6px);
+      padding: 6px 16px;
+      border-radius: 60px;
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: #f0f0f0;
+      letter-spacing: 0.5px;
+      pointer-events: none;
+      z-index: 2;
+      font-family: 'Inter', monospace;
+      border-left: 3px solid #dc2626;
+    }
+    .video-caption-soft i {
+      margin-right: 6px;
+      color: #dc2626;
+    }
+    @media (max-width: 768px) {
+      .engineering-video-wrapper { max-height: 280px; }
+      .engineering-video-wrapper video { max-height: 280px; object-fit: cover; }
+      .video-caption-soft { bottom: 8px; right: 12px; font-size: 0.65rem; padding: 4px 12px; }
+    }
+    @media (max-width: 550px) {
+      .engineering-video-wrapper { max-height: 200px; }
+      .engineering-video-wrapper video { max-height: 200px; }
+    }
+
     header, main, footer, .floating-social {
       position: relative;
       z-index: 10;
@@ -165,6 +229,11 @@
     }
     body.dark .stats {
       background: #1f2937dd;
+    }
+    body.dark .engineering-video-section {
+      border-top-color: #dc2626;
+      border-bottom-color: #dc2626;
+      background: #03060c;
     }
 
     .loader {
@@ -831,6 +900,17 @@
           <a href="contact.html" class="btn btn-outline">Request Quote</a>
         </div>
       </div>
+    </div>
+  </div>
+
+  <!-- ========= ENGINEERING MP4 VIDEO SECTION (ADDED WITHOUT CHANGING ANY OTHER CONTENT) ========= -->
+  <div class="engineering-video-section">
+    <div class="engineering-video-wrapper">
+      <video autoplay loop muted playsinline preload="metadata">
+        <source src="ENGINEERINGMP4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-caption-soft"><i class="fas fa-video"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
     </div>
   </div>
 

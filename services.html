@@ -11,14 +11,40 @@
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e1e2a; scroll-behavior: smooth; overflow-x: hidden; }
-    .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #ffffff; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
+    
+    /* Moving Background */
+    .moving-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; background: linear-gradient(145deg, #0b1120 0%, #0a1a2a 100%); }
+    .bg-canvas { position: absolute; width: 100%; height: 100%; }
+    .hvac-float-icon { position: absolute; font-size: 3rem; opacity: 0.15; pointer-events: none; animation: driftIcon 18s infinite alternate ease-in-out; z-index: -1; }
+    @keyframes driftIcon { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(60px, 40px) rotate(12deg); } }
+    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; }
+    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; }
+    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; }
+    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; }
+    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; }
+    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; }
+    .airflow-streak { position: absolute; width: 200px; height: 2px; background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), transparent); filter: blur(3px); animation: streakMove 12s linear infinite; opacity: 0.4; }
+    @keyframes streakMove { 0% { transform: translateX(-30%) translateY(0) rotate(20deg); opacity: 0; } 20% { opacity: 0.5; } 80% { opacity: 0.3; } 100% { transform: translateX(130%) translateY(30px) rotate(25deg); opacity: 0; } }
+    .streak-1 { top: 25%; left: -10%; width: 260px; }
+    .streak-2 { top: 55%; left: -5%; width: 320px; transform: rotate(15deg); }
+    .streak-3 { top: 80%; left: 0%; width: 400px; transform: rotate(8deg); }
+    
+    /* Video Section */
+    .engineering-video-section { position: relative; width: 100%; background: #050a12; overflow: hidden; border-top: 3px solid #dc2626; border-bottom: 3px solid #dc2626; z-index: 5; }
+    .engineering-video-wrapper { width: 100%; max-height: 520px; display: flex; justify-content: center; align-items: center; background: #000000; }
+    .engineering-video-wrapper video { width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block; }
+    .video-caption-soft { position: absolute; bottom: 20px; right: 28px; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 600; color: #ffffff; border-left: 4px solid #dc2626; }
+    @media (max-width: 768px) { .engineering-video-wrapper { max-height: 320px; } .engineering-video-wrapper video { max-height: 320px; } .video-caption-soft { font-size: 0.7rem; padding: 5px 14px; } }
+    
+    .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0c10; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
     .loader.hide { opacity: 0; visibility: hidden; }
-    .loader-spinner { width: 60px; height: 60px; border: 5px solid #f0f0f0; border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
+    .loader-spinner { width: 60px; height: 60px; border: 5px solid rgba(255,255,255,0.2); border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
     @keyframes spin { 100% { transform: rotate(360deg); } }
     .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
     header { background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #dc2626; }
     .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
     .logo-img { height: 65px; width: auto; border-radius: 12px; }
+    .right-group { display: flex; align-items: center; gap: 1.2rem; }
     .nav-links { display: flex; gap: 2rem; align-items: center; }
     .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; transition: 0.25s; position: relative; }
     .nav-links a:hover, .nav-links a.active { color: #dc2626; }
@@ -34,110 +60,23 @@
     .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
     .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
     .overlay.active { opacity: 1; visibility: visible; }
-    
-    /* Dark Mode Toggle Button */
-    .theme-toggle {
-      background: #f3f4f6;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111;
-      margin-left: 1rem;
-      transition: all 0.3s;
-    }
-    .theme-toggle:hover {
-      transform: scale(1.02);
-    }
-    
-    /* Dark Mode Styles */
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-    body.dark header {
-      background: rgba(18, 22, 35, 0.98);
-      border-bottom-color: #dc2626;
-    }
-    body.dark .nav-links a {
-      color: #e2e8f0;
-    }
-    body.dark .nav-links a:hover,
-    body.dark .nav-links a.active {
-      color: #dc2626;
-    }
-    body.dark .services-hero {
-      background: #111827;
-    }
-    body.dark .services-hero h1,
-    body.dark .services-hero p {
-      color: white;
-    }
-    body.dark .hero-badge {
-      background: #374151;
-      color: #dc2626;
-    }
-    body.dark .flagship-card {
-      background: #1f2937;
-      border-color: #374151;
-      color: #f3f4f6;
-    }
-    body.dark .flagship-card p {
-      color: #cbd5e1;
-    }
-    body.dark .flagship-card h3 {
-      color: white;
-    }
-    body.dark .badge-step {
-      background: #374151;
-      color: #dc2626;
-    }
-    body.dark .service-card {
-      background: #1f2937;
-      border-color: #374151;
-      color: #f3f4f6;
-    }
-    body.dark .service-card p {
-      color: #cbd5e1;
-    }
-    body.dark .service-card h3 {
-      color: white;
-    }
-    body.dark .gallery-item {
-      border-color: #374151;
-    }
-    body.dark .gallery-overlay span {
-      color: white;
-    }
-    body.dark .cta-banner {
-      background: linear-gradient(135deg, #b91c1c, #991b1b);
-    }
-    body.dark footer {
-      background: #030712;
-      color: #9ca3af;
-    }
-    body.dark footer p {
-      color: #9ca3af;
-    }
-    body.dark .mobile-menu {
-      background: #1f2937;
-    }
-    body.dark .mobile-menu a {
-      color: #eef2ff;
-      border-bottom-color: #374151;
-    }
-    body.dark .mobile-menu a:hover,
-    body.dark .mobile-menu a.active {
-      color: #dc2626;
-    }
-    body.dark .theme-toggle {
-      background: #374151;
-      color: white;
-    }
-    body.dark .floating-icon {
-      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
-    }
+    .theme-toggle { background: #f3f4f6; border: none; border-radius: 50px; padding: 8px 16px; cursor: pointer; font-weight: 600; color: #111; display: flex; align-items: center; gap: 6px; }
+    body.dark { background: #0a0c10; color: #eef2ff; }
+    body.dark header { background: rgba(18,22,35,0.98); }
+    body.dark .nav-links a { color: #e2e8f0; }
+    body.dark .services-hero { background: #111827; }
+    body.dark .services-hero h1, body.dark .services-hero p { color: white; }
+    body.dark .hero-badge { background: #374151; color: #dc2626; }
+    body.dark .flagship-card, body.dark .service-card { background: #1f2937; border-color: #374151; }
+    body.dark .flagship-card h3, body.dark .service-card h3, body.dark .flagship-card p, body.dark .service-card p { color: #f3f4f6; }
+    body.dark .badge-step { background: #374151; color: #dc2626; }
+    body.dark .gallery-item { border-color: #374151; }
+    body.dark .cta-banner { background: linear-gradient(135deg, #b91c1c, #991b1b); }
+    body.dark footer { background: #030712; color: #9ca3af; }
+    body.dark .mobile-menu { background: #1f2937; }
+    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
+    body.dark .theme-toggle { background: #374151; color: white; }
+    body.dark .engineering-video-section { border-top-color: #f87171; border-bottom-color: #f87171; }
     
     .services-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; }
     .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
@@ -160,7 +99,10 @@
     .gallery-item:hover .gallery-overlay { transform: translateY(0); }
     .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; text-align: center; color: white; margin: 3rem 0; }
     .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; }
-    footer { background: #f8fafc; text-align: center; padding: 2rem; border-top: 2px solid #dc2626; }
+    footer { background: #f8fafc; text-align: center; border-top: 2px solid #dc2626; margin-top: 2rem; }
+    .footer-hvac-image { width: 100%; background: #0b1620; border-bottom: 1px solid rgba(220,38,38,0.3); }
+    .footer-hvac-image img { width: 100%; height: auto; max-height: 140px; object-fit: cover; display: block; opacity: 0.9; }
+    .footer-content { padding: 1.8rem; font-size: 0.9rem; }
     .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
     .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .floating-icon:hover { transform: scale(1.15); }
@@ -168,29 +110,31 @@
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
     @media (max-width: 1000px) { .process-flagship { grid-template-columns: repeat(2,1fr); } }
-    @media (max-width: 850px) { 
-      .services-hero h1 { font-size: 2.5rem; } 
-      .nav-links { display: none; } 
-      .hamburger { display: flex; } 
-      .process-flagship { grid-template-columns: 1fr; } 
-      .container { padding: 0 24px; } 
-      .floating-icon { width: 45px; height: 45px; }
-      .theme-toggle { padding: 6px 12px; font-size: 0.8rem; margin-left: 0.5rem; }
-    }
-    @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } }
+    @media (max-width: 850px) { .services-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .process-flagship { grid-template-columns: 1fr; } .container { padding: 0 24px; } .floating-icon { width: 45px; height: 45px; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } }
+    @media (max-width: 480px) { .services-hero h1 { font-size: 1.8rem; } .footer-hvac-image img { max-height: 60px; } }
   </style>
 </head>
 <body>
+
+<div class="moving-bg">
+  <canvas class="bg-canvas" id="hvacCanvas"></canvas>
+  <div class="hvac-float-icon icon-1"><i class="fas fa-wind"></i></div>
+  <div class="hvac-float-icon icon-2"><i class="fas fa-fan"></i></div>
+  <div class="hvac-float-icon icon-3"><i class="fas fa-temperature-high"></i></div>
+  <div class="hvac-float-icon icon-4"><i class="fas fa-snowplow"></i></div>
+  <div class="hvac-float-icon icon-5"><i class="fas fa-microchip"></i></div>
+  <div class="hvac-float-icon icon-6"><i class="fas fa-charging-station"></i></div>
+  <div class="airflow-streak streak-1"></div>
+  <div class="airflow-streak streak-2"></div>
+  <div class="airflow-streak streak-3"></div>
+</div>
+
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
+
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper" id="logoContainer"></div>
-    <div style="display: flex; align-items: center; gap: 0.5rem;">
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+    <div class="right-group">
       <div class="nav-links">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
@@ -198,10 +142,12 @@
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
     </div>
   </div>
 </header>
+
 <div class="mobile-menu" id="mobileMenu">
   <a href="index.html">Home</a>
   <a href="about.html">About</a>
@@ -210,74 +156,81 @@
   <a href="contact.html">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
-<section class="services-hero"><div class="container"><div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div><h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1><p>From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems.</p></div></section>
-<div class="container"><div class="process-flagship"><div class="flagship-card"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div><div class="flagship-card"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div><div class="flagship-card"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div><div class="flagship-card"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div></div>
-<div class="services-grid"><div class="service-card"><i class="fas fa-wind card-icon"></i><h3>Air Conditioning</h3><p>VRF/VRV, chillers, ducted splits</p></div><div class="service-card"><i class="fas fa-thermometer-half card-icon"></i><h3>Cold Room Design</h3><p>Modular cold storage, blast freezers</p></div><div class="service-card"><i class="fas fa-water card-icon"></i><h3>Heat Pump Systems</h3><p>Air-to-water, geothermal systems</p></div><div class="service-card"><i class="fas fa-utensils card-icon"></i><h3>Kitchen Ventilation</h3><p>Heavy-duty exhaust, grease filters</p></div><div class="service-card"><i class="fas fa-restroom card-icon"></i><h3>Toilet Exhaust</h3><p>High-static exhaust, humidity control</p></div><div class="service-card"><i class="fas fa-drafting-compass card-icon"></i><h3>Duct Fabrication</h3><p>Custom spiral & rectangular ducts</p></div></div>
-<div class="gallery-grid"><div class="gallery-item"><img src="12.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Chiller'"><div class="gallery-overlay"><span>Central Chiller Plant</span></div></div><div class="gallery-item"><img src="13.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Support'"><div class="gallery-overlay"><span>24/7 Technical Support</span></div></div><div class="gallery-item"><img src="37.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Smart'"><div class="gallery-overlay"><span>Smart Building Controls</span></div></div></div>
-<div class="cta-banner"><h3>Ready to work with HALU Engineering?</h3><p>From design to maintenance, we deliver excellence.</p><a href="contact.html" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a></div></div>
-<footer><p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p></footer>
-<div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
+
+<!-- ENGINEERING MP4 VIDEO SECTION -->
+<div class="engineering-video-section">
+  <div class="engineering-video-wrapper">
+    <video autoplay loop muted playsinline preload="auto">
+      <source src="ENGINEERING.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
+  </div>
+</div>
+
+<section class="services-hero">
+  <div class="container">
+    <div class="hero-badge"><i class="fas fa-hard-hat"></i> PREMIUM HVAC SOLUTIONS</div>
+    <h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1>
+    <p>From design to smart maintenance — HALU delivers complete electro-mechanical ecosystems.</p>
+  </div>
+</section>
+
+<div class="container">
+  <div class="process-flagship">
+    <div class="flagship-card"><div class="badge-step">01</div><i class="fas fa-drafting-compass flagship-icon"></i><h3>Design</h3><p>CFD simulation, 3D BIM modeling & energy optimization</p></div>
+    <div class="flagship-card"><div class="badge-step">02</div><i class="fas fa-truck-fast flagship-icon"></i><h3>Supply</h3><p>Global sourcing of premium chillers, heat pumps & controls</p></div>
+    <div class="flagship-card"><div class="badge-step">03</div><i class="fas fa-hard-hat flagship-icon"></i><h3>Installation</h3><p>Certified technicians, precision mounting, zero downtime</p></div>
+    <div class="flagship-card"><div class="badge-step">04</div><i class="fas fa-microchip flagship-icon"></i><h3>Maintenance</h3><p>24/7 IoT monitoring & predictive analytics</p></div>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-card"><i class="fas fa-wind card-icon"></i><h3>Air Conditioning</h3><p>VRF/VRV, chillers, ducted splits</p></div>
+    <div class="service-card"><i class="fas fa-thermometer-half card-icon"></i><h3>Cold Room Design</h3><p>Modular cold storage, blast freezers</p></div>
+    <div class="service-card"><i class="fas fa-water card-icon"></i><h3>Heat Pump Systems</h3><p>Air-to-water, geothermal systems</p></div>
+    <div class="service-card"><i class="fas fa-utensils card-icon"></i><h3>Kitchen Ventilation</h3><p>Heavy-duty exhaust, grease filters</p></div>
+    <div class="service-card"><i class="fas fa-restroom card-icon"></i><h3>Toilet Exhaust</h3><p>High-static exhaust, humidity control</p></div>
+    <div class="service-card"><i class="fas fa-drafting-compass card-icon"></i><h3>Duct Fabrication</h3><p>Custom spiral & rectangular ducts</p></div>
+  </div>
+
+  <div class="gallery-grid">
+    <div class="gallery-item"><img src="12.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Chiller'"><div class="gallery-overlay"><span>Central Chiller Plant</span></div></div>
+    <div class="gallery-item"><img src="13.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Support'"><div class="gallery-overlay"><span>24/7 Technical Support</span></div></div>
+    <div class="gallery-item"><img src="37.jpg" onerror="this.src='https://placehold.co/600x450/dc2626/ffffff?text=Smart'"><div class="gallery-overlay"><span>Smart Building Controls</span></div></div>
+  </div>
+
+  <div class="cta-banner">
+    <h3>Ready to work with HALU Engineering?</h3>
+    <p>From design to maintenance, we deliver excellence.</p>
+    <a href="contact.html" class="btn-cta">Get in touch <i class="fas fa-arrow-right"></i></a>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-hvac-image">
+    <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x140/dc2626/white?text=HVAC+Engineering'">
+  </div>
+  <div class="footer-content">
+    <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
+  </div>
+</footer>
+
+<div class="floating-social">
+  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
+  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
+  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
+</div>
+
 <script>
-  window.addEventListener('load',()=>{
-    document.getElementById('loader')?.classList.add('hide');
-    setTimeout(()=>document.getElementById('loader')?.remove(),500);
-    AOS.init({duration:800,once:true,offset:60});
-  });
-  
-  // Dark Mode Toggle
+  window.addEventListener('load', () => { document.getElementById('loader').classList.add('hide'); setTimeout(() => document.getElementById('loader').style.display = 'none', 500); AOS.init({ duration: 800, once: true, offset: 60 }); });
   const toggleBtn = document.getElementById('darkModeToggle');
-  if(toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const icon = toggleBtn.querySelector('i');
-      const span = toggleBtn.querySelector('span');
-      if(document.body.classList.contains('dark')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        span.innerText = ' Light';
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        span.innerText = ' Dark';
-      }
-    });
-  }
-  
-  // Hamburger Menu
-  const hamburger=document.getElementById('hamburger');
-  const mobileMenu=document.getElementById('mobileMenu');
-  const overlay=document.getElementById('overlay');
-  function toggleMenu(){
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow=mobileMenu.classList.contains('active')?'hidden':'';
-  }
-  hamburger.addEventListener('click',toggleMenu);
-  overlay.addEventListener('click',toggleMenu);
-  document.querySelectorAll('.mobile-menu a').forEach(link=>link.addEventListener('click',toggleMenu));
-  
-  // Logo loading
-  const logoContainer=document.getElementById('logoContainer');
-  function tryLoadLogo(url){
-    const img=new Image();
-    img.onload=()=>{
-      const logoImg=document.createElement('img');
-      logoImg.src=url;
-      logoImg.className='logo-img';
-      logoContainer.innerHTML='';
-      logoContainer.appendChild(logoImg);
-    };
-    img.onerror=()=>{
-      const fallback=document.createElement('div');
-      fallback.style.cssText='width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
-      fallback.innerHTML='<i class="fas fa-wind"></i>';
-      logoContainer.innerHTML='';
-      logoContainer.appendChild(fallback);
-    };
-    img.src=url;
-  }
-  tryLoadLogo('80.JPG');
+  if(toggleBtn) { toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } }); }
+  const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
+  function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
+  hamburger.addEventListener('click', toggleMenu); overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  const logoContainer = document.getElementById('logoContainer');
+  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
+  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>
 </html>

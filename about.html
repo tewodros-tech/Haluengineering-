@@ -4,573 +4,145 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>HALU Engineering | About – Premium Electro-Mechanical Solutions</title>
-  <!-- Google Fonts + Font Awesome 6 -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,600;14..32,700;14..32,800;14..32,900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-  <!-- AOS Scroll Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #ffffff;
-      color: #1e1e2a;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-
-    /* Loading Animation */
-    .loader {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: #ffffff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      z-index: 9999;
-      transition: opacity 0.5s ease, visibility 0.5s;
-    }
-    .loader.hide {
-      opacity: 0;
-      visibility: hidden;
-    }
-    .loader-spinner {
-      width: 60px;
-      height: 60px;
-      border: 5px solid #f0f0f0;
-      border-top: 5px solid #dc2626;
-      border-radius: 50%;
-      animation: spin 1s linear infinite;
-    }
-    @keyframes spin {
-      100% { transform: rotate(360deg); }
-    }
-
-    .container {
-      max-width: 1280px;
-      margin: 0 auto;
-      padding: 0 32px;
-    }
-
-    /* Header - matching homepage */
-    header {
-      background: rgba(255, 255, 255, 0.98);
-      backdrop-filter: blur(8px);
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      border-bottom: 2px solid #dc2626;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
-    }
-
-    .header-flex {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 0.8rem 0;
-    }
-
-    .logo-wrapper {
-      display: flex;
-      align-items: center;
-    }
-
-    .logo-img {
-      height: 65px;
-      width: auto;
-      border-radius: 12px;
-      transition: transform 0.3s;
-    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #ffffff; color: #1e1e2a; scroll-behavior: smooth; overflow-x: hidden; }
+    
+    /* Moving Background */
+    .moving-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; background: linear-gradient(145deg, #0b1120 0%, #0a1a2a 100%); }
+    .bg-canvas { position: absolute; width: 100%; height: 100%; }
+    .hvac-float-icon { position: absolute; font-size: 3rem; opacity: 0.15; pointer-events: none; animation: driftIcon 18s infinite alternate ease-in-out; z-index: -1; }
+    @keyframes driftIcon { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(60px, 40px) rotate(12deg); } }
+    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; }
+    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; }
+    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; }
+    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; }
+    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; }
+    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; }
+    .airflow-streak { position: absolute; width: 200px; height: 2px; background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), transparent); filter: blur(3px); animation: streakMove 12s linear infinite; opacity: 0.4; }
+    @keyframes streakMove { 0% { transform: translateX(-30%) translateY(0) rotate(20deg); opacity: 0; } 20% { opacity: 0.5; } 80% { opacity: 0.3; } 100% { transform: translateX(130%) translateY(30px) rotate(25deg); opacity: 0; } }
+    .streak-1 { top: 25%; left: -10%; width: 260px; }
+    .streak-2 { top: 55%; left: -5%; width: 320px; transform: rotate(15deg); }
+    .streak-3 { top: 80%; left: 0%; width: 400px; transform: rotate(8deg); }
+    
+    /* Video Section */
+    .engineering-video-section { position: relative; width: 100%; background: #050a12; overflow: hidden; border-top: 3px solid #dc2626; border-bottom: 3px solid #dc2626; z-index: 5; }
+    .engineering-video-wrapper { width: 100%; max-height: 520px; display: flex; justify-content: center; align-items: center; background: #000000; }
+    .engineering-video-wrapper video { width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block; }
+    .video-caption-soft { position: absolute; bottom: 20px; right: 28px; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 600; color: #ffffff; border-left: 4px solid #dc2626; }
+    @media (max-width: 768px) { .engineering-video-wrapper { max-height: 320px; } .engineering-video-wrapper video { max-height: 320px; } .video-caption-soft { font-size: 0.7rem; padding: 5px 14px; } }
+    
+    .loader { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #0a0c10; display: flex; justify-content: center; align-items: center; z-index: 9999; transition: opacity 0.5s ease; }
+    .loader.hide { opacity: 0; visibility: hidden; }
+    .loader-spinner { width: 60px; height: 60px; border: 5px solid rgba(255,255,255,0.2); border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .container { max-width: 1280px; margin: 0 auto; padding: 0 32px; }
+    header { background: rgba(255,255,255,0.98); backdrop-filter: blur(8px); position: sticky; top: 0; z-index: 1000; border-bottom: 2px solid #dc2626; }
+    .header-flex { display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 0; }
+    .logo-img { height: 65px; width: auto; border-radius: 12px; transition: transform 0.3s; }
     .logo-img:hover { transform: scale(1.03); }
-
-    /* Right side group - contains nav-links, hamburger, and dark mode toggle */
-    .right-group {
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .nav-links {
-      display: flex;
-      gap: 2rem;
-      align-items: center;
-    }
-    .nav-links a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1rem;
-      color: #1f2937;
-      transition: 0.25s;
-      position: relative;
-    }
-    .nav-links a:hover, .nav-links a.active {
-      color: #dc2626;
-    }
-    .nav-links a.active:after {
-      content: '';
-      position: absolute;
-      bottom: -6px;
-      left: 0;
-      width: 100%;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 4px;
-    }
-
-    /* Hamburger Menu */
-    .hamburger {
-      display: none;
-      flex-direction: column;
-      cursor: pointer;
-      gap: 6px;
-      z-index: 1001;
-    }
-    .hamburger span {
-      width: 30px;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 4px;
-      transition: all 0.3s ease;
-    }
-    .hamburger.active span:nth-child(1) {
-      transform: rotate(45deg) translate(8px, 8px);
-    }
-    .hamburger.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .hamburger.active span:nth-child(3) {
-      transform: rotate(-45deg) translate(8px, -8px);
-    }
-    .mobile-menu {
-      position: fixed;
-      top: 0;
-      right: -100%;
-      width: 80%;
-      max-width: 350px;
-      height: 100vh;
-      background: white;
-      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
-      z-index: 1000;
-      transition: right 0.3s ease;
-      padding: 100px 30px 30px;
-      display: flex;
-      flex-direction: column;
-      gap: 1.5rem;
-    }
-    .mobile-menu.active {
-      right: 0;
-    }
-    .mobile-menu a {
-      text-decoration: none;
-      font-weight: 600;
-      font-size: 1.2rem;
-      color: #1f2937;
-      padding: 12px 0;
-      border-bottom: 1px solid #fee2e2;
-      transition: 0.25s;
-    }
-    .mobile-menu a:hover, .mobile-menu a.active {
-      color: #dc2626;
-      padding-left: 10px;
-    }
-    .overlay {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(0,0,0,0.5);
-      opacity: 0;
-      visibility: hidden;
-      transition: all 0.3s;
-      z-index: 999;
-    }
-    .overlay.active {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    /* Dark Mode Toggle */
-    .theme-toggle {
-      background: #f3f4f6;
-      border: none;
-      border-radius: 50px;
-      padding: 8px 16px;
-      cursor: pointer;
-      font-weight: 600;
-      color: #111;
-    }
-    body.dark {
-      background: #0a0c10;
-      color: #eef2ff;
-    }
-    body.dark .hero-about, body.dark .history-card, body.dark .stat-card, 
-    body.dark .satisfaction-section, body.dark .point-card, body.dark .service-item {
-      background: #1f2937;
-      color: #f3f4f6;
-      border-color: #374151;
-    }
-    body.dark .hero-content h1, body.dark .history-card h2, body.dark .satisfaction-section h3,
-    body.dark .services-showcase h2, body.dark .service-item h4, body.dark .point-card p {
-      color: white;
-    }
-    body.dark .hero-content p, body.dark .history-card p, body.dark .service-item p {
-      color: #cbd5e1;
-    }
-    body.dark .hero-badge { background: #374151; color: #dc2626; }
+    .right-group { display: flex; align-items: center; gap: 1.5rem; }
+    .nav-links { display: flex; gap: 2rem; align-items: center; }
+    .nav-links a { text-decoration: none; font-weight: 600; font-size: 1rem; color: #1f2937; transition: 0.25s; position: relative; }
+    .nav-links a:hover, .nav-links a.active { color: #dc2626; }
+    .nav-links a.active:after { content: ''; position: absolute; bottom: -6px; left: 0; width: 100%; height: 3px; background: #dc2626; border-radius: 4px; }
+    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
+    .hamburger span { width: 30px; height: 3px; background: #dc2626; border-radius: 4px; transition: all 0.3s ease; }
+    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
+    .hamburger.active span:nth-child(2) { opacity: 0; }
+    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
+    .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.1); z-index: 1000; transition: right 0.3s ease; padding: 100px 30px 30px; display: flex; flex-direction: column; gap: 1.5rem; }
+    .mobile-menu.active { right: 0; }
+    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; transition: 0.25s; }
+    .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
+    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
+    .overlay.active { opacity: 1; visibility: visible; }
+    .theme-toggle { background: #f3f4f6; border: none; border-radius: 50px; padding: 8px 16px; cursor: pointer; font-weight: 600; color: #111; display: flex; align-items: center; gap: 6px; }
+    body.dark { background: #0a0c10; color: #eef2ff; }
+    body.dark header { background: rgba(18,22,35,0.98); }
+    body.dark .nav-links a { color: #e2e8f0; }
+    body.dark .hero-about, body.dark .history-card, body.dark .stat-card, body.dark .satisfaction-section, body.dark .point-card, body.dark .service-item { background: #1f2937; color: #f3f4f6; border-color: #374151; }
+    body.dark .hero-content h1, body.dark .history-card h2, body.dark .satisfaction-section h3, body.dark .services-showcase h2, body.dark .service-item h4, body.dark .point-card p { color: white; }
+    body.dark .hero-content p, body.dark .history-card p, body.dark .service-item p { color: #cbd5e1; }
     body.dark .stats-row .stat-card .stat-label { color: #9ca3af; }
     body.dark footer { background: #030712; color: #9ca3af; }
     body.dark .mobile-menu { background: #1f2937; }
     body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
-    body.dark .mobile-menu a:hover { color: #dc2626; }
     body.dark .theme-toggle { background: #374151; color: white; }
-
-    /* Hero Section */
-    .hero-about {
-      background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%);
-      padding: 4rem 0 5rem;
-      position: relative;
-      border-bottom: 1px solid #fee2e2;
-    }
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1fr 0.9fr;
-      gap: 3rem;
-      align-items: center;
-    }
-    .hero-badge {
-      display: inline-block;
-      background: #fee2e2;
-      color: #dc2626;
-      padding: 0.4rem 1.2rem;
-      border-radius: 40px;
-      font-size: 0.8rem;
-      font-weight: 600;
-      margin-bottom: 1.5rem;
-    }
-    .hero-content h1 {
-      font-size: 3.5rem;
-      font-weight: 800;
-      line-height: 1.2;
-      margin-bottom: 1.2rem;
-      color: #111;
-    }
+    body.dark .engineering-video-section { border-top-color: #f87171; border-bottom-color: #f87171; }
+    
+    .hero-about { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 4rem 0 5rem; border-bottom: 1px solid #fee2e2; }
+    .hero-grid { display: grid; grid-template-columns: 1fr 0.9fr; gap: 3rem; align-items: center; }
+    .hero-badge { display: inline-block; background: #fee2e2; color: #dc2626; padding: 0.4rem 1.2rem; border-radius: 40px; font-size: 0.8rem; font-weight: 600; margin-bottom: 1.5rem; }
+    .hero-content h1 { font-size: 3.5rem; font-weight: 800; line-height: 1.2; margin-bottom: 1.2rem; color: #111; }
     .hero-content h1 span { color: #dc2626; }
-    .hero-content p {
-      font-size: 1.1rem;
-      color: #4b5563;
-      line-height: 1.6;
-    }
-    .hero-image {
-      position: relative;
-      border-radius: 32px;
-      overflow: hidden;
-      box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15);
-      border: 1px solid #fee2e2;
-    }
-    .hero-image img {
-      width: 100%;
-      height: auto;
-      display: block;
-      transition: transform 0.5s ease;
-    }
-    .hero-image:hover img {
-      transform: scale(1.02);
-    }
-
-    /* History Section */
-    .history-section {
-      margin: 4rem 0;
-    }
-    .history-card {
-      background: #ffffff;
-      border-radius: 32px;
-      padding: 2.5rem;
-      border: 1px solid #fee2e2;
-      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.05);
-    }
-    .history-card h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-      color: #111;
-      position: relative;
-      display: inline-block;
-    }
-    .history-card h2:after {
-      content: '';
-      position: absolute;
-      bottom: -8px;
-      left: 0;
-      width: 60px;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 3px;
-    }
-    .history-card p {
-      color: #4b5563;
-      line-height: 1.8;
-      margin-top: 1.5rem;
-      font-size: 1rem;
-    }
-
-    /* Stats Row */
-    .stats-row {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      gap: 1.5rem;
-      margin: 3rem 0;
-    }
-    .stat-card {
-      flex: 1;
-      min-width: 180px;
-      background: #fef2f2;
-      border-radius: 28px;
-      padding: 2rem 1rem;
-      text-align: center;
-      border: 1px solid #fecaca;
-      transition: all 0.3s;
-    }
-    .stat-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
-    }
-    .stat-number {
-      font-size: 2.8rem;
-      font-weight: 800;
-      color: #dc2626;
-      line-height: 1.2;
-    }
-    .stat-label {
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: #4b5563;
-      margin-top: 0.5rem;
-    }
-
-    /* Satisfaction Section */
-    .satisfaction-section {
-      background: #fefaf5;
-      border-radius: 48px;
-      padding: 3rem;
-      margin: 3rem 0;
-      border: 1px solid #fee2e2;
-    }
-    .satisfaction-section h3 {
-      font-size: 1.8rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      color: #111;
-      text-align: center;
-    }
-    .points-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-    .point-card {
-      background: #ffffff;
-      padding: 1.5rem;
-      border-radius: 24px;
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      transition: all 0.3s;
-      border: 1px solid #fee2e2;
-    }
-    .point-card:hover {
-      transform: translateX(8px);
-      border-color: #dc2626;
-    }
-    .point-card i {
-      font-size: 2rem;
-      color: #dc2626;
-      min-width: 50px;
-    }
-    .point-card p {
-      font-weight: 600;
-      color: #1f2937;
-      margin: 0;
-      font-size: 1rem;
-    }
-
-    /* Services Section */
-    .services-showcase {
-      margin: 4rem 0;
-    }
-    .services-showcase h2 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 2rem;
-      color: #111;
-      text-align: center;
-      position: relative;
-    }
-    .services-showcase h2:after {
-      content: '';
-      position: absolute;
-      bottom: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 80px;
-      height: 3px;
-      background: #dc2626;
-      border-radius: 3px;
-    }
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    .service-item {
-      background: #ffffff;
-      border-radius: 28px;
-      padding: 2rem 1.5rem;
-      text-align: center;
-      transition: all 0.3s;
-      border: 1px solid #fee2e2;
-    }
-    .service-item:hover {
-      transform: translateY(-8px);
-      border-color: #dc2626;
-      box-shadow: 0 15px 30px -10px rgba(220,38,38,0.1);
-    }
-    .service-item i {
-      font-size: 2.5rem;
-      color: #dc2626;
-      margin-bottom: 1rem;
-    }
-    .service-item h4 {
-      font-size: 1.3rem;
-      font-weight: 700;
-      color: #111;
-      margin-bottom: 0.5rem;
-    }
-    .service-item p {
-      color: #6b7280;
-      font-size: 0.9rem;
-    }
-
-    /* CTA Banner */
-    .cta-banner {
-      background: linear-gradient(135deg, #dc2626, #b91c1c);
-      border-radius: 48px;
-      padding: 3rem;
-      margin: 4rem 0 3rem;
-      text-align: center;
-      color: white;
-    }
-    .cta-banner h3 {
-      font-size: 2rem;
-      font-weight: 800;
-      margin-bottom: 1rem;
-    }
-    .cta-banner p {
-      max-width: 550px;
-      margin: 0 auto 1.8rem;
-      opacity: 0.9;
-    }
-    .btn-cta {
-      background: white;
-      color: #dc2626;
-      padding: 0.9rem 2.2rem;
-      border-radius: 60px;
-      font-weight: 700;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: all 0.3s;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-    }
-    .btn-cta:hover {
-      background: #fff5f5;
-      transform: translateY(-3px);
-      box-shadow: 0 10px 25px -5px rgba(0,0,0,0.2);
-    }
-
-    /* Footer */
-    footer {
-      background: #f8fafc;
-      color: #4b5563;
-      text-align: center;
-      padding: 2rem;
-      border-top: 2px solid #dc2626;
-      margin-top: 2rem;
-    }
-    .footer-content {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-    .social-icons a {
-      color: #6b7280;
-      margin-left: 1rem;
-      font-size: 1.2rem;
-      transition: color 0.2s;
-    }
-    .social-icons a:hover { color: #dc2626; }
-
-    /* Floating Social Icons */
-    .floating-social {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      z-index: 1000;
-    }
-    .floating-icon {
-      width: 55px;
-      height: 55px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      transition: all 0.3s;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    }
+    .hero-content p { font-size: 1.1rem; color: #4b5563; line-height: 1.6; }
+    .hero-image { position: relative; border-radius: 32px; overflow: hidden; box-shadow: 0 20px 40px -12px rgba(0,0,0,0.15); border: 1px solid #fee2e2; }
+    .hero-image img { width: 100%; height: auto; display: block; transition: transform 0.5s ease; }
+    .history-section { margin: 4rem 0; }
+    .history-card { background: #ffffff; border-radius: 32px; padding: 2.5rem; border: 1px solid #fee2e2; box-shadow: 0 15px 35px -12px rgba(0,0,0,0.05); }
+    .history-card h2 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; color: #111; position: relative; display: inline-block; }
+    .history-card h2:after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 3px; background: #dc2626; border-radius: 3px; }
+    .history-card p { color: #4b5563; line-height: 1.8; margin-top: 1.5rem; font-size: 1rem; }
+    .stats-row { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 1.5rem; margin: 3rem 0; }
+    .stat-card { flex: 1; min-width: 180px; background: #fef2f2; border-radius: 28px; padding: 2rem 1rem; text-align: center; border: 1px solid #fecaca; transition: all 0.3s; }
+    .stat-card:hover { transform: translateY(-8px); box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15); }
+    .stat-number { font-size: 2.8rem; font-weight: 800; color: #dc2626; line-height: 1.2; }
+    .stat-label { font-size: 0.85rem; font-weight: 600; color: #4b5563; margin-top: 0.5rem; }
+    .satisfaction-section { background: #fefaf5; border-radius: 48px; padding: 3rem; margin: 3rem 0; border: 1px solid #fee2e2; }
+    .satisfaction-section h3 { font-size: 1.8rem; font-weight: 800; margin-bottom: 2rem; color: #111; text-align: center; }
+    .points-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; }
+    .point-card { background: #ffffff; padding: 1.5rem; border-radius: 24px; display: flex; align-items: center; gap: 1rem; transition: all 0.3s; border: 1px solid #fee2e2; }
+    .point-card:hover { transform: translateX(8px); border-color: #dc2626; }
+    .point-card i { font-size: 2rem; color: #dc2626; min-width: 50px; }
+    .point-card p { font-weight: 600; color: #1f2937; margin: 0; font-size: 1rem; }
+    .services-showcase { margin: 4rem 0; }
+    .services-showcase h2 { font-size: 2rem; font-weight: 800; margin-bottom: 2rem; color: #111; text-align: center; position: relative; }
+    .services-showcase h2:after { content: ''; position: absolute; bottom: -12px; left: 50%; transform: translateX(-50%); width: 80px; height: 3px; background: #dc2626; border-radius: 3px; }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 2rem; margin-top: 2rem; }
+    .service-item { background: #ffffff; border-radius: 28px; padding: 2rem 1.5rem; text-align: center; transition: all 0.3s; border: 1px solid #fee2e2; }
+    .service-item:hover { transform: translateY(-8px); border-color: #dc2626; }
+    .service-item i { font-size: 2.5rem; color: #dc2626; margin-bottom: 1rem; }
+    .service-item h4 { font-size: 1.3rem; font-weight: 700; color: #111; margin-bottom: 0.5rem; }
+    .service-item p { color: #6b7280; font-size: 0.9rem; }
+    .cta-banner { background: linear-gradient(135deg, #dc2626, #b91c1c); border-radius: 48px; padding: 3rem; margin: 4rem 0 3rem; text-align: center; color: white; }
+    .cta-banner h3 { font-size: 2rem; font-weight: 800; margin-bottom: 1rem; }
+    .btn-cta { background: white; color: #dc2626; padding: 0.9rem 2.2rem; border-radius: 60px; font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 10px; transition: all 0.3s; }
+    .btn-cta:hover { background: #fff5f5; transform: translateY(-3px); }
+    footer { background: #f8fafc; color: #4b5563; text-align: center; border-top: 2px solid #dc2626; margin-top: 2rem; }
+    .footer-hvac-image { width: 100%; background: #0b1620; border-bottom: 1px solid rgba(220,38,38,0.3); }
+    .footer-hvac-image img { width: 100%; height: auto; max-height: 140px; object-fit: cover; display: block; opacity: 0.9; }
+    .footer-content { padding: 1.8rem; font-size: 0.9rem; }
+    .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
+    .floating-icon { width: 55px; height: 55px; border-radius: 50%; display: flex; align-items: center; justify-content: center; text-decoration: none; transition: all 0.3s; box-shadow: 0 4px 15px rgba(0,0,0,0.2); }
     .floating-icon:hover { transform: scale(1.15); }
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-
-    @media (max-width: 960px) {
-      .hero-grid { grid-template-columns: 1fr; gap: 2rem; }
-    }
-    @media (max-width: 860px) {
-      .container { padding: 0 24px; }
-      .hero-content h1 { font-size: 2.4rem; }
-      .nav-links { display: none; }
-      .hamburger { display: flex; }
-      .right-group { gap: 0.8rem; }
-      .logo-img { height: 52px; }
-      .stats-row { flex-direction: column; }
-      .points-grid { grid-template-columns: 1fr; }
-      .services-grid { grid-template-columns: repeat(2, 1fr); }
-      .floating-icon { width: 45px; height: 45px; }
-    }
-    @media (max-width: 550px) {
-      .services-grid { grid-template-columns: 1fr; }
-    }
+    @media (max-width: 960px) { .hero-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    @media (max-width: 860px) { .container { padding: 0 24px; } .hero-content h1 { font-size: 2.4rem; } .nav-links { display: none; } .hamburger { display: flex; } .right-group { gap: 0.8rem; } .stats-row { flex-direction: column; } .points-grid { grid-template-columns: 1fr; } .services-grid { grid-template-columns: repeat(2, 1fr); } .floating-icon { width: 45px; height: 45px; } }
+    @media (max-width: 550px) { .services-grid { grid-template-columns: 1fr; } .footer-hvac-image img { max-height: 60px; } }
   </style>
 </head>
 <body>
+
+<div class="moving-bg">
+  <canvas class="bg-canvas" id="hvacCanvas"></canvas>
+  <div class="hvac-float-icon icon-1"><i class="fas fa-wind"></i></div>
+  <div class="hvac-float-icon icon-2"><i class="fas fa-fan"></i></div>
+  <div class="hvac-float-icon icon-3"><i class="fas fa-temperature-high"></i></div>
+  <div class="hvac-float-icon icon-4"><i class="fas fa-snowplow"></i></div>
+  <div class="hvac-float-icon icon-5"><i class="fas fa-microchip"></i></div>
+  <div class="hvac-float-icon icon-6"><i class="fas fa-charging-station"></i></div>
+  <div class="airflow-streak streak-1"></div>
+  <div class="airflow-streak streak-2"></div>
+  <div class="airflow-streak streak-3"></div>
+</div>
+
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
 
 <header>
@@ -584,11 +156,7 @@
         <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
-      <div class="hamburger" id="hamburger">
-        <span></span>
-        <span></span>
-        <span></span>
-      </div>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
       <button class="theme-toggle" id="darkModeToggle"><i class="fas fa-moon"></i> <span>Dark</span></button>
     </div>
   </div>
@@ -603,13 +171,21 @@
 </div>
 <div class="overlay" id="overlay"></div>
 
-<!-- Hero Section -->
+<!-- ENGINEERING MP4 VIDEO SECTION -->
+<div class="engineering-video-section">
+  <div class="engineering-video-wrapper">
+    <video autoplay loop muted playsinline preload="auto">
+      <source src="ENGINEERING.mp4" type="video/mp4">
+      Your browser does not support the video tag.
+    </video>
+    <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
+  </div>
+</div>
+
 <section class="hero-about">
   <div class="container hero-grid">
     <div class="hero-content" data-aos="fade-right">
-      <div class="hero-badge">
-        <i class="fas fa-hard-hat"></i> EST. 2018 • ELECTRO-MECHANICAL EXCELLENCE
-      </div>
+      <div class="hero-badge"><i class="fas fa-hard-hat"></i> EST. 2018 • ELECTRO-MECHANICAL EXCELLENCE</div>
       <h1>Engineering <span>Tomorrow's</span><br>Climate Solutions</h1>
       <p>HALU Engineering delivers premium electro-mechanical solutions for factories, warehouses, office buildings, hotels, hospitals, and beyond. Quality, reliability, and innovation drive everything we do.</p>
     </div>
@@ -620,7 +196,6 @@
 </section>
 
 <div class="container">
-  <!-- History Section -->
   <div class="history-section" data-aos="fade-up">
     <div class="history-card">
       <h2>HALU Engineering</h2>
@@ -628,64 +203,32 @@
     </div>
   </div>
 
-  <!-- Statistics Row -->
   <div class="stats-row">
-    <div class="stat-card" data-aos="zoom-in" data-aos-delay="0">
-      <div class="stat-number"><span class="counter" data-target="5">0</span>+</div>
-      <div class="stat-label">Years of Excellence</div>
-    </div>
-    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100">
-      <div class="stat-number"><span class="counter" data-target="15">0</span>+</div>
-      <div class="stat-label">Projects Completed</div>
-    </div>
-    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200">
-      <div class="stat-number"><span class="counter" data-target="100">0</span>%</div>
-      <div class="stat-label">Client Satisfaction</div>
-    </div>
-    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300">
-      <div class="stat-number"><span class="counter" data-target="35">0</span>+</div>
-      <div class="stat-label">Expert Team Members</div>
-    </div>
+    <div class="stat-card" data-aos="zoom-in"><div class="stat-number"><span class="counter" data-target="5">0</span>+</div><div class="stat-label">Years of Excellence</div></div>
+    <div class="stat-card" data-aos="zoom-in" data-aos-delay="100"><div class="stat-number"><span class="counter" data-target="15">0</span>+</div><div class="stat-label">Projects Completed</div></div>
+    <div class="stat-card" data-aos="zoom-in" data-aos-delay="200"><div class="stat-number"><span class="counter" data-target="100">0</span>%</div><div class="stat-label">Client Satisfaction</div></div>
+    <div class="stat-card" data-aos="zoom-in" data-aos-delay="300"><div class="stat-number"><span class="counter" data-target="35">0</span>+</div><div class="stat-label">Expert Team Members</div></div>
   </div>
 
-  <!-- What Lies Behind Our Clients' Satisfaction -->
   <div class="satisfaction-section" data-aos="fade-up">
     <h3><i class="fas fa-heart" style="color:#dc2626;"></i> What Lies Behind Our Clients' Satisfaction</h3>
     <div class="points-grid">
-      <div class="point-card" data-aos="fade-right" data-aos-delay="0"><i class="fas fa-clock"></i><p>We are committed to delivering projects on time</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="100"><i class="fas fa-users"></i><p>We work closely with clients to create a family relationship</p></div>
-      <div class="point-card" data-aos="fade-right" data-aos-delay="200"><i class="fas fa-chart-line"></i><p>Our project management skills make us dependable</p></div>
+      <div class="point-card"><i class="fas fa-clock"></i><p>We are committed to delivering projects on time</p></div>
+      <div class="point-card"><i class="fas fa-users"></i><p>We work closely with clients to create a family relationship</p></div>
+      <div class="point-card"><i class="fas fa-chart-line"></i><p>Our project management skills make us dependable</p></div>
     </div>
   </div>
 
-  <!-- Our Services Section -->
   <div class="services-showcase" data-aos="fade-up">
     <h2>Our Services — All in One Place</h2>
     <div class="services-grid">
-      <div class="service-item" data-aos="flip-up" data-aos-delay="0">
-        <i class="fas fa-drafting-compass"></i>
-        <h4>Design</h4>
-        <p>Custom HVAC and electro-mechanical system design tailored to your needs</p>
-      </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="100">
-        <i class="fas fa-truck"></i>
-        <h4>Supply</h4>
-        <p>Premium quality equipment and materials from trusted manufacturers</p>
-      </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="200">
-        <i class="fas fa-tools"></i>
-        <h4>Installation</h4>
-        <p>Professional, precise installation by certified engineering teams</p>
-      </div>
-      <div class="service-item" data-aos="flip-up" data-aos-delay="300">
-        <i class="fas fa-wrench"></i>
-        <h4>Maintenance</h4>
-        <p>24/7 preventive and corrective maintenance for uninterrupted operation</p>
-      </div>
+      <div class="service-item"><i class="fas fa-drafting-compass"></i><h4>Design</h4><p>Custom HVAC and electro-mechanical system design tailored to your needs</p></div>
+      <div class="service-item"><i class="fas fa-truck"></i><h4>Supply</h4><p>Premium quality equipment and materials from trusted manufacturers</p></div>
+      <div class="service-item"><i class="fas fa-tools"></i><h4>Installation</h4><p>Professional, precise installation by certified engineering teams</p></div>
+      <div class="service-item"><i class="fas fa-wrench"></i><h4>Maintenance</h4><p>24/7 preventive and corrective maintenance for uninterrupted operation</p></div>
     </div>
   </div>
 
-  <!-- CTA Banner -->
   <div class="cta-banner" data-aos="zoom-in">
     <h3>Ready to work with HALU Engineering?</h3>
     <p>From design to maintenance, we deliver excellence at every step. Let's discuss your next project.</p>
@@ -694,13 +237,11 @@
 </div>
 
 <footer>
-  <div class="container footer-content">
+  <div class="footer-hvac-image">
+    <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x140/dc2626/white?text=HVAC+Engineering'">
+  </div>
+  <div class="footer-content">
     <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
-    <div class="social-icons">
-      <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-      <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-      <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-    </div>
   </div>
 </footer>
 
@@ -711,125 +252,17 @@
 </div>
 
 <script>
-  // Remove loader
-  window.addEventListener('load', () => {
-    const loader = document.getElementById('loader');
-    loader.classList.add('hide');
-    setTimeout(() => loader.style.display = 'none', 500);
-  });
-
-  // AOS init
-  AOS.init({ duration: 800, once: true, offset: 60 });
-
-  // Dark Mode Toggle
+  window.addEventListener('load', () => { document.getElementById('loader').classList.add('hide'); setTimeout(() => document.getElementById('loader').style.display = 'none', 500); AOS.init({ duration: 800, once: true, offset: 60 }); });
   const toggleBtn = document.getElementById('darkModeToggle');
-  if(toggleBtn) {
-    toggleBtn.addEventListener('click', () => {
-      document.body.classList.toggle('dark');
-      const icon = toggleBtn.querySelector('i');
-      const span = toggleBtn.querySelector('span');
-      if(document.body.classList.contains('dark')) {
-        icon.classList.remove('fa-moon');
-        icon.classList.add('fa-sun');
-        span.innerText = ' Light';
-      } else {
-        icon.classList.remove('fa-sun');
-        icon.classList.add('fa-moon');
-        span.innerText = ' Dark';
-      }
-    });
-  }
-
-  // Active nav highlight
-  const currentPath = window.location.pathname.split("/").pop();
-  const navLinks = document.querySelectorAll('.nav-links a');
-  navLinks.forEach(link => {
-    const href = link.getAttribute('href');
-    if (href === currentPath || (currentPath === "" && href === "index.html") || (currentPath === "about.html" && href === "about.html")) {
-      link.classList.add('active');
-    }
-  });
-
-  // Hamburger Menu
-  const hamburger = document.getElementById('hamburger');
-  const mobileMenu = document.getElementById('mobileMenu');
-  const overlay = document.getElementById('overlay');
-  
-  function toggleMenu() {
-    hamburger.classList.toggle('active');
-    mobileMenu.classList.toggle('active');
-    overlay.classList.toggle('active');
-    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : '';
-  }
-  
-  if(hamburger) {
-    hamburger.addEventListener('click', toggleMenu);
-  }
-  if(overlay) {
-    overlay.addEventListener('click', toggleMenu);
-  }
-  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
-
-  // Logo loading
+  if(toggleBtn) { toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } }); }
+  const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
+  function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
+  if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
   const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) {
-    const img = new Image();
-    img.onload = function() {
-      const logoImg = document.createElement('img');
-      logoImg.src = url;
-      logoImg.alt = 'HALU Engineering';
-      logoImg.className = 'logo-img';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(logoImg);
-    };
-    img.onerror = function() {
-      const fallbackDiv = document.createElement('div');
-      fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;';
-      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>';
-      logoContainer.innerHTML = '';
-      logoContainer.appendChild(fallbackDiv);
-    };
-    img.src = url;
-  }
-  tryLoadLogo('80.JPG');
-
-  // Hero image error handling
-  const heroImage = document.querySelector('.hero-image img');
-  if(heroImage) {
-    heroImage.addEventListener('error', function() {
-      this.src = 'https://placehold.co/600x400/dc2626/ffffff?text=HALU+Engineering';
-    });
-  }
-
-  // Animated Counter Function
-  function animateCounter(element, target, duration = 1500) {
-    let start = 0;
-    const increment = target / (duration / 16);
-    const timer = setInterval(() => {
-      start += increment;
-      if (start >= target) {
-        element.innerText = Math.floor(target);
-        clearInterval(timer);
-      } else {
-        element.innerText = Math.floor(start);
-      }
-    }, 16);
-  }
-
-  // Intersection Observer for counters
-  const counters = document.querySelectorAll('.counter');
-  const observerOptions = { threshold: 0.5, rootMargin: "0px" };
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const counter = entry.target;
-        const target = parseInt(counter.getAttribute('data-target'), 10);
-        animateCounter(counter, target);
-        observer.unobserve(counter);
-      }
-    });
-  }, observerOptions);
-  counters.forEach(counter => observer.observe(counter));
+  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
+  function animateCounter(element, target, duration = 1500) { let start = 0; const increment = target / (duration / 16); const timer = setInterval(() => { start += increment; if (start >= target) { element.innerText = Math.floor(target); clearInterval(timer); } else { element.innerText = Math.floor(start); } }, 16); }
+  const counters = document.querySelectorAll('.counter'); const observerOptions = { threshold: 0.5 }; const observer = new IntersectionObserver((entries) => { entries.forEach(entry => { if (entry.isIntersecting) { const counter = entry.target; const target = parseInt(counter.getAttribute('data-target'), 10); animateCounter(counter, target); observer.unobserve(counter); } }); }, observerOptions); counters.forEach(counter => observer.observe(counter));
+  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>
 </html>

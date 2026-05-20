@@ -828,6 +828,40 @@
       .floating-icon { width: 42px; height: 42px; font-size: 1.2rem; }
       .video-caption-soft { font-size: 0.55rem; padding: 3px 10px; }
     }
+
+    /* NEW: Projects Gallery Link Button */
+    .projects-gallery-link {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .projects-gallery-link .btn-gallery {
+      background: transparent;
+      border: 2px solid #dc2626;
+      color: #dc2626;
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.25s;
+      text-decoration: none;
+    }
+    .projects-gallery-link .btn-gallery:hover {
+      background: #dc2626;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(220,38,38,0.25);
+    }
+    body.dark .projects-gallery-link .btn-gallery {
+      border-color: #f87171;
+      color: #f87171;
+    }
+    body.dark .projects-gallery-link .btn-gallery:hover {
+      background: #f87171;
+      color: #111;
+    }
   </style>
 </head>
 <body>
@@ -895,7 +929,12 @@
 
   <section><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
   
-  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div></div></section>
+  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div>
+  <!-- NEW: Click to visit our projects link (below gallery) -->
+  <div class="projects-gallery-link" data-aos="fade-up">
+    <a href="projects.html" class="btn-gallery"><i class="fas fa-images"></i> Click to visit our projects →</a>
+  </div>
+  </div></section>
   
   <section><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
   

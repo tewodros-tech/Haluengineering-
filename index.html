@@ -176,17 +176,7 @@
       display: none;
       pointer-events: none;
     }
-    @media (max-width: 768px) {
-      .engineering-video-wrapper { max-height: 320px; }
-      .engineering-video-wrapper video { max-height: 320px; object-fit: cover; }
-      .video-caption-soft { bottom: 10px; right: 14px; font-size: 0.7rem; padding: 5px 14px; }
-    }
-    @media (max-width: 550px) {
-      .engineering-video-wrapper { max-height: 240px; }
-      .engineering-video-wrapper video { max-height: 240px; }
-      .video-caption-soft { font-size: 0.55rem; padding: 3px 10px; }
-    }
-
+    
     header, main, footer, .floating-social {
       position: relative;
       z-index: 10;
@@ -471,6 +461,7 @@
       line-height: 1.2;
       margin-bottom: 1.2rem;
       color: #111;
+      word-break: break-word;
     }
     .hero h1 span {
       color: #dc2626;
@@ -480,6 +471,7 @@
       color: #4b5563;
       max-width: 600px;
       margin-bottom: 2rem;
+      word-break: break-word;
     }
     .btn {
       display: inline-flex;
@@ -521,6 +513,7 @@
       position: relative;
       color: #111;
       text-align: center;
+      word-break: break-word;
     }
     .section-title:after {
       content: '';
@@ -735,6 +728,7 @@
     .cta-section h2 {
       font-size: 1.8rem;
       margin-bottom: 1rem;
+      word-break: break-word;
     }
     .cta-section .btn {
       background: white;
@@ -836,63 +830,81 @@
       color: #111;
     }
 
-    /* ===== ENHANCED MOBILE VIEW COMPATIBILITY ===== */
+    /* ===== ENHANCED MOBILE VIEW COMPATIBILITY - FIX FIT TO SIZE ===== */
     @media (max-width: 992px) {
       .container { padding: 0 20px; }
     }
     @media (max-width: 768px) {
-      .container { padding: 0 18px; }
-      .hero h1 { font-size: 2rem; }
-      .section-title { font-size: 1.6rem; }
-      .btn { padding: 10px 20px; font-size: 0.85rem; }
-      .stats { flex-direction: column; align-items: center; gap: 1rem; }
-      .grid { grid-template-columns: 1fr; gap: 1.2rem; }
+      .container { padding: 0 16px; }
+      .hero { padding: 2rem 0 2.5rem; }
+      .hero h1 { font-size: 1.8rem; line-height: 1.25; }
+      .hero p { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .btn { padding: 10px 18px; font-size: 0.8rem; gap: 8px; }
+      .stats { flex-direction: column; align-items: center; gap: 1rem; padding: 1.5rem; }
+      .grid { grid-template-columns: 1fr; gap: 1rem; }
       .client-grid { grid-template-columns: 1fr; gap: 1rem; }
-      .row-two-columns { flex-direction: column; gap: 1.5rem; }
-      .hero { padding: 2.5rem 0 3rem; }
+      .row-two-columns { flex-direction: column; gap: 1rem; }
       .nav-links { display: none; }
       .hamburger { display: flex; }
-      .right-group { gap: 0.8rem; }
-      .theme-toggle { padding: 6px 12px; font-size: 0.7rem; }
-      .stat-number { font-size: 1.8rem; }
-      .footer-hvac-image img { max-height: 90px; }
-      .footer-content { padding: 1rem; font-size: 0.75rem; }
+      .right-group { gap: 0.6rem; }
+      .theme-toggle { padding: 5px 10px; font-size: 0.7rem; }
+      .stat-number { font-size: 1.6rem; }
+      .stat-label { font-size: 0.7rem; }
+      .footer-hvac-image img { max-height: 80px; }
+      .footer-content { padding: 1rem; font-size: 0.7rem; }
       .swiper-button-next, .swiper-button-prev { display: none; }
-      .card { padding: 1.5rem; }
-      .card h3 { font-size: 1.3rem; }
-      .card i { font-size: 2.5rem; }
-      .cta-section h2 { font-size: 1.4rem; }
-      .cta-section { padding: 1.8rem 1rem; }
+      .card { padding: 1.2rem; }
+      .card h3 { font-size: 1.2rem; }
+      .card i { font-size: 2rem; }
+      .cta-section h2 { font-size: 1.3rem; }
+      .cta-section { padding: 1.5rem 1rem; }
       .floating-social { bottom: 16px; right: 16px; gap: 8px; }
       .floating-icon { width: 44px; height: 44px; font-size: 1.2rem; }
       .project-list { padding: 1rem; }
-      .project-list h3 { font-size: 1.1rem; }
-      .project-list li { font-size: 0.85rem; gap: 6px; }
+      .project-list h3 { font-size: 1rem; }
+      .project-list li { font-size: 0.8rem; gap: 6px; }
+      .video-caption-soft { font-size: 0.65rem; padding: 4px 12px; bottom: 8px; right: 12px; }
+      .engineering-video-wrapper { max-height: 280px; }
+      .engineering-video-wrapper video { max-height: 280px; }
+      section { padding: 2.5rem 0; }
+      .slider-section { padding: 1.5rem 0; margin: 0.5rem 0; }
+      .swiper-slide img { height: 200px; }
+      .slide-caption { font-size: 0.8rem; padding: 0.7rem; }
+      .trust-projects-section { padding: 1.2rem !important; }
+      .trust-projects-section h3 { font-size: 1.2rem !important; }
+      .click-hint { font-size: 0.75rem; }
     }
     @media (max-width: 550px) {
-      .hero h1 { font-size: 1.6rem; }
-      .hero p { font-size: 0.9rem; }
-      .btn { padding: 8px 16px; font-size: 0.75rem; gap: 6px; }
-      .section-title { font-size: 1.4rem; }
-      .card i { font-size: 2rem; }
-      .swiper-slide img { height: 180px; }
-      .footer-hvac-image img { max-height: 60px; }
-      .floating-icon { width: 40px; height: 40px; font-size: 1.1rem; }
-      .video-caption-soft { font-size: 0.55rem; padding: 3px 10px; }
-      .logo-img { height: 50px; }
-      .theme-toggle { padding: 4px 10px; font-size: 0.65rem; }
-      .hamburger span { width: 24px; height: 2.5px; }
-      .stat-number { font-size: 1.5rem; }
-      .stat-label { font-size: 0.65rem; }
-      .client-card { padding: 1rem; }
-      .client-icon i { font-size: 2rem; }
-      .client-card h4 { font-size: 1rem; }
-      .projects-gallery-link .btn-gallery { padding: 6px 16px; font-size: 0.75rem; }
+      .container { padding: 0 14px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero p { font-size: 0.85rem; }
+      .section-title { font-size: 1.3rem; }
+      .btn { padding: 8px 14px; font-size: 0.7rem; gap: 6px; }
+      .card i { font-size: 1.8rem; }
+      .swiper-slide img { height: 160px; }
+      .footer-hvac-image img { max-height: 55px; }
+      .floating-icon { width: 38px; height: 38px; font-size: 1rem; }
+      .video-caption-soft { font-size: 0.55rem; padding: 3px 8px; }
+      .logo-img { height: 45px; }
+      .theme-toggle { padding: 4px 8px; font-size: 0.6rem; }
+      .hamburger span { width: 22px; height: 2px; gap: 4px; }
+      .stat-number { font-size: 1.3rem; }
+      .stat-label { font-size: 0.6rem; }
+      .client-card { padding: 0.8rem; }
+      .client-icon i { font-size: 1.8rem; }
+      .client-card h4 { font-size: 0.9rem; }
+      .projects-gallery-link .btn-gallery { padding: 5px 14px; font-size: 0.7rem; }
+      .cta-section p { font-size: 0.8rem; margin-bottom: 1rem !important; }
     }
     @media (max-width: 380px) {
-      .hero h1 { font-size: 1.4rem; }
-      .container { padding: 0 14px; }
-      .btn { padding: 6px 14px; font-size: 0.7rem; }
+      .hero h1 { font-size: 1.3rem; }
+      .container { padding: 0 12px; }
+      .btn { padding: 6px 12px; font-size: 0.65rem; }
+      .hero { padding: 1.5rem 0 2rem; }
+      section { padding: 2rem 0; }
+      .card h3 { font-size: 1rem; }
+      .card p { font-size: 0.75rem; }
     }
   </style>
 </head>
@@ -939,7 +951,7 @@
       <div data-aos="fade-up" data-aos-duration="800">
         <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
         <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
-        <div style="display: flex; gap: 16px; flex-wrap: wrap;">
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
           <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
           <a href="contact.html" class="btn btn-outline">Request Quote</a>
         </div>
@@ -959,9 +971,9 @@
     </div>
   </div>
 
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1.5rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
   
-  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.8rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div>
+  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.5rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div>
   <div class="projects-gallery-link" data-aos="fade-up">
     <a href="projects.html" class="btn-gallery"><i class="fas fa-images"></i> Click to visit our projects →</a>
   </div>
@@ -969,9 +981,9 @@
   
   <section><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
   
-  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.5rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list" data-aos="fade-right"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list" data-aos="fade-left"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list" data-aos="fade-right"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list" data-aos="fade-left"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
   
-  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1.5rem;">Get a free consultation from our engineering experts.</p><a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
+  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1rem;">Get a free consultation from our engineering experts.</p><a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
 </main>
 
 <!-- Footer with HVAC.png image at bottom only -->
@@ -1015,8 +1027,8 @@
   function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
   if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
   const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
-  const swiper = new Swiper('.mySwiper', { slidesPerView: 1, spaceBetween: 24, loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, speed: 800 });
+  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:55px;height:55px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:16px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.6rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
+  const swiper = new Swiper('.mySwiper', { slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, speed: 800 });
   const imageList = [{ src: "1.jpg", name: "VRF System Install" },{ src: "2.jpg", name: "Chiller Plant" },{ src: "28.jpg", name: "Cold Storage" },{ src: "13.jpg", name: "Heat Pump Array" },{ src: "17.jpg", name: "Duct Fabrication" },{ src: "33.jpg", name: "Industrial AHU" },{ src: "34.jpg", name: "Precision Cooling" },{ src: "35.jpg", name: "Ventilation Duct" },{ src: "37.jpg", name: "Smart Controls" }];
   const swiperWrapper = document.querySelector('#swiperWrapper'); if(swiperWrapper){ imageList.forEach(img => { const slide = document.createElement('div'); slide.className = 'swiper-slide'; slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`; swiperWrapper.appendChild(slide); }); swiper.update(); }
   const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];

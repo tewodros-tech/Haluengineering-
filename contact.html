@@ -78,32 +78,60 @@
     .contact-hero h1 span { color: #dc2626; }
     .contact-hero p { font-size: 1.1rem; color: #4b5563; max-width: 600px; margin: 0 auto; }
     
-    /* New AC Social Media Post styling - placed above Let's Connect heading */
+    /* Blue and White AC Social Media Post styling - smaller and mobile compatible */
     .ac-social-post-wrapper {
       display: flex;
       justify-content: center;
       align-items: center;
-      margin-bottom: 2rem;
+      margin-bottom: 1.8rem;
     }
     .ac-social-img {
-      max-width: 100%;
+      max-width: 340px;
+      width: 100%;
       height: auto;
-      border-radius: 28px;
-      box-shadow: 0 15px 35px -12px rgba(0,0,0,0.15);
-      transition: transform 0.3s ease, box-shadow 0.3s;
-      border: 1px solid rgba(220,38,38,0.2);
-      background: white;
+      border-radius: 24px;
+      box-shadow: 0 12px 28px -10px rgba(0,0,0,0.12);
+      transition: transform 0.25s ease, box-shadow 0.25s;
+      border: 1px solid rgba(220,38,38,0.15);
+      background: #ffffff;
+      display: block;
     }
     .ac-social-img:hover {
       transform: scale(1.02);
-      box-shadow: 0 25px 40px -12px rgba(0,0,0,0.25);
+      box-shadow: 0 20px 32px -12px rgba(0,0,0,0.2);
     }
-    @media (max-width: 680px) {
+    
+    /* Tablet and mobile adjustments: smaller image size, proper scaling */
+    @media (max-width: 768px) {
       .ac-social-img {
-        max-width: 90%;
+        max-width: 280px;
         border-radius: 20px;
       }
-      .contact-hero h1 { font-size: 2.2rem; }
+      .contact-hero h1 {
+        font-size: 2.5rem;
+      }
+      .ac-social-post-wrapper {
+        margin-bottom: 1.5rem;
+      }
+    }
+    
+    @media (max-width: 550px) {
+      .ac-social-img {
+        max-width: 220px;
+        border-radius: 18px;
+      }
+      .contact-hero h1 {
+        font-size: 1.9rem;
+      }
+      .ac-social-post-wrapper {
+        margin-bottom: 1.2rem;
+      }
+    }
+    
+    @media (max-width: 400px) {
+      .ac-social-img {
+        max-width: 190px;
+      }
     }
     
     .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; margin: 4rem 0; }
@@ -135,7 +163,7 @@
     .floating-wa { background: #25D366; color: white; }
     .floating-telegram { background: #0088cc; color: white; }
     .floating-fb { background: #1877f2; color: white; }
-    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } .contact-hero h1 { font-size: 2.5rem; } .nav-links { display: none; } .hamburger { display: flex; } .container { padding: 0 24px; } .info-grid { grid-template-columns: 1fr; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } }
+    @media (max-width: 900px) { .contact-grid { grid-template-columns: 1fr; gap: 2rem; } .nav-links { display: none; } .hamburger { display: flex; } .container { padding: 0 24px; } .info-grid { grid-template-columns: 1fr; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } }
     @media (max-width: 550px) { .contact-hero h1 { font-size: 1.8rem; } .footer-hvac-image img { max-height: 60px; } .floating-icon { width: 45px; height: 45px; } }
   </style>
 </head>
@@ -193,12 +221,12 @@
   </div>
 </div>
 
-<!-- CONTACT HERO SECTION with Blue and White Simple AC Service Social Media Post PNG at top -->
+<!-- CONTACT HERO SECTION with Blue and White Simple AC Service Social Media Post (smaller & mobile-optimized) -->
 <section class="contact-hero">
   <div class="container">
-    <!-- Added Blue and White Simple AC Service Social Media Post image -->
-    <div class="ac-social-post-wrapper" data-aos="fade-up">
-      <img class="ac-social-img" src="Blue and White Simple AC Service Social Media Post.png" alt="Blue and White Simple AC Service Social Media Post" onerror="this.onerror=null;this.src='https://placehold.co/800x400/blue/white?text=AC+Service+Social+Media+Post';">
+    <!-- AC Social Media Post image - responsive sizing, smaller appearance -->
+    <div class="ac-social-post-wrapper" data-aos="fade-up" data-aos-duration="600">
+      <img class="ac-social-img" src="Blue and White Simple AC Service Social Media Post.png" alt="Blue and White AC Service | HALU Engineering" onerror="this.onerror=null;this.src='https://placehold.co/340x170/blue/white?text=AC+Service+Specialist';">
     </div>
     <h1 data-aos="fade-up" data-aos-delay="50">Let's <span>Connect</span></h1>
     <p data-aos="fade-up" data-aos-delay="100">Have a project in mind? We're ready to bring your vision to life with precision engineering.</p>
@@ -250,16 +278,106 @@
 </div>
 
 <script>
-  window.addEventListener('load', () => { document.getElementById('loader').classList.add('hide'); setTimeout(() => document.getElementById('loader').style.display = 'none', 500); AOS.init({ duration: 800, once: true, offset: 60 }); });
+  window.addEventListener('load', () => { 
+    document.getElementById('loader').classList.add('hide'); 
+    setTimeout(() => document.getElementById('loader').style.display = 'none', 500); 
+    AOS.init({ duration: 800, once: true, offset: 60 }); 
+  });
+  
   const toggleBtn = document.getElementById('darkModeToggle');
-  if(toggleBtn) { toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } }); }
+  if(toggleBtn) { 
+    toggleBtn.addEventListener('click', () => { 
+      document.body.classList.toggle('dark'); 
+      const icon = toggleBtn.querySelector('i'); 
+      const span = toggleBtn.querySelector('span'); 
+      if(document.body.classList.contains('dark')) { 
+        icon.classList.remove('fa-moon'); 
+        icon.classList.add('fa-sun'); 
+        span.innerText = ' Light'; 
+      } else { 
+        icon.classList.remove('fa-sun'); 
+        icon.classList.add('fa-moon'); 
+        span.innerText = ' Dark'; 
+      } 
+    }); 
+  }
+  
   const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
-  function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
-  hamburger.addEventListener('click', toggleMenu); overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  function toggleMenu() { 
+    hamburger.classList.toggle('active'); 
+    mobileMenu.classList.toggle('active'); 
+    overlay.classList.toggle('active'); 
+    document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; 
+  }
+  hamburger.addEventListener('click', toggleMenu); 
+  overlay.addEventListener('click', toggleMenu); 
+  document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  
   const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
-  document.getElementById('contactForm')?.addEventListener('submit', function(e) { e.preventDefault(); alert('Thank you for your message! We will get back to you soon.'); this.reset(); });
-  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
+  function tryLoadLogo(url) { 
+    const img = new Image(); 
+    img.onload = function() { 
+      const logoImg = document.createElement('img'); 
+      logoImg.src = url; 
+      logoImg.alt = 'HALU Engineering'; 
+      logoImg.className = 'logo-img'; 
+      logoContainer.innerHTML = ''; 
+      logoContainer.appendChild(logoImg); 
+    }; 
+    img.onerror = function() { 
+      const fallbackDiv = document.createElement('div'); 
+      fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; 
+      fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; 
+      logoContainer.innerHTML = ''; 
+      logoContainer.appendChild(fallbackDiv); 
+    }; 
+    img.src = url; 
+  } 
+  tryLoadLogo('80.JPG');
+  
+  document.getElementById('contactForm')?.addEventListener('submit', function(e) { 
+    e.preventDefault(); 
+    alert('Thank you for your message! We will get back to you soon.'); 
+    this.reset(); 
+  });
+  
+  const canvas = document.getElementById('hvacCanvas'); 
+  const ctx = canvas.getContext('2d'); 
+  let particles = []; 
+  function resizeCanvas() { 
+    canvas.width = window.innerWidth; 
+    canvas.height = window.innerHeight; 
+  } 
+  window.addEventListener('resize', resizeCanvas); 
+  resizeCanvas(); 
+  for(let i=0;i<70;i++){ 
+    particles.push({ 
+      x: Math.random() * canvas.width, 
+      y: Math.random() * canvas.height, 
+      radius: Math.random() * 4 + 1, 
+      speedX: (Math.random() - 0.5) * 0.6, 
+      speedY: Math.random() * 1.2 + 0.2, 
+      color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` 
+    }); 
+  } 
+  function animateBg() { 
+    if(!ctx) return; 
+    ctx.clearRect(0,0,canvas.width,canvas.height); 
+    for(let p of particles){ 
+      p.x += p.speedX; 
+      p.y += p.speedY; 
+      if(p.x < -20) p.x = canvas.width+20; 
+      if(p.x > canvas.width+20) p.x = -20; 
+      if(p.y > canvas.height+30) p.y = -30; 
+      if(p.y < -30) p.y = canvas.height+30; 
+      ctx.beginPath(); 
+      ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); 
+      ctx.fillStyle = p.color; 
+      ctx.fill(); 
+    } 
+    requestAnimationFrame(animateBg); 
+  } 
+  animateBg();
 </script>
 </body>
 </html>

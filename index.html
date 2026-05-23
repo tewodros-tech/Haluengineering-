@@ -1,158 +1,911 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
-  <title>HALU Engineering | Projects – Electro-Mechanical Excellence in Action</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=yes">
+  <title>HALU Engineering | Premium HVAC & Mechanical Solutions</title>
+  <!-- Google Fonts + Font Awesome -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Swiper JS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+  <!-- AOS Scroll Animation -->
   <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
   <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
   <style>
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-    body { font-family: 'Inter', sans-serif; background: #fff; color: #1e1e2a; overflow-x: hidden; scroll-behavior: smooth; }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #ffffff;
+      color: #1e1e2a;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+      width: 100%;
+    }
+
+    /* ========= MOVABLE HVAC ANIMATED BACKGROUND ========= */
+    .moving-bg {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -2;
+      overflow: hidden;
+      background: linear-gradient(145deg, #0b1120 0%, #0a1a2a 100%);
+    }
+
+    .bg-canvas {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+    }
+
+    .hvac-float-icon {
+      position: absolute;
+      font-size: 3rem;
+      opacity: 0.15;
+      pointer-events: none;
+      animation: driftIcon 18s infinite alternate ease-in-out;
+      z-index: -1;
+    }
+
+    @keyframes driftIcon {
+      0% {
+        transform: translate(0, 0) rotate(0deg);
+      }
+      100% {
+        transform: translate(60px, 40px) rotate(12deg);
+      }
+    }
+
+    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; animation-delay: -2s; }
+    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; animation-delay: -5s; }
+    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; animation-delay: -1s; }
+    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; animation-delay: -8s; }
+    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; animation-delay: -3s; }
+    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; animation-delay: -6s; }
+
+    .airflow-streak {
+      position: absolute;
+      width: 200px;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), rgba(255,100,100,0.2), transparent);
+      filter: blur(3px);
+      animation: streakMove 12s linear infinite;
+      opacity: 0.4;
+      border-radius: 50%;
+    }
+
+    @keyframes streakMove {
+      0% {
+        transform: translateX(-30%) translateY(0) rotate(20deg);
+        opacity: 0;
+      }
+      20% {
+        opacity: 0.5;
+      }
+      80% {
+        opacity: 0.3;
+      }
+      100% {
+        transform: translateX(130%) translateY(30px) rotate(25deg);
+        opacity: 0;
+      }
+    }
+
+    .streak-1 { top: 25%; left: -10%; animation-delay: 0s; width: 260px; }
+    .streak-2 { top: 55%; left: -5%; animation-delay: 4s; width: 320px; transform: rotate(15deg); }
+    .streak-3 { top: 80%; left: 0%; animation-delay: 7s; width: 400px; transform: rotate(8deg); }
+    .streak-4 { top: 15%; left: 10%; animation-delay: 2s; width: 280px; transform: rotate(35deg); }
+
+    /* ===== ENGINEERING MP4 VIDEO SECTION ===== */
+    .engineering-video-section {
+      position: relative;
+      width: 100%;
+      background: #050a12;
+      overflow: hidden;
+      border-top: 3px solid #dc2626;
+      border-bottom: 3px solid #dc2626;
+      box-shadow: 0 16px 32px -12px rgba(0,0,0,0.4);
+      z-index: 5;
+    }
+    .engineering-video-wrapper {
+      width: 100%;
+      max-height: 520px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: #000000;
+    }
+    .engineering-video-wrapper video {
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.5s ease, filter 0.5s ease;
+      filter: brightness(0.96) contrast(1.08);
+    }
+    .engineering-video-wrapper video:hover {
+      transform: scale(1.01);
+      filter: brightness(1.02) contrast(1.1);
+    }
+    .video-caption-soft {
+      position: absolute;
+      bottom: 20px;
+      right: 28px;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(8px);
+      padding: 8px 22px;
+      border-radius: 60px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: 0.6px;
+      pointer-events: none;
+      z-index: 2;
+      font-family: 'Inter', monospace;
+      border-left: 4px solid #dc2626;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    }
+    .video-caption-soft i {
+      margin-right: 8px;
+      color: #dc2626;
+    }
+    .video-fallback-message {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(220,38,38,0.85);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 60px;
+      font-weight: 600;
+      font-size: 0.9rem;
+      white-space: nowrap;
+      backdrop-filter: blur(4px);
+      z-index: 3;
+      display: none;
+      pointer-events: none;
+    }
     
-    /* Moving Background */
-    .moving-bg { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; background: linear-gradient(145deg, #0b1120 0%, #0a1a2a 100%); }
-    .bg-canvas { position: absolute; width: 100%; height: 100%; }
-    .hvac-float-icon { position: absolute; font-size: 3rem; opacity: 0.15; pointer-events: none; animation: driftIcon 18s infinite alternate ease-in-out; z-index: -1; }
-    @keyframes driftIcon { 0% { transform: translate(0, 0) rotate(0deg); } 100% { transform: translate(60px, 40px) rotate(12deg); } }
-    .icon-1 { top: 12%; left: 5%; animation-duration: 22s; }
-    .icon-2 { bottom: 20%; right: 8%; animation-duration: 19s; }
-    .icon-3 { top: 40%; left: 80%; animation-duration: 25s; }
-    .icon-4 { bottom: 35%; left: 15%; animation-duration: 21s; }
-    .icon-5 { top: 70%; right: 20%; animation-duration: 28s; }
-    .icon-6 { top: 15%; right: 35%; animation-duration: 24s; }
-    .airflow-streak { position: absolute; width: 200px; height: 2px; background: linear-gradient(90deg, transparent, rgba(220,38,38,0.5), transparent); filter: blur(3px); animation: streakMove 12s linear infinite; opacity: 0.4; }
-    @keyframes streakMove { 0% { transform: translateX(-30%) translateY(0) rotate(20deg); opacity: 0; } 20% { opacity: 0.5; } 80% { opacity: 0.3; } 100% { transform: translateX(130%) translateY(30px) rotate(25deg); opacity: 0; } }
-    .streak-1 { top: 25%; left: -10%; width: 260px; }
-    .streak-2 { top: 55%; left: -5%; width: 320px; transform: rotate(15deg); }
-    .streak-3 { top: 80%; left: 0%; width: 400px; transform: rotate(8deg); }
+    header, main, footer, .floating-social {
+      position: relative;
+      z-index: 10;
+    }
+
+    .hero {
+      background: rgba(255, 245, 245, 0.92);
+      backdrop-filter: blur(2px);
+    }
+
+    section:not(.slider-section) {
+      background: rgba(255, 255, 255, 0.95);
+    }
+
+    .slider-section {
+      background: rgba(254, 250, 245, 0.95);
+    }
+
+    body.dark .hero {
+      background: rgba(17, 24, 39, 0.92);
+    }
+    body.dark section:not(.slider-section) {
+      background: rgba(15, 25, 35, 0.95);
+    }
+    body.dark .slider-section {
+      background: rgba(20, 30, 44, 0.95);
+    }
+    body.dark .trust-projects-section {
+      background: rgba(25, 35, 50, 0.95) !important;
+    }
+    body.dark .project-list {
+      background: #1f2937dd;
+    }
+    body.dark .stats {
+      background: #1f2937dd;
+    }
+    body.dark .engineering-video-section {
+      border-top-color: #f87171;
+      border-bottom-color: #f87171;
+      background: #03060c;
+    }
+
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: #0a0c10;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease, visibility 0.5s;
+    }
+    .loader.hide {
+      opacity: 0;
+      visibility: hidden;
+    }
+    .loader-spinner {
+      width: 60px;
+      height: 60px;
+      border: 5px solid rgba(255,255,255,0.2);
+      border-top: 5px solid #dc2626;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      100% { transform: rotate(360deg); }
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      width: 100%;
+    }
+    header {
+      background: rgba(255, 255, 255, 0.98);
+      backdrop-filter: blur(8px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 2px solid #dc2626;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      width: 100%;
+    }
+    .header-flex {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.8rem 0;
+      gap: 12px;
+    }
+    .logo-wrapper {
+      display: flex;
+      align-items: center;
+      flex-shrink: 0;
+    }
+    .logo-img {
+      height: 65px;
+      width: auto;
+      border-radius: 12px;
+      transition: transform 0.3s;
+      max-width: 100%;
+    }
+    .logo-img:hover {
+      transform: scale(1.03);
+    }
+    .right-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      flex-shrink: 0;
+    }
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      color: #1f2937;
+      transition: 0.25s;
+      position: relative;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #dc2626;
+    }
+    .nav-links a.active:after {
+      content: '';
+      position: absolute;
+      bottom: -6px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: #dc2626;
+      border-radius: 4px;
+    }
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
+      gap: 6px;
+      z-index: 1001;
+    }
+    .hamburger span {
+      width: 30px;
+      height: 3px;
+      background: #dc2626;
+      border-radius: 4px;
+      transition: all 0.3s ease;
+    }
+    .hamburger.active span:nth-child(1) {
+      transform: rotate(45deg) translate(8px, 8px);
+    }
+    .hamburger.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .hamburger.active span:nth-child(3) {
+      transform: rotate(-45deg) translate(8px, -8px);
+    }
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 350px;
+      height: 100vh;
+      background: white;
+      box-shadow: -5px 0 30px rgba(0,0,0,0.1);
+      z-index: 1000;
+      transition: right 0.3s ease;
+      padding: 100px 30px 30px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+    .mobile-menu.active {
+      right: 0;
+    }
+    .mobile-menu a {
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      color: #1f2937;
+      padding: 12px 0;
+      border-bottom: 1px solid #fee2e2;
+      transition: 0.25s;
+    }
+    .mobile-menu a:hover, .mobile-menu a.active {
+      color: #dc2626;
+      padding-left: 10px;
+    }
+    .overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.3s;
+      z-index: 999;
+    }
+    .overlay.active {
+      opacity: 1;
+      visibility: visible;
+    }
+    .theme-toggle {
+      background: #f3f4f6;
+      border: none;
+      border-radius: 50px;
+      padding: 8px 16px;
+      cursor: pointer;
+      font-weight: 600;
+      color: #111;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      font-size: 0.85rem;
+    }
+    body.dark {
+      background: #0a0c10;
+      color: #eef2ff;
+    }
+    body.dark .card, body.dark .client-card, body.dark .project-list, body.dark .slider-section, body.dark .stats, body.dark .hero {
+      background: #1f2937dd;
+      color: #f3f4f6;
+      border-color: #374151;
+    }
+    body.dark .card p, body.dark .client-card p, body.dark .project-list li {
+      color: #cbd5e1;
+    }
+    body.dark .hero {
+      background: rgba(17, 24, 39, 0.92);
+    }
+    body.dark .hero h1, body.dark .section-title, body.dark .card h3, body.dark .client-card h4 {
+      color: white;
+    }
+    body.dark footer {
+      background: #030712;
+      color: #9ca3af;
+    }
+    body.dark .trust-projects-section {
+      background: rgba(31, 41, 55, 0.9);
+    }
+    body.dark .stats {
+      background: rgba(31, 41, 55, 0.9);
+    }
+    body.dark .slider-section {
+      background: rgba(31, 41, 55, 0.9);
+    }
+    body.dark .stat-label {
+      color: #9ca3af;
+    }
+    body.dark .theme-toggle {
+      background: #374151;
+      color: white;
+    }
+    body.dark .mobile-menu {
+      background: #1f2937;
+    }
+    body.dark .mobile-menu a {
+      color: #eef2ff;
+      border-bottom-color: #374151;
+    }
+    body.dark .mobile-menu a:hover {
+      color: #dc2626;
+    }
+    .hero {
+      background: rgba(255, 245, 245, 0.92);
+      padding: 4rem 0 5rem;
+      position: relative;
+    }
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 1.2rem;
+      color: #111;
+      word-break: break-word;
+    }
+    .hero h1 span {
+      color: #dc2626;
+    }
+    .hero p {
+      font-size: 1.2rem;
+      color: #4b5563;
+      max-width: 600px;
+      margin-bottom: 2rem;
+      word-break: break-word;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      background: #dc2626;
+      color: white;
+      padding: 14px 38px;
+      border-radius: 60px;
+      font-weight: 700;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 10px 20px -6px rgba(220,38,38,0.4);
+      border: none;
+      cursor: pointer;
+    }
+    .btn:hover {
+      transform: translateY(-4px);
+      background: #b91c1c;
+      box-shadow: 0 20px 30px -10px #dc2626;
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #dc2626;
+      color: #dc2626;
+      box-shadow: none;
+    }
+    .btn-outline:hover {
+      background: #dc2626;
+      color: white;
+    }
+    section {
+      padding: 4rem 0;
+    }
+    .section-title {
+      font-size: 2.5rem;
+      font-weight: 800;
+      margin-bottom: 2rem;
+      position: relative;
+      color: #111;
+      text-align: center;
+      word-break: break-word;
+    }
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #dc2626;
+      border-radius: 4px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+    .card {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 32px;
+      padding: 2rem 1.8rem;
+      transition: 0.35s;
+      text-align: center;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 15px 35px -12px rgba(0, 0, 0, 0.08);
+    }
+    .card:hover {
+      transform: translateY(-10px);
+      border-color: #dc2626;
+      box-shadow: 0 25px 40px -12px rgba(220,38,38,0.2);
+    }
+    .card i {
+      font-size: 3rem;
+      color: #dc2626;
+      margin-bottom: 1rem;
+    }
+    .card h3 {
+      font-size: 1.6rem;
+      margin-bottom: 0.75rem;
+      color: #111;
+    }
+    .card p {
+      color: #4b5563;
+    }
+    .stats {
+      background: #fef2f2dd;
+      border-radius: 56px;
+      padding: 2rem 1.5rem;
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      margin-top: 2rem;
+      text-align: center;
+      border: 1px solid #fecaca;
+    }
+    .stat-number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: #dc2626;
+    }
+    .stat-label {
+      font-weight: 600;
+      color: #4b5563;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-size: 0.75rem;
+    }
+    .slider-section {
+      background: rgba(254, 250, 245, 0.95);
+      border-radius: 48px;
+      margin: 1rem 0;
+      padding: 2rem 0;
+    }
+    .swiper {
+      width: 100%;
+      padding: 20px 0 40px;
+    }
+    .swiper-slide {
+      background: white;
+      border-radius: 32px;
+      overflow: hidden;
+      transition: transform 0.3s;
+      border: 1px solid #fee2e2;
+      box-shadow: 0 10px 20px rgba(0,0,0,0.05);
+    }
+    .swiper-slide:hover {
+      transform: scale(1.02);
+      border-color: #dc2626;
+    }
+    .swiper-slide img {
+      width: 100%;
+      height: 260px;
+      object-fit: cover;
+      display: block;
+    }
+    .slide-caption {
+      padding: 1rem;
+      text-align: center;
+      background: white;
+      color: #111;
+      font-weight: 600;
+      border-top: 1px solid #fee2e2;
+    }
+    .swiper-pagination-bullet-active {
+      background: #dc2626;
+    }
+    .swiper-button-next, .swiper-button-prev {
+      color: #dc2626;
+    }
+    .client-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+    .client-card {
+      background: #ffffffdd;
+      backdrop-filter: blur(2px);
+      border-radius: 28px;
+      padding: 1.5rem;
+      transition: all 0.3s;
+      border: 1px solid #fee2e2;
+      cursor: pointer;
+      text-align: center;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+    }
+    .client-card:hover {
+      transform: translateY(-6px);
+      border-color: #dc2626;
+      box-shadow: 0 20px 30px -12px rgba(220,38,38,0.15);
+    }
+    .client-icon i {
+      font-size: 2.5rem;
+      color: #dc2626;
+      margin-bottom: 0.8rem;
+    }
+    .client-card h4 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: #111;
+      margin-bottom: 0.5rem;
+    }
+    .project-badge {
+      display: inline-block;
+      background: #fee2e2;
+      padding: 0.3rem 0.8rem;
+      border-radius: 40px;
+      font-size: 0.7rem;
+      margin-top: 0.8rem;
+      color: #dc2626;
+      font-weight: 600;
+    }
+    .row-two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      margin: 2rem 0;
+    }
+    .col {
+      flex: 1;
+      min-width: 240px;
+    }
+    .project-list {
+      background: #fef2f2dd;
+      border-radius: 32px;
+      padding: 1.5rem;
+      border: 1px solid #fecaca;
+      transition: 0.2s;
+      cursor: pointer;
+    }
+    .project-list:hover {
+      border-color: #dc2626;
+      box-shadow: 0 8px 20px rgba(220,38,38,0.1);
+    }
+    .project-list h3 {
+      color: #dc2626;
+      margin-bottom: 1rem;
+      font-size: 1.3rem;
+    }
+    .project-list ul {
+      list-style: none;
+    }
+    .project-list li {
+      padding: 0.6rem 0;
+      border-bottom: 1px solid #ffdede;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #1f2937;
+    }
+    .project-list li i {
+      color: #dc2626;
+      width: 24px;
+    }
+    .click-hint {
+      text-align: center;
+      margin-top: 1.5rem;
+      font-size: 0.9rem;
+      color: #dc2626;
+      font-weight: 500;
+    }
+    .cta-section {
+      background: linear-gradient(135deg, #dc2626, #b91c1c);
+      border-radius: 48px;
+      padding: 2.5rem 2rem;
+      text-align: center;
+      color: white;
+    }
+    .cta-section h2 {
+      font-size: 1.8rem;
+      margin-bottom: 1rem;
+      word-break: break-word;
+    }
+    .cta-section .btn {
+      background: white;
+      color: #dc2626;
+      box-shadow: none;
+    }
+    .cta-section .btn:hover {
+      background: #fff5f5;
+      transform: translateY(-3px);
+    }
+    .floating-social {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      z-index: 1000;
+    }
+    .floating-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    }
+    .floating-icon:hover {
+      transform: scale(1.12);
+    }
+    .floating-wa { background: #25D366; color: white; }
+    .floating-telegram { background: #0088cc; color: white; }
+    .floating-fb { background: #1877f2; color: white; }
     
-    /* Video Section */
-    .engineering-video-section { position: relative; width: 100%; background: #050a12; overflow: hidden; border-top: 3px solid #dc2626; border-bottom: 3px solid #dc2626; z-index: 5; }
-    .engineering-video-wrapper { width: 100%; max-height: 520px; display: flex; justify-content: center; align-items: center; background: #000000; }
-    .engineering-video-wrapper video { width: 100%; height: auto; max-height: 520px; object-fit: cover; display: block; }
-    .video-caption-soft { position: absolute; bottom: 20px; right: 28px; background: rgba(0,0,0,0.65); backdrop-filter: blur(8px); padding: 8px 22px; border-radius: 60px; font-size: 0.85rem; font-weight: 600; color: #ffffff; border-left: 4px solid #dc2626; }
-    @media (max-width: 768px) { .engineering-video-wrapper { max-height: 320px; } .engineering-video-wrapper video { max-height: 320px; } .video-caption-soft { font-size: 0.7rem; padding: 5px 14px; } }
-    
-    .loader { position: fixed; inset: 0; background: #0a0c10; z-index: 9999; display: flex; align-items: center; justify-content: center; transition: 0.5s; }
-    .loader.hide { opacity: 0; visibility: hidden; }
-    .loader-spinner { width: 60px; height: 60px; border: 5px solid rgba(255,255,255,0.2); border-top: 5px solid #dc2626; border-radius: 50%; animation: spin 1s linear infinite; }
-    @keyframes spin { 100% { transform: rotate(360deg); } }
-    .container { max-width: 1280px; margin: auto; padding: 0 32px; }
-    header { position: sticky; top: 0; z-index: 1000; background: rgba(255,255,255,0.97); backdrop-filter: blur(10px); border-bottom: 2px solid #dc2626; }
-    .header-flex { display: flex; align-items: center; justify-content: space-between; padding: 0.9rem 0; }
-    .logo-img { height: 68px; border-radius: 12px; transition: 0.3s; }
-    .logo-img:hover { transform: scale(1.05); }
-    .right-group { display: flex; align-items: center; gap: 1.2rem; }
-    .nav-links { display: flex; align-items: center; gap: 2rem; }
-    .nav-links a { text-decoration: none; color: #111827; font-weight: 600; position: relative; transition: 0.3s; }
-    .nav-links a:hover, .nav-links a.active { color: #dc2626; }
-    .nav-links a.active::after { content: ''; position: absolute; left: 0; bottom: -8px; width: 100%; height: 3px; background: #dc2626; border-radius: 20px; }
-    .hamburger { display: none; flex-direction: column; cursor: pointer; gap: 6px; z-index: 1001; }
-    .hamburger span { width: 30px; height: 3px; background: #dc2626; border-radius: 4px; transition: all 0.3s ease; }
-    .hamburger.active span:nth-child(1) { transform: rotate(45deg) translate(8px, 8px); }
-    .hamburger.active span:nth-child(2) { opacity: 0; }
-    .hamburger.active span:nth-child(3) { transform: rotate(-45deg) translate(8px, -8px); }
-    .mobile-menu { position: fixed; top: 0; right: -100%; width: 80%; max-width: 350px; height: 100vh; background: white; box-shadow: -5px 0 30px rgba(0,0,0,0.1); z-index: 1000; transition: right 0.3s ease; padding: 100px 30px 30px; display: flex; flex-direction: column; gap: 1.5rem; }
-    .mobile-menu.active { right: 0; }
-    .mobile-menu a { text-decoration: none; font-weight: 600; font-size: 1.2rem; color: #1f2937; padding: 12px 0; border-bottom: 1px solid #fee2e2; transition: 0.25s; }
-    .mobile-menu a:hover, .mobile-menu a.active { color: #dc2626; padding-left: 10px; }
-    .overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); opacity: 0; visibility: hidden; transition: all 0.3s; z-index: 999; }
-    .overlay.active { opacity: 1; visibility: visible; }
-    .theme-toggle { background: #f3f4f6; border: none; border-radius: 50px; padding: 8px 16px; cursor: pointer; font-weight: 600; color: #111; display: flex; align-items: center; gap: 6px; }
-    body.dark { background: #0a0c10; color: #eef2ff; }
-    body.dark header { background: rgba(18,22,35,0.98); border-bottom-color: #dc2626; }
-    body.dark .nav-links a { color: #e2e8f0; }
-    body.dark .nav-links a:hover, body.dark .nav-links a.active { color: #dc2626; }
-    body.dark .projects-hero { background: #111827; }
-    body.dark .projects-hero h1 { color: white; }
-    body.dark .project-card { background: #1f2937; border-color: #374151; }
-    body.dark .project-card .card-content h3 { color: white; }
-    body.dark .project-card .card-content p { color: #cbd5e1; }
-    body.dark .testimonial-card { background: #1f2937; border-color: #374151; }
-    body.dark .testimonial-text { color: #cbd5e1; }
-    body.dark .testimonial-author { color: #dc2626; }
-    body.dark .testimonials-title { color: white; }
-    body.dark .cta-banner { background: linear-gradient(135deg, #b91c1c, #991b1b); }
-    body.dark footer { background: #030712; color: #9ca3af; }
-    body.dark .mobile-menu { background: #1f2937; }
-    body.dark .mobile-menu a { color: #eef2ff; border-bottom-color: #374151; }
-    body.dark .mobile-menu a:hover, body.dark .mobile-menu a.active { color: #dc2626; }
-    body.dark .theme-toggle { background: #374151; color: white; }
-    body.dark .engineering-video-section { border-top-color: #f87171; border-bottom-color: #f87171; }
-    body.dark .portfolio-section, body.dark .portfolio-title, body.dark .portfolio-subtitle { color: white; }
-    body.dark .portfolio-group-card { background: #1f2937; border-color: #374151; }
-    body.dark .group-header { background: #111827; border-bottom-color: #dc2626; }
-    body.dark .group-header h3 { color: white; }
-    body.dark .group-header p { color: #cbd5e1; }
-    body.dark .portfolio-item { background: #111827; border-color: #2d3748; }
-    body.dark .portfolio-caption { background: #111827; border-top-color: #2d3748; }
-    body.dark .portfolio-caption h4 { color: #dc2626; }
-    
-    .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 5rem 0; }
-    .projects-hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.15; color: #111; }
-    .projects-hero h1 span { color: #dc2626; }
-    .projects-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 2rem; margin: 4rem 0; }
-    .project-card { background: #fff; border-radius: 28px; overflow: hidden; border: 1px solid #fee2e2; transition: 0.35s; }
-    .project-card:hover { transform: translateY(-10px); border-color: #dc2626; }
-    .card-img { height: 240px; background-size: cover; background-position: center; }
-    .card-content { padding: 1.5rem; }
-    .card-content h3 { font-size: 1.35rem; margin-bottom: 0.5rem; color: #111; }
-    .card-content p { color: #4b5563; line-height: 1.6; }
-    
-    /* Grouped Portfolio Section - White Elegant Cards */
-    .portfolio-section { margin: 5rem 0 3rem; }
-    .portfolio-title { text-align: center; font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; color: #111; letter-spacing: -0.02em; }
-    .portfolio-subtitle { text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
-    .portfolio-group-card { background: #ffffff; border-radius: 2rem; margin-bottom: 3rem; border: 1px solid #f0f0f0; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; }
-    .portfolio-group-card:hover { box-shadow: 0 25px 40px -15px rgba(220,38,38,0.12); transform: translateY(-3px); border-color: #fee2e2; }
-    .group-header { background: #fef9f9; padding: 1.5rem 2rem; border-bottom: 3px solid #dc2626; display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; }
-    .group-header h3 { font-size: 1.8rem; font-weight: 800; color: #1e1e2a; letter-spacing: -0.3px; display: inline-flex; align-items: center; gap: 12px; }
-    .group-header h3 i { color: #dc2626; font-size: 1.8rem; }
-    .group-badge { background: #dc2626; color: white; padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; margin-left: 12px; }
-    .group-desc { font-size: 0.85rem; color: #6b7280; font-weight: 500; margin-top: 6px; }
-    .portfolio-grid-group { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; padding: 2rem; }
-    .portfolio-item { background: #fff; border-radius: 1.5rem; overflow: hidden; border: 1px solid #f3f4f6; transition: 0.35s; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
-    .portfolio-item:hover { transform: translateY(-6px) scale(1.01); border-color: #dc2626; box-shadow: 0 20px 30px -12px rgba(220,38,38,0.2); }
-    .portfolio-img { width: 100%; height: 210px; object-fit: cover; transition: 0.4s; }
-    .portfolio-item:hover .portfolio-img { transform: scale(1.02); }
-    .portfolio-caption { padding: 1rem 1.2rem 1.2rem; background: #fff; border-top: 1px solid #f3f4f6; text-align: center; }
-    .portfolio-caption h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: #dc2626; letter-spacing: -0.2px; text-transform: uppercase; }
-    .portfolio-caption p { font-size: 0.7rem; color: #9ca3af; font-weight: 500; }
-    
-    /* Enhanced Testimonials Section - including Sika testimonial image */
-    .testimonials-section { margin: 5rem 0 4rem; }
-    .testimonials-title { text-align: center; font-size: 2.4rem; font-weight: 900; margin-bottom: 1rem; color: #111; }
-    .testimonials-subtitle { text-align: center; color: #6b7280; margin-bottom: 3rem; }
-    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem; }
-    .testimonial-card { background: #fff; border-radius: 30px; overflow: hidden; border: 1px solid #fee2e2; transition: 0.35s; box-shadow: 0 15px 30px rgba(0,0,0,0.03); }
-    .testimonial-card:hover { transform: translateY(-10px); border-color: #dc2626; box-shadow: 0 25px 40px rgba(220,38,38,0.1); }
-    .testimonial-img-container { width: 100%; background: #fafafa; padding: 20px; display: flex; justify-content: center; align-items: center; border-bottom: 1px solid #fee2e2; }
-    .testimonial-img { width: 100%; max-height: 240px; object-fit: contain; border-radius: 20px; transition: 0.3s; box-shadow: 0 4px 12px rgba(0,0,0,0.05); }
-    .testimonial-card:hover .testimonial-img { transform: scale(1.02); }
-    .testimonial-content { padding: 1.8rem; text-align: center; }
-    .quote-icon { font-size: 2rem; color: #dc2626; opacity: 0.5; margin-bottom: 1rem; }
-    .testimonial-text { color: #4b5563; line-height: 1.8; font-style: italic; margin-bottom: 1rem; }
-    .testimonial-author { font-weight: 800; color: #dc2626; margin-bottom: 0.3rem; font-size: 1.1rem; }
-    .testimonial-role { font-size: 0.8rem; color: #6b7280; }
-    
-    .cta-banner { background: linear-gradient(135deg, #dc2626, #991b1b); border-radius: 40px; padding: 3.5rem; text-align: center; color: #fff; margin: 5rem 0 3rem; }
-    .btn-cta { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; background: #fff; color: #dc2626; padding: 1rem 2rem; border-radius: 60px; font-weight: 700; transition: 0.3s; }
-    .btn-cta:hover { transform: translateY(-4px); gap: 16px; }
-    footer { background: #f8fafc; padding: 0; text-align: center; border-top: 2px solid #dc2626; margin-top: 2rem; }
-    .footer-hvac-image { width: 100%; background: #0b1620; border-bottom: 1px solid rgba(220,38,38,0.3); }
-    .footer-hvac-image img { width: 100%; height: auto; max-height: 140px; object-fit: cover; display: block; opacity: 0.9; }
-    .footer-content { padding: 1.8rem; font-size: 0.9rem; }
-    .floating-social { position: fixed; bottom: 25px; right: 25px; display: flex; flex-direction: column; gap: 12px; z-index: 1000; }
-    .floating-icon { width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: #fff; text-decoration: none; transition: 0.3s; }
-    .floating-icon:hover { transform: scale(1.12); }
-    .floating-wa { background: #25D366; }
-    .floating-telegram { background: #0088cc; }
-    .floating-fb { background: #1877f2; }
-    @media (max-width: 900px) { .projects-hero h1 { font-size: 2.3rem; } .nav-links { display: none; } .hamburger { display: flex; } .testimonials-grid { grid-template-columns: 1fr; } .container { padding: 0 20px; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } .portfolio-grid-group { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); padding: 1rem; } .group-header h3 { font-size: 1.3rem; } }
-    @media (max-width: 600px) { .projects-hero h1 { font-size: 1.8rem; } .testimonials-title { font-size: 1.7rem; } .cta-banner { padding: 2rem; } .footer-hvac-image img { max-height: 60px; } .portfolio-group-card { margin-bottom: 2rem; } .group-header { flex-direction: column; gap: 0.5rem; } .testimonial-img { max-height: 180px; } }
+    /* Footer with HVAC.png image */
+    footer {
+      background: #f8fafc;
+      color: #4b5563;
+      text-align: center;
+      border-top: 2px solid #dc2626;
+      margin-top: 2rem;
+    }
+    .footer-hvac-image {
+      width: 100%;
+      background: #0b1620;
+      border-bottom: 1px solid rgba(220,38,38,0.3);
+    }
+    .footer-hvac-image img {
+      width: 100%;
+      height: auto;
+      max-height: 140px;
+      object-fit: cover;
+      display: block;
+      opacity: 0.9;
+      transition: opacity 0.3s;
+    }
+    .footer-hvac-image img:hover {
+      opacity: 1;
+    }
+    .footer-content {
+      padding: 1.8rem;
+      font-size: 0.9rem;
+    }
+
+    /* Projects Gallery Link Button */
+    .projects-gallery-link {
+      text-align: center;
+      margin-top: 2rem;
+      margin-bottom: 0.5rem;
+    }
+    .projects-gallery-link .btn-gallery {
+      background: transparent;
+      border: 2px solid #dc2626;
+      color: #dc2626;
+      padding: 10px 28px;
+      border-radius: 40px;
+      font-weight: 700;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: 0.25s;
+      text-decoration: none;
+    }
+    .projects-gallery-link .btn-gallery:hover {
+      background: #dc2626;
+      color: white;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 18px rgba(220,38,38,0.25);
+    }
+    body.dark .projects-gallery-link .btn-gallery {
+      border-color: #f87171;
+      color: #f87171;
+    }
+    body.dark .projects-gallery-link .btn-gallery:hover {
+      background: #f87171;
+      color: #111;
+    }
+
+    /* ===== ENHANCED MOBILE VIEW COMPATIBILITY - FIX FIT TO SIZE ===== */
+    @media (max-width: 992px) {
+      .container { padding: 0 20px; }
+    }
+    @media (max-width: 768px) {
+      .container { padding: 0 16px; }
+      .hero { padding: 2rem 0 2.5rem; }
+      .hero h1 { font-size: 1.8rem; line-height: 1.25; }
+      .hero p { font-size: 0.95rem; }
+      .section-title { font-size: 1.5rem; }
+      .btn { padding: 10px 18px; font-size: 0.8rem; gap: 8px; }
+      .stats { flex-direction: column; align-items: center; gap: 1rem; padding: 1.5rem; }
+      .grid { grid-template-columns: 1fr; gap: 1rem; }
+      .client-grid { grid-template-columns: 1fr; gap: 1rem; }
+      .row-two-columns { flex-direction: column; gap: 1rem; }
+      .nav-links { display: none; }
+      .hamburger { display: flex; }
+      .right-group { gap: 0.6rem; }
+      .theme-toggle { padding: 5px 10px; font-size: 0.7rem; }
+      .stat-number { font-size: 1.6rem; }
+      .stat-label { font-size: 0.7rem; }
+      .footer-hvac-image img { max-height: 80px; }
+      .footer-content { padding: 1rem; font-size: 0.7rem; }
+      .swiper-button-next, .swiper-button-prev { display: none; }
+      .card { padding: 1.2rem; }
+      .card h3 { font-size: 1.2rem; }
+      .card i { font-size: 2rem; }
+      .cta-section h2 { font-size: 1.3rem; }
+      .cta-section { padding: 1.5rem 1rem; }
+      .floating-social { bottom: 16px; right: 16px; gap: 8px; }
+      .floating-icon { width: 44px; height: 44px; font-size: 1.2rem; }
+      .project-list { padding: 1rem; }
+      .project-list h3 { font-size: 1rem; }
+      .project-list li { font-size: 0.8rem; gap: 6px; }
+      .video-caption-soft { font-size: 0.65rem; padding: 4px 12px; bottom: 8px; right: 12px; }
+      .engineering-video-wrapper { max-height: 280px; }
+      .engineering-video-wrapper video { max-height: 280px; }
+      section { padding: 2.5rem 0; }
+      .slider-section { padding: 1.5rem 0; margin: 0.5rem 0; }
+      .swiper-slide img { height: 200px; }
+      .slide-caption { font-size: 0.8rem; padding: 0.7rem; }
+      .trust-projects-section { padding: 1.2rem !important; }
+      .trust-projects-section h3 { font-size: 1.2rem !important; }
+      .click-hint { font-size: 0.75rem; }
+    }
+    @media (max-width: 550px) {
+      .container { padding: 0 14px; }
+      .hero h1 { font-size: 1.5rem; }
+      .hero p { font-size: 0.85rem; }
+      .section-title { font-size: 1.3rem; }
+      .btn { padding: 8px 14px; font-size: 0.7rem; gap: 6px; }
+      .card i { font-size: 1.8rem; }
+      .swiper-slide img { height: 160px; }
+      .footer-hvac-image img { max-height: 55px; }
+      .floating-icon { width: 38px; height: 38px; font-size: 1rem; }
+      .video-caption-soft { font-size: 0.55rem; padding: 3px 8px; }
+      .logo-img { height: 45px; }
+      .theme-toggle { padding: 4px 8px; font-size: 0.6rem; }
+      .hamburger span { width: 22px; height: 2px; gap: 4px; }
+      .stat-number { font-size: 1.3rem; }
+      .stat-label { font-size: 0.6rem; }
+      .client-card { padding: 0.8rem; }
+      .client-icon i { font-size: 1.8rem; }
+      .client-card h4 { font-size: 0.9rem; }
+      .projects-gallery-link .btn-gallery { padding: 5px 14px; font-size: 0.7rem; }
+      .cta-section p { font-size: 0.8rem; margin-bottom: 1rem !important; }
+    }
+    @media (max-width: 380px) {
+      .hero h1 { font-size: 1.3rem; }
+      .container { padding: 0 12px; }
+      .btn { padding: 6px 12px; font-size: 0.65rem; }
+      .hero { padding: 1.5rem 0 2rem; }
+      section { padding: 2rem 0; }
+      .card h3 { font-size: 1rem; }
+      .card p { font-size: 0.75rem; }
+    }
   </style>
 </head>
 <body>
@@ -168,19 +921,19 @@
   <div class="airflow-streak streak-1"></div>
   <div class="airflow-streak streak-2"></div>
   <div class="airflow-streak streak-3"></div>
+  <div class="airflow-streak streak-4"></div>
 </div>
 
 <div class="loader" id="loader"><div class="loader-spinner"></div></div>
-
 <header>
   <div class="container header-flex">
     <div class="logo-wrapper" id="logoContainer"></div>
     <div class="right-group">
       <div class="nav-links">
-        <a href="index.html">Home</a>
+        <a href="index.html" class="active">Home</a>
         <a href="about.html">About</a>
         <a href="services.html">Services</a>
-        <a href="projects.html" class="active">Projects</a>
+        <a href="projects.html">Projects</a>
         <a href="contact.html">Contact</a>
       </div>
       <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
@@ -188,148 +941,100 @@
     </div>
   </div>
 </header>
-
 <div class="mobile-menu" id="mobileMenu">
-  <a href="index.html">Home</a>
-  <a href="about.html">About</a>
-  <a href="services.html">Services</a>
-  <a href="projects.html" class="active">Projects</a>
-  <a href="contact.html">Contact</a>
+  <a href="index.html">Home</a> <a href="about.html">About</a> <a href="services.html">Services</a> <a href="projects.html">Projects</a> <a href="contact.html">Contact</a>
 </div>
 <div class="overlay" id="overlay"></div>
-
-<!-- ENGINEERING MP4 VIDEO SECTION -->
-<div class="engineering-video-section">
-  <div class="engineering-video-wrapper">
-    <video autoplay loop muted playsinline preload="auto">
-      <source src="ENGINEERING.mp4" type="video/mp4">
-      Your browser does not support the video tag.
-    </video>
-    <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
-  </div>
-</div>
-
-<section class="projects-hero">
-  <div class="container">
-    <h1 data-aos="fade-up">Where <span>engineering excellence</span><br>meets real-world impact</h1>
-  </div>
-</section>
-
-<div class="container">
-  <div class="projects-grid">
-    <div class="project-card" data-aos="fade-up"><div class="card-img" style="background-image:url('DHL.jpg');"></div><div class="card-content"><h3>DHL Logistics Hub</h3><p>Standalone air conditioning installation for main sorting facility.</p></div></div>
-    <div class="project-card" data-aos="fade-up" data-aos-delay="100"><div class="card-img" style="background-image:url('shangai.jpg');"></div><div class="card-content"><h3>Shanghai Furniture Showroom</h3><p>Ducted ventilation system for premium exhibition space.</p></div></div>
-    <div class="project-card" data-aos="fade-up" data-aos-delay="200"><div class="card-img" style="background-image:url('oromiya.jpg');"></div><div class="card-content"><h3>Oromiya Regional Office</h3><p>Split AC installation across office facilities.</p></div></div>
-    <div class="project-card" data-aos="fade-up" data-aos-delay="300"><div class="card-img" style="background-image:url('industry.jpg');"></div><div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><p>Industrial ventilation system for improved airflow and air quality.</p></div></div>
-  </div>
-
-  <!-- GROUPED PORTFOLIO - SIKA IMAGES REMOVED FROM GALLERY (only sika1, sika2, sika3 remain) -->
-  <div class="portfolio-section" data-aos="fade-up">
-    <h2 class="portfolio-title"><i class="fas fa-layer-group" style="color:#dc2626;"></i> Engineering Portfolio</h2>
-    <p class="portfolio-subtitle">Explore our signature projects — each group is meticulously organized to showcase our electro-mechanical expertise.</p>
-    <div id="groupedPortfolioContainer"></div>
-  </div>
-
-  <!-- TESTIMONIALS SECTION - Now includes Sika Abyssinia Chemicals as a beautiful testimonial card -->
-  <div class="testimonials-section">
-    <h2 class="testimonials-title" data-aos="fade-up"><i class="fas fa-star" style="color:#dc2626;"></i> Client Testimonials & Partners</h2>
-    <p class="testimonials-subtitle" data-aos="fade-up">Trusted by industry leaders — real recognition of our excellence</p>
-    <div class="testimonials-grid" id="testimonialsGrid">
-      <!-- DHL testimonial card -->
-      <div class="testimonial-card" data-aos="zoom-in">
-        <div class="testimonial-img-container"><img src="testimonial.jpg" alt="DHL Recommendation Letter" class="testimonial-img" onerror="this.src='https://placehold.co/600x400/dc2626/white?text=DHL+Testimonial'"></div>
-        <div class="testimonial-content"><i class="fas fa-quote-right quote-icon"></i><p class="testimonial-text">"HALU Engineering carried out installation of Air Conditioning for our head office server room and offices. The work was completed on time and within budget."</p><div class="testimonial-author">— Robel Solomon</div><div class="testimonial-role">IT Manager, DHL Worldwide Express Ethiopia PLC</div></div>
-      </div>
-      <!-- DHL second testimonial card -->
-      <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="100">
-        <div class="testimonial-img-container"><img src="testimonial2.JPG" alt="DHL Client Testimony" class="testimonial-img" onerror="this.src='https://placehold.co/600x400/dc2626/white?text=DHL+Appreciation'"></div>
-        <div class="testimonial-content"><i class="fas fa-quote-right quote-icon"></i><p class="testimonial-text">"The installation staff were accommodating and the project was completed on time and within budget."</p><div class="testimonial-author">— DHL Worldwide Express Ethiopia PLC</div><div class="testimonial-role">Official Client Testimony</div></div>
-      </div>
-      <!-- NEW SIKA ABYSSINIA CHEMICALS testimonial card (moved from gallery) -->
-      <div class="testimonial-card" data-aos="zoom-in" data-aos-delay="150">
-        <div class="testimonial-img-container"><img src="sika.jpg" alt="Sika Abyssinia Chemicals - Official Recognition" class="testimonial-img" onerror="this.src='https://placehold.co/600x400/dc2626/white?text=Sika+Abyssinia+Chemicals'"></div>
-        <div class="testimonial-content"><i class="fas fa-quote-right quote-icon"></i><p class="testimonial-text">"HALU Engineering provided outstanding electro-mechanical solutions for our chemical manufacturing facility. Their professionalism and technical expertise ensured seamless HVAC integration."</p><div class="testimonial-author">— Sika Abyssinia Chemicals PLC</div><div class="testimonial-role">Strategic Partner & Client</div></div>
+<main>
+  <div class="hero">
+    <div class="container">
+      <div data-aos="fade-up" data-aos-duration="800">
+        <h1>HVAC & <span>Mechanical Engineering</span><br>Future-Ready Climate Control</h1>
+        <p>Air Conditioning | Cold Rooms | Heat Pumps | Ventilation | Duct Works | Smart HVAC solutions for tomorrow's infrastructure.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+          <a href="services.html" class="btn">Explore Solutions <i class="fas fa-arrow-right"></i></a>
+          <a href="contact.html" class="btn btn-outline">Request Quote</a>
+        </div>
       </div>
     </div>
   </div>
 
-  <div class="cta-banner" data-aos="zoom-in">
-    <h3>Ready to bring your project to life?</h3>
-    <p>From standalone AC systems to industrial ventilation, HALU Engineering delivers trusted excellence.</p>
-    <a href="contact.html" class="btn-cta">Discuss Your Project <i class="fas fa-arrow-right"></i></a>
+  <!-- ENGINEERING MP4 VIDEO SECTION -->
+  <div class="engineering-video-section">
+    <div class="engineering-video-wrapper">
+      <video id="haluEngineeringVideo" autoplay loop muted playsinline preload="auto">
+        <source src="ENGINEERING.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+      </video>
+      <div class="video-caption-soft"><i class="fas fa-play-circle"></i> ENGINEERING IN ACTION | HALU MECHANICAL SOLUTIONS</div>
+      <div id="videoFallbackMsg" class="video-fallback-message"><i class="fas fa-exclamation-triangle"></i> Loading ENGINEERING.mp4...</div>
+    </div>
   </div>
-</div>
 
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Engineering Excellence</h2><div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;"><div class="card" style="padding: 1rem;"><i class="fas fa-microchip"></i><h4>Smart Controls</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-chart-line"></i><h4>Energy Analytics</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-leaf"></i><h4>Green Cooling</h4></div><div class="card" style="padding: 1rem;"><i class="fas fa-cloud-upload-alt"></i><h4>IoT Ready</h4></div></div></div></section>
+  
+  <section class="slider-section"><div class="container"><h2 class="section-title" data-aos="fade-up">Project Gallery <i class="fas fa-arrows-alt" style="font-size: 1.5rem;"></i></h2><div class="swiper mySwiper" data-aos="fade-up"><div class="swiper-wrapper" id="swiperWrapper"></div><div class="swiper-pagination"></div><div class="swiper-button-next"></div><div class="swiper-button-prev"></div></div>
+  <div class="projects-gallery-link" data-aos="fade-up">
+    <a href="projects.html" class="btn-gallery"><i class="fas fa-images"></i> Click to visit our projects →</a>
+  </div>
+  </div></section>
+  
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Core Expertise</h2><div class="grid"><div class="card" data-aos="zoom-in"><i class="fas fa-wind"></i><h3>Air Conditioning</h3><p>VRF, chillers, splits, central AC – precision cooling.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-thermometer-half"></i><h3>Cold Rooms</h3><p>Blast freezers & pharmaceutical storage (-35°C to +10°C).</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-temperature-low"></i><h3>Heat Pumps</h3><p>High-efficiency air-to-water & geothermal systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-utensils"></i><h3>Kitchen Ventilation</h3><p>Grease extraction, make-up air, fire-rated systems.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-toilet"></i><h3>Toilet Exhaust</h3><p>Odor control & energy recovery ventilators.</p></div><div class="card" data-aos="zoom-in"><i class="fas fa-drafting-compass"></i><h3>Duct Fabrication</h3><p>Custom spiral/rectangular ducts, CFD optimized.</p></div></div></div></section>
+  
+  <section><div class="container"><h2 class="section-title" data-aos="fade-up">Why Industry Leaders Trust HALU</h2><div class="stats" data-aos="fade-up"><div><div class="stat-number">5+</div><div class="stat-label">Years Experience</div></div><div><div class="stat-number">15+</div><div class="stat-label">Projects Delivered</div></div><div><div class="stat-number">24/7</div><div class="stat-label">Emergency Support</div></div><div><div class="stat-number">100%</div><div class="stat-label">Client Retention</div></div></div><div class="trust-projects-section" style="background: #fefaf5dd; border-radius: 56px; padding: 2rem; margin-top: 2rem;"><h3 style="color: #dc2626; margin-bottom: 1rem; font-size: 1.3rem; text-align: center;"><i class="fas fa-trophy"></i> Our Successful Projects</h3><div class="client-grid" id="clientsGrid"></div><div class="row-two-columns"><div class="col"><div class="project-list" data-aos="fade-right"><h3><i class="fas fa-building"></i> MESOB Projects</h3><ul><li><i class="fas fa-map-marker-alt"></i> Arada Subcity</li><li><i class="fas fa-map-marker-alt"></i> Kirkos Subcity</li><li><i class="fas fa-map-marker-alt"></i> Gulele Subcity</li><li><i class="fas fa-map-marker-alt"></i> Afar Region</li></ul></div></div><div class="col"><div class="project-list" data-aos="fade-left"><h3><i class="fas fa-trophy"></i> Key Government & Institutions</h3><ul><li><i class="fas fa-university"></i> INSA</li><li><i class="fas fa-city"></i> Civil Service</li><li><i class="fas fa-hard-hat"></i> Minaye Construction</li><li><i class="fas fa-charging-station"></i> TAPU Foods</li></ul></div></div></div><div class="click-hint"><i class="fas fa-mouse-pointer"></i> <strong>Click on any project logo or card → explore our HVAC services</strong></div></div></div></section>
+  
+  <section><div class="container"><div class="cta-section" data-aos="zoom-in"><h2>Ready to Upgrade Your Infrastructure?</h2><p style="margin-bottom: 1rem;">Get a free consultation from our engineering experts.</p><a href="contact.html" class="btn">Contact Us Today <i class="fas fa-arrow-right"></i></a></div></div></section>
+</main>
+
+<!-- Footer with HVAC.png image at bottom only -->
 <footer>
   <div class="footer-hvac-image">
     <img src="HVAC.png" alt="HVAC Engineering Solutions" onerror="this.src='https://placehold.co/1920x140/dc2626/white?text=HVAC+Engineering'">
   </div>
   <div class="footer-content">
-    <p>© 2026 HALU Engineering — Electro-Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
+    <p>© 2026 HALU Engineering — Precision HVAC & Mechanical Excellence | <i class="fas fa-fire"></i> Engineered to inspire</p>
   </div>
 </footer>
 
-<div class="floating-social">
-  <a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a>
-  <a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a>
-  <a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a>
-</div>
+<div class="floating-social"><a href="https://wa.me/251918036609" target="_blank" class="floating-icon floating-wa"><i class="fab fa-whatsapp"></i></a><a href="https://t.me/haluengineering" target="_blank" class="floating-icon floating-telegram"><i class="fab fa-telegram-plane"></i></a><a href="https://www.facebook.com/haluengineering" target="_blank" class="floating-icon floating-fb"><i class="fab fa-facebook-f"></i></a></div>
 
 <script>
-  window.addEventListener('load', () => { document.getElementById('loader').classList.add('hide'); setTimeout(() => document.getElementById('loader').style.display = 'none', 500); AOS.init({ duration: 900, once: true }); });
-  const toggleBtn = document.getElementById('darkModeToggle');
-  if(toggleBtn) { toggleBtn.addEventListener('click', () => { document.body.classList.toggle('dark'); const icon = toggleBtn.querySelector('i'); const span = toggleBtn.querySelector('span'); if(document.body.classList.contains('dark')) { icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; } else { icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; } }); }
+  window.addEventListener('load', () => { 
+    const loader = document.getElementById('loader'); 
+    loader.classList.add('hide'); 
+    setTimeout(() => loader.style.display = 'none', 500);
+    const video = document.getElementById('haluEngineeringVideo');
+    const fallbackDiv = document.getElementById('videoFallbackMsg');
+    if(video && fallbackDiv) {
+      video.addEventListener('canplay', () => { fallbackDiv.style.display = 'none'; });
+      video.addEventListener('error', () => { fallbackDiv.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Please ensure ENGINEERING.mp4 is in the same folder'; fallbackDiv.style.display = 'flex'; });
+      setTimeout(() => { if(video.readyState < 2) fallbackDiv.style.display = 'flex'; else fallbackDiv.style.display = 'none'; }, 800);
+    }
+  });
+  AOS.init({ duration: 800, once: true, offset: 60 });
+  const toggleBtn = document.getElementById('darkModeToggle'); 
+  toggleBtn.addEventListener('click', () => { 
+    document.body.classList.toggle('dark'); 
+    const icon = toggleBtn.querySelector('i'); 
+    const span = toggleBtn.querySelector('span'); 
+    if(document.body.classList.contains('dark')) { 
+      icon.classList.remove('fa-moon'); icon.classList.add('fa-sun'); span.innerText = ' Light'; 
+    } else { 
+      icon.classList.remove('fa-sun'); icon.classList.add('fa-moon'); span.innerText = ' Dark'; 
+    } 
+  });
   const hamburger = document.getElementById('hamburger'), mobileMenu = document.getElementById('mobileMenu'), overlay = document.getElementById('overlay');
   function toggleMenu() { hamburger.classList.toggle('active'); mobileMenu.classList.toggle('active'); overlay.classList.toggle('active'); document.body.style.overflow = mobileMenu.classList.contains('active') ? 'hidden' : ''; }
-  hamburger.addEventListener('click', toggleMenu); overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
+  if(hamburger) hamburger.addEventListener('click', toggleMenu); if(overlay) overlay.addEventListener('click', toggleMenu); document.querySelectorAll('.mobile-menu a').forEach(link => link.addEventListener('click', toggleMenu));
   const logoContainer = document.getElementById('logoContainer');
-  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:65px;height:65px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:18px;display:flex;align-items:center;justify-content:center;color:white;font-size:2rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
-  
-  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
-
-  // GROUPED PORTFOLIO - SIKA.JPG is removed from gallery (only sika1, sika2, sika3 remain as part of Sika Abyssinia Chemicals group)
-  const groupedData = [
-    { group: "DHL", icon: "fas fa-box", images: ["DHL.jpg","DHL1.jpg","DHL2.jpg","DHL3.jpg","DHL4.jpg"] },
-    { group: "Liya Cafe", icon: "fas fa-mug-hot", images: ["Liya Cafe1.jpg","Liya Cafe2.jpg","Liya Cafe3.jpg","Liya Cafe4.jpg"] },
-    { group: "Oromia Construction Corporation (OCC)", icon: "fas fa-building", images: ["OCC1.jpg","OCC2.jpg","OCC3.jpg","OCC4.jpg","OCC5.jpg"] },
-    { group: "Tapu Foods Lafto Mall Branch", icon: "fas fa-utensils", images: ["Tapu1.jpg","Tapu2.jpg","Tapu3.jpg","Tapu4.jpg"] },
-    { group: "Tapu Foods Megenagna Branch", icon: "fas fa-store", images: ["TapuMeg1.jpg","TapuMeg2.jpg","TapuMeg3.jpg","TapuMeg4.jpg","TapuMeg5.jpg"] },
-    { group: "Unilever Manufacturing PLC", icon: "fas fa-industry", images: ["Unilever1.jpg","Unilever2.jpg","Unilever3.jpg","Unilever4.jpg","Unilever5.jpg","Unilever6.jpg","Unilever7.jpg","Unilever9.jpg"] },
-    { group: "Boeing Office", icon: "fas fa-plane", images: ["boeing3.jpg","boeing4.jpg","boeing6.jpg","boieng1.jpg","boieng2.jpg","boieng5.jpg","boieng6.jpg","boieng7.jpg"] },
-    { group: "Barakah Coffee", icon: "fas fa-coffee", images: ["cofee5.jpg","coffee1.jpg","coffee2.jpg","coffee3.jpg","coffee4.jpg"] },
-    { group: "Oromia Engineering Corporation (ECO)", icon: "fas fa-microchip", images: ["eco1.jpg","eco2.jpg","eco3.jpg","eco4.jpg"] },
-    { group: "Electromechanical Works", icon: "fas fa-bolt", images: ["electro1.jpg","electro2.jpg","electro3.jpg"] },
-    { group: "Oromia Region President Office", icon: "fas fa-landmark", images: ["president office1.jpg","president office2.jpg","president office3.jpg","president office4.jpg"] },
-    { group: "Sangi / Shangri", icon: "fas fa-chandelier", images: ["sangi3.jpg","sangi4.jpg","sangi5.jpg","sangi6.jpg","sangi7.jpg","sangi8.jpg","shangai.jpg","shangi1.jpg","shangi2.jpg"] },
-    { group: "Sika Abyssinia Chemicals", icon: "fas fa-flask", images: ["sika1.jpg","sika2.jpg","sika3.jpg"] }   // sika.jpg removed from gallery
-  ];
-
-  const container = document.getElementById('groupedPortfolioContainer');
-  function buildGroupedPortfolio() {
-    let html = '';
-    groupedData.forEach(group => {
-      html += `<div class="portfolio-group-card" data-aos="fade-up" data-aos-offset="100">
-        <div class="group-header">
-          <h3><i class="${group.icon}"></i> ${group.group} <span class="group-badge">${group.images.length} projects</span></h3>
-          <div class="group-desc"><i class="fas fa-hard-hat"></i> HVAC & Electro-Mechanical Solutions</div>
-        </div>
-        <div class="portfolio-grid-group">`;
-      group.images.forEach(img => {
-        const cleanSrc = img.replace(/ /g, '%20');
-        html += `<div class="portfolio-item">
-          <img class="portfolio-img" src="${cleanSrc}" alt="${group.group}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/dc2626/white?text=${encodeURIComponent(group.group)}'">
-          <div class="portfolio-caption">
-            <h4>${group.group}</h4>
-            <p><i class="fas fa-wrench"></i> Precision Engineering</p>
-          </div>
-        </div>`;
-      });
-      html += `</div></div>`;
-    });
-    container.innerHTML = html;
-    AOS.refresh();
-  }
-  buildGroupedPortfolio();
+  function tryLoadLogo(url) { const img = new Image(); img.onload = function() { const logoImg = document.createElement('img'); logoImg.src = url; logoImg.alt = 'HALU Engineering'; logoImg.className = 'logo-img'; logoContainer.innerHTML = ''; logoContainer.appendChild(logoImg); }; img.onerror = function() { const fallbackDiv = document.createElement('div'); fallbackDiv.style.cssText = 'width:55px;height:55px;background:linear-gradient(145deg,#dc2626,#b91c1c);border-radius:16px;display:flex;align-items:center;justify-content:center;color:white;font-size:1.6rem;font-weight:800;'; fallbackDiv.innerHTML = '<i class="fas fa-wind"></i>'; logoContainer.innerHTML = ''; logoContainer.appendChild(fallbackDiv); }; img.src = url; } tryLoadLogo('80.JPG');
+  const swiper = new Swiper('.mySwiper', { slidesPerView: 1, spaceBetween: 20, loop: true, autoplay: { delay: 4000, disableOnInteraction: false }, pagination: { el: '.swiper-pagination', clickable: true }, navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' }, breakpoints: { 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }, speed: 800 });
+  const imageList = [{ src: "1.jpg", name: "VRF System Install" },{ src: "2.jpg", name: "Chiller Plant" },{ src: "28.jpg", name: "Cold Storage" },{ src: "13.jpg", name: "Heat Pump Array" },{ src: "17.jpg", name: "Duct Fabrication" },{ src: "33.jpg", name: "Industrial AHU" },{ src: "34.jpg", name: "Precision Cooling" },{ src: "35.jpg", name: "Ventilation Duct" },{ src: "37.jpg", name: "Smart Controls" }];
+  const swiperWrapper = document.querySelector('#swiperWrapper'); if(swiperWrapper){ imageList.forEach(img => { const slide = document.createElement('div'); slide.className = 'swiper-slide'; slide.innerHTML = `<img src="${img.src}" alt="${img.name}" onerror="this.src='https://placehold.co/600x400/dc2626/ffffff?text=${img.name.replace(/ /g,'+')}'"><div class="slide-caption"><i class="fas fa-expand-arrows-alt"></i> ${img.name}</div>`; swiperWrapper.appendChild(slide); }); swiper.update(); }
+  const clients = [{ name: "DHL", icon: "fas fa-truck-fast" },{ name: "BOEING", icon: "fas fa-plane" },{ name: "INSA", icon: "fas fa-shield-alt" },{ name: "Civil Service", icon: "fas fa-users" },{ name: "Minaye Construction", icon: "fas fa-hard-hat" },{ name: "TAPU Foods", icon: "fas fa-apple-alt" }];
+  const clientsGrid = document.getElementById('clientsGrid'); if(clientsGrid){ clients.forEach(client => { const card = document.createElement('div'); card.className = 'client-card'; card.innerHTML = `<div class="client-icon"><i class="${client.icon}"></i></div><h4>${client.name}</h4><div class="project-badge"><i class="fas fa-arrow-right"></i> View solutions</div>`; card.addEventListener('click', () => window.location.href = 'services.html'); clientsGrid.appendChild(card); }); }
+  document.querySelectorAll('.project-list').forEach(el => { el.style.cursor = 'pointer'; el.addEventListener('click', () => window.location.href = 'services.html'); });
+  const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, opacity: Math.random() * 0.4 + 0.1, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 </script>
 </body>
 </html>

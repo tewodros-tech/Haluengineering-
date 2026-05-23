@@ -82,6 +82,14 @@
     body.dark .mobile-menu a:hover, body.dark .mobile-menu a.active { color: #dc2626; }
     body.dark .theme-toggle { background: #374151; color: white; }
     body.dark .engineering-video-section { border-top-color: #f87171; border-bottom-color: #f87171; }
+    body.dark .portfolio-section, body.dark .portfolio-title, body.dark .portfolio-subtitle { color: white; }
+    body.dark .portfolio-group-card { background: #1f2937; border-color: #374151; }
+    body.dark .group-header { background: #111827; border-bottom-color: #dc2626; }
+    body.dark .group-header h3 { color: white; }
+    body.dark .group-header p { color: #cbd5e1; }
+    body.dark .portfolio-item { background: #111827; border-color: #2d3748; }
+    body.dark .portfolio-caption { background: #111827; border-top-color: #2d3748; }
+    body.dark .portfolio-caption h4 { color: #dc2626; }
     
     .projects-hero { background: linear-gradient(135deg, #fff5f5 0%, #ffffff 100%); padding: 5rem 0; }
     .projects-hero h1 { font-size: 3.5rem; font-weight: 900; line-height: 1.15; color: #111; }
@@ -94,22 +102,25 @@
     .card-content h3 { font-size: 1.35rem; margin-bottom: 0.5rem; color: #111; }
     .card-content p { color: #4b5563; line-height: 1.6; }
     
-    /* Enhanced Portfolio Gallery */
+    /* Grouped Portfolio Section - White Elegant Cards */
     .portfolio-section { margin: 5rem 0 3rem; }
-    .portfolio-title { text-align: center; font-size: 2.5rem; font-weight: 900; margin-bottom: 1rem; color: #111; }
-    .portfolio-subtitle { text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; }
-    .portfolio-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 2rem; }
-    .portfolio-item { background: #fff; border-radius: 28px; overflow: hidden; border: 1px solid #fee2e2; transition: 0.35s; box-shadow: 0 15px 35px rgba(0,0,0,0.05); }
-    .portfolio-item:hover { transform: translateY(-8px); border-color: #dc2626; box-shadow: 0 25px 40px rgba(220,38,38,0.15); }
-    .portfolio-img { width: 100%; height: 220px; object-fit: cover; transition: 0.5s; }
-    .portfolio-item:hover .portfolio-img { transform: scale(1.03); }
-    .portfolio-caption { padding: 1.2rem 1.5rem; background: #fff; border-top: 1px solid #f3f4f6; }
-    .portfolio-caption h4 { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.3rem; color: #dc2626; letter-spacing: -0.3px; }
-    .portfolio-caption p { font-size: 0.8rem; color: #6b7280; font-weight: 500; text-transform: uppercase; letter-spacing: 0.5px; }
-    body.dark .portfolio-item { background: #1f2937; border-color: #374151; }
-    body.dark .portfolio-caption { background: #1f2937; border-top-color: #374151; }
-    body.dark .portfolio-caption p { color: #9ca3af; }
-    body.dark .portfolio-title { color: white; }
+    .portfolio-title { text-align: center; font-size: 2.8rem; font-weight: 900; margin-bottom: 1rem; color: #111; letter-spacing: -0.02em; }
+    .portfolio-subtitle { text-align: center; color: #6b7280; margin-bottom: 3rem; max-width: 700px; margin-left: auto; margin-right: auto; font-size: 1.1rem; }
+    .portfolio-group-card { background: #ffffff; border-radius: 2rem; margin-bottom: 3rem; border: 1px solid #f0f0f0; box-shadow: 0 20px 35px -12px rgba(0,0,0,0.08); transition: all 0.3s ease; overflow: hidden; }
+    .portfolio-group-card:hover { box-shadow: 0 25px 40px -15px rgba(220,38,38,0.12); transform: translateY(-3px); border-color: #fee2e2; }
+    .group-header { background: #fef9f9; padding: 1.5rem 2rem; border-bottom: 3px solid #dc2626; display: flex; align-items: baseline; flex-wrap: wrap; justify-content: space-between; }
+    .group-header h3 { font-size: 1.8rem; font-weight: 800; color: #1e1e2a; letter-spacing: -0.3px; display: inline-flex; align-items: center; gap: 12px; }
+    .group-header h3 i { color: #dc2626; font-size: 1.8rem; }
+    .group-badge { background: #dc2626; color: white; padding: 4px 12px; border-radius: 30px; font-size: 0.7rem; font-weight: 600; letter-spacing: 0.3px; margin-left: 12px; }
+    .group-desc { font-size: 0.85rem; color: #6b7280; font-weight: 500; margin-top: 6px; }
+    .portfolio-grid-group { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.8rem; padding: 2rem; }
+    .portfolio-item { background: #fff; border-radius: 1.5rem; overflow: hidden; border: 1px solid #f3f4f6; transition: 0.35s; box-shadow: 0 8px 20px rgba(0,0,0,0.02); }
+    .portfolio-item:hover { transform: translateY(-6px) scale(1.01); border-color: #dc2626; box-shadow: 0 20px 30px -12px rgba(220,38,38,0.2); }
+    .portfolio-img { width: 100%; height: 210px; object-fit: cover; transition: 0.4s; }
+    .portfolio-item:hover .portfolio-img { transform: scale(1.02); }
+    .portfolio-caption { padding: 1rem 1.2rem 1.2rem; background: #fff; border-top: 1px solid #f3f4f6; text-align: center; }
+    .portfolio-caption h4 { font-size: 1rem; font-weight: 700; margin-bottom: 0.25rem; color: #dc2626; letter-spacing: -0.2px; text-transform: uppercase; }
+    .portfolio-caption p { font-size: 0.7rem; color: #9ca3af; font-weight: 500; }
     
     .testimonials-section { margin: 5rem 0; }
     .testimonials-title { text-align: center; font-size: 2.4rem; font-weight: 900; margin-bottom: 1rem; color: #111; }
@@ -136,8 +147,8 @@
     .floating-wa { background: #25D366; }
     .floating-telegram { background: #0088cc; }
     .floating-fb { background: #1877f2; }
-    @media (max-width: 900px) { .projects-hero h1 { font-size: 2.3rem; } .nav-links { display: none; } .hamburger { display: flex; } .testimonials-grid { grid-template-columns: 1fr; } .container { padding: 0 20px; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } .portfolio-grid { grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); } }
-    @media (max-width: 600px) { .projects-hero h1 { font-size: 1.8rem; } .testimonials-title { font-size: 1.7rem; } .cta-banner { padding: 2rem; } .footer-hvac-image img { max-height: 60px; } }
+    @media (max-width: 900px) { .projects-hero h1 { font-size: 2.3rem; } .nav-links { display: none; } .hamburger { display: flex; } .testimonials-grid { grid-template-columns: 1fr; } .container { padding: 0 20px; } .theme-toggle { padding: 6px 12px; font-size: 0.8rem; } .portfolio-grid-group { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); padding: 1rem; } .group-header h3 { font-size: 1.3rem; } }
+    @media (max-width: 600px) { .projects-hero h1 { font-size: 1.8rem; } .testimonials-title { font-size: 1.7rem; } .cta-banner { padding: 2rem; } .footer-hvac-image img { max-height: 60px; } .portfolio-group-card { margin-bottom: 2rem; } .group-header { flex-direction: column; gap: 0.5rem; } }
   </style>
 </head>
 <body>
@@ -208,11 +219,11 @@
     <div class="project-card" data-aos="fade-up" data-aos-delay="300"><div class="card-img" style="background-image:url('industry.jpg');"></div><div class="card-content"><h3>UNILEVER Manufacturing PLC</h3><p>Industrial ventilation system for improved airflow and air quality.</p></div></div>
   </div>
 
-  <!-- ENHANCED PORTFOLIO GALLERY: All images as requested -->
+  <!-- ENHANCED PORTFOLIO - GROUPED WHITE CARDS, ORGANIZED BY CLIENT/GROUP NAME -->
   <div class="portfolio-section" data-aos="fade-up">
-    <h2 class="portfolio-title"><i class="fas fa-images" style="color:#dc2626;"></i> Engineering Portfolio</h2>
-    <p class="portfolio-subtitle">Explore our signature projects — every image reflects precision, reliability, and electro-mechanical mastery.</p>
-    <div class="portfolio-grid" id="portfolioGrid"></div>
+    <h2 class="portfolio-title"><i class="fas fa-layer-group" style="color:#dc2626;"></i> Engineering Portfolio</h2>
+    <p class="portfolio-subtitle">Explore our signature projects — each group is meticulously organized to showcase our electro-mechanical expertise.</p>
+    <div id="groupedPortfolioContainer"></div>
   </div>
 
   <div class="testimonials-section">
@@ -264,46 +275,49 @@
   
   const canvas = document.getElementById('hvacCanvas'); const ctx = canvas.getContext('2d'); let particles = []; function resizeCanvas() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; } window.addEventListener('resize', resizeCanvas); resizeCanvas(); for(let i=0;i<70;i++){ particles.push({ x: Math.random() * canvas.width, y: Math.random() * canvas.height, radius: Math.random() * 4 + 1, speedX: (Math.random() - 0.5) * 0.6, speedY: Math.random() * 1.2 + 0.2, color: `rgba(220,38,38,${Math.random() * 0.3 + 0.1})` }); } function animateBg() { if(!ctx) return; ctx.clearRect(0,0,canvas.width,canvas.height); for(let p of particles){ p.x += p.speedX; p.y += p.speedY; if(p.x < -20) p.x = canvas.width+20; if(p.x > canvas.width+20) p.x = -20; if(p.y > canvas.height+30) p.y = -30; if(p.y < -30) p.y = canvas.height+30; ctx.beginPath(); ctx.arc(p.x, p.y, p.radius, 0, Math.PI*2); ctx.fillStyle = p.color; ctx.fill(); } requestAnimationFrame(animateBg); } animateBg();
 
-  // === Dynamic Portfolio Grid with all requested images ===
-  const portfolioData = [
-    { client: "DHL", images: ["DHL.jpg","DHL1.jpg","DHL2.jpg","DHL3.jpg","DHL4.jpg"] },
-    { client: "Liya Cafe", images: ["Liya Cafe1.jpg","Liya Cafe2.jpg","Liya Cafe3.jpg","Liya Cafe4.jpg"] },
-    { client: "Oromia Construction Corporation (OCC)", images: ["OCC1.jpg","OCC2.jpg","OCC3.jpg","OCC4.jpg","OCC5.jpg"] },
-    { client: "Tapu Foods Lafto Mall Branch", images: ["Tapu1.jpg","Tapu2.jpg","Tapu3.jpg","Tapu4.jpg"] },
-    { client: "Tapu Foods Megenagna Branch", images: ["TapuMeg1.jpg","TapuMeg2.jpg","TapuMeg3.jpg","TapuMeg4.jpg","TapuMeg5.jpg"] },
-    { client: "Unilever Manufacturing PLC", images: ["Unilever1.jpg","Unilever2.jpg","Unilever3.jpg","Unilever4.jpg","Unilever5.jpg","Unilever6.jpg","Unilever7.jpg","Unilever9.jpg"] },
-    { client: "Boeing Office", images: ["boeing3.jpg","boeing4.jpg","boeing6.jpg","boieng1.jpg","boieng2.jpg","boieng5.jpg","boieng6.jpg","boieng7.jpg"] },
-    { client: "Barakah Coffee", images: ["cofee5.jpg","coffee1.jpg","coffee2.jpg","coffee3.jpg","coffee4.jpg"] },
-    { client: "Oromia Engineering Corporation (ECO)", images: ["eco1.jpg","eco2.jpg","eco3.jpg","eco4.jpg"] },
-    { client: "Electromechanical Works", images: ["electro1.jpg","electro2.jpg","electro3.jpg"] },
-    { client: "Oromia Region President Office", images: ["president office1.jpg","president office2.jpg","president office3.jpg","president office4.jpg"] },
-    { client: "Sangi / Shangri", images: ["sangi3.jpg","sangi4.jpg","sangi5.jpg","sangi6.jpg","sangi7.jpg","sangi8.jpg","shangai.jpg","shangi1.jpg","shangi2.jpg"] },
-    { client: "Sika Abyssinia Chemicals", images: ["sika.jpg","sika1.jpg","sika2.jpg","sika3.jpg"] }
+  // GROUPED PORTFOLIO WITH WHITE BACKGROUND AND ATTRACTIVE LAYOUT
+  const groupedData = [
+    { group: "DHL", icon: "fas fa-box", images: ["DHL.jpg","DHL1.jpg","DHL2.jpg","DHL3.jpg","DHL4.jpg"] },
+    { group: "Liya Cafe", icon: "fas fa-mug-hot", images: ["Liya Cafe1.jpg","Liya Cafe2.jpg","Liya Cafe3.jpg","Liya Cafe4.jpg"] },
+    { group: "Oromia Construction Corporation (OCC)", icon: "fas fa-building", images: ["OCC1.jpg","OCC2.jpg","OCC3.jpg","OCC4.jpg","OCC5.jpg"] },
+    { group: "Tapu Foods Lafto Mall Branch", icon: "fas fa-utensils", images: ["Tapu1.jpg","Tapu2.jpg","Tapu3.jpg","Tapu4.jpg"] },
+    { group: "Tapu Foods Megenagna Branch", icon: "fas fa-store", images: ["TapuMeg1.jpg","TapuMeg2.jpg","TapuMeg3.jpg","TapuMeg4.jpg","TapuMeg5.jpg"] },
+    { group: "Unilever Manufacturing PLC", icon: "fas fa-industry", images: ["Unilever1.jpg","Unilever2.jpg","Unilever3.jpg","Unilever4.jpg","Unilever5.jpg","Unilever6.jpg","Unilever7.jpg","Unilever9.jpg"] },
+    { group: "Boeing Office", icon: "fas fa-plane", images: ["boeing3.jpg","boeing4.jpg","boeing6.jpg","boieng1.jpg","boieng2.jpg","boieng5.jpg","boieng6.jpg","boieng7.jpg"] },
+    { group: "Barakah Coffee", icon: "fas fa-coffee", images: ["cofee5.jpg","coffee1.jpg","coffee2.jpg","coffee3.jpg","coffee4.jpg"] },
+    { group: "Oromia Engineering Corporation (ECO)", icon: "fas fa-microchip", images: ["eco1.jpg","eco2.jpg","eco3.jpg","eco4.jpg"] },
+    { group: "Electromechanical Works", icon: "fas fa-bolt", images: ["electro1.jpg","electro2.jpg","electro3.jpg"] },
+    { group: "Oromia Region President Office", icon: "fas fa-landmark", images: ["president office1.jpg","president office2.jpg","president office3.jpg","president office4.jpg"] },
+    { group: "Sangi / Shangri", icon: "fas fa-chandelier", images: ["sangi3.jpg","sangi4.jpg","sangi5.jpg","sangi6.jpg","sangi7.jpg","sangi8.jpg","shangai.jpg","shangi1.jpg","shangi2.jpg"] },
+    { group: "Sika Abyssinia Chemicals", icon: "fas fa-flask", images: ["sika.jpg","sika1.jpg","sika2.jpg","sika3.jpg"] }
   ];
 
-  const gridContainer = document.getElementById('portfolioGrid');
-  function buildPortfolio() {
+  const container = document.getElementById('groupedPortfolioContainer');
+  function buildGroupedPortfolio() {
     let html = '';
-    portfolioData.forEach(brand => {
-      brand.images.forEach(imgFileName => {
-        // sanitize filename spaces for src
-        const srcClean = imgFileName.replace(/ /g, '%20');
-        html += `
-          <div class="portfolio-item" data-aos="fade-up">
-            <img class="portfolio-img" src="${srcClean}" alt="${brand.client} project" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/dc2626/white?text=${encodeURIComponent(brand.client)}'">
-            <div class="portfolio-caption">
-              <h4>${brand.client}</h4>
-              <p><i class="fas fa-hard-hat"></i> Electro-Mechanical Solution</p>
-            </div>
+    groupedData.forEach(group => {
+      html += `<div class="portfolio-group-card" data-aos="fade-up" data-aos-offset="100">
+        <div class="group-header">
+          <h3><i class="${group.icon}"></i> ${group.group} <span class="group-badge">${group.images.length} projects</span></h3>
+          <div class="group-desc"><i class="fas fa-hard-hat"></i> HVAC & Electro-Mechanical Solutions</div>
+        </div>
+        <div class="portfolio-grid-group">`;
+      group.images.forEach(img => {
+        const cleanSrc = img.replace(/ /g, '%20');
+        html += `<div class="portfolio-item">
+          <img class="portfolio-img" src="${cleanSrc}" alt="${group.group}" loading="lazy" onerror="this.onerror=null; this.src='https://placehold.co/600x400/dc2626/white?text=${encodeURIComponent(group.group)}'">
+          <div class="portfolio-caption">
+            <h4>${group.group}</h4>
+            <p><i class="fas fa-wrench"></i> Precision Engineering</p>
           </div>
-        `;
+        </div>`;
       });
+      html += `</div></div>`;
     });
-    gridContainer.innerHTML = html;
-    // reinitialize AOS for new items
+    container.innerHTML = html;
     AOS.refresh();
   }
-  buildPortfolio();
+  buildGroupedPortfolio();
 </script>
 </body>
 </html>
